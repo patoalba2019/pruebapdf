@@ -5,8 +5,8 @@ window.PRUEBAPDF_CONFIG = {
     pack20Usd: 8.99
   },
   paymentLinks: {
-    single: "https://gumroad.com/l/pruebapdf-individual",
-    pack5: "https://gumroad.com/l/pruebapdf-pack-5",
-    pack20: "https://gumroad.com/l/pruebapdf-pack-20"
+    single: "https://pruebapdf.lemonsqueezy.com/checkout/buy/REEMPLAZAR-LINK-INDIVIDUAL",
+    pack5: "https://pruebapdf.lemonsqueezy.com/checkout/buy/REEMPLAZAR-LINK-PACK-5",
+    pack20: "https://pruebapdf.lemonsqueezy.com/checkout/buy/b2601b5d-25da-4bf0-a750-80c1ef46b0e8"
   }
 };
