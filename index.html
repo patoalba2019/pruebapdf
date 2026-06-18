@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PruebaPDF | Organizá capturas y comprobantes en PDF</title>
+    <meta
+      name="description"
+      content="Convertí tus capturas, chats, comprobantes y documentos en un PDF ordenado, numerado y fácil de compartir."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <nav class="nav">
+          <strong>PruebaPDF</strong>
+          <a href="#precios">Precios</a>
+        </nav>
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Organización documental simple</p>
+            <h1>Convertí tus capturas, chats, comprobantes y documentos en un PDF ordenado en minutos.</h1>
+            <p class="lead">
+              Subí tus archivos, ordenalos, agregá descripciones y descargá un documento numerado, prolijo y fácil de
+              compartir.
+            </p>
+            <div class="actions">
+              <a class="primary" href="#crear">Crear mi PDF</a>
+              <button class="secondary" id="shareButton" type="button">Compartir</button>
+            </div>
+          </div>
+          <div class="paper" aria-hidden="true">
+            <span>PDF organizado</span>
+            <b>Reclamo compra online</b>
+            <small>1. Captura del chat</small>
+            <small>2. Comprobante de pago</small>
+            <small>3. Estado del envío</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="three">
+          <div class="mini">✓ Reclamos y compras</div>
+          <div class="mini">✓ Garantías y servicios</div>
+          <div class="mini">✓ Trámites personales</div>
+        </div>
+      </section>
+
+      <section class="builder" id="crear">
+        <div class="section-title">
+          <p class="eyebrow">Constructor</p>
+          <h2>Armá tu documento</h2>
+        </div>
+        <div class="builder-grid">
+          <div class="workspace">
+            <label class="upload">
+              <span class="upload-icon">↑</span>
+              <strong>Subí imágenes o PDFs</strong>
+              <span>JPG, PNG, WEBP y PDF. Podés agregar varios archivos.</span>
+              <input id="fileInput" multiple type="file" accept=".jpg,.jpeg,.png,.webp,.pdf" />
+            </label>
+
+            <div class="form-grid">
+              <label>
+                Título del caso
+                <input id="caseTitle" placeholder="Ej: Reclamo por compra" />
+              </label>
+              <label>
+                Nombre opcional
+                <input id="caseName" placeholder="Tu nombre" />
+              </label>
+              <label>
+                Fecha opcional
+                <input id="caseDate" type="date" />
+              </label>
+              <label class="wide">
+                Descripción general
+                <textarea id="caseSummary" placeholder="Contá brevemente qué querés presentar o compartir."></textarea>
+              </label>
+            </div>
+
+            <div class="items" id="items"></div>
+          </div>
+
+          <aside class="side">
+            <div class="status">
+              <strong>Privacidad práctica</strong>
+              <p>La generación del PDF ocurre en tu navegador para mantener el proceso rápido y simple.</p>
+            </div>
+            <div class="timeline">
+              <strong>Línea temporal</strong>
+              <div id="timelineList">Agregá fechas a los archivos para crearla automáticamente.</div>
+            </div>
+            <button class="primary full" id="previewButton" type="button">Descargar vista previa gratis</button>
+            <button class="dark full" id="cleanButton" type="button">Descargar PDF limpio</button>
+            <div class="code-box">
+              <span id="creditLabel">Créditos disponibles: 0</span>
+              <input id="purchaseCode" placeholder="Código de compra" />
+              <button id="redeemButton" type="button">Validar código</button>
+            </div>
+            <p class="message" id="message" hidden></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="prices" id="precios">
+        <div class="section-title">
+          <p class="eyebrow">Precios iniciales configurables</p>
+          <h2>Elegí cómo descargar</h2>
+        </div>
+        <div class="price-grid">
+          <div class="price">
+            <span class="price-icon">Vista previa</span>
+            <h3>Vista previa</h3>
+            <strong>Gratis</strong>
+            <p>Para revisar el PDF con marca de agua antes de descargar la versión limpia.</p>
+            <a class="price-action ghost" href="#crear">Crear gratis</a>
+          </div>
+          <a class="price" id="paySingle" target="_blank" rel="noreferrer">
+            <span class="price-icon">1 PDF</span>
+            <h3>PDF individual</h3>
+            <strong id="priceSingle"></strong>
+            <p>Para un caso puntual que querés ordenar y compartir rápido.</p>
+            <span class="price-action">Comprar individual</span>
+          </a>
+          <a class="price" id="payPack5" target="_blank" rel="noreferrer">
+            <span class="price-icon">5 PDFs</span>
+            <h3>Pack de 5</h3>
+            <strong id="pricePack5"></strong>
+            <p>Para varios reclamos, compras, garantías o trámites personales.</p>
+            <span class="price-action">Comprar pack</span>
+          </a>
+          <a class="price recommended" id="payPack20" target="_blank" rel="noreferrer">
+            <span>Más conveniente</span>
+            <span class="price-icon">20 PDFs</span>
+            <h3>Pack de 20</h3>
+            <strong id="pricePack20"></strong>
+            <p>Mejor precio por PDF para organizar documentos con más frecuencia.</p>
+            <span class="price-action">Comprar mejor precio</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="faq">
+        <div>
+          <h2>Preguntas frecuentes</h2>
+          <details open>
+            <summary>¿Qué puedo subir?</summary>
+            <p>Capturas, imágenes, comprobantes y PDFs. La primera versión acepta JPG, PNG, WEBP y PDF.</p>
+          </details>
+          <details>
+            <summary>¿Puedo ordenar los archivos?</summary>
+            <p>Sí. Cada archivo tiene controles para subirlo, bajarlo, describirlo o eliminarlo.</p>
+          </details>
+          <details>
+            <summary>¿Cómo uso un pack?</summary>
+            <p>Comprás un pack, recibís un código y lo ingresás en el constructor para habilitar descargas limpias.</p>
+          </details>
+        </div>
+      </section>
+
+      <footer>
+        <strong>PruebaPDF</strong>
+        <span>Servicio de organización documental. Ver términos de uso.</span>
+      </footer>
+    </main>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
