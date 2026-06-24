@@ -496,23 +496,9 @@ function initPrices() {
   $("#priceSingle").textContent = formatMoney(config.prices.singleUsd);
   $("#pricePack5").textContent = formatMoney(config.prices.pack5Usd);
   $("#pricePack20").textContent = formatMoney(config.prices.pack20Usd);
-  configurePaymentLink($("#paySingle"), config.paymentLinks.single);
-  configurePaymentLink($("#payPack5"), config.paymentLinks.pack5);
-  configurePaymentLink($("#payPack20"), config.paymentLinks.pack20);
-}
-
-function configurePaymentLink(element, url) {
-  if (!url || url.includes("REEMPLAZAR-LINK")) {
-    element.removeAttribute("href");
-    element.removeAttribute("target");
-    element.addEventListener("click", (event) => {
-      event.preventDefault();
-      showMessage("Por ahora está disponible el Pack de 20 para comprar online.");
-    });
-    return;
-  }
-
-  element.href = url;
+  $("#paySingle").href = config.paymentLinks.single;
+  $("#payPack5").href = config.paymentLinks.pack5;
+  $("#payPack20").href = config.paymentLinks.pack20;
 }
 
 function init() {
