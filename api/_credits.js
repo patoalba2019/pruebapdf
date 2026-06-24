@@ -143,6 +143,12 @@ async function lemonRequest(path, body) {
   });
 
   const data = await result.json().catch(() => ({}));
+  if (!result.ok && path === "validate") {
+    return {
+      valid: false,
+      error: data.error || data.message || `LEMON_ERROR_${result.status}`
+    };
+  }
   if (!result.ok) {
     const message = data.error || data.message || `LEMON_ERROR_${result.status}`;
     throw new Error(message);
