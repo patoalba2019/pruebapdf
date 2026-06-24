@@ -3,6 +3,7 @@ const { PDFDocument, StandardFonts, degrees, rgb } = PDFLib;
 const state = {
   items: [],
   credits: 0,
+  issuedCredits: 0,
   token: ""
 };
 
@@ -31,7 +32,10 @@ function showMessage(text) {
 }
 
 function saveCredits() {
-  localStorage.setItem("pruebapdf.redeem", JSON.stringify({ credits: state.credits, token: state.token }));
+  localStorage.setItem(
+    "pruebapdf.redeem",
+    JSON.stringify({ credits: state.credits, issuedCredits: state.issuedCredits, token: state.token })
+  );
 }
 
 function loadCredits() {
@@ -40,15 +44,18 @@ function loadCredits() {
   try {
     const parsed = JSON.parse(saved);
     state.credits = Number(parsed.credits || 0);
+    state.issuedCredits = Number(parsed.issuedCredits || 0);
     state.token = String(parsed.token || "");
   } catch {
     state.credits = 0;
+    state.issuedCredits = 0;
     state.token = "";
   }
 }
 
 function updateCredits() {
-  creditLabel.textContent = `Créditos disponibles: ${state.credits}`;
+  const total = state.issuedCredits ? ` de ${state.issuedCredits}` : "";
+  creditLabel.textContent = `Créditos disponibles: ${state.credits}${total}`;
 }
 
 function wrapText(text, maxChars) {
@@ -354,10 +361,38 @@ async function downloadPdf(watermark) {
     return;
   }
 
+  if (!watermark && !state.token) {
+    showMessage("Volvé a ingresar tu license key para descargar el PDF limpio.");
+    return;
+  }
+
   setBusy(true);
   showMessage("");
   try {
     const blob = await buildPdf(watermark);
+    if (!watermark) {
+      const consumeResponse = await fetch("/api/consume-credit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: state.token })
+      });
+      const consumeData = await consumeResponse.json();
+      if (!consumeResponse.ok || !consumeData.ok) {
+        showMessage(consumeData.message || "No pudimos descontar el crédito.");
+        if (consumeResponse.status === 401 || consumeResponse.status === 404) {
+          state.credits = 0;
+          state.issuedCredits = 0;
+          state.token = "";
+          saveCredits();
+          updateCredits();
+        }
+        return;
+      }
+      state.credits = Number(consumeData.credits || 0);
+      saveCredits();
+      updateCredits();
+    }
+
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     const title = $("#caseTitle").value.trim() || "PruebaPDF";
@@ -365,12 +400,6 @@ async function downloadPdf(watermark) {
     anchor.download = `${title.replace(/[^\w-]+/g, "-")}${watermark ? "-vista-previa" : ""}.pdf`;
     anchor.click();
     URL.revokeObjectURL(url);
-
-    if (!watermark) {
-      state.credits = Math.max(0, state.credits - 1);
-      saveCredits();
-      updateCredits();
-    }
   } catch (error) {
     console.error(error);
     showMessage("No pudimos generar el PDF. Probá con archivos más livianos o en otro navegador.");
@@ -405,29 +434,43 @@ async function redeemCode() {
       showMessage(data.message || "No pudimos validar el código.");
       return;
     }
-    state.credits = Number(data.credits || 1);
+    state.credits = Number(data.credits || 0);
+    state.issuedCredits = Number(data.issuedCredits || data.credits || 0);
     state.token = String(data.token || "");
     saveCredits();
     updateCredits();
-    showMessage(`Código validado. Tenés ${state.credits} descarga(s) limpia(s).`);
+    showMessage(`License key validada. Tenés ${state.credits} descarga(s) limpia(s).`);
   } catch {
-    const demoCodes = {
-      "DEMO-PRUEBAPDF-1": 1,
-      "DEMO-PRUEBAPDF-5": 5,
-      "DEMO-PRUEBAPDF-20": 20
-    };
-    const credits = demoCodes[code.toUpperCase()];
-    if (!credits) {
-      showMessage("La validación online va a funcionar cuando la web esté publicada en Vercel.");
-      return;
-    }
-    state.credits = credits;
-    state.token = "demo-local";
-    saveCredits();
-    updateCredits();
-    showMessage(`Código demo validado. Tenés ${state.credits} descarga(s) limpia(s).`);
+    showMessage("No pudimos conectar con la validación online. Probá de nuevo en unos minutos.");
   } finally {
     setBusy(false);
+  }
+}
+
+async function refreshCreditStatus() {
+  if (!state.token) return;
+
+  try {
+    const response = await fetch("/api/status", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: state.token })
+    });
+    const data = await response.json();
+    if (!response.ok || !data.ok) {
+      state.credits = 0;
+      state.issuedCredits = 0;
+      state.token = "";
+      saveCredits();
+      updateCredits();
+      return;
+    }
+    state.credits = Number(data.credits || 0);
+    state.issuedCredits = Number(data.issuedCredits || data.credits || 0);
+    saveCredits();
+    updateCredits();
+  } catch {
+    updateCredits();
   }
 }
 
@@ -461,6 +504,7 @@ function initPrices() {
 function init() {
   loadCredits();
   updateCredits();
+  refreshCreditStatus();
   initPrices();
   renderItems();
 
