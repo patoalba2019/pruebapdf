@@ -72,7 +72,7 @@
           </a>
           <div class="nav-actions">
             <button class="language-toggle" id="languageToggle" type="button">ES / EN</button>
-            <a href="#precios">Precios</a>
+            <a href="#precios" data-i18n="pricesEyebrow">Precios</a>
           </div>
         </nav>
 
@@ -91,17 +91,17 @@
           </div>
           <div class="hero-product" aria-label="Ejemplo de documento organizado">
             <div class="mess-stack">
-              <span>Captura del chat</span>
-              <span>Comprobante de pago</span>
-              <span>Detalle del pedido</span>
+              <span data-i18n="heroMess1">Captura del chat</span>
+              <span data-i18n="heroMess2">Comprobante de pago</span>
+              <span data-i18n="heroMess3">Detalle del pedido</span>
             </div>
             <div class="clean-doc">
-              <span>Documento claro</span>
-              <strong>Compra online</strong>
-              <small>Portada</small>
-              <small>Resumen del caso</small>
-              <small>Evidencias numeradas</small>
-              <small>Línea temporal</small>
+              <span data-i18n="heroDocTitle">Documento claro</span>
+              <strong data-i18n="heroDocCase">Compra online</strong>
+              <small data-i18n="heroDocCover">Portada</small>
+              <small data-i18n="heroDocSummary">Resumen del caso</small>
+              <small data-i18n="heroDocEvidence">Evidencias numeradas</small>
+              <small data-i18n="heroDocTimeline">Línea temporal</small>
             </div>
           </div>
         </div>
@@ -218,15 +218,15 @@
                     </label>
                     <label>
                       <span data-i18n="fieldParty">Empresa o persona</span>
-                      <input id="caseParty" placeholder="Ejemplo: tienda, vendedor o empresa" />
+                      <input id="caseParty" placeholder="Ejemplo: tienda, vendedor o empresa" data-i18n-placeholder="partyPlaceholder" />
                     </label>
                     <label>
                       <span data-i18n="fieldReference">Pedido o referencia</span>
-                      <input id="caseReference" placeholder="Ejemplo: número de pedido" />
+                      <input id="caseReference" placeholder="Ejemplo: número de pedido" data-i18n-placeholder="referencePlaceholder" />
                     </label>
                     <label>
                       <span data-i18n="fieldName">Tu nombre</span>
-                      <input id="caseName" placeholder="Opcional" />
+                      <input id="caseName" placeholder="Opcional" data-i18n-placeholder="optionalPlaceholder" />
                     </label>
                     <label>
                       <span data-i18n="fieldStatus">Estado actual</span>
@@ -288,7 +288,7 @@
               <div class="case-map" id="caseMap"></div>
               <div class="review-card" id="reviewCard"></div>
               <button class="primary full" id="previewButton" type="button" data-track="preview_generate">
-                Ver vista previa
+                <span data-i18n="previewButton">Ver vista previa</span>
               </button>
               <div class="preview-panel" id="previewPanel"></div>
             </section>
@@ -308,10 +308,10 @@
                   <strong data-i18n="unlockCodeTitle">Ya tengo código</strong>
                   <span id="creditLabelLarge">Pegá el código que recibiste por email para ver tus descargas disponibles.</span>
                   <div class="license-row">
-                    <input id="purchaseCodeLarge" autocomplete="off" placeholder="Código de compra" />
-                    <button id="redeemButtonLarge" type="button" data-track="license_validate">Validar</button>
+                    <input id="purchaseCodeLarge" autocomplete="off" placeholder="Código de compra" data-i18n-placeholder="purchaseCodePlaceholder" />
+                    <button id="redeemButtonLarge" type="button" data-track="license_validate" data-i18n="redeemButton">Validar</button>
                   </div>
-                  <button class="dark full" id="cleanButton" type="button" data-track="download_full">
+                  <button class="dark full" id="cleanButton" type="button" data-track="download_full" data-i18n="cleanButton">
                     Descargar documento completo y resumen
                   </button>
                 </div>
@@ -356,7 +356,7 @@
           <div class="price">
             <span class="price-icon" data-i18n="freeBadge">Vista previa protegida</span>
             <h3 data-i18n="freeTitle">Gratis</h3>
-            <strong>Gratis</strong>
+            <strong data-i18n="freePrice">Gratis</strong>
             <p data-i18n="freeText">Revisá cómo quedará tu documento.</p>
             <a class="price-action ghost" href="#crear" data-i18n="freeAction">Crear vista previa</a>
           </div>
@@ -387,25 +387,25 @@
 
       <section class="seo-cases" id="casos-de-uso">
         <div class="section-title">
-          <p class="eyebrow">Casos de uso</p>
-          <h2>Organización para reclamos, garantías, alquileres y trámites</h2>
+          <p class="eyebrow" data-i18n="seoEyebrow">Casos de uso</p>
+          <h2 data-i18n="seoTitle">Organización para reclamos, garantías, alquileres y trámites</h2>
         </div>
         <div class="seo-grid">
           <article id="organizar-capturas-para-reclamo">
-            <h3>Organizar capturas para reclamo</h3>
-            <p>Reuní conversaciones, comprobantes, fotos y referencias en un documento ordenado.</p>
+            <h3 data-i18n="seo1Title">Organizar capturas para reclamo</h3>
+            <p data-i18n="seo1Text">Reuní conversaciones, comprobantes, fotos y referencias en un documento ordenado.</p>
           </article>
           <article id="documento-para-compra-online">
-            <h3>Documento para compra online</h3>
-            <p>Armá un resumen claro con publicación, pago, pedido, chats y estado del producto.</p>
+            <h3 data-i18n="seo2Title">Documento para compra online</h3>
+            <p data-i18n="seo2Text">Armá un resumen claro con publicación, pago, pedido, chats y estado del producto.</p>
           </article>
           <article id="documento-para-garantia">
-            <h3>Documento para garantía</h3>
-            <p>Presentá factura, fecha de compra, imágenes del inconveniente y comunicaciones de soporte.</p>
+            <h3 data-i18n="seo3Title">Documento para garantía</h3>
+            <p data-i18n="seo3Text">Presentá factura, fecha de compra, imágenes del inconveniente y comunicaciones de soporte.</p>
           </article>
           <article id="organize-screenshots-into-pdf">
-            <h3>Organize screenshots into PDF</h3>
-            <p>Create a clean document from screenshots, chats, receipts and supporting files.</p>
+            <h3 data-i18n="seo4Title">Organize screenshots into PDF</h3>
+            <p data-i18n="seo4Text">Create a clean document from screenshots, chats, receipts and supporting files.</p>
           </article>
         </div>
       </section>
@@ -431,9 +431,9 @@
       <footer>
         <strong>PruebaPDF</strong>
         <span>
-          Servicio de organización documental.
-          <a href="./terminos.html">Términos</a>
-          <a href="./privacidad.html">Privacidad</a>
+          <span data-i18n="footerText">Servicio de organización documental.</span>
+          <a href="./terminos.html" data-i18n="terms">Términos</a>
+          <a href="./privacidad.html" data-i18n="privacy">Privacidad</a>
         </span>
       </footer>
     </main>

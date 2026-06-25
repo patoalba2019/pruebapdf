@@ -4,14 +4,10 @@ const config = window.PRUEBAPDF_CONFIG || {};
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
-const steps = [
-  "Elegí tu caso",
-  "Texto listo",
-  "Qué agregar",
-  "Archivos",
-  "Vista previa",
-  "Descarga"
-];
+const stepLabels = {
+  es: ["Elegí tu caso", "Texto listo", "Qué agregar", "Archivos", "Vista previa", "Descarga"],
+  en: ["Choose case", "Ready text", "What to add", "Files", "Preview", "Download"]
+};
 
 const translations = {
   es: {
@@ -110,7 +106,132 @@ const translations = {
     faq2Q: "¿Qué puedo subir?",
     faq2A: "Fotos, capturas, comprobantes y documentos. Cada archivo se convierte en una evidencia ordenada.",
     faq3Q: "¿Cómo uso un pack?",
-    faq3A: "Comprás en Lemon Squeezy, recibís un código por email y lo pegás para habilitar tus descargas."
+    faq3A: "Comprás en Lemon Squeezy, recibís un código por email y lo pegás para habilitar tus descargas.",
+    progressStep: "Paso",
+    downloadsAvailable: "Descargas disponibles",
+    pastePurchaseCode: "Pegá tu código de compra.",
+    pasteEmailCode: "Pegá el código que recibiste por email para ver tus descargas disponibles.",
+    evidence: "Evidencia",
+    document: "Documento",
+    cleanTitle: "Título simple",
+    shortDescription: "Descripción breve",
+    editTypeDate: "Editar tipo o fecha",
+    addedToMap: "Agregado al mapa del caso",
+    tapIfHave: "Tocá si ya lo tenés",
+    noFilesEmpty: "Tus evidencias van a aparecer acá con títulos simples, editables y listos para el documento.",
+    caseMap1: "Tu caso",
+    caseMap2: "Agregado",
+    caseMap3: "Podés sumar",
+    caseMap4: "Resultado",
+    filesAdded: "archivo(s)",
+    readyMarked: "dato(s) marcados como listos.",
+    optional: "Opcional",
+    complete: "Completo",
+    baseReady: "La base principal ya está armada.",
+    pagesApprox: "páginas aprox.",
+    resultReady: "Documento completo y resumen listos para descargar.",
+    finalTitle: "Esto es lo que preparaste",
+    filesAddedMetric: "archivos agregados",
+    estimatedPages: "páginas estimadas",
+    markedData: "datos marcados",
+    fullDocumentLabel: "Documento completo:",
+    fullDocumentIncludes: "portada, resumen, índice, evidencias y línea temporal si agregaste fechas.",
+    summaryLabel: "Resumen:",
+    summaryIncludes: "una versión corta para enviar rápido por email, WhatsApp o formulario.",
+    previewReadyInside: "Vista previa lista dentro de la web",
+    uploadAtLeastOnePreview: "Subí al menos un archivo para crear la vista previa.",
+    uploadAtLeastOneDoc: "Subí al menos un archivo para crear el documento.",
+    unsupportedFiles: "Algunos archivos no se agregaron. Usá fotos, capturas o documentos de hasta 25 MB.",
+    previewWatermark: "VISTA PREVIA",
+    indexTitle: "Índice",
+    fullOnly: "Disponible en el documento completo",
+    previewReadyMessage: "Vista previa lista. Para descargar el documento completo usá un código de compra.",
+    timeline: "Línea temporal",
+    readyTextEyebrow: "Textos listos",
+    shareTitle: "Copiá y enviá sin pensar de más",
+    emailSubject: "Asunto de email",
+    formText: "Texto para formulario",
+    copy: "Copiar",
+    openWhatsApp: "Abrir WhatsApp",
+    openEmail: "Abrir email",
+    copied: "Texto copiado.",
+    hello: "Hola,",
+    shareEmailIntro: "Comparto documentación organizada sobre:",
+    reference: "Referencia:",
+    emailAttachment: "Adjunto el documento con resumen e evidencias ordenadas.",
+    thanks: "Gracias.",
+    whatsappIntro: "Hola, te comparto la documentación organizada sobre",
+    whatsappIncludes: "Incluye resumen y evidencias numeradas para revisar rápido.",
+    formCase: "Caso",
+    formSummary: "Resumen",
+    formEvidenceCount: "Evidencias incluidas",
+    validatingCode: "Validando código...",
+    enterPurchaseCode: "Ingresá tu código de compra.",
+    codeValidated: "Código validado. Tenés",
+    downloadsUnit: "descarga(s).",
+    cannotValidate: "No pudimos validar el código.",
+    validationOffline: "No pudimos conectar con la validación online. Probá de nuevo en unos minutos.",
+    enableDownloads: "Ingresá tu código para habilitar descargas.",
+    preparingDocs: "Preparando documento completo y resumen...",
+    cannotDiscount: "No pudimos descontar una descarga.",
+    doneRemaining: "Listo. Te quedan",
+    cannotGenerate: "No pudimos generar el documento. Probá con archivos más livianos.",
+    fastReady: "Listo. Ahora agregá tus archivos.",
+    organizedDocument: "Documento organizado",
+    caseTypeLabel: "Tipo de caso",
+    dateLabel: "Fecha",
+    relatedPartyLabel: "Parte relacionada",
+    preparedByLabel: "Preparado por",
+    executiveSummary: "Resumen ejecutivo",
+    caseSummaryPdf: "Resumen del caso",
+    evidenceIndexPdf: "Índice de evidencias",
+    iHaveIt: "Lo tengo",
+    addLater: "Lo agregaré después",
+    attachedPdf: "Documento PDF adjunto en las páginas siguientes",
+    page: "Página",
+    checklist: "Checklist",
+    email: "Email",
+    whatsapp: "WhatsApp",
+    uploadEvidence: "Subir evidencia",
+    moveEvidenceDown: "Bajar evidencia",
+    deleteEvidence: "Eliminar evidencia",
+    receipt: "Comprobante",
+    payment: "Pago",
+    conversation: "Conversación",
+    photo: "Foto",
+    status: "Estado",
+    note: "Nota",
+    datePrefix: "Fecha",
+    freePrice: "Gratis",
+    previewButton: "Ver vista previa",
+    redeemButton: "Validar",
+    cleanButton: "Descargar documento completo y resumen",
+    purchaseCodePlaceholder: "Código de compra",
+    partyPlaceholder: "Ejemplo: tienda, vendedor o empresa",
+    referencePlaceholder: "Ejemplo: número de pedido",
+    optionalPlaceholder: "Opcional",
+    heroMess1: "Captura del chat",
+    heroMess2: "Comprobante de pago",
+    heroMess3: "Detalle del pedido",
+    heroDocTitle: "Documento claro",
+    heroDocCase: "Compra online",
+    heroDocCover: "Portada",
+    heroDocSummary: "Resumen del caso",
+    heroDocEvidence: "Evidencias numeradas",
+    heroDocTimeline: "Línea temporal",
+    seoEyebrow: "Casos de uso",
+    seoTitle: "Organización para reclamos, garantías, alquileres y trámites",
+    seo1Title: "Organizar capturas para reclamo",
+    seo1Text: "Reuní conversaciones, comprobantes, fotos y referencias en un documento ordenado.",
+    seo2Title: "Documento para compra online",
+    seo2Text: "Armá un resumen claro con publicación, pago, pedido, chats y estado del producto.",
+    seo3Title: "Documento para garantía",
+    seo3Text: "Presentá factura, fecha de compra, imágenes del inconveniente y comunicaciones de soporte.",
+    seo4Title: "Organize screenshots into PDF",
+    seo4Text: "Create a clean document from screenshots, chats, receipts and supporting files.",
+    footerText: "Servicio de organización documental.",
+    terms: "Términos",
+    privacy: "Privacidad"
   },
   en: {
     heroEyebrow: "Document assistant",
@@ -208,7 +329,132 @@ const translations = {
     faq2Q: "What can I upload?",
     faq2A: "Photos, screenshots, receipts and documents. Each file becomes an organized evidence item.",
     faq3Q: "How do I use a pack?",
-    faq3A: "Buy through Lemon Squeezy, receive a code by email and paste it to enable your downloads."
+    faq3A: "Buy through Lemon Squeezy, receive a code by email and paste it to enable your downloads.",
+    progressStep: "Step",
+    downloadsAvailable: "Downloads available",
+    pastePurchaseCode: "Paste your purchase code.",
+    pasteEmailCode: "Paste the code you received by email to see your available downloads.",
+    evidence: "Evidence",
+    document: "Document",
+    cleanTitle: "Simple title",
+    shortDescription: "Short description",
+    editTypeDate: "Edit type or date",
+    addedToMap: "Added to the case map",
+    tapIfHave: "Tap if you have it",
+    noFilesEmpty: "Your evidence will appear here with simple, editable titles ready for the document.",
+    caseMap1: "Your case",
+    caseMap2: "Added",
+    caseMap3: "You can add",
+    caseMap4: "Result",
+    filesAdded: "file(s)",
+    readyMarked: "item(s) marked as ready.",
+    optional: "Optional",
+    complete: "Complete",
+    baseReady: "The main base is already prepared.",
+    pagesApprox: "approx. pages",
+    resultReady: "Full document and summary ready to download.",
+    finalTitle: "This is what you prepared",
+    filesAddedMetric: "files added",
+    estimatedPages: "estimated pages",
+    markedData: "marked items",
+    fullDocumentLabel: "Full document:",
+    fullDocumentIncludes: "cover, summary, index, evidence and timeline if you added dates.",
+    summaryLabel: "Summary:",
+    summaryIncludes: "a short version to quickly send by email, WhatsApp or form.",
+    previewReadyInside: "Preview ready inside the website",
+    uploadAtLeastOnePreview: "Upload at least one file to create the preview.",
+    uploadAtLeastOneDoc: "Upload at least one file to create the document.",
+    unsupportedFiles: "Some files were not added. Use photos, screenshots or documents up to 25 MB.",
+    previewWatermark: "PREVIEW",
+    indexTitle: "Index",
+    fullOnly: "Available in the full document",
+    previewReadyMessage: "Preview ready. To download the full document, use a purchase code.",
+    timeline: "Timeline",
+    readyTextEyebrow: "Ready text",
+    shareTitle: "Copy and send without overthinking",
+    emailSubject: "Email subject",
+    formText: "Form text",
+    copy: "Copy",
+    openWhatsApp: "Open WhatsApp",
+    openEmail: "Open email",
+    copied: "Text copied.",
+    hello: "Hi,",
+    shareEmailIntro: "I am sharing organized documentation about:",
+    reference: "Reference:",
+    emailAttachment: "I attached the document with the summary and organized evidence.",
+    thanks: "Thanks.",
+    whatsappIntro: "Hi, I am sharing the organized documentation about",
+    whatsappIncludes: "It includes a summary and numbered evidence for quick review.",
+    formCase: "Case",
+    formSummary: "Summary",
+    formEvidenceCount: "Evidence included",
+    validatingCode: "Validating code...",
+    enterPurchaseCode: "Enter your purchase code.",
+    codeValidated: "Code validated. You have",
+    downloadsUnit: "download(s).",
+    cannotValidate: "We could not validate the code.",
+    validationOffline: "We could not connect to online validation. Try again in a few minutes.",
+    enableDownloads: "Enter your code to enable downloads.",
+    preparingDocs: "Preparing full document and summary...",
+    cannotDiscount: "We could not subtract a download.",
+    doneRemaining: "Done. You have",
+    cannotGenerate: "We could not generate the document. Try lighter files.",
+    fastReady: "Ready. Now add your files.",
+    organizedDocument: "Organized document",
+    caseTypeLabel: "Case type",
+    dateLabel: "Date",
+    relatedPartyLabel: "Related party",
+    preparedByLabel: "Prepared by",
+    executiveSummary: "Executive summary",
+    caseSummaryPdf: "Case summary",
+    evidenceIndexPdf: "Evidence index",
+    iHaveIt: "I have it",
+    addLater: "I will add it later",
+    attachedPdf: "Attached PDF document on the following pages",
+    page: "Page",
+    checklist: "Checklist",
+    email: "Email",
+    whatsapp: "WhatsApp",
+    uploadEvidence: "Move evidence up",
+    moveEvidenceDown: "Move evidence down",
+    deleteEvidence: "Delete evidence",
+    receipt: "Receipt",
+    payment: "Payment",
+    conversation: "Conversation",
+    photo: "Photo",
+    status: "Status",
+    note: "Note",
+    datePrefix: "Date",
+    freePrice: "Free",
+    previewButton: "View preview",
+    redeemButton: "Validate",
+    cleanButton: "Download full document and summary",
+    purchaseCodePlaceholder: "Purchase code",
+    partyPlaceholder: "Example: store, seller or company",
+    referencePlaceholder: "Example: order number",
+    optionalPlaceholder: "Optional",
+    heroMess1: "Chat screenshot",
+    heroMess2: "Payment receipt",
+    heroMess3: "Order details",
+    heroDocTitle: "Clear document",
+    heroDocCase: "Online purchase",
+    heroDocCover: "Cover",
+    heroDocSummary: "Case summary",
+    heroDocEvidence: "Numbered evidence",
+    heroDocTimeline: "Timeline",
+    seoEyebrow: "Use cases",
+    seoTitle: "Organize claims, warranties, rentals and personal procedures",
+    seo1Title: "Organize screenshots for a claim",
+    seo1Text: "Gather conversations, receipts, photos and references in an organized document.",
+    seo2Title: "Document for an online purchase",
+    seo2Text: "Create a clear summary with listing, payment, order, chats and product status.",
+    seo3Title: "Document for a warranty",
+    seo3Text: "Present invoice, purchase date, issue images and support communications.",
+    seo4Title: "Organize screenshots into PDF",
+    seo4Text: "Create a clean document from screenshots, chats, receipts and supporting files.",
+    footerText: "Document organization service.",
+    terms: "Terms",
+    privacy: "Privacy"
   }
 };
 
@@ -222,7 +468,16 @@ const caseTypes = [
     summary:
       "Compré un producto online y quiero ordenar la información principal: publicación, comprobante de pago, conversaciones y estado actual del pedido.",
     checklist: ["Publicación o descripción del producto", "Comprobante de pago", "Número de pedido", "Chat con el vendedor", "Estado del envío", "Fotos del producto"],
-    evidence: ["Publicación del producto", "Comprobante de pago", "Conversación con el vendedor", "Estado del envío"]
+    evidence: ["Publicación del producto", "Comprobante de pago", "Conversación con el vendedor", "Estado del envío"],
+    en: {
+      title: "Online purchase",
+      description: "Order, payment, chats and delivery status.",
+      exampleTitle: "Online purchase claim",
+      summary:
+        "I bought a product online and want to organize the main information: listing, payment receipt, conversations and current order status.",
+      checklist: ["Product listing or description", "Payment receipt", "Order number", "Chat with the seller", "Delivery status", "Product photos"],
+      evidence: ["Product listing", "Payment receipt", "Conversation with the seller", "Delivery status"]
+    }
   },
   {
     id: "warranty",
@@ -233,7 +488,15 @@ const caseTypes = [
     summary:
       "Quiero ordenar los datos de compra, comprobantes y comunicaciones relacionadas con una solicitud de garantía.",
     checklist: ["Factura o ticket", "Fecha de compra", "Fotos del inconveniente", "Manual o condiciones", "Chat o email de soporte"],
-    evidence: ["Factura de compra", "Foto del inconveniente", "Mensaje a soporte", "Respuesta recibida"]
+    evidence: ["Factura de compra", "Foto del inconveniente", "Mensaje a soporte", "Respuesta recibida"],
+    en: {
+      title: "Warranty",
+      description: "Invoice, purchase date and support.",
+      exampleTitle: "Warranty request",
+      summary: "I want to organize purchase details, receipts and communications related to a warranty request.",
+      checklist: ["Invoice or receipt", "Purchase date", "Photos of the issue", "Manual or terms", "Support chat or email"],
+      evidence: ["Purchase invoice", "Photo of the issue", "Message to support", "Response received"]
+    }
   },
   {
     id: "defect",
@@ -244,7 +507,15 @@ const caseTypes = [
     summary:
       "Recibí o tengo un producto con un inconveniente y quiero presentar la información en orden, con fotos y mensajes asociados.",
     checklist: ["Fotos del producto", "Descripción del inconveniente", "Comprobante de compra", "Mensajes enviados", "Respuesta recibida"],
-    evidence: ["Foto general del producto", "Detalle del inconveniente", "Comprobante de compra", "Comunicación enviada"]
+    evidence: ["Foto general del producto", "Detalle del inconveniente", "Comprobante de compra", "Comunicación enviada"],
+    en: {
+      title: "Defective product",
+      description: "Photos, issue and communications.",
+      exampleTitle: "Product received with an issue",
+      summary: "I received or have a product with an issue and want to present the information in order, with related photos and messages.",
+      checklist: ["Product photos", "Issue description", "Purchase receipt", "Messages sent", "Response received"],
+      evidence: ["General product photo", "Issue detail", "Purchase receipt", "Message sent"]
+    }
   },
   {
     id: "service",
@@ -255,7 +526,15 @@ const caseTypes = [
     summary:
       "Contraté un servicio y quiero ordenar pagos, acuerdos, fechas y conversaciones para explicar el estado del caso.",
     checklist: ["Presupuesto o acuerdo", "Comprobante de pago", "Fecha pactada", "Mensajes", "Resultado actual"],
-    evidence: ["Acuerdo del servicio", "Pago realizado", "Mensaje de seguimiento", "Estado actual"]
+    evidence: ["Acuerdo del servicio", "Pago realizado", "Mensaje de seguimiento", "Estado actual"],
+    en: {
+      title: "Service not completed",
+      description: "Agreement, payments and messages.",
+      exampleTitle: "Service follow-up",
+      summary: "I hired a service and want to organize payments, agreements, dates and conversations to explain the current status.",
+      checklist: ["Quote or agreement", "Payment receipt", "Agreed date", "Messages", "Current result"],
+      evidence: ["Service agreement", "Payment made", "Follow-up message", "Current status"]
+    }
   },
   {
     id: "seller",
@@ -266,7 +545,15 @@ const caseTypes = [
     summary:
       "Quiero dejar ordenada una operación con una persona particular, incluyendo acuerdo, pago, mensajes y entrega.",
     checklist: ["Publicación o acuerdo", "Datos de contacto", "Pago o transferencia", "Mensajes", "Entrega o retiro"],
-    evidence: ["Acuerdo inicial", "Comprobante de transferencia", "Chat principal", "Estado de entrega"]
+    evidence: ["Acuerdo inicial", "Comprobante de transferencia", "Chat principal", "Estado de entrega"],
+    en: {
+      title: "Private seller",
+      description: "Agreement, payment and delivery.",
+      exampleTitle: "Deal with a private seller",
+      summary: "I want to organize a deal with a private person, including agreement, payment, messages and delivery.",
+      checklist: ["Listing or agreement", "Contact details", "Payment or transfer", "Messages", "Delivery or pickup"],
+      evidence: ["Initial agreement", "Transfer receipt", "Main chat", "Delivery status"]
+    }
   },
   {
     id: "rent",
@@ -277,7 +564,15 @@ const caseTypes = [
     summary:
       "Necesito organizar documentos, pagos, fotos y comunicaciones relacionadas con un alquiler.",
     checklist: ["Contrato", "Recibos o transferencias", "Fotos", "Mensajes", "Fechas importantes"],
-    evidence: ["Contrato o acuerdo", "Pago registrado", "Foto del estado", "Mensaje relevante"]
+    evidence: ["Contrato o acuerdo", "Pago registrado", "Foto del estado", "Mensaje relevante"],
+    en: {
+      title: "Rental",
+      description: "Payments, contract, photos and claims.",
+      exampleTitle: "Rental documentation",
+      summary: "I need to organize documents, payments, photos and communications related to a rental.",
+      checklist: ["Contract", "Receipts or transfers", "Photos", "Messages", "Important dates"],
+      evidence: ["Contract or agreement", "Recorded payment", "Condition photo", "Relevant message"]
+    }
   },
   {
     id: "chargeback",
@@ -288,7 +583,15 @@ const caseTypes = [
     summary:
       "Quiero reunir la información de pago, pedido y comunicaciones para presentar un caso de contracargo.",
     checklist: ["Comprobante de tarjeta o pago", "Detalle del pedido", "Mensajes", "Intentos de solución", "Resultado actual"],
-    evidence: ["Pago realizado", "Detalle del pedido", "Mensaje al comercio", "Respuesta recibida"]
+    evidence: ["Pago realizado", "Detalle del pedido", "Mensaje al comercio", "Respuesta recibida"],
+    en: {
+      title: "Chargeback",
+      description: "Payment, order and support.",
+      exampleTitle: "Chargeback documentation",
+      summary: "I want to gather payment, order and communication information to present a chargeback case.",
+      checklist: ["Card or payment receipt", "Order details", "Messages", "Resolution attempts", "Current result"],
+      evidence: ["Payment made", "Order details", "Message to the store", "Response received"]
+    }
   },
   {
     id: "personal",
@@ -299,7 +602,15 @@ const caseTypes = [
     summary:
       "Quiero ordenar archivos, fechas y observaciones para presentar un trámite de forma clara.",
     checklist: ["Documento principal", "Comprobante", "Formulario", "Mensajes", "Fecha de presentación"],
-    evidence: ["Documento principal", "Comprobante adjunto", "Formulario", "Mensaje relevante"]
+    evidence: ["Documento principal", "Comprobante adjunto", "Formulario", "Mensaje relevante"],
+    en: {
+      title: "Personal procedure",
+      description: "Files, dates and summary.",
+      exampleTitle: "Procedure documentation",
+      summary: "I want to organize files, dates and notes to present a procedure clearly.",
+      checklist: ["Main document", "Receipt", "Form", "Messages", "Submission date"],
+      evidence: ["Main document", "Attached receipt", "Form", "Relevant message"]
+    }
   },
   {
     id: "other",
@@ -310,18 +621,29 @@ const caseTypes = [
     summary:
       "Quiero ordenar capturas, comprobantes y documentos en una presentación clara, fácil de revisar y compartir.",
     checklist: ["Archivo principal", "Comprobante", "Mensajes", "Fotos", "Notas del caso"],
-    evidence: ["Archivo principal", "Comprobante", "Mensaje relevante", "Nota adicional"]
+    evidence: ["Archivo principal", "Comprobante", "Mensaje relevante", "Nota adicional"],
+    en: {
+      title: "Other",
+      description: "Simple and flexible structure.",
+      exampleTitle: "Organized document",
+      summary: "I want to organize screenshots, receipts and documents in a clear presentation that is easy to review and share.",
+      checklist: ["Main file", "Receipt", "Messages", "Photos", "Case notes"],
+      evidence: ["Main file", "Receipt", "Relevant message", "Additional note"]
+    }
   }
 ];
 
 const tones = [
-  { id: "direct", label: "Claro y directo" },
-  { id: "formal", label: "Formal" },
-  { id: "short", label: "Breve" },
-  { id: "detail", label: "Detallado" }
+  { id: "direct", es: "Claro y directo", en: "Clear and direct" },
+  { id: "formal", es: "Formal", en: "Formal" },
+  { id: "short", es: "Breve", en: "Short" },
+  { id: "detail", es: "Detallado", en: "Detailed" }
 ];
 
-const statuses = ["En preparación", "Enviado", "En conversación", "Esperando respuesta", "Resuelto"];
+const statuses = {
+  es: ["En preparación", "Enviado", "En conversación", "Esperando respuesta", "Resuelto"],
+  en: ["Preparing", "Sent", "In conversation", "Waiting for response", "Resolved"]
+};
 
 const state = {
   lang: navigator.language?.startsWith("en") ? "en" : "es",
@@ -342,8 +664,52 @@ function formatMoney(value) {
   return `US$${Number(value).toFixed(2)}`;
 }
 
+function dictionary() {
+  return translations[state.lang] || translations.es;
+}
+
+function text(key) {
+  return dictionary()[key] || translations.es[key] || key;
+}
+
+function localizedCase(caseType = state.caseType, key) {
+  return state.lang === "en" && caseType.en?.[key] ? caseType.en[key] : caseType[key];
+}
+
+function localizedChecklist(caseType = state.caseType) {
+  return localizedCase(caseType, "checklist") || [];
+}
+
+function localizedEvidence(caseType = state.caseType) {
+  return localizedCase(caseType, "evidence") || [];
+}
+
+function evidenceLabel(index) {
+  return `${text("evidence")} ${index + 1}`;
+}
+
+const typeKeys = {
+  Evidencia: "evidence",
+  Comprobante: "receipt",
+  Pago: "payment",
+  "Conversación": "conversation",
+  Documento: "document",
+  Foto: "photo",
+  Estado: "status",
+  Nota: "note"
+};
+
+function localizedType(type) {
+  return text(typeKeys[type] || "evidence");
+}
+
+function currentStepLabels() {
+  return stepLabels[state.lang] || stepLabels.es;
+}
+
 function todayLabel() {
-  return new Date().toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit", year: "numeric" });
+  const locale = state.lang === "en" ? "en-US" : "es-AR";
+  return new Date().toLocaleDateString(locale, { day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
 function cleanFileStem(name) {
@@ -357,11 +723,11 @@ function cleanFileStem(name) {
 }
 
 function suggestedEvidenceTitle(index, file) {
-  const list = state.caseType.evidence || [];
+  const list = localizedEvidence();
   const cleaned = cleanFileStem(file.name);
   if (list[index]) return list[index];
   if (cleaned && cleaned.length > 5 && cleaned.length < 36) return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
-  return `Evidencia ${index + 1}`;
+  return evidenceLabel(index);
 }
 
 function showMessage(text, kind = "note") {
@@ -409,10 +775,11 @@ function loadCredits() {
 
 function updateCredits() {
   const total = state.issuedCredits ? ` de ${state.issuedCredits}` : "";
-  const text = state.credits > 0 ? `Descargas disponibles: ${state.credits}${total}` : "Pegá tu código de compra.";
+  const totalText = state.lang === "en" && state.issuedCredits ? ` of ${state.issuedCredits}` : total;
+  const textContent = state.credits > 0 ? `${text("downloadsAvailable")}: ${state.credits}${totalText}` : text("pastePurchaseCode");
   ["#creditLabel", "#creditLabelLarge"].forEach((selector) => {
     const element = $(selector);
-    if (element) element.textContent = selector === "#creditLabelLarge" && state.credits <= 0 ? "Pegá el código que recibiste por email para ver tus descargas disponibles." : text;
+    if (element) element.textContent = selector === "#creditLabelLarge" && state.credits <= 0 ? text("pasteEmailCode") : textContent;
   });
   const cleanButton = $("#cleanButton");
   if (cleanButton) cleanButton.disabled = state.credits <= 0 || !state.token;
@@ -439,6 +806,10 @@ function applyTranslations() {
     const key = element.dataset.i18n;
     if (dictionary[key]) element.textContent = dictionary[key];
   });
+  $$("[data-i18n-placeholder]").forEach((element) => {
+    const key = element.dataset.i18nPlaceholder;
+    if (dictionary[key]) element.placeholder = dictionary[key];
+  });
   $("#languageToggle").textContent = state.lang === "es" ? "ES / EN" : "EN / ES";
 }
 
@@ -461,9 +832,9 @@ function initPrices() {
 
 function selectCase(caseType) {
   state.caseType = caseType;
-  state.checklist = caseType.checklist.map((label) => ({ label, status: "later" }));
-  $("#caseTitle").value = caseType.exampleTitle;
-  $("#caseSummary").value = caseType.summary;
+  state.checklist = localizedChecklist(caseType).map((_, index) => ({ index, status: "later" }));
+  $("#caseTitle").value = localizedCase(caseType, "exampleTitle");
+  $("#caseSummary").value = localizedCase(caseType, "summary");
   renderCases();
   renderSummaryOptions();
   renderChecklist();
@@ -484,8 +855,8 @@ function renderCases() {
     button.className = `case-option${caseType.id === state.caseType.id ? " is-selected" : ""}`;
     button.innerHTML = `
       <span aria-hidden="true">${caseType.icon}</span>
-      <strong>${caseType.title}</strong>
-      <small>${caseType.description}</small>
+      <strong>${localizedCase(caseType, "title")}</strong>
+      <small>${localizedCase(caseType, "description")}</small>
     `;
     button.addEventListener("click", () => {
       selectCase(caseType);
@@ -520,37 +891,54 @@ function renderSummaryOptions() {
 }
 
 function summaryOptionsForCase() {
-  const generic = [
-    {
-      label: "Ordenar una compra",
-      text: "Necesito ordenar comprobantes, conversaciones e imágenes relacionadas con una compra."
-    },
-    {
-      label: "Mostrar un problema",
-      text: "Quiero reunir información sobre un problema con un producto para presentarla de forma clara."
-    },
-    {
-      label: "Ordenar un trámite",
-      text: "Quiero presentar de forma clara los archivos relacionados con un trámite o gestión personal."
-    }
-  ];
-  const byCase = {
-    online: [
-      { label: "Compra online", text: "Necesito ordenar comprobantes, conversaciones y datos de una compra online." },
-      { label: "Pedido pendiente", text: "Quiero mostrar la información de un pedido, el pago realizado y el estado actual." },
-      { label: "Vendedor", text: "Quiero reunir mensajes, comprobantes y datos del vendedor en un solo documento." }
-    ],
-    warranty: [
-      { label: "Garantía", text: "Quiero organizar factura, fotos y mensajes para solicitar o seguir una garantía." },
-      { label: "Soporte", text: "Necesito reunir la información enviada a soporte y las respuestas recibidas." },
-      { label: "Producto", text: "Quiero mostrar la fecha de compra, el inconveniente y los comprobantes disponibles." }
-    ],
-    service: [
-      { label: "Servicio", text: "Quiero presentar de forma clara los archivos relacionados con un servicio contratado." },
-      { label: "Pagos", text: "Necesito ordenar acuerdos, pagos, mensajes y fechas importantes de un servicio." },
-      { label: "Seguimiento", text: "Quiero resumir el estado actual y las comunicaciones principales." }
-    ]
-  };
+  const generic =
+    state.lang === "en"
+      ? [
+          { label: "Organize a purchase", text: "I need to organize receipts, conversations and images related to a purchase." },
+          { label: "Show an issue", text: "I want to gather information about a product issue and present it clearly." },
+          { label: "Organize a procedure", text: "I want to clearly present files related to a personal procedure or task." }
+        ]
+      : [
+          { label: "Ordenar una compra", text: "Necesito ordenar comprobantes, conversaciones e imágenes relacionadas con una compra." },
+          { label: "Mostrar un problema", text: "Quiero reunir información sobre un problema con un producto para presentarla de forma clara." },
+          { label: "Ordenar un trámite", text: "Quiero presentar de forma clara los archivos relacionados con un trámite o gestión personal." }
+        ];
+  const byCase =
+    state.lang === "en"
+      ? {
+          online: [
+            { label: "Online purchase", text: "I need to organize receipts, conversations and details from an online purchase." },
+            { label: "Pending order", text: "I want to show the order information, payment made and current status." },
+            { label: "Seller", text: "I want to gather messages, receipts and seller details in one document." }
+          ],
+          warranty: [
+            { label: "Warranty", text: "I want to organize invoice, photos and messages for a warranty request or follow-up." },
+            { label: "Support", text: "I need to gather the information sent to support and the responses received." },
+            { label: "Product", text: "I want to show the purchase date, issue and available receipts." }
+          ],
+          service: [
+            { label: "Service", text: "I want to clearly present files related to a hired service." },
+            { label: "Payments", text: "I need to organize agreements, payments, messages and important dates for a service." },
+            { label: "Follow-up", text: "I want to summarize the current status and main communications." }
+          ]
+        }
+      : {
+          online: [
+            { label: "Compra online", text: "Necesito ordenar comprobantes, conversaciones y datos de una compra online." },
+            { label: "Pedido pendiente", text: "Quiero mostrar la información de un pedido, el pago realizado y el estado actual." },
+            { label: "Vendedor", text: "Quiero reunir mensajes, comprobantes y datos del vendedor en un solo documento." }
+          ],
+          warranty: [
+            { label: "Garantía", text: "Quiero organizar factura, fotos y mensajes para solicitar o seguir una garantía." },
+            { label: "Soporte", text: "Necesito reunir la información enviada a soporte y las respuestas recibidas." },
+            { label: "Producto", text: "Quiero mostrar la fecha de compra, el inconveniente y los comprobantes disponibles." }
+          ],
+          service: [
+            { label: "Servicio", text: "Quiero presentar de forma clara los archivos relacionados con un servicio contratado." },
+            { label: "Pagos", text: "Necesito ordenar acuerdos, pagos, mensajes y fechas importantes de un servicio." },
+            { label: "Seguimiento", text: "Quiero resumir el estado actual y las comunicaciones principales." }
+          ]
+        };
   return byCase[state.caseType.id] || generic;
 }
 
@@ -560,16 +948,24 @@ function renderTones() {
   tones.forEach((tone) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.textContent = tone.label;
+    button.textContent = tone[state.lang] || tone.es;
     button.addEventListener("click", () => {
-      const base = state.caseType.summary;
-      const title = $("#caseTitle").value.trim() || state.caseType.exampleTitle;
-      const variants = {
-        direct: base,
-        formal: `Por medio del presente, dejo organizada la documentación correspondiente a "${title}", incluyendo los elementos principales y evidencias disponibles.`,
-        short: `Documentación organizada para "${title}", con resumen, índice y evidencias relevantes.`,
-        detail: `${base} El documento incluye resumen, checklist, línea temporal cuando corresponde y evidencias numeradas para facilitar la revisión.`
-      };
+      const base = localizedCase(state.caseType, "summary");
+      const title = $("#caseTitle").value.trim() || localizedCase(state.caseType, "exampleTitle");
+      const variants =
+        state.lang === "en"
+          ? {
+              direct: base,
+              formal: `This document organizes the information related to "${title}", including the main details and available evidence.`,
+              short: `Organized documentation for "${title}", with summary, index and relevant evidence.`,
+              detail: `${base} The document includes summary, checklist, timeline when relevant and numbered evidence for easier review.`
+            }
+          : {
+              direct: base,
+              formal: `Por medio del presente, dejo organizada la documentación correspondiente a "${title}", incluyendo los elementos principales y evidencias disponibles.`,
+              short: `Documentación organizada para "${title}", con resumen, índice y evidencias relevantes.`,
+              detail: `${base} El documento incluye resumen, checklist, línea temporal cuando corresponde y evidencias numeradas para facilitar la revisión.`
+            };
       $("#caseSummary").value = variants[tone.id];
       renderReview();
     });
@@ -581,14 +977,15 @@ function renderChecklist() {
   const list = $("#checklist");
   list.innerHTML = "";
   state.checklist.forEach((entry, index) => {
+    const label = localizedChecklist()[entry.index ?? index] || entry.label || "";
     const article = document.createElement("button");
     article.type = "button";
     article.className = "check-item";
     article.classList.toggle("is-selected", entry.status === "have");
     article.innerHTML = `
       <span>${entry.status === "have" ? "✓" : "+"}</span>
-      <strong>${entry.label}</strong>
-      <small>${entry.status === "have" ? "Agregado al mapa del caso" : "Tocá si ya lo tenés"}</small>
+      <strong>${label}</strong>
+      <small>${entry.status === "have" ? text("addedToMap") : text("tapIfHave")}</small>
     `;
     article.addEventListener("click", () => {
       state.checklist[index].status = entry.status === "have" ? "later" : "have";
@@ -604,6 +1001,7 @@ function renderChecklist() {
 function renderSteps() {
   const list = $("#stepsList");
   list.innerHTML = "";
+  const steps = currentStepLabels();
   steps.forEach((label, index) => {
     const item = document.createElement("li");
     item.className = index === state.step ? "is-current" : index < state.step ? "is-done" : "";
@@ -611,11 +1009,12 @@ function renderSteps() {
     item.addEventListener("click", () => showStep(index));
     list.appendChild(item);
   });
-  $("#progressPercent").textContent = `Paso ${state.step + 1} de ${steps.length}`;
+  $("#progressPercent").textContent = `${text("progressStep")} ${state.step + 1} ${state.lang === "en" ? "of" : "de"} ${steps.length}`;
   $("#progressBar").style.width = `${((state.step + 1) / steps.length) * 100}%`;
 }
 
 function showStep(index) {
+  const steps = currentStepLabels();
   state.step = Math.max(0, Math.min(steps.length - 1, index));
   $$(".wizard-step").forEach((step) => step.classList.toggle("is-active", Number(step.dataset.step) === state.step));
   $("#backStep").hidden = state.step === 0;
@@ -628,7 +1027,7 @@ function showStep(index) {
 
 function validateStep() {
   if (state.step === 3 && !state.items.length) {
-    showMessage("Subí al menos un archivo para crear la vista previa.", "warning");
+    showMessage(text("uploadAtLeastOnePreview"), "warning");
     return false;
   }
   return true;
@@ -649,7 +1048,7 @@ function addFiles(files) {
   const incoming = Array.from(files || []);
   const supported = incoming.filter((file) => accepted.includes(file.type) && file.size <= 25 * 1024 * 1024);
   if (supported.length !== incoming.length) {
-    showMessage("Algunos archivos no se agregaron. Usá fotos, capturas o documentos de hasta 25 MB.", "warning");
+    showMessage(text("unsupportedFiles"), "warning");
   }
   supported.forEach((file) => {
     const index = state.items.length;
@@ -677,16 +1076,24 @@ function guessType(file, index) {
   if (name.includes("chat") || name.includes("whatsapp")) return "Conversación";
   if (name.includes("pago") || name.includes("transfer")) return "Pago";
   if (file.type === "application/pdf") return "Documento";
-  return state.caseType.evidence[index] || "Evidencia";
+  return "Evidencia";
 }
 
 function suggestDescription(index) {
-  const suggestions = [
-    "Muestra el dato principal de esta parte del caso.",
-    "Sirve para respaldar el orden de los hechos.",
-    "Complementa el resumen y ayuda a entender la situación.",
-    "Aporta contexto adicional para revisar el caso."
-  ];
+  const suggestions =
+    state.lang === "en"
+      ? [
+          "Shows the main detail for this part of the case.",
+          "Helps support the order of events.",
+          "Adds context and helps explain the situation.",
+          "Provides extra information to review the case."
+        ]
+      : [
+          "Muestra el dato principal de esta parte del caso.",
+          "Sirve para respaldar el orden de los hechos.",
+          "Complementa el resumen y ayuda a entender la situación.",
+          "Aporta contexto adicional para revisar el caso."
+        ];
   return suggestions[index % suggestions.length];
 }
 
@@ -695,7 +1102,7 @@ function renderItems() {
   container.innerHTML = "";
   if (!state.items.length) {
     container.innerHTML =
-      '<div class="empty">Tus evidencias van a aparecer acá con títulos simples, editables y listos para el documento.</div>';
+      `<div class="empty">${text("noFilesEmpty")}</div>`;
     return;
   }
 
@@ -719,24 +1126,24 @@ function renderItems() {
     body.className = "item-body";
     body.innerHTML = `
       <div class="evidence-head">
-        <strong>Evidencia ${visibleIndex + 1}</strong>
-        <span>${item.type}</span>
+        <strong>${evidenceLabel(visibleIndex)}</strong>
+        <span>${localizedType(item.type)}</span>
       </div>
     `;
 
     const fields = document.createElement("div");
     fields.className = "item-fields";
     fields.append(
-      inputFor(item, "title", "Título simple", () => {
+      inputFor(item, "title", text("cleanTitle"), () => {
         renderReview();
         renderCaseMap();
         renderFinalSummary();
       }),
-      inputFor(item, "description", "Descripción breve", () => renderReview())
+      inputFor(item, "description", text("shortDescription"), () => renderReview())
     );
     const details = document.createElement("details");
     details.className = "item-advanced";
-    details.innerHTML = "<summary>Editar tipo o fecha</summary>";
+    details.innerHTML = `<summary>${text("editTypeDate")}</summary>`;
     const advancedFields = document.createElement("div");
     advancedFields.className = "item-advanced-fields";
     advancedFields.append(
@@ -757,9 +1164,9 @@ function renderItems() {
     const tools = document.createElement("div");
     tools.className = "tool-buttons";
     [
-      ["↑", () => moveItem(originalIndex, -1), "Subir evidencia"],
-      ["↓", () => moveItem(originalIndex, 1), "Bajar evidencia"],
-      ["×", () => removeItem(originalIndex), "Eliminar evidencia"]
+      ["↑", () => moveItem(originalIndex, -1), text("uploadEvidence")],
+      ["↓", () => moveItem(originalIndex, 1), text("moveEvidenceDown")],
+      ["×", () => removeItem(originalIndex), text("deleteEvidence")]
     ].forEach(([label, action, aria]) => {
       const button = document.createElement("button");
       button.type = "button";
@@ -791,7 +1198,7 @@ function selectFor(item, key, options, onInput) {
   options.forEach((option) => {
     const opt = document.createElement("option");
     opt.value = option;
-    opt.textContent = option;
+    opt.textContent = localizedType(option);
     select.appendChild(opt);
   });
   select.value = item[key] || options[0];
@@ -861,31 +1268,31 @@ function renderCaseMap() {
   if (!map) return;
   const have = state.checklist.filter((entry) => entry.status === "have");
   const missing = state.checklist.filter((entry) => entry.status !== "have").slice(0, 2);
-  const title = $("#caseTitle")?.value.trim() || state.caseType.exampleTitle;
+  const title = $("#caseTitle")?.value.trim() || localizedCase(state.caseType, "exampleTitle");
   map.innerHTML = `
     <article>
       <span>1</span>
-      <strong>Tu caso</strong>
-      <small>${escapeHtml(state.caseType.title)}</small>
+      <strong>${text("caseMap1")}</strong>
+      <small>${escapeHtml(localizedCase(state.caseType, "title"))}</small>
       <p>${escapeHtml(title)}</p>
     </article>
     <article>
       <span>2</span>
-      <strong>Agregado</strong>
-      <small>${state.items.length} archivo(s)</small>
-      <p>${have.length} dato(s) marcados como listos.</p>
+      <strong>${text("caseMap2")}</strong>
+      <small>${state.items.length} ${text("filesAdded")}</small>
+      <p>${have.length} ${text("readyMarked")}</p>
     </article>
     <article>
       <span>3</span>
-      <strong>Podés sumar</strong>
-      <small>${missing.length ? "Opcional" : "Completo"}</small>
-      <p>${missing.length ? missing.map((entry) => escapeHtml(entry.label)).join(", ") : "La base principal ya está armada."}</p>
+      <strong>${text("caseMap3")}</strong>
+      <small>${missing.length ? text("optional") : text("complete")}</small>
+      <p>${missing.length ? missing.map((entry) => escapeHtml(localizedChecklist()[entry.index] || entry.label || "")).join(", ") : text("baseReady")}</p>
     </article>
     <article>
       <span>4</span>
-      <strong>Resultado</strong>
-      <small>${estimatePages()} páginas aprox.</small>
-      <p>Documento completo y resumen listos para descargar.</p>
+      <strong>${text("caseMap4")}</strong>
+      <small>${estimatePages()} ${text("pagesApprox")}</small>
+      <p>${text("resultReady")}</p>
     </article>
   `;
 }
@@ -893,31 +1300,31 @@ function renderCaseMap() {
 function renderFinalSummary() {
   const panel = $("#finalSummary");
   if (!panel) return;
-  const title = $("#caseTitle")?.value.trim() || state.caseType.exampleTitle;
+  const title = $("#caseTitle")?.value.trim() || localizedCase(state.caseType, "exampleTitle");
   const haveCount = state.checklist.filter((entry) => entry.status === "have").length;
   panel.innerHTML = `
     <div>
-      <span class="pill">${escapeHtml(state.caseType.title)}</span>
-      <h4>Esto es lo que preparaste</h4>
+      <span class="pill">${escapeHtml(localizedCase(state.caseType, "title"))}</span>
+      <h4>${text("finalTitle")}</h4>
       <p>${escapeHtml(title)}</p>
     </div>
     <div class="final-grid">
       <article>
         <strong>${state.items.length}</strong>
-        <span>archivos agregados</span>
+        <span>${text("filesAddedMetric")}</span>
       </article>
       <article>
         <strong>${estimatePages()}</strong>
-        <span>páginas estimadas</span>
+        <span>${text("estimatedPages")}</span>
       </article>
       <article>
         <strong>${haveCount}</strong>
-        <span>datos marcados</span>
+        <span>${text("markedData")}</span>
       </article>
     </div>
     <div class="final-includes">
-      <p><strong>Documento completo:</strong> portada, resumen, índice, evidencias y línea temporal si agregaste fechas.</p>
-      <p><strong>Resumen:</strong> una versión corta para enviar rápido por email, WhatsApp o formulario.</p>
+      <p><strong>${text("fullDocumentLabel")}</strong> ${text("fullDocumentIncludes")}</p>
+      <p><strong>${text("summaryLabel")}</strong> ${text("summaryIncludes")}</p>
     </div>
   `;
 }
@@ -926,19 +1333,19 @@ function renderReview() {
   const review = $("#reviewCard");
   if (!review) return;
   const haveCount = state.checklist.filter((entry) => entry.status === "have").length;
-  const title = $("#caseTitle")?.value.trim() || state.caseType.exampleTitle;
-  const summary = $("#caseSummary")?.value.trim() || state.caseType.summary;
+  const title = $("#caseTitle")?.value.trim() || localizedCase(state.caseType, "exampleTitle");
+  const summary = $("#caseSummary")?.value.trim() || localizedCase(state.caseType, "summary");
   review.innerHTML = `
     <div>
-      <span class="pill">${state.caseType.title}</span>
+      <span class="pill">${localizedCase(state.caseType, "title")}</span>
       <h4>${title}</h4>
       <p>${summary}</p>
     </div>
     <ul>
-      <li>${state.items.length} archivo(s) agregado(s)</li>
-      <li>${haveCount} dato(s) marcado(s)</li>
-      <li>${estimatePages()} páginas estimadas</li>
-      <li>Vista previa lista dentro de la web</li>
+      <li>${state.items.length} ${text("filesAddedMetric")}</li>
+      <li>${haveCount} ${text("markedData")}</li>
+      <li>${estimatePages()} ${text("estimatedPages")}</li>
+      <li>${text("previewReadyInside")}</li>
     </ul>
   `;
   renderCaseMap();
@@ -947,26 +1354,26 @@ function renderReview() {
 
 function renderProtectedPreview() {
   if (!state.items.length) {
-    showMessage("Subí al menos un archivo para crear la vista previa.", "warning");
+    showMessage(text("uploadAtLeastOnePreview"), "warning");
     return;
   }
   const panel = $("#previewPanel");
   const items = sortedItems();
   const visibleItems = items.slice(0, 2);
   const lockedItems = items.slice(2);
-  const title = $("#caseTitle").value.trim() || state.caseType.exampleTitle;
-  const summary = $("#caseSummary").value.trim() || state.caseType.summary;
+  const title = $("#caseTitle").value.trim() || localizedCase(state.caseType, "exampleTitle");
+  const summary = $("#caseSummary").value.trim() || localizedCase(state.caseType, "summary");
   const index = items
-    .map((item, itemIndex) => `<li><span>Evidencia ${itemIndex + 1}</span><strong>${escapeHtml(item.title)}</strong></li>`)
+    .map((item, itemIndex) => `<li><span>${evidenceLabel(itemIndex)}</span><strong>${escapeHtml(item.title)}</strong></li>`)
     .join("");
   const visible = visibleItems
     .map((item, itemIndex) => {
       const media = item.previewUrl
         ? `<img src="${item.previewUrl}" alt="">`
-        : `<div class="pdf-placeholder">Documento</div>`;
+        : `<div class="pdf-placeholder">${text("document")}</div>`;
       return `
         <article class="preview-evidence">
-          <span>Evidencia ${itemIndex + 1}</span>
+          <span>${evidenceLabel(itemIndex)}</span>
           <h5>${escapeHtml(item.title)}</h5>
           <p>${escapeHtml(item.description || "")}</p>
           ${media}
@@ -978,9 +1385,9 @@ function renderProtectedPreview() {
     .map(
       (item, itemIndex) => `
         <article class="preview-locked">
-          <span>Evidencia ${itemIndex + 3}</span>
+          <span>${evidenceLabel(itemIndex + 2)}</span>
           <strong>${escapeHtml(item.title)}</strong>
-          <em>Disponible en el documento completo</em>
+          <em>${text("fullOnly")}</em>
         </article>
       `
     )
@@ -988,14 +1395,14 @@ function renderProtectedPreview() {
 
   panel.innerHTML = `
     <div class="preview-document">
-      <div class="watermark">VISTA PREVIA</div>
+      <div class="watermark">${text("previewWatermark")}</div>
       <section class="preview-cover">
         <span>PruebaPDF</span>
         <h4>${escapeHtml(title)}</h4>
         <p>${escapeHtml(summary)}</p>
       </section>
       <section class="preview-index">
-        <h5>Índice</h5>
+        <h5>${text("indexTitle")}</h5>
         <ol>${index}</ol>
       </section>
       ${renderTimelineHtml(true)}
@@ -1006,7 +1413,7 @@ function renderProtectedPreview() {
     </div>
   `;
   state.previewReady = true;
-  showMessage("Vista previa lista. Para descargar el documento completo usá un código de compra.", "success");
+  showMessage(text("previewReadyMessage"), "success");
   track("preview_ready", { evidenceCount: state.items.length });
 }
 
@@ -1018,48 +1425,48 @@ function renderTimelineHtml(forPreview = false) {
   const rows = dated
     .map((item) => `<li><strong>${escapeHtml(item.date)}</strong><span>${escapeHtml(item.title)}</span></li>`)
     .join("");
-  return `<section class="${forPreview ? "preview-timeline" : "timeline-block"}"><h5>Línea temporal</h5><ol>${rows}</ol></section>`;
+  return `<section class="${forPreview ? "preview-timeline" : "timeline-block"}"><h5>${text("timeline")}</h5><ol>${rows}</ol></section>`;
 }
 
 function renderShareKit() {
   const kit = $("#shareKit");
   if (!kit) return;
-  const title = $("#caseTitle")?.value.trim() || state.caseType.exampleTitle;
-  const summary = $("#caseSummary")?.value.trim() || state.caseType.summary;
+  const title = $("#caseTitle")?.value.trim() || localizedCase(state.caseType, "exampleTitle");
+  const summary = $("#caseSummary")?.value.trim() || localizedCase(state.caseType, "summary");
   const party = $("#caseParty")?.value.trim();
   const reference = $("#caseReference")?.value.trim();
   const subject = `${title}${party ? ` - ${party}` : ""}`;
   const email = [
-    `Hola,`,
+    text("hello"),
     "",
-    `Comparto documentación organizada sobre: ${title}.`,
-    reference ? `Referencia: ${reference}.` : "",
+    `${text("shareEmailIntro")} ${title}.`,
+    reference ? `${text("reference")} ${reference}.` : "",
     "",
     summary,
     "",
-    "Adjunto el documento con resumen e evidencias ordenadas.",
+    text("emailAttachment"),
     "",
-    "Gracias."
+    text("thanks")
   ]
     .filter(Boolean)
     .join("\n");
-  const whatsapp = `Hola, te comparto la documentación organizada sobre "${title}". Incluye resumen y evidencias numeradas para revisar rápido.`;
-  const form = `Caso: ${title}\n\nResumen:\n${summary}\n\nEvidencias incluidas: ${state.items.length}`;
+  const whatsapp = `${text("whatsappIntro")} "${title}". ${text("whatsappIncludes")}`;
+  const form = `${text("formCase")}: ${title}\n\n${text("formSummary")}:\n${summary}\n\n${text("formEvidenceCount")}: ${state.items.length}`;
 
   kit.innerHTML = `
     <div class="section-title small-title">
-      <p class="eyebrow">Textos listos</p>
-      <h3>Copiá y enviá sin pensar de más</h3>
+      <p class="eyebrow">${text("readyTextEyebrow")}</p>
+      <h3>${text("shareTitle")}</h3>
     </div>
-    ${copyBlock("Asunto de email", subject)}
-    ${copyBlock("Email", email)}
-    ${copyBlock("WhatsApp", whatsapp)}
-    ${copyBlock("Texto para formulario", form)}
+    ${copyBlock(text("emailSubject"), subject, "subject")}
+    ${copyBlock(text("email"), email, "email")}
+    ${copyBlock(text("whatsapp"), whatsapp, "whatsapp")}
+    ${copyBlock(text("formText"), form, "form")}
   `;
   kit.querySelectorAll("[data-copy]").forEach((button) => {
     button.addEventListener("click", async () => {
       await navigator.clipboard.writeText(button.dataset.copy);
-      showMessage("Texto copiado.", "success");
+      showMessage(text("copied"), "success");
     });
   });
   kit.querySelectorAll("[data-whatsapp]").forEach((button) => {
@@ -1074,19 +1481,19 @@ function renderShareKit() {
   });
 }
 
-function copyBlock(label, text) {
+function copyBlock(label, value, kind) {
   const extra =
-    label === "WhatsApp"
-      ? `<button type="button" data-whatsapp="${escapeAttribute(text)}">Abrir WhatsApp</button>`
-      : label === "Email"
-        ? `<button type="button" data-mail="1">Abrir email</button>`
+    kind === "whatsapp"
+      ? `<button type="button" data-whatsapp="${escapeAttribute(value)}">${text("openWhatsApp")}</button>`
+      : kind === "email"
+        ? `<button type="button" data-mail="1">${text("openEmail")}</button>`
         : "";
   return `
     <article class="copy-block">
       <strong>${label}</strong>
-      <pre>${escapeHtml(text)}</pre>
+      <pre>${escapeHtml(value)}</pre>
       <div>
-        <button type="button" data-copy="${escapeAttribute(text)}">Copiar</button>
+        <button type="button" data-copy="${escapeAttribute(value)}">${text("copy")}</button>
         ${extra}
       </div>
     </article>
@@ -1149,8 +1556,8 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   const bold = await pdf.embedFont(StandardFonts.HelveticaBold);
   const pageSize = [595.28, 841.89];
   let pageNumber = 1;
-  const title = $("#caseTitle").value.trim() || state.caseType.exampleTitle;
-  const summary = $("#caseSummary").value.trim() || state.caseType.summary;
+  const title = $("#caseTitle").value.trim() || localizedCase(state.caseType, "exampleTitle");
+  const summary = $("#caseSummary").value.trim() || localizedCase(state.caseType, "summary");
   const party = $("#caseParty").value.trim();
   const reference = $("#caseReference").value.trim();
   const name = $("#caseName").value.trim();
@@ -1158,9 +1565,9 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   const items = sortedItems();
 
   const drawFooter = (page) => {
-    page.drawText(`Página ${pageNumber}`, { x: 500, y: 28, size: 9, font: regular, color: rgb(0.39, 0.43, 0.5) });
+    page.drawText(`${text("page")} ${pageNumber}`, { x: 500, y: 28, size: 9, font: regular, color: rgb(0.39, 0.43, 0.5) });
     if (watermark) {
-      page.drawText("VISTA PREVIA", {
+      page.drawText(text("previewWatermark"), {
         x: 82,
         y: 350,
         size: 62,
@@ -1191,7 +1598,7 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   cover.drawRectangle({ x: 0, y: 0, width: pageSize[0], height: pageSize[1], color: rgb(0.96, 0.98, 1) });
   cover.drawRectangle({ x: 0, y: 0, width: 14, height: pageSize[1], color: rgb(0.15, 0.39, 0.92) });
   cover.drawText("PruebaPDF", { x: 52, y: 770, size: 18, font: bold, color: rgb(0.04, 0.08, 0.14) });
-  cover.drawText("Documento organizado", { x: 52, y: 744, size: 11, font: regular, color: rgb(0.15, 0.31, 0.72) });
+  cover.drawText(text("organizedDocument"), { x: 52, y: 744, size: 11, font: regular, color: rgb(0.15, 0.31, 0.72) });
   wrapText(title, 26).slice(0, 3).forEach((line, index) => {
     cover.drawText(line, { x: 52, y: 655 - index * 40, size: 32, font: bold, color: rgb(0.04, 0.08, 0.14) });
   });
@@ -1199,11 +1606,11 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   coverY = drawParagraph(cover, summary, 52, coverY, 12, 72);
   coverY -= 24;
   [
-    ["Tipo de caso", state.caseType.title],
-    ["Fecha", date],
-    ["Parte relacionada", party],
-    ["Referencia", reference],
-    ["Preparado por", name]
+    [text("caseTypeLabel"), localizedCase(state.caseType, "title")],
+    [text("dateLabel"), date],
+    [text("relatedPartyLabel"), party],
+    [text("reference"), reference],
+    [text("preparedByLabel"), name]
   ]
     .filter(([, value]) => value)
     .forEach(([label, value]) => {
@@ -1214,23 +1621,24 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   drawFooter(cover);
 
   const summaryPage = pdf.addPage(pageSize);
-  drawPageHeader(summaryPage, mode === "summary" ? "Resumen ejecutivo" : "Resumen del caso");
+  drawPageHeader(summaryPage, mode === "summary" ? text("executiveSummary") : text("caseSummaryPdf"));
   let y = drawParagraph(summaryPage, summary, 52, 715, 12, 82);
   y -= 18;
-  summaryPage.drawText("Checklist", { x: 52, y, size: 14, font: bold, color: rgb(0.04, 0.08, 0.14) });
+  summaryPage.drawText(text("checklist"), { x: 52, y, size: 14, font: bold, color: rgb(0.04, 0.08, 0.14) });
   y -= 24;
-  state.checklist.forEach((entry) => {
-    const status = entry.status === "have" ? "Lo tengo" : entry.status === "missing" ? "No lo tengo" : "Lo agregaré después";
-    summaryPage.drawText(`${status}: ${entry.label}`.slice(0, 94), { x: 64, y, size: 10, font: regular, color: rgb(0.13, 0.16, 0.22) });
+  state.checklist.forEach((entry, index) => {
+    const status = entry.status === "have" ? text("iHaveIt") : text("addLater");
+    const label = localizedChecklist()[entry.index ?? index] || entry.label || "";
+    summaryPage.drawText(`${status}: ${label}`.slice(0, 94), { x: 64, y, size: 10, font: regular, color: rgb(0.13, 0.16, 0.22) });
     y -= 18;
   });
   drawFooter(summaryPage);
 
   const indexPage = pdf.addPage(pageSize);
-  drawPageHeader(indexPage, "Índice de evidencias");
+  drawPageHeader(indexPage, text("evidenceIndexPdf"));
   let indexY = 708;
   items.forEach((item, index) => {
-    indexPage.drawText(`Evidencia ${index + 1}`, { x: 52, y: indexY, size: 10, font: bold, color: rgb(0.15, 0.31, 0.72) });
+    indexPage.drawText(evidenceLabel(index), { x: 52, y: indexY, size: 10, font: bold, color: rgb(0.15, 0.31, 0.72) });
     indexPage.drawText(item.title.slice(0, 58), { x: 145, y: indexY, size: 10, font: regular, color: rgb(0.13, 0.16, 0.22) });
     if (item.date) indexPage.drawText(item.date, { x: 470, y: indexY, size: 9, font: regular, color: rgb(0.39, 0.43, 0.5) });
     indexY -= 22;
@@ -1240,7 +1648,7 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   const dated = items.filter((item) => item.date).sort((a, b) => a.date.localeCompare(b.date));
   if (dated.length >= 2) {
     const timeline = pdf.addPage(pageSize);
-    drawPageHeader(timeline, "Línea temporal");
+    drawPageHeader(timeline, text("timeline"));
     let timelineY = 708;
     dated.forEach((item) => {
       timeline.drawCircle({ x: 61, y: timelineY + 3, size: 4, color: rgb(0.15, 0.39, 0.92) });
@@ -1258,17 +1666,17 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   for (let index = 0; index < items.length; index += 1) {
     const item = items[index];
     const page = pdf.addPage(pageSize);
-    drawPageHeader(page, `Evidencia ${index + 1}`);
+    drawPageHeader(page, evidenceLabel(index));
     page.drawText(item.title.slice(0, 80), { x: 52, y: 724, size: 15, font: bold, color: rgb(0.04, 0.08, 0.14) });
-    page.drawText(item.type, { x: 52, y: 700, size: 10, font: regular, color: rgb(0.15, 0.31, 0.72) });
+    page.drawText(localizedType(item.type), { x: 52, y: 700, size: 10, font: regular, color: rgb(0.15, 0.31, 0.72) });
     if (item.date) {
-      page.drawText(`Fecha: ${item.date}`, { x: 415, y: 700, size: 10, font: regular, color: rgb(0.39, 0.43, 0.5) });
+      page.drawText(`${text("datePrefix")}: ${item.date}`, { x: 415, y: 700, size: 10, font: regular, color: rgb(0.39, 0.43, 0.5) });
     }
     const contentY = item.description ? drawParagraph(page, item.description, 52, 672, 10, 86) - 12 : 650;
 
     if (item.file.type === "application/pdf") {
       page.drawRectangle({ x: 52, y: contentY - 90, width: 490, height: 72, color: rgb(0.94, 0.96, 0.99) });
-      page.drawText("Documento PDF adjunto en las páginas siguientes", {
+      page.drawText(text("attachedPdf"), {
         x: 76,
         y: contentY - 52,
         size: 12,
@@ -1301,15 +1709,15 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
 
 async function downloadPaidPackage() {
   if (!state.items.length) {
-    showMessage("Subí al menos un archivo para crear el documento.", "warning");
+    showMessage(text("uploadAtLeastOneDoc"), "warning");
     return;
   }
   if (state.credits <= 0 || !state.token) {
-    showMessage("Ingresá tu código para habilitar descargas.", "warning");
+    showMessage(text("enableDownloads"), "warning");
     return;
   }
   setBusy(true);
-  showMessage("Preparando documento completo y resumen...", "note");
+  showMessage(text("preparingDocs"), "note");
   try {
     const [fullBlob, summaryBlob] = await Promise.all([buildPdf({ mode: "full" }), buildPdf({ mode: "summary" })]);
     const consumeResponse = await fetch("/api/consume-credit", {
@@ -1319,7 +1727,7 @@ async function downloadPaidPackage() {
     });
     const consumeData = await consumeResponse.json();
     if (!consumeResponse.ok || !consumeData.ok) {
-      showMessage(consumeData.message || "No pudimos descontar una descarga.", "warning");
+      showMessage(consumeData.message || text("cannotDiscount"), "warning");
       if (consumeResponse.status === 401 || consumeResponse.status === 404) {
         state.credits = 0;
         state.issuedCredits = 0;
@@ -1333,13 +1741,13 @@ async function downloadPaidPackage() {
     saveCredits();
     updateCredits();
     const title = $("#caseTitle").value.trim() || "PruebaPDF";
-    downloadBlob(fullBlob, pdfSafeName(title, "documento-completo"));
-    setTimeout(() => downloadBlob(summaryBlob, pdfSafeName(title, "resumen")), 500);
-    showMessage(`Listo. Te quedan ${state.credits} descarga(s).`, "success");
+    downloadBlob(fullBlob, pdfSafeName(title, state.lang === "en" ? "full-document" : "documento-completo"));
+    setTimeout(() => downloadBlob(summaryBlob, pdfSafeName(title, state.lang === "en" ? "summary" : "resumen")), 500);
+    showMessage(`${text("doneRemaining")} ${state.credits} ${text("downloadsUnit")}`, "success");
     track("paid_download", { remainingCredits: state.credits });
   } catch (error) {
     console.error(error);
-    showMessage("No pudimos generar el documento. Probá con archivos más livianos.", "warning");
+    showMessage(text("cannotGenerate"), "warning");
   } finally {
     setBusy(false);
   }
@@ -1359,12 +1767,12 @@ function downloadBlob(blob, filename) {
 async function redeemCode() {
   const code = ($("#purchaseCodeLarge")?.value || $("#purchaseCode")?.value || "").trim();
   if (!code) {
-    showMessage("Ingresá tu código de compra.", "warning");
+    showMessage(text("enterPurchaseCode"), "warning");
     return;
   }
   syncCodeInputs(code);
   setBusy(true);
-  showMessage("Validando código...", "note");
+  showMessage(text("validatingCode"), "note");
   try {
     const response = await fetch("/api/redeem", {
       method: "POST",
@@ -1373,7 +1781,7 @@ async function redeemCode() {
     });
     const data = await response.json();
     if (!response.ok || !data.ok) {
-      showMessage(data.message || "No pudimos validar el código.", "warning");
+      showMessage(data.message || text("cannotValidate"), "warning");
       return;
     }
     state.credits = Number(data.credits || 0);
@@ -1381,10 +1789,10 @@ async function redeemCode() {
     state.token = String(data.token || "");
     saveCredits();
     updateCredits();
-    showMessage(`Código validado. Tenés ${state.credits} descarga(s).`, "success");
+    showMessage(`${text("codeValidated")} ${state.credits} ${text("downloadsUnit")}`, "success");
     track("license_redeemed", { credits: state.credits, issuedCredits: state.issuedCredits });
   } catch {
-    showMessage("No pudimos conectar con la validación online. Probá de nuevo en unos minutos.", "warning");
+    showMessage(text("validationOffline"), "warning");
   } finally {
     setBusy(false);
   }
@@ -1431,17 +1839,38 @@ function escapeAttribute(value) {
 
 function bindEvents() {
   $("#languageToggle").addEventListener("click", () => {
+    const oldTitle = localizedCase(state.caseType, "exampleTitle");
+    const oldSummary = localizedCase(state.caseType, "summary");
+    const titleInput = $("#caseTitle");
+    const summaryInput = $("#caseSummary");
+    const shouldTranslateTitle = !titleInput.value.trim() || titleInput.value.trim() === oldTitle;
+    const shouldTranslateSummary = !summaryInput.value.trim() || summaryInput.value.trim() === oldSummary;
     state.lang = state.lang === "es" ? "en" : "es";
     applyTranslations();
+    if (shouldTranslateTitle) titleInput.value = localizedCase(state.caseType, "exampleTitle");
+    if (shouldTranslateSummary) summaryInput.value = localizedCase(state.caseType, "summary");
+    populateStatusOptions();
+    state.checklist = localizedChecklist().map((_, index) => ({ index, status: state.checklist[index]?.status || "later" }));
+    renderCases();
+    renderSummaryOptions();
+    renderTones();
+    renderChecklist();
+    renderItems();
+    renderReview();
+    renderCaseMap();
+    renderFinalSummary();
+    renderShareKit();
+    updateCredits();
+    showStep(state.step);
   });
   $("#useTitleExample").addEventListener("click", () => {
-    $("#caseTitle").value = state.caseType.exampleTitle;
+    $("#caseTitle").value = localizedCase(state.caseType, "exampleTitle");
     renderReview();
   });
   $("#fastModeButton")?.addEventListener("click", () => {
     state.fastMode = true;
     showStep(3);
-    showMessage("Listo. Ahora agregá tus archivos.", "success");
+    showMessage(text("fastReady"), "success");
     track("fast_mode_started");
   });
   $("#showMoreCases")?.addEventListener("click", () => {
@@ -1488,14 +1917,24 @@ function bindEvents() {
 }
 
 function initFormDefaults() {
+  populateStatusOptions();
+  selectCase(caseTypes[0]);
+}
+
+function populateStatusOptions() {
   const status = $("#caseStatus");
-  statuses.forEach((label) => {
+  if (!status) return;
+  const current = status.value;
+  status.innerHTML = "";
+  (statuses[state.lang] || statuses.es).forEach((label) => {
     const option = document.createElement("option");
     option.value = label;
     option.textContent = label;
     status.appendChild(option);
   });
-  selectCase(caseTypes[0]);
+  if ([...status.options].some((option) => option.value === current)) {
+    status.value = current;
+  }
 }
 
 function init() {
