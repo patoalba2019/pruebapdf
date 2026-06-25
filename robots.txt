@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pruebapdf.vercel.app/sitemap.xml
