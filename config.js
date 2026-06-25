@@ -1,4 +1,18 @@
 window.PRUEBAPDF_CONFIG = {
+  brand: {
+    name: "PruebaPDF",
+    tagline: {
+      es: "Organizá archivos sueltos en un documento claro.",
+      en: "Turn scattered files into a clear document."
+    },
+    colors: {
+      ink: "#111827",
+      blue: "#2563eb",
+      violet: "#7c3aed",
+      teal: "#0f766e",
+      amber: "#f59e0b"
+    }
+  },
   prices: {
     singleUsd: 0.79,
     pack5Usd: 2.99,

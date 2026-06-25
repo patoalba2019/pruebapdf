@@ -5,12 +5,13 @@ Microproducto para convertir capturas, chats, comprobantes, imágenes y PDFs en 
 ## Qué incluye
 
 - Página principal con propuesta clara, usos, precios y preguntas frecuentes.
-- Constructor de PDF en el navegador.
+- Constructor guiado en 6 pasos: caso, datos básicos, checklist, evidencias, preview y descarga.
 - Subida de JPG, PNG, WEBP y PDF.
 - Orden manual con botones subir/bajar.
-- Título, nombre, fecha, resumen y descripción por archivo.
+- Títulos limpios tipo “Evidencia 1”, tipo de evidencia, fecha y descripción editable.
+- Textos sugeridos para resumen, asunto de email, email, WhatsApp y formularios.
 - Índice, portada, línea temporal automática y numeración.
-- Vista previa gratis con marca de agua.
+- Vista previa gratis protegida dentro de la web con marca de agua fuerte.
 - Descarga limpia usando créditos por license key de Lemon Squeezy.
 - Rutas de Vercel para validar licencia, consultar saldo y descontar créditos en servidor.
 
@@ -18,7 +19,15 @@ Microproducto para convertir capturas, chats, comprobantes, imágenes y PDFs en 
 
 Abrí `index.html` en el navegador.
 
-La descarga limpia requiere Vercel, Lemon Squeezy y almacenamiento KV configurados.
+La descarga limpia requiere Vercel, Lemon Squeezy y almacenamiento KV configurados. En local se puede probar el flujo visual; para probar créditos reales usá el despliegue de Vercel.
+
+## Reglas de producto
+
+- La vista previa gratis se muestra dentro de la web y no descarga el documento completo limpio.
+- La vista previa incluye portada, resumen, índice y una muestra limitada de evidencias.
+- El documento completo y el resumen descargable consumen 1 crédito.
+- No mostrar nombres técnicos de archivos, UUIDs o nombres internos en tarjetas, índice, PDF o preview.
+- Mantener siempre los links de compra, precios, license keys, redeem, status, consume-credit, webhooks y variables de entorno como zona protegida.
 
 ## Cómo cambiar precios y links
 

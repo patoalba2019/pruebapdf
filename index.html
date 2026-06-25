@@ -3,26 +3,30 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PruebaPDF | Organizá capturas y comprobantes en PDF</title>
+    <title>PruebaPDF | Convertí capturas y comprobantes en un documento claro</title>
     <meta
       name="description"
-      content="Convertí tus capturas, chats, comprobantes y documentos en un PDF ordenado, numerado y fácil de compartir."
+      content="Organizá capturas, chats, comprobantes, imágenes y documentos en un PDF profesional con portada, resumen, índice y línea temporal."
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://pruebapdf.vercel.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="PruebaPDF" />
-    <meta property="og:title" content="PruebaPDF | Organizá capturas y comprobantes en PDF" />
+    <meta property="og:title" content="PruebaPDF | Documentos claros para reclamos y trámites" />
     <meta
       property="og:description"
-      content="Convertí capturas, chats, comprobantes y documentos en un PDF ordenado, numerado y fácil de compartir."
+      content="De archivos sueltos a un documento claro: elegí tu caso, cargá archivos, revisá una vista previa protegida y descargá el documento completo."
     />
     <meta property="og:url" content="https://pruebapdf.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="PruebaPDF | Organizá capturas y comprobantes en PDF" />
+    <meta name="twitter:title" content="PruebaPDF | Convertí capturas en documentos claros" />
     <meta
       name="twitter:description"
-      content="Convertí capturas, chats, comprobantes y documentos en un PDF ordenado, numerado y fácil de compartir."
+      content="Armá un documento profesional con portada, resumen, índice, evidencias numeradas y mensajes listos para enviar."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fb7185'/%3E%3Cpath d='M19 47V17h15c7 0 12 4 12 11s-5 11-12 11h-6v8H19zm9-16h5c3 0 5-1 5-4s-2-4-5-4h-5v8z' fill='white'/%3E%3C/svg%3E"
     />
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
@@ -33,23 +37,23 @@
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "url": "https://pruebapdf.vercel.app/",
-        "description": "Convierte capturas, chats, comprobantes y documentos en un PDF ordenado, numerado y fácil de compartir.",
+        "description": "Organiza capturas, chats, comprobantes, imágenes y documentos en un PDF profesional con portada, resumen, índice y línea temporal.",
         "offers": [
           {
             "@type": "Offer",
-            "name": "PDF individual",
+            "name": "1 documento completo",
             "price": "0.79",
             "priceCurrency": "USD"
           },
           {
             "@type": "Offer",
-            "name": "Pack de 5",
+            "name": "5 documentos completos",
             "price": "2.99",
             "priceCurrency": "USD"
           },
           {
             "@type": "Offer",
-            "name": "Pack de 20",
+            "name": "20 documentos completos",
             "price": "8.99",
             "priceCurrency": "USD"
           }
@@ -62,149 +66,346 @@
     <main>
       <section class="hero">
         <nav class="nav">
-          <strong>PruebaPDF</strong>
-          <a href="#precios">Precios</a>
+          <a class="brand" href="#inicio" aria-label="PruebaPDF inicio">
+            <span class="brand-mark">P</span>
+            <span>PruebaPDF</span>
+          </a>
+          <div class="nav-actions">
+            <button class="language-toggle" id="languageToggle" type="button">ES / EN</button>
+            <a href="#precios">Precios</a>
+          </div>
         </nav>
-        <div class="hero-grid">
-          <div>
-            <p class="eyebrow">Organización documental simple</p>
-            <h1>Convertí tus capturas, chats, comprobantes y documentos en un PDF ordenado en minutos.</h1>
-            <p class="lead">
-              Subí tus archivos, ordenalos, agregá descripciones y descargá un documento numerado, prolijo y fácil de
-              compartir.
+
+        <div class="hero-grid" id="inicio">
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="heroEyebrow">Asistente documental</p>
+            <h1 data-i18n="heroTitle">Convertí capturas, chats y comprobantes en un documento ordenado en minutos.</h1>
+            <p class="lead" data-i18n="heroLead">
+              Elegí un caso, cargá tus archivos y recibí una estructura clara con portada, resumen, índice, evidencias
+              numeradas y mensajes listos para enviar.
             </p>
             <div class="actions">
-              <a class="primary" href="#crear">Crear mi PDF</a>
-              <button class="secondary" id="shareButton" type="button">Compartir</button>
+              <a class="primary" href="#crear" data-track="start_create" data-i18n="heroCta">Crear documento</a>
+              <a class="secondary" href="#como-funciona" data-i18n="heroSecondary">Ver cómo funciona</a>
             </div>
           </div>
-          <div class="paper" aria-hidden="true">
-            <span>PDF organizado</span>
-            <b>Reclamo compra online</b>
-            <small>1. Captura del chat</small>
-            <small>2. Comprobante de pago</small>
-            <small>3. Estado del envío</small>
+          <div class="hero-product" aria-label="Ejemplo de documento organizado">
+            <div class="mess-stack">
+              <span>Captura del chat</span>
+              <span>Comprobante de pago</span>
+              <span>Detalle del pedido</span>
+            </div>
+            <div class="clean-doc">
+              <span>Documento claro</span>
+              <strong>Compra online</strong>
+              <small>Portada</small>
+              <small>Resumen del caso</small>
+              <small>Evidencias numeradas</small>
+              <small>Línea temporal</small>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="band">
-        <div class="three">
-          <div class="mini">✓ Reclamos y compras</div>
-          <div class="mini">✓ Garantías y servicios</div>
-          <div class="mini">✓ Trámites personales</div>
+      <section class="value-strip" id="como-funciona">
+        <div>
+          <strong data-i18n="how1Title">1. Elegí tu caso</strong>
+          <span data-i18n="how1Text">La app propone estructura y checklist.</span>
+        </div>
+        <div>
+          <strong data-i18n="how2Title">2. Cargá archivos</strong>
+          <span data-i18n="how2Text">Títulos limpios y textos sugeridos.</span>
+        </div>
+        <div>
+          <strong data-i18n="how3Title">3. Revisá y descargá</strong>
+          <span data-i18n="how3Text">Preview protegido y documento completo con crédito.</span>
+        </div>
+      </section>
+
+      <section class="before-after">
+        <div class="section-title">
+          <p class="eyebrow" data-i18n="beforeAfterEyebrow">Antes y después</p>
+          <h2 data-i18n="beforeAfterTitle">De archivos sueltos a un documento claro</h2>
+        </div>
+        <div class="comparison-grid">
+          <article>
+            <span class="pill muted-pill" data-i18n="beforeLabel">Antes</span>
+            <ul>
+              <li data-i18n="before1">Capturas sueltas</li>
+              <li data-i18n="before2">Chats dispersos</li>
+              <li data-i18n="before3">Comprobantes mezclados</li>
+            </ul>
+          </article>
+          <article class="after-card">
+            <span class="pill" data-i18n="afterLabel">Después</span>
+            <ul>
+              <li data-i18n="after1">Portada y resumen</li>
+              <li data-i18n="after2">Evidencias numeradas</li>
+              <li data-i18n="after3">Índice y línea temporal</li>
+              <li data-i18n="after4">Mensajes listos para enviar</li>
+            </ul>
+          </article>
         </div>
       </section>
 
       <section class="builder" id="crear">
-        <div class="section-title">
-          <p class="eyebrow">Constructor</p>
-          <h2>Armá tu documento</h2>
+        <div class="section-title builder-title">
+          <p class="eyebrow" data-i18n="builderEyebrow">Constructor guiado</p>
+          <h2 data-i18n="builderTitle">Armá tu documento sin empezar desde cero</h2>
+          <p data-i18n="builderLead">
+            El asistente propone textos, checklist y orden. Todo se puede editar, pero nada te frena.
+          </p>
         </div>
-        <div class="builder-grid">
-          <div class="workspace">
-            <label class="upload">
-              <span class="upload-icon">↑</span>
-              <strong>Subí imágenes o PDFs</strong>
-              <span>JPG, PNG, WEBP y PDF. Podés agregar varios archivos.</span>
-              <input id="fileInput" multiple type="file" accept=".jpg,.jpeg,.png,.webp,.pdf" />
-            </label>
 
-            <div class="form-grid">
-              <label>
-                Título del caso
-                <input id="caseTitle" placeholder="Ej: Reclamo por compra" />
-              </label>
-              <label>
-                Nombre opcional
-                <input id="caseName" placeholder="Tu nombre" />
-              </label>
-              <label>
-                Fecha opcional
-                <input id="caseDate" type="date" />
-              </label>
-              <label class="wide">
-                Descripción general
-                <textarea id="caseSummary" placeholder="Contá brevemente qué querés presentar o compartir."></textarea>
-              </label>
+        <div class="builder-shell">
+          <aside class="progress-panel" aria-label="Progreso">
+            <div class="progress-head">
+              <strong data-i18n="progressTitle">Progreso</strong>
+              <span id="progressPercent">Paso 1 de 6</span>
             </div>
+            <div class="progress-bar"><span id="progressBar"></span></div>
+            <ol class="steps-list" id="stepsList"></ol>
+            <div class="credit-card compact">
+              <span id="creditLabel">¿Ya compraste un pack? Ingresá tu código.</span>
+              <div class="license-row">
+                <input id="purchaseCode" autocomplete="off" placeholder="License key o código" />
+                <button id="redeemButton" type="button" data-track="license_validate">Validar</button>
+              </div>
+            </div>
+          </aside>
 
-            <div class="items" id="items"></div>
-          </div>
+          <div class="wizard">
+            <section class="wizard-step is-active" data-step="0">
+              <div class="step-heading">
+                <span>1</span>
+                <div>
+                  <h3 data-i18n="step1Title">Elegí el tipo de caso</h3>
+                  <p data-i18n="step1Lead">Esto ayuda a preparar textos y checklist útiles.</p>
+                </div>
+              </div>
+              <div class="case-grid" id="caseGrid"></div>
+            </section>
 
-          <aside class="side">
-            <div class="status">
-              <strong>Privacidad práctica</strong>
-              <p>La generación del PDF ocurre en tu navegador para mantener el proceso rápido y simple.</p>
-            </div>
-            <div class="timeline">
-              <strong>Línea temporal</strong>
-              <div id="timelineList">Agregá fechas a los archivos para crearla automáticamente.</div>
-            </div>
-            <button class="primary full" id="previewButton" type="button">Descargar vista previa gratis</button>
-            <button class="dark full" id="cleanButton" type="button">Descargar PDF limpio</button>
-            <div class="code-box">
-              <span id="creditLabel">Créditos disponibles: 0</span>
-              <input id="purchaseCode" placeholder="License key o código de compra" />
-              <button id="redeemButton" type="button">Validar license key</button>
+            <section class="wizard-step" data-step="1">
+              <div class="step-heading">
+                <span>2</span>
+                <div>
+                  <h3 data-i18n="step2Title">Contanos lo básico</h3>
+                  <p data-i18n="step2Lead">Usá ejemplos y ajustalos si querés.</p>
+                </div>
+              </div>
+              <div class="smart-form">
+                <label>
+                  <span data-i18n="fieldTitle">Título del caso</span>
+                  <div class="input-action">
+                    <input id="caseTitle" />
+                    <button id="useTitleExample" type="button" data-i18n="useExample">Usar ejemplo</button>
+                  </div>
+                </label>
+                <label class="wide">
+                  <span data-i18n="fieldSummary">Breve explicación</span>
+                  <textarea id="caseSummary"></textarea>
+                  <div class="tone-row" id="toneRow"></div>
+                </label>
+                <label>
+                  <span data-i18n="fieldDate">Fecha de inicio opcional</span>
+                  <input id="caseDate" type="date" />
+                </label>
+                <label>
+                  <span data-i18n="fieldParty">Empresa o persona involucrada</span>
+                  <input id="caseParty" />
+                </label>
+                <label>
+                  <span data-i18n="fieldReference">Pedido, factura o referencia</span>
+                  <input id="caseReference" />
+                </label>
+                <label>
+                  <span data-i18n="fieldName">Nombre opcional</span>
+                  <input id="caseName" />
+                </label>
+                <label>
+                  <span data-i18n="fieldStatus">Estado actual</span>
+                  <select id="caseStatus"></select>
+                </label>
+              </div>
+            </section>
+
+            <section class="wizard-step" data-step="2">
+              <div class="step-heading">
+                <span>3</span>
+                <div>
+                  <h3 data-i18n="step3Title">Revisá qué incluir</h3>
+                  <p data-i18n="step3Lead">Marcá lo que tenés. Podés avanzar con lo principal.</p>
+                </div>
+              </div>
+              <div class="checklist" id="checklist"></div>
+            </section>
+
+            <section class="wizard-step" data-step="3">
+              <div class="step-heading">
+                <span>4</span>
+                <div>
+                  <h3 data-i18n="step4Title">Cargá y ordená archivos</h3>
+                  <p data-i18n="step4Lead">Acepta JPG, PNG, WEBP y PDF. Los títulos se limpian automáticamente.</p>
+                </div>
+              </div>
+              <label class="upload">
+                <span class="upload-icon">+</span>
+                <strong data-i18n="uploadTitle">Subí tus archivos</strong>
+                <span data-i18n="uploadText">Arrastrá o tocá para elegir imágenes y PDFs.</span>
+                <input id="fileInput" multiple type="file" accept=".jpg,.jpeg,.png,.webp,.pdf" />
+              </label>
+              <div class="sort-actions">
+                <button id="sortManual" type="button" data-i18n="sortManual">Mantener orden manual</button>
+                <button id="sortDate" type="button" data-i18n="sortDate">Ordenar por fecha</button>
+                <button id="sortType" type="button" data-i18n="sortType">Ordenar por tipo</button>
+              </div>
+              <div class="items" id="items"></div>
+            </section>
+
+            <section class="wizard-step" data-step="4">
+              <div class="step-heading">
+                <span>5</span>
+                <div>
+                  <h3 data-i18n="step5Title">Revisá tu documento</h3>
+                  <p data-i18n="step5Lead">Preview protegido: muestra estructura y una parte del contenido.</p>
+                </div>
+              </div>
+              <div class="review-card" id="reviewCard"></div>
+              <button class="primary full" id="previewButton" type="button" data-track="preview_generate">
+                Generar vista previa protegida
+              </button>
+              <div class="preview-panel" id="previewPanel"></div>
+            </section>
+
+            <section class="wizard-step" data-step="5">
+              <div class="step-heading">
+                <span>6</span>
+                <div>
+                  <h3 data-i18n="step6Title">Desbloqueá y descargá</h3>
+                  <p data-i18n="step6Lead">Usá un crédito o comprá un pack. Los links de compra abren Lemon Squeezy.</p>
+                </div>
+              </div>
+
+              <div class="unlock-grid">
+                <div class="credit-card">
+                  <strong data-i18n="unlockCodeTitle">¿Ya compraste un pack?</strong>
+                  <span id="creditLabelLarge">Ingresá tu código para ver créditos disponibles.</span>
+                  <div class="license-row">
+                    <input id="purchaseCodeLarge" autocomplete="off" placeholder="License key o código" />
+                    <button id="redeemButtonLarge" type="button" data-track="license_validate">Validar</button>
+                  </div>
+                  <button class="dark full" id="cleanButton" type="button" data-track="download_full">
+                    Descargar documento completo y resumen
+                  </button>
+                </div>
+                <div class="buy-options">
+                  <a id="quickSingle" target="_blank" rel="noreferrer" data-track="click_individual">
+                    <span>US$0.79</span>
+                    <strong data-i18n="buySingle">1 documento completo</strong>
+                  </a>
+                  <a id="quickPack5" target="_blank" rel="noreferrer" data-track="click_pack5">
+                    <span>US$2.99</span>
+                    <strong data-i18n="buyPack5">5 documentos completos</strong>
+                  </a>
+                  <a id="quickPack20" class="best" target="_blank" rel="noreferrer" data-track="click_pack20">
+                    <span>US$8.99</span>
+                    <strong data-i18n="buyPack20">20 documentos completos</strong>
+                    <em data-i18n="bestPrice">Mejor precio por documento</em>
+                  </a>
+                </div>
+              </div>
+
+              <div class="share-kit" id="shareKit"></div>
+            </section>
+
+            <div class="wizard-nav">
+              <button class="secondary light" id="backStep" type="button" data-i18n="back">Volver</button>
+              <button class="primary" id="nextStep" type="button" data-i18n="next">Continuar</button>
             </div>
             <p class="message" id="message" hidden></p>
-          </aside>
+          </div>
         </div>
       </section>
 
       <section class="prices" id="precios">
         <div class="section-title">
-          <p class="eyebrow">Precios iniciales configurables</p>
-          <h2>Elegí cómo descargar</h2>
+          <p class="eyebrow" data-i18n="pricesEyebrow">Precios</p>
+          <h2 data-i18n="pricesTitle">Elegí cómo desbloquear tus documentos</h2>
+          <p data-i18n="pricesNote">Cada documento puede incluir varias páginas, imágenes, comprobantes, textos y descripciones.</p>
         </div>
         <div class="price-grid">
           <div class="price">
-            <span class="price-icon">Vista previa</span>
-            <h3>Vista previa</h3>
+            <span class="price-icon" data-i18n="freeBadge">Vista previa protegida</span>
+            <h3 data-i18n="freeTitle">Gratis</h3>
             <strong>Gratis</strong>
-            <p>Para revisar el PDF con marca de agua antes de descargar la versión limpia.</p>
-            <a class="price-action ghost" href="#crear">Crear gratis</a>
+            <p data-i18n="freeText">Revisá cómo quedará tu documento.</p>
+            <a class="price-action ghost" href="#crear" data-i18n="freeAction">Crear vista previa</a>
           </div>
-          <a class="price" id="paySingle" target="_blank" rel="noreferrer">
-            <span class="price-icon">1 PDF</span>
-            <h3>PDF individual</h3>
+          <a class="price" id="paySingle" target="_blank" rel="noreferrer" data-track="click_individual">
+            <span class="price-icon" data-i18n="singleBadge">1 documento completo</span>
+            <h3 data-i18n="singleTitle">Individual</h3>
             <strong id="priceSingle"></strong>
-            <p>Para un caso puntual que querés ordenar y compartir rápido.</p>
-            <span class="price-action">Comprar individual</span>
+            <p data-i18n="singleText">Para un caso puntual.</p>
+            <span class="price-action" data-i18n="singleAction">Comprar individual</span>
           </a>
-          <a class="price" id="payPack5" target="_blank" rel="noreferrer">
-            <span class="price-icon">5 PDFs</span>
-            <h3>Pack de 5</h3>
+          <a class="price" id="payPack5" target="_blank" rel="noreferrer" data-track="click_pack5">
+            <span class="price-icon" data-i18n="pack5Badge">5 documentos completos</span>
+            <h3 data-i18n="pack5Title">Pack de 5</h3>
             <strong id="pricePack5"></strong>
-            <p>Para varios reclamos, compras, garantías o trámites personales.</p>
-            <span class="price-action">Comprar pack</span>
+            <p data-i18n="pack5Text">Para varios reclamos o trámites.</p>
+            <span class="price-action" data-i18n="packAction">Comprar pack</span>
           </a>
-          <a class="price recommended" id="payPack20" target="_blank" rel="noreferrer">
-            <span>Más conveniente</span>
-            <span class="price-icon">20 PDFs</span>
-            <h3>Pack de 20</h3>
+          <a class="price recommended" id="payPack20" target="_blank" rel="noreferrer" data-track="click_pack20">
+            <span data-i18n="recommended">Más conveniente</span>
+            <span class="price-icon" data-i18n="pack20Badge">20 documentos completos</span>
+            <h3 data-i18n="pack20Title">Pack de 20</h3>
             <strong id="pricePack20"></strong>
-            <p>Mejor precio por PDF para organizar documentos con más frecuencia.</p>
-            <span class="price-action">Comprar mejor precio</span>
+            <p data-i18n="pack20Text">Mejor precio por documento.</p>
+            <span class="price-action" data-i18n="pack20Action">Comprar mejor precio</span>
           </a>
+        </div>
+      </section>
+
+      <section class="seo-cases" id="casos-de-uso">
+        <div class="section-title">
+          <p class="eyebrow">Casos de uso</p>
+          <h2>Organización para reclamos, garantías, alquileres y trámites</h2>
+        </div>
+        <div class="seo-grid">
+          <article id="organizar-capturas-para-reclamo">
+            <h3>Organizar capturas para reclamo</h3>
+            <p>Reuní conversaciones, comprobantes, fotos y referencias en un documento ordenado.</p>
+          </article>
+          <article id="documento-para-compra-online">
+            <h3>Documento para compra online</h3>
+            <p>Armá un resumen claro con publicación, pago, pedido, chats y estado del producto.</p>
+          </article>
+          <article id="documento-para-garantia">
+            <h3>Documento para garantía</h3>
+            <p>Presentá factura, fecha de compra, imágenes del inconveniente y comunicaciones de soporte.</p>
+          </article>
+          <article id="organize-screenshots-into-pdf">
+            <h3>Organize screenshots into PDF</h3>
+            <p>Create a clean document from screenshots, chats, receipts and supporting files.</p>
+          </article>
         </div>
       </section>
 
       <section class="faq">
         <div>
-          <h2>Preguntas frecuentes</h2>
+          <h2 data-i18n="faqTitle">Preguntas frecuentes</h2>
           <details open>
-            <summary>¿Qué puedo subir?</summary>
-            <p>Capturas, imágenes, comprobantes y PDFs. La primera versión acepta JPG, PNG, WEBP y PDF.</p>
+            <summary data-i18n="faq1Q">¿Qué incluye un documento completo?</summary>
+            <p data-i18n="faq1A">Portada, resumen, índice, línea temporal cuando hay fechas y todas las evidencias cargadas.</p>
           </details>
           <details>
-            <summary>¿Puedo ordenar los archivos?</summary>
-            <p>Sí. Cada archivo tiene controles para subirlo, bajarlo, describirlo o eliminarlo.</p>
+            <summary data-i18n="faq2Q">¿Qué puedo subir?</summary>
+            <p data-i18n="faq2A">JPG, PNG, WEBP y PDF. Cada archivo se convierte en una evidencia ordenada.</p>
           </details>
           <details>
-            <summary>¿Cómo uso un pack?</summary>
-            <p>Comprás un pack, recibís una license key y la ingresás en el constructor para habilitar descargas limpias.</p>
+            <summary data-i18n="faq3Q">¿Cómo uso un pack?</summary>
+            <p data-i18n="faq3A">Comprás en Lemon Squeezy, recibís una license key y la ingresás para habilitar créditos.</p>
           </details>
         </div>
       </section>
