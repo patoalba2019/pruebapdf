@@ -6,11 +6,11 @@ const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
 const steps = [
   "Elegí tu caso",
-  "Contanos lo básico",
-  "Revisá qué incluir",
-  "Cargá archivos",
-  "Revisá tu documento",
-  "Desbloqueá y descargá"
+  "Texto listo",
+  "Qué agregar",
+  "Archivos",
+  "Vista previa",
+  "Descarga"
 ];
 
 const translations = {
@@ -26,7 +26,7 @@ const translations = {
     how2Title: "2. Cargá archivos",
     how2Text: "Títulos limpios y textos sugeridos.",
     how3Title: "3. Revisá y descargá",
-    how3Text: "Preview protegido y documento completo con crédito.",
+    how3Text: "Vista previa y documento completo con código.",
     beforeAfterEyebrow: "Antes y después",
     beforeAfterTitle: "De archivos sueltos a un documento claro",
     beforeLabel: "Antes",
@@ -39,35 +39,45 @@ const translations = {
     after3: "Índice y línea temporal",
     after4: "Mensajes listos para enviar",
     builderEyebrow: "Constructor guiado",
-    builderTitle: "Armá tu documento sin empezar desde cero",
-    builderLead: "El asistente propone textos, checklist y orden. Todo se puede editar, pero nada te frena.",
+    builderTitle: "Te guiamos paso a paso",
+    builderLead: "Elegí una opción, cargá tus archivos y revisá un documento claro. Podés cambiar todo después.",
     progressTitle: "Progreso",
-    step1Title: "Elegí el tipo de caso",
-    step1Lead: "Esto ayuda a preparar textos y checklist útiles.",
-    step2Title: "Contanos lo básico",
-    step2Lead: "Usá ejemplos y ajustalos si querés.",
+    progressHelp: "Vamos de a un paso. Tu información se mantiene mientras avanzás.",
+    step1Title: "¿Qué querés ordenar?",
+    step1Lead: "Elegí la opción más parecida. Te preparamos una base automáticamente.",
+    quickTitle: "Modo rápido",
+    quickText: "Usá textos sugeridos y pasá directo a cargar archivos.",
+    quickButton: "Armarlo en 2 minutos",
+    showMoreCases: "Ver más opciones",
+    step2Title: "Te dejamos un texto listo",
+    step2Lead: "Podés dejarlo así o tocar una opción para cambiar el enfoque.",
     fieldTitle: "Título del caso",
     useExample: "Usar ejemplo",
     fieldSummary: "Breve explicación",
-    fieldDate: "Fecha de inicio opcional",
-    fieldParty: "Empresa o persona involucrada",
-    fieldReference: "Pedido, factura o referencia",
-    fieldName: "Nombre opcional",
+    fieldDate: "Fecha aproximada",
+    fieldParty: "Empresa o persona",
+    fieldReference: "Pedido o referencia",
+    fieldName: "Tu nombre",
     fieldStatus: "Estado actual",
-    step3Title: "Revisá qué incluir",
-    step3Lead: "Marcá lo que tenés. Podés avanzar con lo principal.",
-    step4Title: "Cargá y ordená archivos",
-    step4Lead: "Acepta JPG, PNG, WEBP y PDF. Los títulos se limpian automáticamente.",
+    toneTitle: "Estilo del texto",
+    advancedBasic: "Agregar datos opcionales",
+    step3Title: "Te sugerimos qué agregar",
+    step3Lead: "Tocá lo que ya tenés. Esto ayuda a que el documento quede más claro.",
+    step4Title: "Agregá fotos o documentos",
+    step4Lead: "Podés subir capturas, fotos, comprobantes o documentos. La app propone títulos y orden.",
     uploadTitle: "Subí tus archivos",
-    uploadText: "Arrastrá o tocá para elegir imágenes y PDFs.",
-    sortManual: "Mantener orden manual",
+    uploadText: "Tocá para elegir archivos o arrastralos acá.",
+    advancedFiles: "Opciones para ordenar",
+    sortManual: "Mantener mi orden",
     sortDate: "Ordenar por fecha",
     sortType: "Ordenar por tipo",
-    step5Title: "Revisá tu documento",
-    step5Lead: "Preview protegido: muestra estructura y una parte del contenido.",
-    step6Title: "Desbloqueá y descargá",
-    step6Lead: "Usá un crédito o comprá un pack. Los links de compra abren Lemon Squeezy.",
-    unlockCodeTitle: "¿Ya compraste un pack?",
+    step5Title: "Revisá cómo viene quedando",
+    step5Lead: "Vas a ver una muestra con marca de agua antes de descargar.",
+    step6Title: "Listo para descargar",
+    step6Lead: "Primero revisá qué preparaste. Después elegí si ya tenés código o querés comprar.",
+    unlockCodeTitle: "Ya tengo código",
+    buyTitle: "Comprar una descarga o pack",
+    buyLead: "Se abre una página segura de pago. Después volvés y pegás tu código.",
     buySingle: "1 documento completo",
     buyPack5: "5 documentos completos",
     buyPack20: "20 documentos completos",
@@ -98,9 +108,9 @@ const translations = {
     faq1Q: "¿Qué incluye un documento completo?",
     faq1A: "Portada, resumen, índice, línea temporal cuando hay fechas y todas las evidencias cargadas.",
     faq2Q: "¿Qué puedo subir?",
-    faq2A: "JPG, PNG, WEBP y PDF. Cada archivo se convierte en una evidencia ordenada.",
+    faq2A: "Fotos, capturas, comprobantes y documentos. Cada archivo se convierte en una evidencia ordenada.",
     faq3Q: "¿Cómo uso un pack?",
-    faq3A: "Comprás en Lemon Squeezy, recibís una license key y la ingresás para habilitar créditos."
+    faq3A: "Comprás en Lemon Squeezy, recibís un código por email y lo pegás para habilitar tus descargas."
   },
   en: {
     heroEyebrow: "Document assistant",
@@ -114,7 +124,7 @@ const translations = {
     how2Title: "2. Upload files",
     how2Text: "Clean titles and suggested text.",
     how3Title: "3. Review and download",
-    how3Text: "Protected preview and full document with credit.",
+    how3Text: "Preview and full document with code.",
     beforeAfterEyebrow: "Before and after",
     beforeAfterTitle: "From scattered files to a clear document",
     beforeLabel: "Before",
@@ -127,35 +137,45 @@ const translations = {
     after3: "Index and timeline",
     after4: "Messages ready to send",
     builderEyebrow: "Guided builder",
-    builderTitle: "Build your document without starting from scratch",
-    builderLead: "The assistant suggests text, checklist and order. Everything is editable.",
+    builderTitle: "We guide you step by step",
+    builderLead: "Choose an option, upload your files and review a clear document. You can change everything later.",
     progressTitle: "Progress",
-    step1Title: "Choose the case type",
-    step1Lead: "This prepares useful text and checklist suggestions.",
-    step2Title: "Tell us the basics",
-    step2Lead: "Use examples and adjust them if needed.",
+    progressHelp: "One step at a time. Your information stays while you move forward.",
+    step1Title: "What do you want to organize?",
+    step1Lead: "Choose the closest option. We prepare a starting point automatically.",
+    quickTitle: "Quick mode",
+    quickText: "Use suggested text and go straight to uploading files.",
+    quickButton: "Build it in 2 minutes",
+    showMoreCases: "Show more options",
+    step2Title: "We prepared text for you",
+    step2Lead: "Keep it as is or choose another angle.",
     fieldTitle: "Case title",
     useExample: "Use example",
     fieldSummary: "Short explanation",
-    fieldDate: "Optional start date",
-    fieldParty: "Company or person involved",
-    fieldReference: "Order, invoice or reference",
-    fieldName: "Optional name",
+    fieldDate: "Approximate date",
+    fieldParty: "Company or person",
+    fieldReference: "Order or reference",
+    fieldName: "Your name",
     fieldStatus: "Current status",
-    step3Title: "Review what to include",
-    step3Lead: "Mark what you have. You can continue either way.",
-    step4Title: "Upload and organize files",
-    step4Lead: "Accepts JPG, PNG, WEBP and PDF. Titles are cleaned automatically.",
+    toneTitle: "Text style",
+    advancedBasic: "Add optional details",
+    step3Title: "Suggested things to add",
+    step3Lead: "Tap what you already have. It helps make the document clearer.",
+    step4Title: "Add photos or documents",
+    step4Lead: "Upload screenshots, photos, receipts or documents. The app suggests titles and order.",
     uploadTitle: "Upload your files",
-    uploadText: "Drag or tap to choose images and PDFs.",
-    sortManual: "Keep manual order",
+    uploadText: "Tap to choose files or drag them here.",
+    advancedFiles: "Order options",
+    sortManual: "Keep my order",
     sortDate: "Sort by date",
     sortType: "Sort by type",
-    step5Title: "Review your document",
-    step5Lead: "Protected preview: shows structure and part of the content.",
-    step6Title: "Unlock and download",
-    step6Lead: "Use a credit or buy a pack. Purchase links open Lemon Squeezy.",
-    unlockCodeTitle: "Already bought a pack?",
+    step5Title: "Review how it looks",
+    step5Lead: "You will see a watermarked sample before downloading.",
+    step6Title: "Ready to download",
+    step6Lead: "First review what you prepared. Then choose whether you already have a code or want to buy.",
+    unlockCodeTitle: "I already have a code",
+    buyTitle: "Buy a download or pack",
+    buyLead: "A secure payment page opens. Then come back and paste your code.",
     buySingle: "1 full document",
     buyPack5: "5 full documents",
     buyPack20: "20 full documents",
@@ -186,9 +206,9 @@ const translations = {
     faq1Q: "What does a full document include?",
     faq1A: "Cover, summary, index, timeline when dates are available and all uploaded evidence.",
     faq2Q: "What can I upload?",
-    faq2A: "JPG, PNG, WEBP and PDF. Each file becomes an organized evidence item.",
+    faq2A: "Photos, screenshots, receipts and documents. Each file becomes an organized evidence item.",
     faq3Q: "How do I use a pack?",
-    faq3A: "Buy through Lemon Squeezy, receive a license key and enter it to enable credits."
+    faq3A: "Buy through Lemon Squeezy, receive a code by email and paste it to enable your downloads."
   }
 };
 
@@ -313,7 +333,9 @@ const state = {
   issuedCredits: 0,
   token: "",
   sortMode: "manual",
-  previewReady: false
+  previewReady: false,
+  showAllCases: false,
+  fastMode: false
 };
 
 function formatMoney(value) {
@@ -387,10 +409,10 @@ function loadCredits() {
 
 function updateCredits() {
   const total = state.issuedCredits ? ` de ${state.issuedCredits}` : "";
-  const text = state.credits > 0 ? `Créditos disponibles: ${state.credits}${total}` : "¿Ya compraste un pack? Ingresá tu código.";
+  const text = state.credits > 0 ? `Descargas disponibles: ${state.credits}${total}` : "Pegá tu código de compra.";
   ["#creditLabel", "#creditLabelLarge"].forEach((selector) => {
     const element = $(selector);
-    if (element) element.textContent = selector === "#creditLabelLarge" && state.credits <= 0 ? "Ingresá tu código para ver créditos disponibles." : text;
+    if (element) element.textContent = selector === "#creditLabelLarge" && state.credits <= 0 ? "Pegá el código que recibiste por email para ver tus descargas disponibles." : text;
   });
   const cleanButton = $("#cleanButton");
   if (cleanButton) cleanButton.disabled = state.credits <= 0 || !state.token;
@@ -443,16 +465,20 @@ function selectCase(caseType) {
   $("#caseTitle").value = caseType.exampleTitle;
   $("#caseSummary").value = caseType.summary;
   renderCases();
+  renderSummaryOptions();
   renderChecklist();
   renderItems();
   renderReview();
+  renderCaseMap();
+  renderFinalSummary();
   renderShareKit();
 }
 
 function renderCases() {
   const grid = $("#caseGrid");
   grid.innerHTML = "";
-  caseTypes.forEach((caseType) => {
+  const visibleCases = state.showAllCases ? caseTypes : caseTypes.slice(0, 4);
+  visibleCases.forEach((caseType) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = `case-option${caseType.id === state.caseType.id ? " is-selected" : ""}`;
@@ -467,6 +493,65 @@ function renderCases() {
     });
     grid.appendChild(button);
   });
+  const moreButton = $("#showMoreCases");
+  if (moreButton) {
+    moreButton.hidden = state.showAllCases;
+  }
+}
+
+function renderSummaryOptions() {
+  const row = $("#summaryOptions");
+  if (!row) return;
+  const options = summaryOptionsForCase();
+  row.innerHTML = "";
+  options.forEach((option) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = option.label;
+    button.addEventListener("click", () => {
+      $("#caseSummary").value = option.text;
+      renderReview();
+      renderCaseMap();
+      renderFinalSummary();
+      renderShareKit();
+    });
+    row.appendChild(button);
+  });
+}
+
+function summaryOptionsForCase() {
+  const generic = [
+    {
+      label: "Ordenar una compra",
+      text: "Necesito ordenar comprobantes, conversaciones e imágenes relacionadas con una compra."
+    },
+    {
+      label: "Mostrar un problema",
+      text: "Quiero reunir información sobre un problema con un producto para presentarla de forma clara."
+    },
+    {
+      label: "Ordenar un trámite",
+      text: "Quiero presentar de forma clara los archivos relacionados con un trámite o gestión personal."
+    }
+  ];
+  const byCase = {
+    online: [
+      { label: "Compra online", text: "Necesito ordenar comprobantes, conversaciones y datos de una compra online." },
+      { label: "Pedido pendiente", text: "Quiero mostrar la información de un pedido, el pago realizado y el estado actual." },
+      { label: "Vendedor", text: "Quiero reunir mensajes, comprobantes y datos del vendedor en un solo documento." }
+    ],
+    warranty: [
+      { label: "Garantía", text: "Quiero organizar factura, fotos y mensajes para solicitar o seguir una garantía." },
+      { label: "Soporte", text: "Necesito reunir la información enviada a soporte y las respuestas recibidas." },
+      { label: "Producto", text: "Quiero mostrar la fecha de compra, el inconveniente y los comprobantes disponibles." }
+    ],
+    service: [
+      { label: "Servicio", text: "Quiero presentar de forma clara los archivos relacionados con un servicio contratado." },
+      { label: "Pagos", text: "Necesito ordenar acuerdos, pagos, mensajes y fechas importantes de un servicio." },
+      { label: "Seguimiento", text: "Quiero resumir el estado actual y las comunicaciones principales." }
+    ]
+  };
+  return byCase[state.caseType.id] || generic;
 }
 
 function renderTones() {
@@ -496,27 +581,22 @@ function renderChecklist() {
   const list = $("#checklist");
   list.innerHTML = "";
   state.checklist.forEach((entry, index) => {
-    const article = document.createElement("article");
+    const article = document.createElement("button");
+    article.type = "button";
     article.className = "check-item";
-    article.innerHTML = `<strong>${entry.label}</strong>`;
-    const actions = document.createElement("div");
-    [
-      ["have", "Lo tengo"],
-      ["missing", "No lo tengo"],
-      ["later", "Lo agregaré después"]
-    ].forEach(([status, label]) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.textContent = label;
-      button.className = entry.status === status ? "is-selected" : "";
-      button.addEventListener("click", () => {
-        state.checklist[index].status = status;
-        renderChecklist();
-        renderReview();
-      });
-      actions.appendChild(button);
+    article.classList.toggle("is-selected", entry.status === "have");
+    article.innerHTML = `
+      <span>${entry.status === "have" ? "✓" : "+"}</span>
+      <strong>${entry.label}</strong>
+      <small>${entry.status === "have" ? "Agregado al mapa del caso" : "Tocá si ya lo tenés"}</small>
+    `;
+    article.addEventListener("click", () => {
+      state.checklist[index].status = entry.status === "have" ? "later" : "have";
+      renderChecklist();
+      renderReview();
+      renderCaseMap();
+      renderFinalSummary();
     });
-    article.appendChild(actions);
     list.appendChild(article);
   });
 }
@@ -569,7 +649,7 @@ function addFiles(files) {
   const incoming = Array.from(files || []);
   const supported = incoming.filter((file) => accepted.includes(file.type) && file.size <= 25 * 1024 * 1024);
   if (supported.length !== incoming.length) {
-    showMessage("Algunos archivos no se agregaron. Usá JPG, PNG, WEBP o PDF de hasta 25 MB.", "warning");
+    showMessage("Algunos archivos no se agregaron. Usá fotos, capturas o documentos de hasta 25 MB.", "warning");
   }
   supported.forEach((file) => {
     const index = state.items.length;
@@ -586,6 +666,8 @@ function addFiles(files) {
   state.previewReady = false;
   renderItems();
   renderReview();
+  renderCaseMap();
+  renderFinalSummary();
   if (supported.length) track("files_added", { count: supported.length });
 }
 
@@ -630,7 +712,7 @@ function renderItems() {
       image.alt = "";
       thumb.appendChild(image);
     } else {
-      thumb.innerHTML = "<span>PDF</span>";
+      thumb.innerHTML = "<span>Doc</span>";
     }
 
     const body = document.createElement("div");
@@ -645,15 +727,32 @@ function renderItems() {
     const fields = document.createElement("div");
     fields.className = "item-fields";
     fields.append(
-      inputFor(item, "title", "Título limpio", () => renderReview()),
+      inputFor(item, "title", "Título simple", () => {
+        renderReview();
+        renderCaseMap();
+        renderFinalSummary();
+      }),
+      inputFor(item, "description", "Descripción breve", () => renderReview())
+    );
+    const details = document.createElement("details");
+    details.className = "item-advanced";
+    details.innerHTML = "<summary>Editar tipo o fecha</summary>";
+    const advancedFields = document.createElement("div");
+    advancedFields.className = "item-advanced-fields";
+    advancedFields.append(
       selectFor(item, "type", ["Evidencia", "Comprobante", "Pago", "Conversación", "Documento", "Foto", "Estado", "Nota"], () => {
         renderItems();
         renderReview();
       }),
-      dateFor(item, () => renderReview()),
-      inputFor(item, "description", "Descripción breve", () => renderReview())
+      dateFor(item, () => {
+        renderReview();
+        renderCaseMap();
+        renderFinalSummary();
+      })
     );
+    details.appendChild(advancedFields);
     body.appendChild(fields);
+    body.appendChild(details);
 
     const tools = document.createElement("div");
     tools.className = "tool-buttons";
@@ -737,6 +836,8 @@ function moveItem(index, direction) {
   state.previewReady = false;
   renderItems();
   renderReview();
+  renderCaseMap();
+  renderFinalSummary();
 }
 
 function removeItem(index) {
@@ -745,13 +846,86 @@ function removeItem(index) {
   state.previewReady = false;
   renderItems();
   renderReview();
+  renderCaseMap();
+  renderFinalSummary();
+}
+
+function estimatePages() {
+  const documentPages = state.items.filter((item) => item.file.type === "application/pdf").length;
+  const basePages = state.items.length ? 3 : 2;
+  return Math.max(basePages, basePages + state.items.length + documentPages);
+}
+
+function renderCaseMap() {
+  const map = $("#caseMap");
+  if (!map) return;
+  const have = state.checklist.filter((entry) => entry.status === "have");
+  const missing = state.checklist.filter((entry) => entry.status !== "have").slice(0, 2);
+  const title = $("#caseTitle")?.value.trim() || state.caseType.exampleTitle;
+  map.innerHTML = `
+    <article>
+      <span>1</span>
+      <strong>Tu caso</strong>
+      <small>${escapeHtml(state.caseType.title)}</small>
+      <p>${escapeHtml(title)}</p>
+    </article>
+    <article>
+      <span>2</span>
+      <strong>Agregado</strong>
+      <small>${state.items.length} archivo(s)</small>
+      <p>${have.length} dato(s) marcados como listos.</p>
+    </article>
+    <article>
+      <span>3</span>
+      <strong>Podés sumar</strong>
+      <small>${missing.length ? "Opcional" : "Completo"}</small>
+      <p>${missing.length ? missing.map((entry) => escapeHtml(entry.label)).join(", ") : "La base principal ya está armada."}</p>
+    </article>
+    <article>
+      <span>4</span>
+      <strong>Resultado</strong>
+      <small>${estimatePages()} páginas aprox.</small>
+      <p>Documento completo y resumen listos para descargar.</p>
+    </article>
+  `;
+}
+
+function renderFinalSummary() {
+  const panel = $("#finalSummary");
+  if (!panel) return;
+  const title = $("#caseTitle")?.value.trim() || state.caseType.exampleTitle;
+  const haveCount = state.checklist.filter((entry) => entry.status === "have").length;
+  panel.innerHTML = `
+    <div>
+      <span class="pill">${escapeHtml(state.caseType.title)}</span>
+      <h4>Esto es lo que preparaste</h4>
+      <p>${escapeHtml(title)}</p>
+    </div>
+    <div class="final-grid">
+      <article>
+        <strong>${state.items.length}</strong>
+        <span>archivos agregados</span>
+      </article>
+      <article>
+        <strong>${estimatePages()}</strong>
+        <span>páginas estimadas</span>
+      </article>
+      <article>
+        <strong>${haveCount}</strong>
+        <span>datos marcados</span>
+      </article>
+    </div>
+    <div class="final-includes">
+      <p><strong>Documento completo:</strong> portada, resumen, índice, evidencias y línea temporal si agregaste fechas.</p>
+      <p><strong>Resumen:</strong> una versión corta para enviar rápido por email, WhatsApp o formulario.</p>
+    </div>
+  `;
 }
 
 function renderReview() {
   const review = $("#reviewCard");
   if (!review) return;
   const haveCount = state.checklist.filter((entry) => entry.status === "have").length;
-  const datedCount = state.items.filter((item) => item.date).length;
   const title = $("#caseTitle")?.value.trim() || state.caseType.exampleTitle;
   const summary = $("#caseSummary")?.value.trim() || state.caseType.summary;
   review.innerHTML = `
@@ -761,12 +935,14 @@ function renderReview() {
       <p>${summary}</p>
     </div>
     <ul>
-      <li>${state.items.length} evidencia(s) cargada(s)</li>
-      <li>${haveCount} elemento(s) marcados como disponibles</li>
-      <li>${datedCount >= 2 ? "Línea temporal lista" : "Agregá dos fechas para sumar línea temporal"}</li>
-      <li>Preview gratis protegido dentro de la web</li>
+      <li>${state.items.length} archivo(s) agregado(s)</li>
+      <li>${haveCount} dato(s) marcado(s)</li>
+      <li>${estimatePages()} páginas estimadas</li>
+      <li>Vista previa lista dentro de la web</li>
     </ul>
   `;
+  renderCaseMap();
+  renderFinalSummary();
 }
 
 function renderProtectedPreview() {
@@ -787,7 +963,7 @@ function renderProtectedPreview() {
     .map((item, itemIndex) => {
       const media = item.previewUrl
         ? `<img src="${item.previewUrl}" alt="">`
-        : `<div class="pdf-placeholder">PDF</div>`;
+        : `<div class="pdf-placeholder">Documento</div>`;
       return `
         <article class="preview-evidence">
           <span>Evidencia ${itemIndex + 1}</span>
@@ -830,7 +1006,7 @@ function renderProtectedPreview() {
     </div>
   `;
   state.previewReady = true;
-  showMessage("Vista previa protegida lista. Para descargar el documento completo usá un crédito.", "success");
+  showMessage("Vista previa lista. Para descargar el documento completo usá un código de compra.", "success");
   track("preview_ready", { evidenceCount: state.items.length });
 }
 
@@ -1129,7 +1305,7 @@ async function downloadPaidPackage() {
     return;
   }
   if (state.credits <= 0 || !state.token) {
-    showMessage("Ingresá tu código para habilitar créditos.", "warning");
+    showMessage("Ingresá tu código para habilitar descargas.", "warning");
     return;
   }
   setBusy(true);
@@ -1143,7 +1319,7 @@ async function downloadPaidPackage() {
     });
     const consumeData = await consumeResponse.json();
     if (!consumeResponse.ok || !consumeData.ok) {
-      showMessage(consumeData.message || "No pudimos descontar el crédito.", "warning");
+      showMessage(consumeData.message || "No pudimos descontar una descarga.", "warning");
       if (consumeResponse.status === 401 || consumeResponse.status === 404) {
         state.credits = 0;
         state.issuedCredits = 0;
@@ -1159,7 +1335,7 @@ async function downloadPaidPackage() {
     const title = $("#caseTitle").value.trim() || "PruebaPDF";
     downloadBlob(fullBlob, pdfSafeName(title, "documento-completo"));
     setTimeout(() => downloadBlob(summaryBlob, pdfSafeName(title, "resumen")), 500);
-    showMessage(`Listo. Te quedan ${state.credits} crédito(s).`, "success");
+    showMessage(`Listo. Te quedan ${state.credits} descarga(s).`, "success");
     track("paid_download", { remainingCredits: state.credits });
   } catch (error) {
     console.error(error);
@@ -1181,7 +1357,7 @@ function downloadBlob(blob, filename) {
 }
 
 async function redeemCode() {
-  const code = ($("#purchaseCodeLarge").value || $("#purchaseCode").value || "").trim();
+  const code = ($("#purchaseCodeLarge")?.value || $("#purchaseCode")?.value || "").trim();
   if (!code) {
     showMessage("Ingresá tu código de compra.", "warning");
     return;
@@ -1205,7 +1381,7 @@ async function redeemCode() {
     state.token = String(data.token || "");
     saveCredits();
     updateCredits();
-    showMessage(`Código validado. Tenés ${state.credits} crédito(s).`, "success");
+    showMessage(`Código validado. Tenés ${state.credits} descarga(s).`, "success");
     track("license_redeemed", { credits: state.credits, issuedCredits: state.issuedCredits });
   } catch {
     showMessage("No pudimos conectar con la validación online. Probá de nuevo en unos minutos.", "warning");
@@ -1262,11 +1438,24 @@ function bindEvents() {
     $("#caseTitle").value = state.caseType.exampleTitle;
     renderReview();
   });
+  $("#fastModeButton")?.addEventListener("click", () => {
+    state.fastMode = true;
+    showStep(3);
+    showMessage("Listo. Ahora agregá tus archivos.", "success");
+    track("fast_mode_started");
+  });
+  $("#showMoreCases")?.addEventListener("click", () => {
+    state.showAllCases = true;
+    renderCases();
+    track("show_more_cases");
+  });
   ["caseTitle", "caseSummary", "caseDate", "caseParty", "caseReference", "caseName", "caseStatus"].forEach((id) => {
     const element = document.getElementById(id);
     element?.addEventListener("input", () => {
       state.previewReady = false;
       renderReview();
+      renderCaseMap();
+      renderFinalSummary();
       renderShareKit();
     });
   });
@@ -1279,15 +1468,17 @@ function bindEvents() {
       state.sortMode = id.replace("sort", "").toLowerCase();
       renderItems();
       renderReview();
+      renderCaseMap();
+      renderFinalSummary();
       state.previewReady = false;
     });
   });
   $("#previewButton").addEventListener("click", renderProtectedPreview);
   $("#cleanButton").addEventListener("click", downloadPaidPackage);
-  $("#redeemButton").addEventListener("click", redeemCode);
-  $("#redeemButtonLarge").addEventListener("click", redeemCode);
+  $("#redeemButton")?.addEventListener("click", redeemCode);
+  $("#redeemButtonLarge")?.addEventListener("click", redeemCode);
   ["#purchaseCode", "#purchaseCodeLarge"].forEach((selector) => {
-    $(selector).addEventListener("input", (event) => syncCodeInputs(event.target.value));
+    $(selector)?.addEventListener("input", (event) => syncCodeInputs(event.target.value));
   });
   $("#nextStep").addEventListener("click", nextStep);
   $("#backStep").addEventListener("click", previousStep);

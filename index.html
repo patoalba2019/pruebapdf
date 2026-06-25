@@ -15,7 +15,7 @@
     <meta property="og:title" content="PruebaPDF | Documentos claros para reclamos y trámites" />
     <meta
       property="og:description"
-      content="De archivos sueltos a un documento claro: elegí tu caso, cargá archivos, revisá una vista previa protegida y descargá el documento completo."
+      content="De archivos sueltos a un documento claro: elegí tu caso, cargá archivos, revisá una vista previa y descargá el documento completo."
     />
     <meta property="og:url" content="https://pruebapdf.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -118,7 +118,7 @@
         </div>
         <div>
           <strong data-i18n="how3Title">3. Revisá y descargá</strong>
-          <span data-i18n="how3Text">Preview protegido y documento completo con crédito.</span>
+          <span data-i18n="how3Text">Vista previa y documento completo con código.</span>
         </div>
       </section>
 
@@ -151,9 +151,9 @@
       <section class="builder" id="crear">
         <div class="section-title builder-title">
           <p class="eyebrow" data-i18n="builderEyebrow">Constructor guiado</p>
-          <h2 data-i18n="builderTitle">Armá tu documento sin empezar desde cero</h2>
+          <h2 data-i18n="builderTitle">Te guiamos paso a paso</h2>
           <p data-i18n="builderLead">
-            El asistente propone textos, checklist y orden. Todo se puede editar, pero nada te frena.
+            Elegí una opción, cargá tus archivos y revisá un documento claro. Podés cambiar todo después.
           </p>
         </div>
 
@@ -165,13 +165,7 @@
             </div>
             <div class="progress-bar"><span id="progressBar"></span></div>
             <ol class="steps-list" id="stepsList"></ol>
-            <div class="credit-card compact">
-              <span id="creditLabel">¿Ya compraste un pack? Ingresá tu código.</span>
-              <div class="license-row">
-                <input id="purchaseCode" autocomplete="off" placeholder="License key o código" />
-                <button id="redeemButton" type="button" data-track="license_validate">Validar</button>
-              </div>
-            </div>
+            <p class="progress-help" data-i18n="progressHelp">Vamos de a un paso. Tu información se mantiene mientras avanzás.</p>
           </aside>
 
           <div class="wizard">
@@ -179,19 +173,27 @@
               <div class="step-heading">
                 <span>1</span>
                 <div>
-                  <h3 data-i18n="step1Title">Elegí el tipo de caso</h3>
-                  <p data-i18n="step1Lead">Esto ayuda a preparar textos y checklist útiles.</p>
+                  <h3 data-i18n="step1Title">¿Qué querés ordenar?</h3>
+                  <p data-i18n="step1Lead">Elegí la opción más parecida. Te preparamos una base automáticamente.</p>
                 </div>
               </div>
+              <div class="quick-start">
+                <div>
+                  <strong data-i18n="quickTitle">Modo rápido</strong>
+                  <span data-i18n="quickText">Usá textos sugeridos y pasá directo a cargar archivos.</span>
+                </div>
+                <button id="fastModeButton" type="button" data-i18n="quickButton">Armarlo en 2 minutos</button>
+              </div>
               <div class="case-grid" id="caseGrid"></div>
+              <button class="show-more-cases" id="showMoreCases" type="button" data-i18n="showMoreCases">Ver más opciones</button>
             </section>
 
             <section class="wizard-step" data-step="1">
               <div class="step-heading">
                 <span>2</span>
                 <div>
-                  <h3 data-i18n="step2Title">Contanos lo básico</h3>
-                  <p data-i18n="step2Lead">Usá ejemplos y ajustalos si querés.</p>
+                  <h3 data-i18n="step2Title">Te dejamos un texto listo</h3>
+                  <p data-i18n="step2Lead">Podés dejarlo así o tocar una opción para cambiar el enfoque.</p>
                 </div>
               </div>
               <div class="smart-form">
@@ -205,28 +207,37 @@
                 <label class="wide">
                   <span data-i18n="fieldSummary">Breve explicación</span>
                   <textarea id="caseSummary"></textarea>
-                  <div class="tone-row" id="toneRow"></div>
+                  <div class="summary-options" id="summaryOptions"></div>
                 </label>
-                <label>
-                  <span data-i18n="fieldDate">Fecha de inicio opcional</span>
-                  <input id="caseDate" type="date" />
-                </label>
-                <label>
-                  <span data-i18n="fieldParty">Empresa o persona involucrada</span>
-                  <input id="caseParty" />
-                </label>
-                <label>
-                  <span data-i18n="fieldReference">Pedido, factura o referencia</span>
-                  <input id="caseReference" />
-                </label>
-                <label>
-                  <span data-i18n="fieldName">Nombre opcional</span>
-                  <input id="caseName" />
-                </label>
-                <label>
-                  <span data-i18n="fieldStatus">Estado actual</span>
-                  <select id="caseStatus"></select>
-                </label>
+                <details class="advanced-box">
+                  <summary data-i18n="advancedBasic">Agregar datos opcionales</summary>
+                  <div class="advanced-grid">
+                    <label>
+                      <span data-i18n="fieldDate">Fecha aproximada</span>
+                      <input id="caseDate" type="date" />
+                    </label>
+                    <label>
+                      <span data-i18n="fieldParty">Empresa o persona</span>
+                      <input id="caseParty" placeholder="Ejemplo: tienda, vendedor o empresa" />
+                    </label>
+                    <label>
+                      <span data-i18n="fieldReference">Pedido o referencia</span>
+                      <input id="caseReference" placeholder="Ejemplo: número de pedido" />
+                    </label>
+                    <label>
+                      <span data-i18n="fieldName">Tu nombre</span>
+                      <input id="caseName" placeholder="Opcional" />
+                    </label>
+                    <label>
+                      <span data-i18n="fieldStatus">Estado actual</span>
+                      <select id="caseStatus"></select>
+                    </label>
+                    <label class="wide">
+                      <span data-i18n="toneTitle">Estilo del texto</span>
+                      <div class="tone-row" id="toneRow"></div>
+                    </label>
+                  </div>
+                </details>
               </div>
             </section>
 
@@ -234,8 +245,8 @@
               <div class="step-heading">
                 <span>3</span>
                 <div>
-                  <h3 data-i18n="step3Title">Revisá qué incluir</h3>
-                  <p data-i18n="step3Lead">Marcá lo que tenés. Podés avanzar con lo principal.</p>
+                  <h3 data-i18n="step3Title">Te sugerimos qué agregar</h3>
+                  <p data-i18n="step3Lead">Tocá lo que ya tenés. Esto ayuda a que el documento quede más claro.</p>
                 </div>
               </div>
               <div class="checklist" id="checklist"></div>
@@ -245,21 +256,24 @@
               <div class="step-heading">
                 <span>4</span>
                 <div>
-                  <h3 data-i18n="step4Title">Cargá y ordená archivos</h3>
-                  <p data-i18n="step4Lead">Acepta JPG, PNG, WEBP y PDF. Los títulos se limpian automáticamente.</p>
+                  <h3 data-i18n="step4Title">Agregá fotos o documentos</h3>
+                  <p data-i18n="step4Lead">Podés subir capturas, fotos, comprobantes o documentos. La app propone títulos y orden.</p>
                 </div>
               </div>
               <label class="upload">
                 <span class="upload-icon">+</span>
                 <strong data-i18n="uploadTitle">Subí tus archivos</strong>
-                <span data-i18n="uploadText">Arrastrá o tocá para elegir imágenes y PDFs.</span>
+                <span data-i18n="uploadText">Tocá para elegir archivos o arrastralos acá.</span>
                 <input id="fileInput" multiple type="file" accept=".jpg,.jpeg,.png,.webp,.pdf" />
               </label>
-              <div class="sort-actions">
-                <button id="sortManual" type="button" data-i18n="sortManual">Mantener orden manual</button>
-                <button id="sortDate" type="button" data-i18n="sortDate">Ordenar por fecha</button>
-                <button id="sortType" type="button" data-i18n="sortType">Ordenar por tipo</button>
-              </div>
+              <details class="advanced-box">
+                <summary data-i18n="advancedFiles">Opciones para ordenar</summary>
+                <div class="sort-actions">
+                  <button id="sortManual" type="button" data-i18n="sortManual">Mantener mi orden</button>
+                  <button id="sortDate" type="button" data-i18n="sortDate">Ordenar por fecha</button>
+                  <button id="sortType" type="button" data-i18n="sortType">Ordenar por tipo</button>
+                </div>
+              </details>
               <div class="items" id="items"></div>
             </section>
 
@@ -267,13 +281,14 @@
               <div class="step-heading">
                 <span>5</span>
                 <div>
-                  <h3 data-i18n="step5Title">Revisá tu documento</h3>
-                  <p data-i18n="step5Lead">Preview protegido: muestra estructura y una parte del contenido.</p>
+                  <h3 data-i18n="step5Title">Revisá cómo viene quedando</h3>
+                  <p data-i18n="step5Lead">Vas a ver una muestra con marca de agua antes de descargar.</p>
                 </div>
               </div>
+              <div class="case-map" id="caseMap"></div>
               <div class="review-card" id="reviewCard"></div>
               <button class="primary full" id="previewButton" type="button" data-track="preview_generate">
-                Generar vista previa protegida
+                Ver vista previa
               </button>
               <div class="preview-panel" id="previewPanel"></div>
             </section>
@@ -282,24 +297,27 @@
               <div class="step-heading">
                 <span>6</span>
                 <div>
-                  <h3 data-i18n="step6Title">Desbloqueá y descargá</h3>
-                  <p data-i18n="step6Lead">Usá un crédito o comprá un pack. Los links de compra abren Lemon Squeezy.</p>
+                  <h3 data-i18n="step6Title">Listo para descargar</h3>
+                  <p data-i18n="step6Lead">Primero revisá qué preparaste. Después elegí si ya tenés código o querés comprar.</p>
                 </div>
               </div>
+              <div class="final-summary" id="finalSummary"></div>
 
               <div class="unlock-grid">
-                <div class="credit-card">
-                  <strong data-i18n="unlockCodeTitle">¿Ya compraste un pack?</strong>
-                  <span id="creditLabelLarge">Ingresá tu código para ver créditos disponibles.</span>
+                <div class="credit-card action-panel">
+                  <strong data-i18n="unlockCodeTitle">Ya tengo código</strong>
+                  <span id="creditLabelLarge">Pegá el código que recibiste por email para ver tus descargas disponibles.</span>
                   <div class="license-row">
-                    <input id="purchaseCodeLarge" autocomplete="off" placeholder="License key o código" />
+                    <input id="purchaseCodeLarge" autocomplete="off" placeholder="Código de compra" />
                     <button id="redeemButtonLarge" type="button" data-track="license_validate">Validar</button>
                   </div>
                   <button class="dark full" id="cleanButton" type="button" data-track="download_full">
                     Descargar documento completo y resumen
                   </button>
                 </div>
-                <div class="buy-options">
+                <div class="buy-options action-panel">
+                  <strong data-i18n="buyTitle">Comprar una descarga o pack</strong>
+                  <p data-i18n="buyLead">Se abre una página segura de pago. Después volvés y pegás tu código.</p>
                   <a id="quickSingle" target="_blank" rel="noreferrer" data-track="click_individual">
                     <span>US$0.79</span>
                     <strong data-i18n="buySingle">1 documento completo</strong>
@@ -401,11 +419,11 @@
           </details>
           <details>
             <summary data-i18n="faq2Q">¿Qué puedo subir?</summary>
-            <p data-i18n="faq2A">JPG, PNG, WEBP y PDF. Cada archivo se convierte en una evidencia ordenada.</p>
+            <p data-i18n="faq2A">Fotos, capturas, comprobantes y documentos. Cada archivo se convierte en una evidencia ordenada.</p>
           </details>
           <details>
             <summary data-i18n="faq3Q">¿Cómo uso un pack?</summary>
-            <p data-i18n="faq3A">Comprás en Lemon Squeezy, recibís una license key y la ingresás para habilitar créditos.</p>
+            <p data-i18n="faq3A">Comprás en Lemon Squeezy, recibís un código por email y lo pegás para habilitar tus descargas.</p>
           </details>
         </div>
       </section>
