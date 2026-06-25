@@ -34,7 +34,7 @@ window.PRUEBAPDF_CONFIG = {
   paymentLinks: {
     single: "https://pruebapdf.lemonsqueezy.com/checkout/buy/b34f7e39-7702-43cd-8135-bff6fe578882",
     pack5: "https://pruebapdf.lemonsqueezy.com/checkout/buy/5e32fa30-3283-427c-84b0-d40791af6b58",
-    pack20: "https://pruebapdf.lemonsqueezy.com/checkout/buy/b2601b5d-25da-4bf0-a750-80c1ef46b0e8"
+    pack20: "https://pruebapdf.lemonsqueezy.com/checkout/buy/d287a751-4ea7-4a9f-a998-a4976d94990f"
   }
 };
 ```
@@ -71,7 +71,7 @@ No pongas claves reales en GitHub. Configuralas en Vercel, dentro del proyecto, 
 APP_SECRET=
 LEMON_SQUEEZY_INDIVIDUAL_URL=https://pruebapdf.lemonsqueezy.com/checkout/buy/b34f7e39-7702-43cd-8135-bff6fe578882
 LEMON_SQUEEZY_PACK5_URL=https://pruebapdf.lemonsqueezy.com/checkout/buy/5e32fa30-3283-427c-84b0-d40791af6b58
-LEMON_SQUEEZY_PACK20_URL=https://pruebapdf.lemonsqueezy.com/checkout/buy/b2601b5d-25da-4bf0-a750-80c1ef46b0e8
+LEMON_SQUEEZY_PACK20_URL=https://pruebapdf.lemonsqueezy.com/checkout/buy/d287a751-4ea7-4a9f-a998-a4976d94990f
 LEMON_SQUEEZY_API_KEY=
 LEMON_SQUEEZY_STORE_ID=
 LEMON_SQUEEZY_WEBHOOK_SECRET=
@@ -79,7 +79,7 @@ LEMON_SQUEEZY_INDIVIDUAL_PRODUCT_ID=
 LEMON_SQUEEZY_INDIVIDUAL_VARIANT_ID=
 LEMON_SQUEEZY_PACK5_PRODUCT_ID=1172786
 LEMON_SQUEEZY_PACK5_VARIANT_ID=
-LEMON_SQUEEZY_PACK20_PRODUCT_ID=1156508
+LEMON_SQUEEZY_PACK20_PRODUCT_ID=1172401
 LEMON_SQUEEZY_PACK20_VARIANT_ID=
 KV_REST_API_URL=
 KV_REST_API_TOKEN=
@@ -101,7 +101,7 @@ Esas variables permiten guardar créditos restantes sin depender de `localStorag
 Para completar producción hacen falta:
 
 - Store ID: en Lemon Squeezy → Settings → Stores.
-- Product ID: aparece en la URL del producto. Los actuales son PDF individual `1172806`, Pack de 5 `1172786` y Pack de 20 `1156508`.
+- Product ID: aparece en la URL del producto. Los actuales son PDF individual `1172806`, Pack de 5 `1172786` y Pack de 20 `1172401`.
 - Variant ID: se obtiene desde la variante del producto o por API.
 - API key: Lemon Squeezy → Settings → API.
 - Webhook secret: Lemon Squeezy → Settings → Webhooks, al crear el webhook.
