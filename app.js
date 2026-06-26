@@ -5,8 +5,8 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
 const stepLabels = {
-  es: ["Elegí tu caso", "Texto listo", "Qué agregar", "Archivos", "Vista previa", "Descarga"],
-  en: ["Choose case", "Ready text", "What to add", "Files", "Preview", "Download"]
+  es: ["Elegí tu caso", "Contá qué pasó", "Qué agregar", "Archivos", "Tu caso en claro", "Descarga"],
+  en: ["Choose case", "Tell what happened", "What to add", "Files", "Your clear case", "Download"]
 };
 
 const translations = {
@@ -35,26 +35,31 @@ const translations = {
     after3: "Índice y línea temporal",
     after4: "Mensajes listos para enviar",
     builderEyebrow: "Constructor guiado",
-    builderTitle: "Te guiamos paso a paso",
-    builderLead: "Elegí una opción, cargá tus archivos y revisá un documento claro. Podés cambiar todo después.",
+    builderTitle: "Contá qué pasó y dejalo listo para enviar",
+    builderLead: "Elegí una opción, contá la situación con tus palabras, subí lo que tengas y recibí textos claros para enviar o incluir en tu documento.",
     progressTitle: "Progreso",
     progressHelp: "Vamos de a un paso. Tu información se mantiene mientras avanzás.",
-    step1Title: "¿Qué querés ordenar?",
-    step1Lead: "Elegí la opción más parecida. Te preparamos una base automáticamente.",
+    step1Title: "¿Qué necesitás preparar?",
+    step1Lead: "Sirve para reclamos, solicitudes, trámites, presentaciones y situaciones personales.",
     quickTitle: "Modo rápido",
     quickText: "Usá textos sugeridos y pasá directo a cargar archivos.",
     quickButton: "Armarlo en 2 minutos",
     showMoreCases: "Ver más opciones",
-    step2Title: "Te dejamos un texto listo",
-    step2Lead: "Podés dejarlo así o tocar una opción para cambiar el enfoque.",
+    step2Title: "Contá qué pasó",
+    step2Lead: "Escribí con tus palabras. Con eso armamos un texto claro para WhatsApp, email, formulario y PDF.",
+    fieldStory: "¿Qué pasó?",
+    storyPlaceholder: "Ejemplo: compré un producto, pagué, no llegó y quiero pedir una respuesta.",
+    fieldRequest: "¿Qué necesitás pedir?",
     fieldTitle: "Título del caso",
     useExample: "Usar ejemplo",
-    fieldSummary: "Breve explicación",
+    fieldSummary: "Resumen y pedido principal",
     fieldDate: "Fecha aproximada",
     fieldParty: "Empresa o persona",
     fieldReference: "Pedido o referencia",
     fieldName: "Tu nombre",
     fieldStatus: "Estado actual",
+    fieldAttempt: "¿Qué ya intentaste hacer?",
+    attemptPlaceholder: "Ejemplo: escribí por WhatsApp, mandé email o hice un reclamo",
     toneTitle: "Estilo del texto",
     advancedBasic: "Agregar datos opcionales",
     step3Title: "Te sugerimos qué agregar",
@@ -67,8 +72,8 @@ const translations = {
     sortManual: "Mantener mi orden",
     sortDate: "Ordenar por fecha",
     sortType: "Ordenar por tipo",
-    step5Title: "Revisá cómo viene quedando",
-    step5Lead: "Vas a ver una muestra con marca de agua antes de descargar.",
+    step5Title: "Tu caso en claro",
+    step5Lead: "Revisá el pedido, los textos listos y la documentación antes de generar la vista previa.",
     step6Title: "Listo para descargar",
     step6Lead: "Primero revisá qué preparaste. Después elegí si ya tenés código o querés comprar.",
     unlockCodeTitle: "Ya tengo código",
@@ -119,23 +124,51 @@ const translations = {
     addedToMap: "Agregado al mapa del caso",
     tapIfHave: "Tocá si ya lo tenés",
     noFilesEmpty: "Tus evidencias van a aparecer acá con títulos simples, editables y listos para el documento.",
-    caseMap1: "Tu caso",
-    caseMap2: "Agregado",
-    caseMap3: "Podés sumar",
-    caseMap4: "Resultado",
+    caseMap1: "Qué pasó",
+    caseMap2: "Pedido principal",
+    caseMap3: "Ya tenés",
+    caseMap4: "Podrías sumar",
     filesAdded: "archivo(s)",
     readyMarked: "dato(s) marcados como listos.",
     optional: "Opcional",
     complete: "Completo",
     baseReady: "La base principal ya está armada.",
     pagesApprox: "páginas aprox.",
-    resultReady: "Documento completo y resumen listos para descargar.",
+    resultReady: "Texto listo, documento completo y resumen preparados.",
+    requestResponse: "Una respuesta",
+    requestSolution: "Una solución",
+    requestExchange: "Un cambio",
+    requestRefund: "Una devolución",
+    requestReview: "Una revisión",
+    requestRecord: "Dejar constancia",
+    requestOther: "Otro pedido",
+    requestResponsePhrase: "una respuesta clara",
+    requestSolutionPhrase: "una solución para la situación planteada",
+    requestExchangePhrase: "un cambio o reemplazo, si corresponde",
+    requestRefundPhrase: "la devolución del importe abonado, si corresponde",
+    requestReviewPhrase: "una revisión de la situación",
+    requestRecordPhrase: "dejar constancia de la situación y recibir confirmación",
+    requestOtherPhrase: "una respuesta sobre el pedido indicado",
+    whatsappReadyLabel: "Texto breve para WhatsApp",
+    emailReadyLabel: "Texto formal para email",
+    formReadyLabel: "Texto para formulario",
+    clearCaseTitle: "Tu caso en claro",
+    clearCaseHelp: "Este resumen se arma con lo que contaste y lo que cargaste.",
+    readyToSend: "Texto listo para enviar",
+    mainRequestLabel: "Pedido principal",
+    whatCouldHelp: "Podrías sumar",
+    noMissingNeeded: "Con lo que cargaste ya hay una base clara para revisar.",
+    missingDate: "Agregar una fecha puede ayudar a ordenar la situación.",
+    missingReference: "Sumar un número de pedido, reclamo o referencia puede hacerlo más fácil de ubicar.",
+    missingEvidence: "Podés sumar comprobantes, capturas o fotos si los tenés.",
+    missingAttempt: "Contar qué ya intentaste ayuda a explicar el recorrido.",
+    generatedFromYourInfo: "Texto generado con tu información. Podés editarlo antes de copiar o descargar.",
     finalTitle: "Esto es lo que preparaste",
     filesAddedMetric: "archivos agregados",
     estimatedPages: "páginas estimadas",
     markedData: "datos marcados",
     fullDocumentLabel: "Documento completo:",
-    fullDocumentIncludes: "portada, resumen, índice, evidencias y línea temporal si agregaste fechas.",
+    fullDocumentIncludes: "portada, resumen y pedido principal, índice, evidencias y línea temporal si agregaste fechas.",
     summaryLabel: "Resumen:",
     summaryIncludes: "una versión corta para enviar rápido por email, WhatsApp o formulario.",
     previewReadyInside: "Vista previa lista dentro de la web",
@@ -183,7 +216,7 @@ const translations = {
     relatedPartyLabel: "Parte relacionada",
     preparedByLabel: "Preparado por",
     executiveSummary: "Resumen ejecutivo",
-    caseSummaryPdf: "Resumen del caso",
+    caseSummaryPdf: "Resumen y pedido principal",
     evidenceIndexPdf: "Índice de evidencias",
     iHaveIt: "Lo tengo",
     addLater: "Lo agregaré después",
@@ -258,26 +291,31 @@ const translations = {
     after3: "Index and timeline",
     after4: "Messages ready to send",
     builderEyebrow: "Guided builder",
-    builderTitle: "We guide you step by step",
-    builderLead: "Choose an option, upload your files and review a clear document. You can change everything later.",
+    builderTitle: "Tell what happened and get it ready to send",
+    builderLead: "Choose an option, describe the situation in your own words, upload what you have and get clear text to send or include in your document.",
     progressTitle: "Progress",
     progressHelp: "One step at a time. Your information stays while you move forward.",
-    step1Title: "What do you want to organize?",
-    step1Lead: "Choose the closest option. We prepare a starting point automatically.",
+    step1Title: "What do you need to prepare?",
+    step1Lead: "Useful for claims, requests, procedures, presentations and personal situations.",
     quickTitle: "Quick mode",
     quickText: "Use suggested text and go straight to uploading files.",
     quickButton: "Build it in 2 minutes",
     showMoreCases: "Show more options",
-    step2Title: "We prepared text for you",
-    step2Lead: "Keep it as is or choose another angle.",
+    step2Title: "Tell what happened",
+    step2Lead: "Write it in your own words. We turn it into clear text for WhatsApp, email, forms and PDF.",
+    fieldStory: "What happened?",
+    storyPlaceholder: "Example: I bought a product, paid, it did not arrive and I want to ask for a response.",
+    fieldRequest: "What do you need to ask for?",
     fieldTitle: "Case title",
     useExample: "Use example",
-    fieldSummary: "Short explanation",
+    fieldSummary: "Summary and main request",
     fieldDate: "Approximate date",
     fieldParty: "Company or person",
     fieldReference: "Order or reference",
     fieldName: "Your name",
     fieldStatus: "Current status",
+    fieldAttempt: "What have you already tried?",
+    attemptPlaceholder: "Example: I wrote through WhatsApp, sent an email or opened a request",
     toneTitle: "Text style",
     advancedBasic: "Add optional details",
     step3Title: "Suggested things to add",
@@ -290,8 +328,8 @@ const translations = {
     sortManual: "Keep my order",
     sortDate: "Sort by date",
     sortType: "Sort by type",
-    step5Title: "Review how it looks",
-    step5Lead: "You will see a watermarked sample before downloading.",
+    step5Title: "Your clear case",
+    step5Lead: "Review the request, ready-to-send text and documentation before creating the preview.",
     step6Title: "Ready to download",
     step6Lead: "First review what you prepared. Then choose whether you already have a code or want to buy.",
     unlockCodeTitle: "I already have a code",
@@ -342,23 +380,51 @@ const translations = {
     addedToMap: "Added to the case map",
     tapIfHave: "Tap if you have it",
     noFilesEmpty: "Your evidence will appear here with simple, editable titles ready for the document.",
-    caseMap1: "Your case",
-    caseMap2: "Added",
-    caseMap3: "You can add",
-    caseMap4: "Result",
+    caseMap1: "What happened",
+    caseMap2: "Main request",
+    caseMap3: "You have",
+    caseMap4: "You could add",
     filesAdded: "file(s)",
     readyMarked: "item(s) marked as ready.",
     optional: "Optional",
     complete: "Complete",
     baseReady: "The main base is already prepared.",
     pagesApprox: "approx. pages",
-    resultReady: "Full document and summary ready to download.",
+    resultReady: "Ready-to-send text, full document and summary prepared.",
+    requestResponse: "A response",
+    requestSolution: "A solution",
+    requestExchange: "An exchange",
+    requestRefund: "A refund",
+    requestReview: "A review",
+    requestRecord: "Leave a record",
+    requestOther: "Another request",
+    requestResponsePhrase: "a clear response",
+    requestSolutionPhrase: "a solution for the situation described",
+    requestExchangePhrase: "an exchange or replacement, if applicable",
+    requestRefundPhrase: "a refund of the amount paid, if applicable",
+    requestReviewPhrase: "a review of the situation",
+    requestRecordPhrase: "to leave a record of the situation and receive confirmation",
+    requestOtherPhrase: "a response about the request described",
+    whatsappReadyLabel: "Short WhatsApp text",
+    emailReadyLabel: "Formal email text",
+    formReadyLabel: "Text for a form",
+    clearCaseTitle: "Your clear case",
+    clearCaseHelp: "This summary is built from what you wrote and uploaded.",
+    readyToSend: "Ready-to-send text",
+    mainRequestLabel: "Main request",
+    whatCouldHelp: "You could add",
+    noMissingNeeded: "What you added is enough to provide a clear starting point.",
+    missingDate: "Adding a date can help organize the situation.",
+    missingReference: "Adding an order, request or reference number can make it easier to identify.",
+    missingEvidence: "You can add receipts, screenshots or photos if you have them.",
+    missingAttempt: "Explaining what you already tried helps show the steps taken.",
+    generatedFromYourInfo: "Text generated from your information. You can edit it before copying or downloading.",
     finalTitle: "This is what you prepared",
     filesAddedMetric: "files added",
     estimatedPages: "estimated pages",
     markedData: "marked items",
     fullDocumentLabel: "Full document:",
-    fullDocumentIncludes: "cover, summary, index, evidence and timeline if you added dates.",
+    fullDocumentIncludes: "cover, summary and main request, index, evidence and timeline if you added dates.",
     summaryLabel: "Summary:",
     summaryIncludes: "a short version to quickly send by email, WhatsApp or form.",
     previewReadyInside: "Preview ready inside the website",
@@ -406,7 +472,7 @@ const translations = {
     relatedPartyLabel: "Related party",
     preparedByLabel: "Prepared by",
     executiveSummary: "Executive summary",
-    caseSummaryPdf: "Case summary",
+    caseSummaryPdf: "Summary and main request",
     evidenceIndexPdf: "Evidence index",
     iHaveIt: "I have it",
     addLater: "I will add it later",
@@ -634,10 +700,20 @@ const caseTypes = [
 ];
 
 const tones = [
-  { id: "direct", es: "Claro y directo", en: "Clear and direct" },
+  { id: "cordial", es: "Claro y cordial", en: "Clear and friendly" },
+  { id: "direct", es: "Breve y directo", en: "Short and direct" },
   { id: "formal", es: "Formal", en: "Formal" },
-  { id: "short", es: "Breve", en: "Short" },
-  { id: "detail", es: "Detallado", en: "Detailed" }
+  { id: "firm", es: "Firme pero respetuoso", en: "Firm but respectful" }
+];
+
+const requestOptions = [
+  { id: "response", labelKey: "requestResponse", phraseKey: "requestResponsePhrase" },
+  { id: "solution", labelKey: "requestSolution", phraseKey: "requestSolutionPhrase" },
+  { id: "exchange", labelKey: "requestExchange", phraseKey: "requestExchangePhrase" },
+  { id: "refund", labelKey: "requestRefund", phraseKey: "requestRefundPhrase" },
+  { id: "review", labelKey: "requestReview", phraseKey: "requestReviewPhrase" },
+  { id: "record", labelKey: "requestRecord", phraseKey: "requestRecordPhrase" },
+  { id: "other", labelKey: "requestOther", phraseKey: "requestOtherPhrase" }
 ];
 
 const statuses = {
@@ -657,7 +733,15 @@ const state = {
   sortMode: "manual",
   previewReady: false,
   showAllCases: false,
-  fastMode: false
+  fastMode: false,
+  requestType: "solution",
+  tone: "cordial",
+  editedTexts: {
+    summary: false,
+    whatsapp: false,
+    email: false,
+    form: false
+  }
 };
 
 function formatMoney(value) {
@@ -705,6 +789,129 @@ function localizedType(type) {
 
 function currentStepLabels() {
   return stepLabels[state.lang] || stepLabels.es;
+}
+
+function currentRequestOption() {
+  return requestOptions.find((option) => option.id === state.requestType) || requestOptions[1];
+}
+
+function requestLabel() {
+  return text(currentRequestOption().labelKey);
+}
+
+function requestPhrase() {
+  return text(currentRequestOption().phraseKey);
+}
+
+function storyText() {
+  return $("#caseStory")?.value.trim() || localizedCase(state.caseType, "summary");
+}
+
+function titleText() {
+  return $("#caseTitle")?.value.trim() || localizedCase(state.caseType, "exampleTitle");
+}
+
+function summaryText() {
+  return $("#caseSummary")?.value.trim() || buildAssistedTexts().summary;
+}
+
+function readyText(kind) {
+  const idByKind = {
+    whatsapp: "whatsappText",
+    email: "emailText",
+    form: "formReadyText"
+  };
+  const generated = buildAssistedTexts();
+  return document.getElementById(idByKind[kind])?.value.trim() || generated[kind] || "";
+}
+
+function optionalContext() {
+  const parts = [];
+  const party = $("#caseParty")?.value.trim();
+  const date = $("#caseDate")?.value;
+  const reference = $("#caseReference")?.value.trim();
+  const attempt = $("#caseAttempt")?.value.trim();
+  if (party) parts.push(state.lang === "en" ? `Related to: ${party}.` : `Relacionado con: ${party}.`);
+  if (date) parts.push(state.lang === "en" ? `Approximate date: ${date}.` : `Fecha aproximada: ${date}.`);
+  if (reference) parts.push(`${text("reference")} ${reference}.`);
+  if (attempt) {
+    const cleanAttempt = attempt.replace(/[.。]+$/u, "");
+    parts.push(
+      state.lang === "en"
+        ? `I already tried to address it by: ${cleanAttempt}.`
+        : `Ya intenté avanzar o resolverlo mediante: ${cleanAttempt}.`
+    );
+  }
+  return parts.join(" ");
+}
+
+function buildAssistedTexts() {
+  const title = titleText();
+  const story = storyText();
+  const request = requestPhrase();
+  const context = optionalContext();
+  const evidenceNote =
+    state.items.length > 0
+      ? state.lang === "en"
+        ? "I am including the available documentation to make the review easier."
+        : "Acompaño la documentación disponible para facilitar la revisión."
+      : state.lang === "en"
+        ? "I can add supporting documentation if needed."
+        : "Puedo sumar documentación de respaldo si hace falta.";
+
+  if (state.lang === "en") {
+    const openings = {
+      cordial: "Hi, I am contacting you about",
+      direct: "Hi, I am writing about",
+      formal: "Hello, I am contacting you regarding",
+      firm: "Hello, I am contacting you to clearly record"
+    };
+    const closing = state.tone === "firm" ? "I would appreciate a response through this channel." : "Thank you, I look forward to your response.";
+    const summary = `${story} ${context} I am requesting ${request}. ${evidenceNote} ${closing}`.replace(/\s+/g, " ").trim();
+    return {
+      summary,
+      whatsapp: `${openings[state.tone] || openings.cordial} "${title}". ${story} I am requesting ${request}. ${evidenceNote}`,
+      email: `${openings[state.tone] || openings.cordial} "${title}".\n\n${story}\n\n${context ? `${context}\n\n` : ""}${evidenceNote} I am requesting ${request} and would appreciate a response through this channel.\n\nThank you.`,
+      form: `Case: ${title}\n\nWhat happened:\n${story}\n\nMain request:\nI am requesting ${request}.\n\n${context ? `Details:\n${context}\n\n` : ""}Available evidence: ${state.items.length} file(s).`
+    };
+  }
+
+  const openings = {
+    cordial: "Hola, me comunico por",
+    direct: "Hola, escribo por",
+    formal: "Hola, me comunico en relación con",
+    firm: "Hola, me comunico para dejar clara la situación sobre"
+  };
+  const closing = state.tone === "firm" ? "Agradezco una respuesta por este medio." : "Quedo atento/a a una respuesta. Gracias.";
+  const summary = `${story} ${context} Solicito ${request}. ${evidenceNote} ${closing}`.replace(/\s+/g, " ").trim();
+  return {
+    summary,
+    whatsapp: `${openings[state.tone] || openings.cordial} "${title}". ${story} Solicito ${request}. ${evidenceNote}`,
+    email: `${openings[state.tone] || openings.cordial} "${title}".\n\n${story}\n\n${context ? `${context}\n\n` : ""}${evidenceNote} Solicito ${request} y agradezco una respuesta por este medio.\n\nGracias.`,
+    form: `Caso: ${title}\n\nQué pasó:\n${story}\n\nPedido principal:\nSolicito ${request}.\n\n${context ? `Datos adicionales:\n${context}\n\n` : ""}Evidencias disponibles: ${state.items.length} archivo(s).`
+  };
+}
+
+function updateAssistedTexts({ force = false } = {}) {
+  const generated = buildAssistedTexts();
+  const mapping = [
+    ["caseSummary", "summary"],
+    ["whatsappText", "whatsapp"],
+    ["emailText", "email"],
+    ["formReadyText", "form"]
+  ];
+  mapping.forEach(([id, key]) => {
+    const field = document.getElementById(id);
+    if (!field) return;
+    if (force || !state.editedTexts[key]) {
+      field.value = generated[key];
+    }
+  });
+  state.previewReady = false;
+  renderReview();
+  renderCaseMap();
+  renderFinalSummary();
+  renderShareKit();
 }
 
 function todayLabel() {
@@ -833,16 +1040,16 @@ function initPrices() {
 function selectCase(caseType) {
   state.caseType = caseType;
   state.checklist = localizedChecklist(caseType).map((_, index) => ({ index, status: "later" }));
+  state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
   $("#caseTitle").value = localizedCase(caseType, "exampleTitle");
-  $("#caseSummary").value = localizedCase(caseType, "summary");
+  const story = $("#caseStory");
+  if (story) story.value = localizedCase(caseType, "summary");
   renderCases();
+  renderRequestOptions();
   renderSummaryOptions();
   renderChecklist();
   renderItems();
-  renderReview();
-  renderCaseMap();
-  renderFinalSummary();
-  renderShareKit();
+  updateAssistedTexts({ force: true });
 }
 
 function renderCases() {
@@ -880,11 +1087,29 @@ function renderSummaryOptions() {
     button.type = "button";
     button.textContent = option.label;
     button.addEventListener("click", () => {
-      $("#caseSummary").value = option.text;
-      renderReview();
-      renderCaseMap();
-      renderFinalSummary();
-      renderShareKit();
+      $("#caseStory").value = option.text;
+      state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
+      updateAssistedTexts({ force: true });
+    });
+    row.appendChild(button);
+  });
+}
+
+function renderRequestOptions() {
+  const row = $("#requestOptions");
+  if (!row) return;
+  row.innerHTML = "";
+  requestOptions.forEach((option) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `request-option${option.id === state.requestType ? " is-selected" : ""}`;
+    button.innerHTML = `<strong>${text(option.labelKey)}</strong><span>${text(option.phraseKey)}</span>`;
+    button.addEventListener("click", () => {
+      state.requestType = option.id;
+      state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
+      renderRequestOptions();
+      updateAssistedTexts({ force: true });
+      track("request_selected", { requestType: option.id });
     });
     row.appendChild(button);
   });
@@ -948,26 +1173,13 @@ function renderTones() {
   tones.forEach((tone) => {
     const button = document.createElement("button");
     button.type = "button";
+    button.className = tone.id === state.tone ? "is-selected" : "";
     button.textContent = tone[state.lang] || tone.es;
     button.addEventListener("click", () => {
-      const base = localizedCase(state.caseType, "summary");
-      const title = $("#caseTitle").value.trim() || localizedCase(state.caseType, "exampleTitle");
-      const variants =
-        state.lang === "en"
-          ? {
-              direct: base,
-              formal: `This document organizes the information related to "${title}", including the main details and available evidence.`,
-              short: `Organized documentation for "${title}", with summary, index and relevant evidence.`,
-              detail: `${base} The document includes summary, checklist, timeline when relevant and numbered evidence for easier review.`
-            }
-          : {
-              direct: base,
-              formal: `Por medio del presente, dejo organizada la documentación correspondiente a "${title}", incluyendo los elementos principales y evidencias disponibles.`,
-              short: `Documentación organizada para "${title}", con resumen, índice y evidencias relevantes.`,
-              detail: `${base} El documento incluye resumen, checklist, línea temporal cuando corresponde y evidencias numeradas para facilitar la revisión.`
-            };
-      $("#caseSummary").value = variants[tone.id];
-      renderReview();
+      state.tone = tone.id;
+      state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
+      renderTones();
+      updateAssistedTexts({ force: true });
     });
     row.appendChild(button);
   });
@@ -1064,9 +1276,7 @@ function addFiles(files) {
   });
   state.previewReady = false;
   renderItems();
-  renderReview();
-  renderCaseMap();
-  renderFinalSummary();
+  updateAssistedTexts();
   if (supported.length) track("files_added", { count: supported.length });
 }
 
@@ -1267,34 +1477,42 @@ function renderCaseMap() {
   const map = $("#caseMap");
   if (!map) return;
   const have = state.checklist.filter((entry) => entry.status === "have");
-  const missing = state.checklist.filter((entry) => entry.status !== "have").slice(0, 2);
-  const title = $("#caseTitle")?.value.trim() || localizedCase(state.caseType, "exampleTitle");
+  const suggestions = missingSuggestions();
   map.innerHTML = `
     <article>
       <span>1</span>
       <strong>${text("caseMap1")}</strong>
       <small>${escapeHtml(localizedCase(state.caseType, "title"))}</small>
-      <p>${escapeHtml(title)}</p>
+      <p>${escapeHtml(storyText()).slice(0, 190)}</p>
     </article>
     <article>
       <span>2</span>
       <strong>${text("caseMap2")}</strong>
-      <small>${state.items.length} ${text("filesAdded")}</small>
-      <p>${have.length} ${text("readyMarked")}</p>
+      <small>${escapeHtml(requestLabel())}</small>
+      <p>${escapeHtml(requestPhrase())}</p>
     </article>
     <article>
       <span>3</span>
       <strong>${text("caseMap3")}</strong>
-      <small>${missing.length ? text("optional") : text("complete")}</small>
-      <p>${missing.length ? missing.map((entry) => escapeHtml(localizedChecklist()[entry.index] || entry.label || "")).join(", ") : text("baseReady")}</p>
+      <small>${state.items.length} ${text("filesAdded")}</small>
+      <p>${have.length} ${text("readyMarked")}</p>
     </article>
     <article>
       <span>4</span>
       <strong>${text("caseMap4")}</strong>
-      <small>${estimatePages()} ${text("pagesApprox")}</small>
-      <p>${text("resultReady")}</p>
+      <small>${suggestions.length ? text("optional") : text("complete")}</small>
+      <p>${suggestions.length ? suggestions.map(escapeHtml).join(", ") : text("noMissingNeeded")}</p>
     </article>
   `;
+}
+
+function missingSuggestions() {
+  const suggestions = [];
+  if (!$("#caseDate")?.value) suggestions.push(text("missingDate"));
+  if (!$("#caseReference")?.value.trim()) suggestions.push(text("missingReference"));
+  if (!state.items.length) suggestions.push(text("missingEvidence"));
+  if (!$("#caseAttempt")?.value.trim()) suggestions.push(text("missingAttempt"));
+  return suggestions.slice(0, 3);
 }
 
 function renderFinalSummary() {
@@ -1307,6 +1525,7 @@ function renderFinalSummary() {
       <span class="pill">${escapeHtml(localizedCase(state.caseType, "title"))}</span>
       <h4>${text("finalTitle")}</h4>
       <p>${escapeHtml(title)}</p>
+      <p><strong>${text("mainRequestLabel")}</strong> ${escapeHtml(requestLabel())}</p>
     </div>
     <div class="final-grid">
       <article>
@@ -1325,6 +1544,7 @@ function renderFinalSummary() {
     <div class="final-includes">
       <p><strong>${text("fullDocumentLabel")}</strong> ${text("fullDocumentIncludes")}</p>
       <p><strong>${text("summaryLabel")}</strong> ${text("summaryIncludes")}</p>
+      <p><strong>${text("readyToSend")}</strong> ${escapeHtml(readyText("whatsapp")).slice(0, 180)}</p>
     </div>
   `;
 }
@@ -1334,7 +1554,7 @@ function renderReview() {
   if (!review) return;
   const haveCount = state.checklist.filter((entry) => entry.status === "have").length;
   const title = $("#caseTitle")?.value.trim() || localizedCase(state.caseType, "exampleTitle");
-  const summary = $("#caseSummary")?.value.trim() || localizedCase(state.caseType, "summary");
+  const summary = summaryText();
   review.innerHTML = `
     <div>
       <span class="pill">${localizedCase(state.caseType, "title")}</span>
@@ -1361,8 +1581,8 @@ function renderProtectedPreview() {
   const items = sortedItems();
   const visibleItems = items.slice(0, 2);
   const lockedItems = items.slice(2);
-  const title = $("#caseTitle").value.trim() || localizedCase(state.caseType, "exampleTitle");
-  const summary = $("#caseSummary").value.trim() || localizedCase(state.caseType, "summary");
+  const title = titleText();
+  const summary = summaryText();
   const index = items
     .map((item, itemIndex) => `<li><span>${evidenceLabel(itemIndex)}</span><strong>${escapeHtml(item.title)}</strong></li>`)
     .join("");
@@ -1400,6 +1620,7 @@ function renderProtectedPreview() {
         <span>PruebaPDF</span>
         <h4>${escapeHtml(title)}</h4>
         <p>${escapeHtml(summary)}</p>
+        <p><strong>${text("mainRequestLabel")}</strong> ${escapeHtml(requestLabel())}</p>
       </section>
       <section class="preview-index">
         <h5>${text("indexTitle")}</h5>
@@ -1431,27 +1652,13 @@ function renderTimelineHtml(forPreview = false) {
 function renderShareKit() {
   const kit = $("#shareKit");
   if (!kit) return;
-  const title = $("#caseTitle")?.value.trim() || localizedCase(state.caseType, "exampleTitle");
-  const summary = $("#caseSummary")?.value.trim() || localizedCase(state.caseType, "summary");
+  const title = titleText();
+  const summary = summaryText();
   const party = $("#caseParty")?.value.trim();
-  const reference = $("#caseReference")?.value.trim();
   const subject = `${title}${party ? ` - ${party}` : ""}`;
-  const email = [
-    text("hello"),
-    "",
-    `${text("shareEmailIntro")} ${title}.`,
-    reference ? `${text("reference")} ${reference}.` : "",
-    "",
-    summary,
-    "",
-    text("emailAttachment"),
-    "",
-    text("thanks")
-  ]
-    .filter(Boolean)
-    .join("\n");
-  const whatsapp = `${text("whatsappIntro")} "${title}". ${text("whatsappIncludes")}`;
-  const form = `${text("formCase")}: ${title}\n\n${text("formSummary")}:\n${summary}\n\n${text("formEvidenceCount")}: ${state.items.length}`;
+  const email = readyText("email");
+  const whatsapp = readyText("whatsapp");
+  const form = readyText("form");
 
   kit.innerHTML = `
     <div class="section-title small-title">
@@ -1462,6 +1669,7 @@ function renderShareKit() {
     ${copyBlock(text("email"), email, "email")}
     ${copyBlock(text("whatsapp"), whatsapp, "whatsapp")}
     ${copyBlock(text("formText"), form, "form")}
+    ${copyBlock(text("summaryLabel"), summary, "summary")}
   `;
   kit.querySelectorAll("[data-copy]").forEach((button) => {
     button.addEventListener("click", async () => {
@@ -1556,8 +1764,10 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   const bold = await pdf.embedFont(StandardFonts.HelveticaBold);
   const pageSize = [595.28, 841.89];
   let pageNumber = 1;
-  const title = $("#caseTitle").value.trim() || localizedCase(state.caseType, "exampleTitle");
-  const summary = $("#caseSummary").value.trim() || localizedCase(state.caseType, "summary");
+  const title = titleText();
+  const summary = summaryText();
+  const emailReady = readyText("email");
+  const formReady = readyText("form");
   const party = $("#caseParty").value.trim();
   const reference = $("#caseReference").value.trim();
   const name = $("#caseName").value.trim();
@@ -1624,9 +1834,18 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   drawPageHeader(summaryPage, mode === "summary" ? text("executiveSummary") : text("caseSummaryPdf"));
   let y = drawParagraph(summaryPage, summary, 52, 715, 12, 82);
   y -= 18;
+  summaryPage.drawText(text("mainRequestLabel"), { x: 52, y, size: 14, font: bold, color: rgb(0.04, 0.08, 0.14) });
+  y -= 22;
+  y = drawParagraph(summaryPage, requestLabel(), 64, y, 11, 78);
+  y -= 12;
+  summaryPage.drawText(text("readyToSend"), { x: 52, y, size: 14, font: bold, color: rgb(0.04, 0.08, 0.14) });
+  y -= 22;
+  y = drawParagraph(summaryPage, mode === "summary" ? formReady : emailReady, 64, y, 10, 90);
+  y -= 14;
   summaryPage.drawText(text("checklist"), { x: 52, y, size: 14, font: bold, color: rgb(0.04, 0.08, 0.14) });
   y -= 24;
   state.checklist.forEach((entry, index) => {
+    if (y < 72) return;
     const status = entry.status === "have" ? text("iHaveIt") : text("addLater");
     const label = localizedChecklist()[entry.index ?? index] || entry.label || "";
     summaryPage.drawText(`${status}: ${label}`.slice(0, 94), { x: 64, y, size: 10, font: regular, color: rgb(0.13, 0.16, 0.22) });
@@ -1840,35 +2059,31 @@ function escapeAttribute(value) {
 function bindEvents() {
   $("#languageToggle").addEventListener("click", () => {
     const oldTitle = localizedCase(state.caseType, "exampleTitle");
-    const oldSummary = localizedCase(state.caseType, "summary");
     const titleInput = $("#caseTitle");
-    const summaryInput = $("#caseSummary");
     const shouldTranslateTitle = !titleInput.value.trim() || titleInput.value.trim() === oldTitle;
-    const shouldTranslateSummary = !summaryInput.value.trim() || summaryInput.value.trim() === oldSummary;
     state.lang = state.lang === "es" ? "en" : "es";
+    state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
     applyTranslations();
     if (shouldTranslateTitle) titleInput.value = localizedCase(state.caseType, "exampleTitle");
-    if (shouldTranslateSummary) summaryInput.value = localizedCase(state.caseType, "summary");
     populateStatusOptions();
     state.checklist = localizedChecklist().map((_, index) => ({ index, status: state.checklist[index]?.status || "later" }));
     renderCases();
+    renderRequestOptions();
     renderSummaryOptions();
     renderTones();
     renderChecklist();
     renderItems();
-    renderReview();
-    renderCaseMap();
-    renderFinalSummary();
-    renderShareKit();
+    updateAssistedTexts({ force: true });
     updateCredits();
     showStep(state.step);
   });
   $("#useTitleExample").addEventListener("click", () => {
     $("#caseTitle").value = localizedCase(state.caseType, "exampleTitle");
-    renderReview();
+    updateAssistedTexts();
   });
   $("#fastModeButton")?.addEventListener("click", () => {
     state.fastMode = true;
+    updateAssistedTexts();
     showStep(3);
     showMessage(text("fastReady"), "success");
     track("fast_mode_started");
@@ -1878,9 +2093,21 @@ function bindEvents() {
     renderCases();
     track("show_more_cases");
   });
-  ["caseTitle", "caseSummary", "caseDate", "caseParty", "caseReference", "caseName", "caseStatus"].forEach((id) => {
+  ["caseStory", "caseTitle", "caseDate", "caseParty", "caseReference", "caseName", "caseStatus", "caseAttempt"].forEach((id) => {
     const element = document.getElementById(id);
     element?.addEventListener("input", () => {
+      updateAssistedTexts();
+    });
+  });
+  [
+    ["caseSummary", "summary"],
+    ["whatsappText", "whatsapp"],
+    ["emailText", "email"],
+    ["formReadyText", "form"]
+  ].forEach(([id, key]) => {
+    const element = document.getElementById(id);
+    element?.addEventListener("input", () => {
+      state.editedTexts[key] = true;
       state.previewReady = false;
       renderReview();
       renderCaseMap();
@@ -1941,6 +2168,7 @@ function init() {
   applyTranslations();
   initPrices();
   initFormDefaults();
+  renderRequestOptions();
   renderTones();
   renderSteps();
   bindEvents();

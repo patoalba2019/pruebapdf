@@ -600,6 +600,7 @@ summary:focus-visible {
 .tone-row button,
 .sort-actions button,
 .summary-options button,
+.request-option,
 .show-more-cases {
   background: #eef4ff;
   border: 1px solid #c7d7fe;
@@ -612,11 +613,59 @@ summary:focus-visible {
 
 .tone-row,
 .sort-actions,
-.summary-options {
+.summary-options,
+.request-options {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 8px;
+}
+
+.main-story textarea {
+  min-height: 148px;
+}
+
+.request-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.request-option {
+  align-items: flex-start;
+  color: var(--ink);
+  display: grid;
+  gap: 5px;
+  justify-items: start;
+  min-height: 74px;
+  padding: 12px;
+  text-align: left;
+}
+
+.request-option span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.request-option.is-selected,
+.tone-row button.is-selected {
+  background: linear-gradient(135deg, #eff6ff, #fff7ed);
+  border-color: var(--blue);
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.12);
+}
+
+.ready-texts {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ready-texts label {
+  min-width: 0;
+}
+
+.ready-texts textarea {
+  min-height: 168px;
 }
 
 .quick-start {
@@ -1439,6 +1488,8 @@ footer a {
   .advanced-grid,
   .case-map,
   .final-grid,
+  .ready-texts,
+  .request-options,
   .price-grid,
   .seo-grid {
     grid-template-columns: 1fr;
