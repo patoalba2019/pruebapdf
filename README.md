@@ -1,18 +1,19 @@
-# PruebaPDF
+# CasoClaro
 
-Microproducto para convertir capturas, chats, comprobantes, imágenes y PDFs en un PDF ordenado, numerado y fácil de compartir.
+Microproducto para contar qué pasó, preparar mensajes claros y ordenar archivos si el usuario los tiene.
 
 ## Qué incluye
 
 - Página principal con propuesta clara, usos, precios y preguntas frecuentes.
-- Constructor guiado en 6 pasos: caso, datos básicos, checklist, evidencias, preview y descarga.
-- Subida de JPG, PNG, WEBP y PDF.
+- Flujo guiado en 5 pasos: qué hacer, qué pasó, qué lograr, adjuntos opcionales y resultado listo.
+- Camino completo sin archivos: WhatsApp, email, texto de formulario y documento simple.
+- Subida opcional de JPG, PNG, WEBP, PDF y TXT.
 - Orden manual con botones subir/bajar.
-- Títulos limpios tipo “Evidencia 1”, tipo de evidencia, fecha y descripción editable.
+- Títulos limpios tipo “Archivo 1”, tipo de documento, fecha detectada y descripción editable.
 - Textos sugeridos para resumen, asunto de email, email, WhatsApp y formularios.
 - Índice, portada, línea temporal automática y numeración.
-- Vista previa gratis protegida dentro de la web con marca de agua fuerte.
-- Descarga limpia usando créditos por license key de Lemon Squeezy.
+- Muestra protegida dentro de la web con marca de agua fuerte.
+- Descarga limpia usando código de compra de Lemon Squeezy.
 - Rutas de Vercel para validar licencia, consultar saldo y descontar créditos en servidor.
 
 ## Cómo probar localmente
@@ -23,10 +24,10 @@ La descarga limpia requiere Vercel, Lemon Squeezy y almacenamiento KV configurad
 
 ## Reglas de producto
 
-- La vista previa gratis se muestra dentro de la web y no descarga el documento completo limpio.
-- La vista previa incluye portada, resumen, índice y una muestra limitada de evidencias.
-- El documento completo y el resumen descargable consumen 1 crédito.
-- No mostrar nombres técnicos de archivos, UUIDs o nombres internos en tarjetas, índice, PDF o preview.
+- La muestra gratis se muestra dentro de la web y no descarga el documento completo limpio.
+- La muestra incluye portada, resumen, índice y máximo 1 o 2 archivos completos cuando existen.
+- El documento completo y el resumen descargable consumen 1 descarga disponible.
+- No mostrar nombres técnicos de archivos, UUIDs o nombres internos en tarjetas, índice, PDF o muestra.
 - Mantener siempre los links de compra, precios, license keys, redeem, status, consume-credit, webhooks y variables de entorno como zona protegida.
 
 ## Cómo cambiar precios y links

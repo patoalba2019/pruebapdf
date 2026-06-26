@@ -482,6 +482,20 @@ footer span,
   display: block;
 }
 
+.result-subhead {
+  margin-bottom: 14px;
+}
+
+.result-subhead h4 {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.result-subhead p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
 .step-heading {
   align-items: start;
   display: flex;
@@ -506,13 +520,16 @@ footer span,
   margin-bottom: 4px;
 }
 
-.case-grid {
+.case-grid,
+.intent-grid,
+.attachment-choices {
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(3, 1fr);
 }
 
-.case-option {
+.case-option,
+.choice-card {
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -524,16 +541,22 @@ footer span,
   text-align: left;
 }
 
+.choice-card {
+  min-height: 118px;
+}
+
 .case-option span {
   font-size: 26px;
 }
 
-.case-option small {
+.case-option small,
+.choice-card span {
   color: var(--muted);
   line-height: 1.35;
 }
 
-.case-option.is-selected {
+.case-option.is-selected,
+.choice-card.is-selected {
   background: linear-gradient(135deg, #eff6ff, #fff7ed);
   border-color: var(--blue);
   box-shadow: 0 18px 38px rgba(37, 99, 235, 0.14);
@@ -543,6 +566,10 @@ footer span,
   display: grid;
   gap: 14px;
   grid-template-columns: repeat(2, 1fr);
+}
+
+.smart-form > .advanced-box {
+  grid-column: 1 / -1;
 }
 
 label {
@@ -1555,6 +1582,8 @@ footer a {
   }
 
   .case-grid,
+  .intent-grid,
+  .attachment-choices,
   .price-grid,
   .seo-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1597,6 +1626,8 @@ footer a {
   .value-strip,
   .comparison-grid,
   .case-grid,
+  .intent-grid,
+  .attachment-choices,
   .smart-form,
   .advanced-grid,
   .case-map,

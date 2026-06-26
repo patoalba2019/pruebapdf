@@ -5,8 +5,8 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
 const stepLabels = {
-  es: ["Elegí tu caso", "Contá qué pasó", "Qué agregar", "Archivos", "Tu caso en claro", "Listo para enviar", "Descarga"],
-  en: ["Choose case", "Tell what happened", "What to add", "Files", "Your clear case", "Ready to send", "Download"]
+  es: ["Qué hacer", "Qué pasó", "Qué lograr", "Adjuntos", "Listo"],
+  en: ["What to do", "What happened", "Goal", "Attachments", "Ready"]
 };
 
 const translations = {
@@ -14,7 +14,7 @@ const translations = {
     heroEyebrow: "Asistente documental",
     heroTitle: "Convertí capturas, chats y comprobantes en un documento ordenado en minutos.",
     heroLead:
-      "Elegí un caso, cargá tus archivos y recibí una estructura clara con portada, resumen, índice, evidencias numeradas y mensajes listos para enviar.",
+      "Contá qué pasó, prepará textos claros y ordená archivos si los tenés. CasoClaro te deja todo listo para copiar, enviar o guardar.",
     heroCta: "Crear documento",
     heroSecondary: "Ver cómo funciona",
     how1Title: "1. Elegí tu caso",
@@ -22,7 +22,7 @@ const translations = {
     how2Title: "2. Cargá archivos",
     how2Text: "Títulos limpios y textos sugeridos.",
     how3Title: "3. Revisá y descargá",
-    how3Text: "Vista previa y documento completo con código.",
+    how3Text: "Así quedó y documento completo con código.",
     beforeAfterEyebrow: "Antes y después",
     beforeAfterTitle: "De archivos sueltos a un documento claro",
     beforeLabel: "Antes",
@@ -31,22 +31,29 @@ const translations = {
     before3: "Comprobantes mezclados",
     afterLabel: "Después",
     after1: "Portada y resumen",
-    after2: "Evidencias numeradas",
+    after2: "Archivos ordenados",
     after3: "Índice y línea temporal",
     after4: "Mensajes listos para enviar",
-    builderEyebrow: "Constructor guiado",
-    builderTitle: "Contá qué pasó y dejalo listo para enviar",
-    builderLead: "Elegí una opción, contá la situación con tus palabras, subí lo que tengas y recibí textos claros para enviar o incluir en tu documento.",
+    builderEyebrow: "Asistente simple",
+    builderTitle: "Contá qué pasó. CasoClaro te ayuda con el resto.",
+    builderLead: "Prepará un mensaje claro, un email, un texto para formulario y un documento simple. Podés adjuntar archivos si querés.",
     progressTitle: "Progreso",
     progressHelp: "Vamos de a un paso. Tu información se mantiene mientras avanzás.",
-    step1Title: "¿Qué necesitás preparar?",
-    step1Lead: "Sirve para reclamos, solicitudes, trámites, presentaciones y situaciones personales.",
+    step1Title: "¿Qué querés hacer hoy?",
+    step1Lead: "Elegí una opción simple. Después contás qué pasó y CasoClaro te ayuda con el resto.",
     quickTitle: "Modo rápido",
-    quickText: "Usá textos sugeridos y pasá directo a cargar archivos.",
-    quickButton: "Armarlo en 2 minutos",
+    quickText: "Empezá con una base sugerida y cambiala si querés.",
+    quickButton: "Empezar simple",
+    chooseSituation: "Elegir tipo de situación",
+    intentRequestTitle: "Preparar un reclamo o pedido",
+    intentRequestText: "Te ayudamos a redactar qué decir y qué pedir.",
+    intentOrganizeTitle: "Ordenar archivos y documentación",
+    intentOrganizeText: "Subí lo que tengas y armamos un documento claro.",
+    intentBothTitle: "Las dos cosas",
+    intentBothText: "Preparamos tus textos y ordenamos tus archivos.",
     showMoreCases: "Ver más opciones",
     step2Title: "Contá qué pasó",
-    step2Lead: "Escribí con tus palabras. Con eso armamos un texto claro para WhatsApp, email, formulario y PDF.",
+    step2Lead: "Escribí con tus palabras. Puede ser corto. Después podés agregar detalles si querés.",
     fieldStory: "¿Qué pasó?",
     storyPlaceholder: "Ejemplo: compré un producto, pagué, no llegó y quiero pedir una respuesta.",
     fieldRequest: "¿Qué necesitás pedir?",
@@ -61,19 +68,28 @@ const translations = {
     fieldAttempt: "¿Qué ya intentaste hacer?",
     attemptPlaceholder: "Ejemplo: escribí por WhatsApp, mandé email o hice un reclamo",
     toneTitle: "Estilo del texto",
-    advancedBasic: "Agregar datos opcionales",
-    step3Title: "Te sugerimos qué agregar",
-    step3Lead: "Tocá lo que ya tenés. Esto ayuda a que el documento quede más claro.",
-    step4Title: "Agregá fotos o documentos",
-    step4Lead: "Podés subir capturas, fotos, comprobantes o documentos. La app propone títulos y orden.",
-    uploadTitle: "Subí tus archivos",
-    uploadText: "Tocá para elegir archivos o arrastralos acá.",
-    advancedFiles: "Opciones para ordenar",
+    advancedBasic: "Agregar más detalles",
+    step3Title: "¿Qué querés lograr?",
+    step3Lead: "Elegí el pedido principal. Si no estás seguro, dejá “Una solución”.",
+    step4Title: "¿Tenés algo para adjuntar?",
+    step4Lead: "No necesitás archivos para empezar. Podés preparar tu mensaje ahora y sumar documentos después si querés.",
+    attachmentUploadTitle: "Subir fotos o documentos",
+    attachmentUploadText: "Agregá capturas, PDFs, TXT o comprobantes.",
+    attachmentNoneTitle: "No tengo archivos ahora",
+    attachmentNoneText: "Seguís igual: armamos tus textos y documento simple.",
+    attachmentMessageTitle: "Solo quiero preparar mi mensaje",
+    attachmentMessageText: "Ideal si necesitás copiar y enviar rápido.",
+    attachmentLaterTitle: "Agregar después",
+    attachmentLaterText: "Podés avanzar y volver a subir documentos cuando quieras.",
+    uploadTitle: "Subí archivos si querés",
+    uploadText: "Tocá para elegir archivos, arrastralos acá o continuá sin adjuntar.",
+    advancedFiles: "Orden y documentos",
     sortManual: "Mantener mi orden",
     sortDate: "Ordenar por fecha",
     sortType: "Ordenar por tipo",
-    step5Title: "Tu caso en claro",
-    step5Lead: "Revisá el pedido, los textos listos y la documentación antes de generar la vista previa.",
+    step5Title: "Listo, esto preparamos para vos",
+    step5Lead: "Ya tenés qué decir, qué enviar y qué guardar. Podés copiar textos gratis o desbloquear la descarga limpia.",
+    editPreparedTexts: "Editar textos preparados",
     step6Title: "Listo para enviar",
     step6Lead: "Copiá el mensaje que necesitás o seguí a descarga cuando quieras.",
     step7Title: "Descarga y compra",
@@ -90,10 +106,10 @@ const translations = {
     pricesEyebrow: "Precios",
     pricesTitle: "Elegí cómo desbloquear tus documentos",
     pricesNote: "Cada documento puede incluir varias páginas, imágenes, comprobantes, textos y descripciones.",
-    freeBadge: "Vista previa protegida",
+    freeBadge: "Así quedó protegido",
     freeTitle: "Gratis",
     freeText: "Revisá cómo quedará tu documento.",
-    freeAction: "Crear vista previa",
+    freeAction: "Ver así quedó",
     singleBadge: "1 documento completo",
     singleTitle: "Individual",
     singleText: "Para un caso puntual.",
@@ -109,23 +125,23 @@ const translations = {
     pack20Action: "Comprar mejor precio",
     faqTitle: "Preguntas frecuentes",
     faq1Q: "¿Qué incluye un documento completo?",
-    faq1A: "Portada, resumen, índice, línea temporal cuando hay fechas y todas las evidencias cargadas.",
+    faq1A: "Portada, resumen, pedido principal, textos listos, archivos cargados y línea temporal cuando hay fechas.",
     faq2Q: "¿Qué puedo subir?",
-    faq2A: "Fotos, capturas, comprobantes y documentos. Cada archivo se convierte en una evidencia ordenada.",
+    faq2A: "Fotos, capturas, comprobantes, PDF y TXT. Cada archivo se convierte en un documento ordenado.",
     faq3Q: "¿Cómo uso un pack?",
     faq3A: "Comprás en Lemon Squeezy, recibís un código por email y lo pegás para habilitar tus descargas.",
     progressStep: "Paso",
     downloadsAvailable: "Descargas disponibles",
     pastePurchaseCode: "Pegá tu código de compra.",
     pasteEmailCode: "Pegá el código que recibiste por email para ver tus descargas disponibles.",
-    evidence: "Evidencia",
+    evidence: "Archivo",
     document: "Documento",
     cleanTitle: "Título simple",
     shortDescription: "Descripción breve",
     editTypeDate: "Editar tipo o fecha",
     addedToMap: "Agregado al mapa del caso",
     tapIfHave: "Tocá si ya lo tenés",
-    noFilesEmpty: "Tus evidencias van a aparecer acá con títulos simples, editables y listos para el documento.",
+    noFilesEmpty: "No necesitás archivos para empezar. Podés preparar tu mensaje ahora y sumar documentos después si querés.",
     caseMap1: "Qué pasó",
     caseMap2: "Pedido principal",
     caseMap3: "Ya tenés",
@@ -162,14 +178,16 @@ const translations = {
     couldAddTitle: "Lo que podrías sumar si lo tenés",
     nextStepsTitle: "Próximos pasos simples",
     nextStepReview: "Revisá que el mensaje diga lo que querés.",
-    nextStepPreview: "Mirá la vista previa con marca de agua.",
+    nextStepPreview: "Mirá cómo quedó con marca de agua.",
     nextStepSend: "Copiá el texto o descargá el respaldo cuando esté desbloqueado.",
     readySendTitle: "Listo para enviar",
     readySendLead: "Tres salidas simples: mensaje corto, texto formal y documento de respaldo.",
     whatsappBlockTitle: "Mensaje para WhatsApp",
     emailBlockTitle: "Email o texto formal",
-    documentBlockTitle: "Documento completo + resumen",
-    documentBlockText: "Incluye portada, pedido principal, índice, evidencias y un resumen corto.",
+    documentBlockTitle: "Documento simple + resumen",
+    documentBlockText: "Incluye portada, pedido principal, texto listo, archivos si los agregaste y un resumen corto.",
+    documentNoFilesText: "Incluye portada, pedido principal, texto listo y resumen corto. Podés sumar archivos después.",
+    messageOnlyDocument: "Documento simple sin archivos adjuntos",
     copyWhatsApp: "Copiar WhatsApp",
     copyEmail: "Copiar email",
     copyForm: "Usar en formulario",
@@ -182,7 +200,7 @@ const translations = {
     noMissingNeeded: "Con lo que cargaste ya hay una base clara para revisar.",
     missingDate: "Agregar una fecha puede ayudar a ordenar la situación.",
     missingReference: "Sumar un número de pedido, reclamo o referencia puede hacerlo más fácil de ubicar.",
-    missingEvidence: "Podés sumar comprobantes, capturas o fotos si los tenés.",
+    missingEvidence: "Si más adelante tenés archivos, podés sumarlos.",
     missingAttempt: "Contar qué ya intentaste ayuda a explicar el recorrido.",
     generatedFromYourInfo: "Texto generado con tu información. Podés editarlo antes de copiar o descargar.",
     finalTitle: "Esto es lo que preparaste",
@@ -190,17 +208,17 @@ const translations = {
     estimatedPages: "páginas estimadas",
     markedData: "datos marcados",
     fullDocumentLabel: "Documento completo:",
-    fullDocumentIncludes: "portada, resumen y pedido principal, índice, evidencias y línea temporal si agregaste fechas.",
+    fullDocumentIncludes: "portada, resumen y pedido principal, texto listo, archivos si los agregaste y línea temporal si hay fechas.",
     summaryLabel: "Resumen:",
     summaryIncludes: "una versión corta para enviar rápido por email, WhatsApp o formulario.",
-    previewReadyInside: "Vista previa lista dentro de la web",
-    uploadAtLeastOnePreview: "Subí al menos un archivo para crear la vista previa.",
-    uploadAtLeastOneDoc: "Subí al menos un archivo para crear el documento.",
-    unsupportedFiles: "Algunos archivos no se agregaron. Usá fotos, capturas o documentos de hasta 25 MB.",
-    previewWatermark: "VISTA PREVIA",
+    previewReadyInside: "Así quedó listo dentro de la web",
+    uploadAtLeastOnePreview: "Podés ver cómo queda aunque no tengas archivos.",
+    uploadAtLeastOneDoc: "Podés descargar un documento simple aunque no tengas archivos.",
+    unsupportedFiles: "Algunos archivos no se agregaron. Usá fotos, capturas, PDF o TXT de hasta 25 MB.",
+    previewWatermark: "MUESTRA PROTEGIDA",
     indexTitle: "Índice",
     fullOnly: "Disponible en el documento completo",
-    previewReadyMessage: "Vista previa lista. Para descargar el documento completo usá un código de compra.",
+    previewReadyMessage: "Así quedó listo. Para descargar limpio, usá un código de compra.",
     timeline: "Línea temporal",
     readyTextEyebrow: "Textos listos",
     shareTitle: "Copiá y enviá sin pensar de más",
@@ -213,13 +231,13 @@ const translations = {
     hello: "Hola,",
     shareEmailIntro: "Comparto documentación organizada sobre:",
     reference: "Referencia:",
-    emailAttachment: "Adjunto el documento con resumen e evidencias ordenadas.",
+    emailAttachment: "Adjunto el documento con resumen y archivos ordenados.",
     thanks: "Gracias.",
     whatsappIntro: "Hola, te comparto la documentación organizada sobre",
-    whatsappIncludes: "Incluye resumen y evidencias numeradas para revisar rápido.",
+    whatsappIncludes: "Incluye resumen y archivos ordenados para revisar rápido.",
     formCase: "Caso",
     formSummary: "Resumen",
-    formEvidenceCount: "Evidencias incluidas",
+    formEvidenceCount: "Archivos incluidos",
     validatingCode: "Validando código...",
     enterPurchaseCode: "Ingresá tu código de compra.",
     codeValidated: "Código validado. Tenés",
@@ -231,7 +249,7 @@ const translations = {
     cannotDiscount: "No pudimos descontar una descarga.",
     doneRemaining: "Listo. Te quedan",
     cannotGenerate: "No pudimos generar el documento. Probá con archivos más livianos.",
-    fastReady: "Listo. Ahora agregá tus archivos.",
+    fastReady: "Listo. Ahora contá qué pasó con tus palabras.",
     organizedDocument: "Documento organizado",
     caseTypeLabel: "Tipo de caso",
     dateLabel: "Fecha",
@@ -239,17 +257,18 @@ const translations = {
     preparedByLabel: "Preparado por",
     executiveSummary: "Resumen ejecutivo",
     caseSummaryPdf: "Resumen y pedido principal",
-    evidenceIndexPdf: "Índice de evidencias",
+    evidenceIndexPdf: "Índice de archivos",
     iHaveIt: "Lo tengo",
     addLater: "Lo agregaré después",
-    attachedPdf: "Documento PDF adjunto en las páginas siguientes",
+    attachedPdf: "PDF adjunto en las páginas siguientes",
+    attachedText: "Texto adjunto",
     page: "Página",
     checklist: "Checklist",
     email: "Email",
     whatsapp: "WhatsApp",
-    uploadEvidence: "Subir evidencia",
-    moveEvidenceDown: "Bajar evidencia",
-    deleteEvidence: "Eliminar evidencia",
+    uploadEvidence: "Subir archivo",
+    moveEvidenceDown: "Bajar archivo",
+    deleteEvidence: "Eliminar archivo",
     receipt: "Comprobante",
     payment: "Pago",
     conversation: "Conversación",
@@ -258,7 +277,7 @@ const translations = {
     note: "Nota",
     datePrefix: "Fecha",
     freePrice: "Gratis",
-    previewButton: "Ver vista previa",
+    previewButton: "Ver así quedó",
     redeemButton: "Validar",
     cleanButton: "Descargar documento completo y resumen",
     purchaseCodePlaceholder: "Código de compra",
@@ -272,7 +291,7 @@ const translations = {
     heroDocCase: "Compra online",
     heroDocCover: "Portada",
     heroDocSummary: "Resumen del caso",
-    heroDocEvidence: "Evidencias numeradas",
+    heroDocEvidence: "Archivos ordenados",
     heroDocTimeline: "Línea temporal",
     seoEyebrow: "Casos de uso",
     seoTitle: "Organización para reclamos, garantías, alquileres y trámites",
@@ -292,7 +311,7 @@ const translations = {
     heroEyebrow: "Document assistant",
     heroTitle: "Turn screenshots, chats and receipts into an organized document in minutes.",
     heroLead:
-      "Choose a case, upload your files and get a clear structure with cover, summary, index, numbered evidence and messages ready to send.",
+      "Tell what happened, prepare clear text and organize files if you have them. CasoClaro gets everything ready to copy, send or keep.",
     heroCta: "Create document",
     heroSecondary: "See how it works",
     how1Title: "1. Choose your case",
@@ -300,7 +319,7 @@ const translations = {
     how2Title: "2. Upload files",
     how2Text: "Clean titles and suggested text.",
     how3Title: "3. Review and download",
-    how3Text: "Preview and full document with code.",
+    how3Text: "How it looks and full document with code.",
     beforeAfterEyebrow: "Before and after",
     beforeAfterTitle: "From scattered files to a clear document",
     beforeLabel: "Before",
@@ -309,22 +328,29 @@ const translations = {
     before3: "Mixed receipts",
     afterLabel: "After",
     after1: "Cover and summary",
-    after2: "Numbered evidence",
+    after2: "Organized files",
     after3: "Index and timeline",
     after4: "Messages ready to send",
-    builderEyebrow: "Guided builder",
-    builderTitle: "Tell what happened and get it ready to send",
-    builderLead: "Choose an option, describe the situation in your own words, upload what you have and get clear text to send or include in your document.",
+    builderEyebrow: "Simple assistant",
+    builderTitle: "Tell what happened. CasoClaro helps with the rest.",
+    builderLead: "Prepare a clear message, an email, form text and a simple document. You can attach files if you want.",
     progressTitle: "Progress",
     progressHelp: "One step at a time. Your information stays while you move forward.",
-    step1Title: "What do you need to prepare?",
-    step1Lead: "Useful for claims, requests, procedures, presentations and personal situations.",
+    step1Title: "What do you want to do today?",
+    step1Lead: "Choose one simple option. Then tell what happened and CasoClaro helps with the rest.",
     quickTitle: "Quick mode",
-    quickText: "Use suggested text and go straight to uploading files.",
-    quickButton: "Build it in 2 minutes",
+    quickText: "Start with a suggested base and change it if you want.",
+    quickButton: "Start simple",
+    chooseSituation: "Choose situation type",
+    intentRequestTitle: "Prepare a claim or request",
+    intentRequestText: "We help you write what to say and what to ask for.",
+    intentOrganizeTitle: "Organize files and documents",
+    intentOrganizeText: "Upload what you have and we prepare a clear document.",
+    intentBothTitle: "Both",
+    intentBothText: "We prepare your text and organize your files.",
     showMoreCases: "Show more options",
     step2Title: "Tell what happened",
-    step2Lead: "Write it in your own words. We turn it into clear text for WhatsApp, email, forms and PDF.",
+    step2Lead: "Write it in your own words. It can be short. You can add more details later if you want.",
     fieldStory: "What happened?",
     storyPlaceholder: "Example: I bought a product, paid, it did not arrive and I want to ask for a response.",
     fieldRequest: "What do you need to ask for?",
@@ -339,19 +365,28 @@ const translations = {
     fieldAttempt: "What have you already tried?",
     attemptPlaceholder: "Example: I wrote through WhatsApp, sent an email or opened a request",
     toneTitle: "Text style",
-    advancedBasic: "Add optional details",
-    step3Title: "Suggested things to add",
-    step3Lead: "Tap what you already have. It helps make the document clearer.",
-    step4Title: "Add photos or documents",
-    step4Lead: "Upload screenshots, photos, receipts or documents. The app suggests titles and order.",
-    uploadTitle: "Upload your files",
-    uploadText: "Tap to choose files or drag them here.",
-    advancedFiles: "Order options",
+    advancedBasic: "Add more details",
+    step3Title: "What do you want to achieve?",
+    step3Lead: "Choose the main request. If you are not sure, leave “A solution”.",
+    step4Title: "Do you have anything to attach?",
+    step4Lead: "You do not need files to start. You can prepare your message now and add documents later if you want.",
+    attachmentUploadTitle: "Upload photos or documents",
+    attachmentUploadText: "Add screenshots, PDFs, TXT files or receipts.",
+    attachmentNoneTitle: "I do not have files now",
+    attachmentNoneText: "You can continue: we prepare your text and simple document.",
+    attachmentMessageTitle: "I only want to prepare my message",
+    attachmentMessageText: "Ideal if you need to copy and send quickly.",
+    attachmentLaterTitle: "Add later",
+    attachmentLaterText: "You can move forward and come back to upload documents.",
+    uploadTitle: "Upload files if you want",
+    uploadText: "Tap to choose files, drag them here or continue without attaching.",
+    advancedFiles: "Order and documents",
     sortManual: "Keep my order",
     sortDate: "Sort by date",
     sortType: "Sort by type",
-    step5Title: "Your clear case",
-    step5Lead: "Review the request, ready-to-send text and documentation before creating the preview.",
+    step5Title: "Done, this is what we prepared for you",
+    step5Lead: "You now have what to say, what to send and what to keep. You can copy text for free or unlock the clean download.",
+    editPreparedTexts: "Edit prepared text",
     step6Title: "Ready to send",
     step6Lead: "Copy the message you need or continue to download when you are ready.",
     step7Title: "Download and purchase",
@@ -368,10 +403,10 @@ const translations = {
     pricesEyebrow: "Pricing",
     pricesTitle: "Choose how to unlock your documents",
     pricesNote: "Each document can include multiple pages, images, receipts, text and descriptions.",
-    freeBadge: "Protected preview",
+    freeBadge: "Protected sample",
     freeTitle: "Free",
     freeText: "Review how your document will look.",
-    freeAction: "Create preview",
+    freeAction: "See how it looks",
     singleBadge: "1 full document",
     singleTitle: "Individual",
     singleText: "For one specific case.",
@@ -387,23 +422,23 @@ const translations = {
     pack20Action: "Buy best value",
     faqTitle: "FAQ",
     faq1Q: "What does a full document include?",
-    faq1A: "Cover, summary, index, timeline when dates are available and all uploaded evidence.",
+    faq1A: "Cover, summary, main request, ready text, uploaded files and timeline when dates are available.",
     faq2Q: "What can I upload?",
-    faq2A: "Photos, screenshots, receipts and documents. Each file becomes an organized evidence item.",
+    faq2A: "Photos, screenshots, receipts, PDF and TXT files. Each file becomes an organized document item.",
     faq3Q: "How do I use a pack?",
     faq3A: "Buy through Lemon Squeezy, receive a code by email and paste it to enable your downloads.",
     progressStep: "Step",
     downloadsAvailable: "Downloads available",
     pastePurchaseCode: "Paste your purchase code.",
     pasteEmailCode: "Paste the code you received by email to see your available downloads.",
-    evidence: "Evidence",
+    evidence: "File",
     document: "Document",
     cleanTitle: "Simple title",
     shortDescription: "Short description",
     editTypeDate: "Edit type or date",
     addedToMap: "Added to the case map",
     tapIfHave: "Tap if you have it",
-    noFilesEmpty: "Your evidence will appear here with simple, editable titles ready for the document.",
+    noFilesEmpty: "You do not need files to start. You can prepare your message now and add documents later if you want.",
     caseMap1: "What happened",
     caseMap2: "Main request",
     caseMap3: "You have",
@@ -440,14 +475,16 @@ const translations = {
     couldAddTitle: "What you could add if you have it",
     nextStepsTitle: "Simple next steps",
     nextStepReview: "Check that the message says what you want.",
-    nextStepPreview: "Review the watermarked preview.",
+    nextStepPreview: "Review how it looks with a watermark.",
     nextStepSend: "Copy the text or download the backup when it is unlocked.",
     readySendTitle: "Ready to send",
     readySendLead: "Three simple outputs: short message, formal text and backup document.",
     whatsappBlockTitle: "WhatsApp message",
     emailBlockTitle: "Email or formal text",
-    documentBlockTitle: "Full document + summary",
-    documentBlockText: "Includes cover, main request, index, evidence and a short summary.",
+    documentBlockTitle: "Simple document + summary",
+    documentBlockText: "Includes cover, main request, ready text, files if you added them and a short summary.",
+    documentNoFilesText: "Includes cover, main request, ready text and a short summary. You can add files later.",
+    messageOnlyDocument: "Simple document without attached files",
     copyWhatsApp: "Copy WhatsApp",
     copyEmail: "Copy email",
     copyForm: "Use in form",
@@ -460,7 +497,7 @@ const translations = {
     noMissingNeeded: "What you added is enough to provide a clear starting point.",
     missingDate: "Adding a date can help organize the situation.",
     missingReference: "Adding an order, request or reference number can make it easier to identify.",
-    missingEvidence: "You can add receipts, screenshots or photos if you have them.",
+    missingEvidence: "If you have files later, you can add them.",
     missingAttempt: "Explaining what you already tried helps show the steps taken.",
     generatedFromYourInfo: "Text generated from your information. You can edit it before copying or downloading.",
     finalTitle: "This is what you prepared",
@@ -468,17 +505,17 @@ const translations = {
     estimatedPages: "estimated pages",
     markedData: "marked items",
     fullDocumentLabel: "Full document:",
-    fullDocumentIncludes: "cover, summary and main request, index, evidence and timeline if you added dates.",
+    fullDocumentIncludes: "cover, summary and main request, ready text, files if you added them and timeline if dates are available.",
     summaryLabel: "Summary:",
     summaryIncludes: "a short version to quickly send by email, WhatsApp or form.",
-    previewReadyInside: "Preview ready inside the website",
-    uploadAtLeastOnePreview: "Upload at least one file to create the preview.",
-    uploadAtLeastOneDoc: "Upload at least one file to create the document.",
-    unsupportedFiles: "Some files were not added. Use photos, screenshots or documents up to 25 MB.",
-    previewWatermark: "PREVIEW",
+    previewReadyInside: "This is ready inside the website",
+    uploadAtLeastOnePreview: "You can see how it looks even without files.",
+    uploadAtLeastOneDoc: "You can download a simple document even without files.",
+    unsupportedFiles: "Some files were not added. Use photos, screenshots, PDF or TXT files up to 25 MB.",
+    previewWatermark: "PROTECTED SAMPLE",
     indexTitle: "Index",
     fullOnly: "Available in the full document",
-    previewReadyMessage: "Preview ready. To download the full document, use a purchase code.",
+    previewReadyMessage: "This is ready. To download it clean, use a purchase code.",
     timeline: "Timeline",
     readyTextEyebrow: "Ready text",
     shareTitle: "Copy and send without overthinking",
@@ -491,13 +528,13 @@ const translations = {
     hello: "Hi,",
     shareEmailIntro: "I am sharing organized documentation about:",
     reference: "Reference:",
-    emailAttachment: "I attached the document with the summary and organized evidence.",
+    emailAttachment: "I attached the document with the summary and organized files.",
     thanks: "Thanks.",
     whatsappIntro: "Hi, I am sharing the organized documentation about",
-    whatsappIncludes: "It includes a summary and numbered evidence for quick review.",
+    whatsappIncludes: "It includes a summary and organized files for quick review.",
     formCase: "Case",
     formSummary: "Summary",
-    formEvidenceCount: "Evidence included",
+    formEvidenceCount: "Files included",
     validatingCode: "Validating code...",
     enterPurchaseCode: "Enter your purchase code.",
     codeValidated: "Code validated. You have",
@@ -509,7 +546,7 @@ const translations = {
     cannotDiscount: "We could not subtract a download.",
     doneRemaining: "Done. You have",
     cannotGenerate: "We could not generate the document. Try lighter files.",
-    fastReady: "Ready. Now add your files.",
+    fastReady: "Ready. Now tell what happened in your own words.",
     organizedDocument: "Organized document",
     caseTypeLabel: "Case type",
     dateLabel: "Date",
@@ -517,17 +554,18 @@ const translations = {
     preparedByLabel: "Prepared by",
     executiveSummary: "Executive summary",
     caseSummaryPdf: "Summary and main request",
-    evidenceIndexPdf: "Evidence index",
+    evidenceIndexPdf: "File index",
     iHaveIt: "I have it",
     addLater: "I will add it later",
-    attachedPdf: "Attached PDF document on the following pages",
+    attachedPdf: "Attached PDF on the following pages",
+    attachedText: "Attached text",
     page: "Page",
     checklist: "Checklist",
     email: "Email",
     whatsapp: "WhatsApp",
-    uploadEvidence: "Move evidence up",
-    moveEvidenceDown: "Move evidence down",
-    deleteEvidence: "Delete evidence",
+    uploadEvidence: "Move file up",
+    moveEvidenceDown: "Move file down",
+    deleteEvidence: "Delete file",
     receipt: "Receipt",
     payment: "Payment",
     conversation: "Conversation",
@@ -536,7 +574,7 @@ const translations = {
     note: "Note",
     datePrefix: "Date",
     freePrice: "Free",
-    previewButton: "View preview",
+    previewButton: "See how it looks",
     redeemButton: "Validate",
     cleanButton: "Download full document and summary",
     purchaseCodePlaceholder: "Purchase code",
@@ -550,7 +588,7 @@ const translations = {
     heroDocCase: "Online purchase",
     heroDocCover: "Cover",
     heroDocSummary: "Case summary",
-    heroDocEvidence: "Numbered evidence",
+    heroDocEvidence: "Organized files",
     heroDocTimeline: "Timeline",
     seoEyebrow: "Use cases",
     seoTitle: "Organize claims, warranties, rentals and personal procedures",
@@ -760,6 +798,19 @@ const requestOptions = [
   { id: "other", labelKey: "requestOther", phraseKey: "requestOtherPhrase" }
 ];
 
+const intentOptions = [
+  { id: "request", titleKey: "intentRequestTitle", textKey: "intentRequestText" },
+  { id: "organize", titleKey: "intentOrganizeTitle", textKey: "intentOrganizeText" },
+  { id: "both", titleKey: "intentBothTitle", textKey: "intentBothText" }
+];
+
+const attachmentOptions = [
+  { id: "upload", titleKey: "attachmentUploadTitle", textKey: "attachmentUploadText" },
+  { id: "none", titleKey: "attachmentNoneTitle", textKey: "attachmentNoneText" },
+  { id: "message", titleKey: "attachmentMessageTitle", textKey: "attachmentMessageText" },
+  { id: "later", titleKey: "attachmentLaterTitle", textKey: "attachmentLaterText" }
+];
+
 const statuses = {
   es: ["En preparación", "Enviado", "En conversación", "Esperando respuesta", "Resuelto"],
   en: ["Preparing", "Sent", "In conversation", "Waiting for response", "Resolved"]
@@ -778,6 +829,8 @@ const state = {
   previewReady: false,
   showAllCases: false,
   fastMode: false,
+  intent: "both",
+  attachmentChoice: "later",
   requestType: "solution",
   tone: "cordial",
   editedTexts: {
@@ -817,6 +870,7 @@ function evidenceLabel(index) {
 }
 
 const typeKeys = {
+  Archivo: "evidence",
   Evidencia: "evidence",
   Comprobante: "receipt",
   Pago: "payment",
@@ -906,8 +960,8 @@ function buildAssistedTexts() {
         ? "I am including the available documentation to make the review easier."
         : "Acompaño la documentación disponible para facilitar la revisión."
       : state.lang === "en"
-        ? "I can add supporting documentation if needed."
-        : "Puedo sumar documentación de respaldo si hace falta.";
+        ? "I can add supporting documents later if needed."
+        : "Puedo sumar documentos de respaldo después si hace falta.";
 
   if (state.lang === "en") {
     const openings = {
@@ -922,7 +976,7 @@ function buildAssistedTexts() {
       summary,
       whatsapp: `${openings[state.tone] || openings.cordial} "${title}". ${story} I am requesting ${request}. ${evidenceNote}`,
       email: `${openings[state.tone] || openings.cordial} "${title}".\n\n${story}\n\n${context ? `${context}\n\n` : ""}${evidenceNote} I am requesting ${request} and would appreciate a response through this channel.\n\nThank you.`,
-      form: `Case: ${title}\n\nWhat happened:\n${story}\n\nMain request:\nI am requesting ${request}.\n\n${context ? `Details:\n${context}\n\n` : ""}Available evidence: ${state.items.length} file(s).`
+      form: `Case: ${title}\n\nWhat happened:\n${story}\n\nMain request:\nI am requesting ${request}.\n\n${context ? `Details:\n${context}\n\n` : ""}Attached files: ${state.items.length ? `${state.items.length} file(s).` : "none for now."}`
     };
   }
 
@@ -938,7 +992,7 @@ function buildAssistedTexts() {
     summary,
     whatsapp: `${openings[state.tone] || openings.cordial} "${title}". ${story} Solicito ${request}. ${evidenceNote}`,
     email: `${openings[state.tone] || openings.cordial} "${title}".\n\n${story}\n\n${context ? `${context}\n\n` : ""}${evidenceNote} Solicito ${request} y agradezco una respuesta por este medio.\n\nGracias.`,
-    form: `Caso: ${title}\n\nQué pasó:\n${story}\n\nPedido principal:\nSolicito ${request}.\n\n${context ? `Datos adicionales:\n${context}\n\n` : ""}Evidencias disponibles: ${state.items.length} archivo(s).`
+    form: `Caso: ${title}\n\nQué pasó:\n${story}\n\nPedido principal:\nSolicito ${request}.\n\n${context ? `Datos adicionales:\n${context}\n\n` : ""}Archivos adjuntos: ${state.items.length ? `${state.items.length} archivo(s).` : "ninguno por ahora."}`
   };
 }
 
@@ -984,9 +1038,24 @@ function cleanFileStem(name) {
 function suggestedEvidenceTitle(index, file) {
   const list = localizedEvidence();
   const cleaned = cleanFileStem(file.name);
+  const lowerName = String(file.name || "").toLowerCase();
+  if (/factura|invoice|ticket|recibo|comprobante/.test(lowerName)) return text("receipt");
+  if (/pago|transfer|payment/.test(lowerName)) return text("payment");
+  if (/chat|whatsapp|conversaci[oó]n|mensaje/.test(lowerName)) return text("conversation");
+  if (/captura|screenshot|foto|imagen|photo|image/.test(lowerName)) return text("photo");
+  if (/pedido|orden|order|formulario|contrato/.test(lowerName)) return text("document");
   if (list[index]) return list[index];
   if (cleaned && cleaned.length > 5 && cleaned.length < 36) return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
   return evidenceLabel(index);
+}
+
+function dateFromFilename(name) {
+  const value = String(name || "");
+  const iso = value.match(/(20\d{2})[-_. ]?(0[1-9]|1[0-2])[-_. ]?([0-2]\d|3[01])/);
+  if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
+  const local = value.match(/([0-2]\d|3[01])[-_. ](0[1-9]|1[0-2])[-_. ](20\d{2})/);
+  if (local) return `${local[3]}-${local[2]}-${local[1]}`;
+  return "";
 }
 
 function showMessage(text, kind = "note") {
@@ -1167,6 +1236,43 @@ function renderRequestOptions() {
   });
 }
 
+function renderIntentOptions() {
+  const grid = $("#intentGrid");
+  if (!grid) return;
+  grid.innerHTML = "";
+  intentOptions.forEach((option) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `choice-card${option.id === state.intent ? " is-selected" : ""}`;
+    button.innerHTML = `<strong>${text(option.titleKey)}</strong><span>${text(option.textKey)}</span>`;
+    button.addEventListener("click", () => {
+      state.intent = option.id;
+      renderIntentOptions();
+      track("intent_selected", { intent: option.id });
+    });
+    grid.appendChild(button);
+  });
+}
+
+function renderAttachmentChoices() {
+  const grid = $("#attachmentChoices");
+  if (!grid) return;
+  grid.innerHTML = "";
+  attachmentOptions.forEach((option) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `choice-card${option.id === state.attachmentChoice ? " is-selected" : ""}`;
+    button.innerHTML = `<strong>${text(option.titleKey)}</strong><span>${text(option.textKey)}</span>`;
+    button.addEventListener("click", () => {
+      state.attachmentChoice = option.id;
+      renderAttachmentChoices();
+      showMessage(option.id === "upload" ? "" : text("noFilesEmpty"), "note");
+      track("attachment_choice_selected", { attachmentChoice: option.id });
+    });
+    grid.appendChild(button);
+  });
+}
+
 function summaryOptionsForCase() {
   const generic =
     state.lang === "en"
@@ -1290,10 +1396,6 @@ function showStep(index) {
 }
 
 function validateStep() {
-  if (state.step === 3 && !state.items.length) {
-    showMessage(text("uploadAtLeastOnePreview"), "warning");
-    return false;
-  }
   return true;
 }
 
@@ -1307,26 +1409,31 @@ function previousStep() {
   showStep(state.step - 1);
 }
 
-function addFiles(files) {
-  const accepted = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
+async function addFiles(files) {
+  const accepted = ["image/jpeg", "image/png", "image/webp", "application/pdf", "text/plain"];
   const incoming = Array.from(files || []);
-  const supported = incoming.filter((file) => accepted.includes(file.type) && file.size <= 25 * 1024 * 1024);
+  const supported = incoming.filter((file) => (accepted.includes(file.type) || /\.txt$/i.test(file.name)) && file.size <= 25 * 1024 * 1024);
   if (supported.length !== incoming.length) {
     showMessage(text("unsupportedFiles"), "warning");
   }
-  supported.forEach((file) => {
+  for (const file of supported) {
     const index = state.items.length;
+    const isText = file.type === "text/plain" || /\.txt$/i.test(file.name);
+    const textContent = isText ? await file.text().catch(() => "") : "";
     state.items.push({
       id: crypto.randomUUID(),
       file,
       title: suggestedEvidenceTitle(index, file),
       type: guessType(file, index),
-      date: "",
-      description: suggestDescription(index),
+      date: dateFromFilename(file.name),
+      description: textContent ? textContent.replace(/\s+/g, " ").trim().slice(0, 180) : suggestDescription(index),
+      textContent,
       previewUrl: file.type.startsWith("image/") ? URL.createObjectURL(file) : ""
     });
-  });
+  }
   state.previewReady = false;
+  if (supported.length) state.attachmentChoice = "upload";
+  renderAttachmentChoices();
   renderItems();
   updateAssistedTexts();
   if (supported.length) track("files_added", { count: supported.length });
@@ -1334,11 +1441,13 @@ function addFiles(files) {
 
 function guessType(file, index) {
   const name = file.name.toLowerCase();
-  if (name.includes("factura") || name.includes("invoice") || name.includes("ticket")) return "Comprobante";
-  if (name.includes("chat") || name.includes("whatsapp")) return "Conversación";
-  if (name.includes("pago") || name.includes("transfer")) return "Pago";
+  if (/factura|invoice|ticket|recibo|comprobante/.test(name)) return "Comprobante";
+  if (/chat|whatsapp|conversaci[oó]n|mensaje/.test(name)) return "Conversación";
+  if (/pago|transfer|payment/.test(name)) return "Pago";
+  if (/captura|screenshot|foto|imagen|photo|image/.test(name) || file.type.startsWith("image/")) return "Foto";
   if (file.type === "application/pdf") return "Documento";
-  return "Evidencia";
+  if (file.type === "text/plain" || /\.txt$/i.test(file.name)) return "Documento";
+  return "Archivo";
 }
 
 function suggestDescription(index) {
@@ -1380,8 +1489,10 @@ function renderItems() {
       image.src = item.previewUrl;
       image.alt = "";
       thumb.appendChild(image);
+    } else if (item.file.type === "text/plain" || /\.txt$/i.test(item.file.name)) {
+      thumb.innerHTML = "<span>TXT</span>";
     } else {
-      thumb.innerHTML = "<span>Doc</span>";
+      thumb.innerHTML = "<span>DOC</span>";
     }
 
     const body = document.createElement("div");
@@ -1389,7 +1500,7 @@ function renderItems() {
     body.innerHTML = `
       <div class="evidence-head">
         <strong>${evidenceLabel(visibleIndex)}</strong>
-        <span>${localizedType(item.type)}</span>
+        <span>${localizedType(item.type)}${item.date ? ` · ${escapeHtml(item.date)}` : ""}</span>
       </div>
     `;
 
@@ -1407,7 +1518,7 @@ function renderItems() {
     const advancedFields = document.createElement("div");
     advancedFields.className = "item-advanced-fields";
     advancedFields.append(
-      selectFor(item, "type", ["Evidencia", "Comprobante", "Pago", "Conversación", "Documento", "Foto", "Estado", "Nota"], () => {
+      selectFor(item, "type", ["Archivo", "Comprobante", "Pago", "Conversación", "Documento", "Foto", "Estado", "Nota"], () => {
         renderItems();
         renderReview();
       }),
@@ -1513,8 +1624,10 @@ function removeItem(index) {
   state.previewReady = false;
   renderItems();
   renderReview();
+  renderClearCase();
   renderCaseMap();
   renderFinalSummary();
+  renderReadyToSend();
 }
 
 function estimatePages() {
@@ -1651,6 +1764,7 @@ function renderReadyToSend() {
   const whatsapp = readyText("whatsapp");
   const email = readyText("email");
   const form = readyText("form");
+  const documentText = state.items.length ? text("documentBlockText") : text("documentNoFilesText");
   panel.innerHTML = `
     <div class="ready-send-intro">
       <h4>${text("readySendTitle")}</h4>
@@ -1676,7 +1790,7 @@ function renderReadyToSend() {
       </article>
       <article class="ready-send-card document-ready-card">
         <span>${text("documentBlockTitle")}</span>
-        <p>${text("documentBlockText")}</p>
+        <p>${documentText}</p>
         <ul>
           <li>${state.items.length} ${text("filesAddedMetric")}</li>
           <li>${estimatePages()} ${text("estimatedPages")}</li>
@@ -1722,7 +1836,10 @@ function bindReadyActions(panel) {
     });
   });
   panel.querySelectorAll("[data-go-unlock]").forEach((button) => {
-    button.addEventListener("click", () => showStep(6));
+    button.addEventListener("click", () => {
+      showStep(4);
+      document.querySelector(".unlock-grid")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   });
 }
 
@@ -1752,19 +1869,17 @@ function renderReview() {
 }
 
 function renderProtectedPreview() {
-  if (!state.items.length) {
-    showMessage(text("uploadAtLeastOnePreview"), "warning");
-    return;
-  }
   const panel = $("#previewPanel");
   const items = sortedItems();
   const visibleItems = items.slice(0, 2);
   const lockedItems = items.slice(2);
   const title = titleText();
   const summary = summaryText();
-  const index = items
-    .map((item, itemIndex) => `<li><span>${evidenceLabel(itemIndex)}</span><strong>${escapeHtml(item.title)}</strong></li>`)
-    .join("");
+  const index = items.length
+    ? items
+        .map((item, itemIndex) => `<li><span>${evidenceLabel(itemIndex)}</span><strong>${escapeHtml(item.title)}</strong></li>`)
+        .join("")
+    : `<li><span>${text("document")}</span><strong>${text("messageOnlyDocument")}</strong></li>`;
   const visible = visibleItems
     .map((item, itemIndex) => {
       const media = item.previewUrl
@@ -1791,6 +1906,14 @@ function renderProtectedPreview() {
       `
     )
     .join("");
+  const noFilePreview = `
+    <article class="preview-evidence">
+      <span>${text("document")}</span>
+      <h5>${text("messageOnlyDocument")}</h5>
+      <p>${escapeHtml(readyText("form"))}</p>
+      <div class="pdf-placeholder">${text("readyToSend")}</div>
+    </article>
+  `;
 
   panel.innerHTML = `
     <div class="preview-document">
@@ -1807,7 +1930,7 @@ function renderProtectedPreview() {
       </section>
       ${renderTimelineHtml(true)}
       <section class="preview-evidence-list">
-        ${visible}
+        ${visible || noFilePreview}
         ${locked}
       </section>
     </div>
@@ -2035,12 +2158,16 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   const indexPage = pdf.addPage(pageSize);
   drawPageHeader(indexPage, text("evidenceIndexPdf"));
   let indexY = 708;
-  items.forEach((item, index) => {
-    indexPage.drawText(evidenceLabel(index), { x: 52, y: indexY, size: 10, font: bold, color: rgb(0.15, 0.31, 0.72) });
-    indexPage.drawText(item.title.slice(0, 58), { x: 145, y: indexY, size: 10, font: regular, color: rgb(0.13, 0.16, 0.22) });
-    if (item.date) indexPage.drawText(item.date, { x: 470, y: indexY, size: 9, font: regular, color: rgb(0.39, 0.43, 0.5) });
-    indexY -= 22;
-  });
+  if (!items.length) {
+    drawParagraph(indexPage, text("documentNoFilesText"), 52, indexY, 11, 82);
+  } else {
+    items.forEach((item, index) => {
+      indexPage.drawText(evidenceLabel(index), { x: 52, y: indexY, size: 10, font: bold, color: rgb(0.15, 0.31, 0.72) });
+      indexPage.drawText(item.title.slice(0, 58), { x: 145, y: indexY, size: 10, font: regular, color: rgb(0.13, 0.16, 0.22) });
+      if (item.date) indexPage.drawText(item.date, { x: 470, y: indexY, size: 9, font: regular, color: rgb(0.39, 0.43, 0.5) });
+      indexY -= 22;
+    });
+  }
   drawFooter(indexPage);
 
   const dated = items.filter((item) => item.date).sort((a, b) => a.date.localeCompare(b.date));
@@ -2088,6 +2215,17 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
         pdf.addPage(copiedPage);
         drawFooter(copiedPage);
       });
+    } else if (item.file.type === "text/plain" || /\.txt$/i.test(item.file.name)) {
+      page.drawRectangle({ x: 52, y: 58, width: 490, height: Math.max(140, contentY - 84), color: rgb(0.98, 0.99, 1) });
+      page.drawText(text("attachedText"), {
+        x: 72,
+        y: contentY - 36,
+        size: 12,
+        font: bold,
+        color: rgb(0.13, 0.16, 0.22)
+      });
+      drawParagraph(page, item.textContent || (await item.file.text().catch(() => "")), 72, contentY - 62, 10, 82);
+      drawFooter(page);
     } else {
       const converted = await imageToBytes(item.file);
       const dims = await imageDimensions(item.file);
@@ -2106,10 +2244,6 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
 }
 
 async function downloadPaidPackage() {
-  if (!state.items.length) {
-    showMessage(text("uploadAtLeastOneDoc"), "warning");
-    return;
-  }
   if (state.credits <= 0 || !state.token) {
     showMessage(text("enableDownloads"), "warning");
     return;
@@ -2251,6 +2385,8 @@ function bindEvents() {
     populateStatusOptions();
     state.checklist = localizedChecklist().map((_, index) => ({ index, status: state.checklist[index]?.status || "later" }));
     renderCases();
+    renderIntentOptions();
+    renderAttachmentChoices();
     renderRequestOptions();
     renderSummaryOptions();
     renderTones();
@@ -2267,7 +2403,7 @@ function bindEvents() {
   $("#fastModeButton")?.addEventListener("click", () => {
     state.fastMode = true;
     updateAssistedTexts();
-    showStep(3);
+    showStep(1);
     showMessage(text("fastReady"), "success");
     track("fast_mode_started");
   });
@@ -2296,8 +2432,8 @@ function bindEvents() {
       renderShareKit();
     });
   });
-  $("#fileInput").addEventListener("change", (event) => {
-    addFiles(event.target.files);
+  $("#fileInput").addEventListener("change", async (event) => {
+    await addFiles(event.target.files);
     event.target.value = "";
   });
   ["sortManual", "sortDate", "sortType"].forEach((id) => {
@@ -2347,6 +2483,8 @@ function init() {
   applyTranslations();
   initPrices();
   initFormDefaults();
+  renderIntentOptions();
+  renderAttachmentChoices();
   renderRequestOptions();
   renderTones();
   renderSteps();

@@ -15,14 +15,14 @@
     <meta property="og:title" content="CasoClaro | Documentos claros para reclamos y trámites" />
     <meta
       property="og:description"
-      content="De archivos sueltos a un documento claro: elegí tu caso, cargá archivos, revisá una vista previa y descargá el documento completo."
+      content="Contá qué pasó, prepará textos claros, ordená archivos si los tenés y descargá un documento completo cuando quieras."
     />
     <meta property="og:url" content="https://pruebapdf.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="CasoClaro | Convertí capturas en documentos claros" />
     <meta
       name="twitter:description"
-      content="Armá un documento profesional con portada, resumen, índice, evidencias numeradas y mensajes listos para enviar."
+      content="Contá qué pasó, prepará textos claros y ordená archivos si los tenés."
     />
     <link
       rel="icon"
@@ -81,8 +81,8 @@
             <p class="eyebrow" data-i18n="heroEyebrow">Asistente documental</p>
             <h1 data-i18n="heroTitle">Convertí capturas, chats y comprobantes en un documento ordenado en minutos.</h1>
             <p class="lead" data-i18n="heroLead">
-              Elegí un caso, cargá tus archivos y recibí una estructura clara con portada, resumen, índice, evidencias
-              numeradas y mensajes listos para enviar.
+              Contá qué pasó, prepará textos claros y ordená archivos si los tenés. CasoClaro te deja todo listo para
+              copiar, enviar o guardar.
             </p>
             <div class="actions">
               <a class="primary" href="#crear" data-track="start_create" data-i18n="heroCta">Crear documento</a>
@@ -100,7 +100,7 @@
               <strong data-i18n="heroDocCase">Compra online</strong>
               <small data-i18n="heroDocCover">Portada</small>
               <small data-i18n="heroDocSummary">Resumen del caso</small>
-              <small data-i18n="heroDocEvidence">Evidencias numeradas</small>
+              <small data-i18n="heroDocEvidence">Archivos ordenados</small>
               <small data-i18n="heroDocTimeline">Línea temporal</small>
             </div>
           </div>
@@ -118,7 +118,7 @@
         </div>
         <div>
           <strong data-i18n="how3Title">3. Revisá y descargá</strong>
-          <span data-i18n="how3Text">Vista previa y documento completo con código.</span>
+          <span data-i18n="how3Text">Así quedó y documento completo con código.</span>
         </div>
       </section>
 
@@ -140,7 +140,7 @@
             <span class="pill" data-i18n="afterLabel">Después</span>
             <ul>
               <li data-i18n="after1">Portada y resumen</li>
-              <li data-i18n="after2">Evidencias numeradas</li>
+              <li data-i18n="after2">Archivos ordenados</li>
               <li data-i18n="after3">Índice y línea temporal</li>
               <li data-i18n="after4">Mensajes listos para enviar</li>
             </ul>
@@ -161,7 +161,7 @@
           <aside class="progress-panel" aria-label="Progreso">
             <div class="progress-head">
               <strong data-i18n="progressTitle">Progreso</strong>
-              <span id="progressPercent">Paso 1 de 6</span>
+              <span id="progressPercent">Paso 1 de 5</span>
             </div>
             <div class="progress-bar"><span id="progressBar"></span></div>
             <ol class="steps-list" id="stepsList"></ol>
@@ -173,27 +173,31 @@
               <div class="step-heading">
                 <span>1</span>
                 <div>
-                  <h3 data-i18n="step1Title">¿Qué querés ordenar?</h3>
-                  <p data-i18n="step1Lead">Elegí la opción más parecida. Te preparamos una base automáticamente.</p>
+                  <h3 data-i18n="step1Title">¿Qué querés hacer hoy?</h3>
+                  <p data-i18n="step1Lead">Elegí una opción simple. Después contás qué pasó y CasoClaro te ayuda con el resto.</p>
                 </div>
               </div>
+              <div class="intent-grid" id="intentGrid"></div>
               <div class="quick-start">
                 <div>
                   <strong data-i18n="quickTitle">Modo rápido</strong>
-                  <span data-i18n="quickText">Usá textos sugeridos y pasá directo a cargar archivos.</span>
+                  <span data-i18n="quickText">Empezá con una base sugerida y cambiala si querés.</span>
                 </div>
-                <button id="fastModeButton" type="button" data-i18n="quickButton">Armarlo en 2 minutos</button>
+                <button id="fastModeButton" type="button" data-i18n="quickButton">Empezar simple</button>
               </div>
-              <div class="case-grid" id="caseGrid"></div>
-              <button class="show-more-cases" id="showMoreCases" type="button" data-i18n="showMoreCases">Ver más opciones</button>
+              <details class="advanced-box">
+                <summary data-i18n="chooseSituation">Elegir tipo de situación</summary>
+                <div class="case-grid" id="caseGrid"></div>
+                <button class="show-more-cases" id="showMoreCases" type="button" data-i18n="showMoreCases">Ver más opciones</button>
+              </details>
             </section>
 
             <section class="wizard-step" data-step="1">
               <div class="step-heading">
                 <span>2</span>
                 <div>
-                  <h3 data-i18n="step2Title">Te dejamos un texto listo</h3>
-                  <p data-i18n="step2Lead">Podés dejarlo así o tocar una opción para cambiar el enfoque.</p>
+                  <h3 data-i18n="step2Title">Contame qué pasó</h3>
+                  <p data-i18n="step2Lead">Escribí poco o mucho. Con eso preparamos textos claros para enviar.</p>
                 </div>
               </div>
               <div class="smart-form">
@@ -201,39 +205,16 @@
                   <span data-i18n="fieldStory">¿Qué pasó?</span>
                   <textarea id="caseStory" data-i18n-placeholder="storyPlaceholder"></textarea>
                 </label>
-                <label class="wide">
-                  <span data-i18n="fieldRequest">¿Qué necesitás pedir?</span>
-                  <div class="request-options" id="requestOptions"></div>
-                </label>
-                <label>
-                  <span data-i18n="fieldTitle">Título del caso</span>
-                  <div class="input-action">
-                    <input id="caseTitle" />
-                    <button id="useTitleExample" type="button" data-i18n="useExample">Usar ejemplo</button>
-                  </div>
-                </label>
-                <label class="wide">
-                  <span data-i18n="fieldSummary">Resumen y pedido principal</span>
-                  <textarea id="caseSummary"></textarea>
-                  <div class="summary-options" id="summaryOptions"></div>
-                </label>
-                <div class="ready-texts wide" id="readyTexts">
-                  <label>
-                    <span data-i18n="whatsappReadyLabel">Texto breve para WhatsApp</span>
-                    <textarea id="whatsappText"></textarea>
-                  </label>
-                  <label>
-                    <span data-i18n="emailReadyLabel">Texto formal para email</span>
-                    <textarea id="emailText"></textarea>
-                  </label>
-                  <label>
-                    <span data-i18n="formReadyLabel">Texto para formulario</span>
-                    <textarea id="formReadyText"></textarea>
-                  </label>
-                </div>
                 <details class="advanced-box">
-                  <summary data-i18n="advancedBasic">Agregar datos opcionales</summary>
+                  <summary data-i18n="advancedBasic">Agregar más detalles</summary>
                   <div class="advanced-grid">
+                    <label>
+                      <span data-i18n="fieldTitle">Título</span>
+                      <div class="input-action">
+                        <input id="caseTitle" />
+                        <button id="useTitleExample" type="button" data-i18n="useExample">Usar ejemplo</button>
+                      </div>
+                    </label>
                     <label>
                       <span data-i18n="fieldDate">Fecha aproximada</span>
                       <input id="caseDate" type="date" />
@@ -271,26 +252,27 @@
               <div class="step-heading">
                 <span>3</span>
                 <div>
-                  <h3 data-i18n="step3Title">Te sugerimos qué agregar</h3>
-                  <p data-i18n="step3Lead">Tocá lo que ya tenés. Esto ayuda a que el documento quede más claro.</p>
+                  <h3 data-i18n="step3Title">¿Qué querés lograr?</h3>
+                  <p data-i18n="step3Lead">Elegí el pedido principal. Si no estás seguro, dejá “Una solución”.</p>
                 </div>
               </div>
-              <div class="checklist" id="checklist"></div>
+              <div class="request-options" id="requestOptions"></div>
             </section>
 
             <section class="wizard-step" data-step="3">
               <div class="step-heading">
                 <span>4</span>
                 <div>
-                  <h3 data-i18n="step4Title">Agregá fotos o documentos</h3>
-                  <p data-i18n="step4Lead">Podés subir capturas, fotos, comprobantes o documentos. La app propone títulos y orden.</p>
+                  <h3 data-i18n="step4Title">¿Tenés algo para adjuntar?</h3>
+                  <p data-i18n="step4Lead">No necesitás archivos para empezar. Podés preparar tu mensaje ahora y sumar documentos después si querés.</p>
                 </div>
               </div>
+              <div class="attachment-choices" id="attachmentChoices"></div>
               <label class="upload">
                 <span class="upload-icon">+</span>
-                <strong data-i18n="uploadTitle">Subí tus archivos</strong>
-                <span data-i18n="uploadText">Tocá para elegir archivos o arrastralos acá.</span>
-                <input id="fileInput" multiple type="file" accept=".jpg,.jpeg,.png,.webp,.pdf" />
+                <strong data-i18n="uploadTitle">Subí fotos o documentos</strong>
+                <span data-i18n="uploadText">Tocá para elegir archivos o arrastralos acá. También podés seguir sin adjuntar.</span>
+                <input id="fileInput" multiple type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,.txt,text/plain" />
               </label>
               <details class="advanced-box">
                 <summary data-i18n="advancedFiles">Opciones para ordenar</summary>
@@ -299,6 +281,7 @@
                   <button id="sortDate" type="button" data-i18n="sortDate">Ordenar por fecha</button>
                   <button id="sortType" type="button" data-i18n="sortType">Ordenar por tipo</button>
                 </div>
+                <div class="checklist" id="checklist"></div>
               </details>
               <div class="items" id="items"></div>
             </section>
@@ -307,38 +290,44 @@
               <div class="step-heading">
                 <span>5</span>
                 <div>
-                  <h3 data-i18n="step5Title">Revisá cómo viene quedando</h3>
-                  <p data-i18n="step5Lead">Vas a ver una muestra con marca de agua antes de descargar.</p>
+                  <h3 data-i18n="step5Title">Listo, esto preparamos para vos</h3>
+                  <p data-i18n="step5Lead">Ya tenés qué decir, qué enviar y qué guardar. Podés copiar textos gratis o desbloquear la descarga limpia.</p>
                 </div>
               </div>
+              <div class="result-subhead">
+                <h4 data-i18n="clearCaseTitle">Tu caso en claro</h4>
+                <p data-i18n="clearCaseHelp">Este resumen se arma con lo que contaste y lo que cargaste.</p>
+              </div>
               <div class="clear-case" id="clearCase"></div>
+              <div class="ready-send" id="readySend"></div>
+              <details class="advanced-box">
+                <summary data-i18n="editPreparedTexts">Editar textos preparados</summary>
+                <label class="wide">
+                  <span data-i18n="fieldSummary">Resumen y pedido principal</span>
+                  <textarea id="caseSummary"></textarea>
+                  <div class="summary-options" id="summaryOptions"></div>
+                </label>
+                <div class="ready-texts wide" id="readyTexts">
+                  <label>
+                    <span data-i18n="whatsappReadyLabel">Mensaje para WhatsApp</span>
+                    <textarea id="whatsappText"></textarea>
+                  </label>
+                  <label>
+                    <span data-i18n="emailReadyLabel">Email formal</span>
+                    <textarea id="emailText"></textarea>
+                  </label>
+                  <label>
+                    <span data-i18n="formReadyLabel">Texto para formulario</span>
+                    <textarea id="formReadyText"></textarea>
+                  </label>
+                </div>
+              </details>
               <div class="case-map" id="caseMap"></div>
               <div class="review-card" id="reviewCard"></div>
               <button class="primary full" id="previewButton" type="button" data-track="preview_generate">
-                <span data-i18n="previewButton">Ver vista previa</span>
+                <span data-i18n="previewButton">Ver así quedó</span>
               </button>
               <div class="preview-panel" id="previewPanel"></div>
-            </section>
-
-            <section class="wizard-step" data-step="5">
-              <div class="step-heading">
-                <span>6</span>
-                <div>
-                  <h3 data-i18n="step6Title">Listo para enviar</h3>
-                  <p data-i18n="step6Lead">Copiá el mensaje que necesitás o seguí a descarga cuando quieras.</p>
-                </div>
-              </div>
-              <div class="ready-send" id="readySend"></div>
-            </section>
-
-            <section class="wizard-step" data-step="6">
-              <div class="step-heading">
-                <span>7</span>
-                <div>
-                  <h3 data-i18n="step7Title">Descarga y compra</h3>
-                  <p data-i18n="step7Lead">Elegí si ya tenés código o querés comprar una descarga o pack.</p>
-                </div>
-              </div>
               <div class="final-summary" id="finalSummary"></div>
 
               <div class="unlock-grid">
@@ -390,11 +379,11 @@
         </div>
         <div class="price-grid">
           <div class="price">
-            <span class="price-icon" data-i18n="freeBadge">Vista previa protegida</span>
+            <span class="price-icon" data-i18n="freeBadge">Así quedó protegido</span>
             <h3 data-i18n="freeTitle">Gratis</h3>
             <strong data-i18n="freePrice">Gratis</strong>
             <p data-i18n="freeText">Revisá cómo quedará tu documento.</p>
-            <a class="price-action ghost" href="#crear" data-i18n="freeAction">Crear vista previa</a>
+            <a class="price-action ghost" href="#crear" data-i18n="freeAction">Ver así quedó</a>
           </div>
           <a class="price" id="paySingle" target="_blank" rel="noreferrer" data-track="click_individual">
             <span class="price-icon" data-i18n="singleBadge">1 documento completo</span>
@@ -451,11 +440,11 @@
           <h2 data-i18n="faqTitle">Preguntas frecuentes</h2>
           <details open>
             <summary data-i18n="faq1Q">¿Qué incluye un documento completo?</summary>
-            <p data-i18n="faq1A">Portada, resumen, índice, línea temporal cuando hay fechas y todas las evidencias cargadas.</p>
+            <p data-i18n="faq1A">Portada, resumen, pedido principal, textos listos, archivos cargados y línea temporal cuando hay fechas.</p>
           </details>
           <details>
             <summary data-i18n="faq2Q">¿Qué puedo subir?</summary>
-            <p data-i18n="faq2A">Fotos, capturas, comprobantes y documentos. Cada archivo se convierte en una evidencia ordenada.</p>
+            <p data-i18n="faq2A">Fotos, capturas, comprobantes, PDF y TXT. Cada archivo se convierte en un documento ordenado.</p>
           </details>
           <details>
             <summary data-i18n="faq3Q">¿Cómo uso un pack?</summary>
