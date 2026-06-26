@@ -5,8 +5,8 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
 const stepLabels = {
-  es: ["Qué hacer", "Qué pasó", "Qué lograr", "Adjuntos", "Listo"],
-  en: ["What to do", "What happened", "Goal", "Attachments", "Ready"]
+  es: ["Qué pasó", "Lo ordenamos", "Archivos", "Así quedó", "Enviar"],
+  en: ["What happened", "Organized", "Files", "Result", "Send"]
 };
 
 const translations = {
@@ -39,12 +39,12 @@ const translations = {
     builderLead: "Prepará un mensaje claro, un email, un texto para formulario y un documento simple. Podés adjuntar archivos si querés.",
     progressTitle: "Progreso",
     progressHelp: "Vamos de a un paso. Tu información se mantiene mientras avanzás.",
-    step1Title: "¿Qué querés hacer hoy?",
-    step1Lead: "Elegí una opción simple. Después contás qué pasó y CasoClaro te ayuda con el resto.",
+    step1Title: "Contame qué pasó",
+    step1Lead: "Escribí como puedas. CasoClaro detecta el tipo de situación y prepara el texto por vos.",
     quickTitle: "Modo rápido",
-    quickText: "Empezá con una base sugerida y cambiala si querés.",
-    quickButton: "Empezar simple",
-    chooseSituation: "Elegir tipo de situación",
+    quickText: "Usá un ejemplo, cambialo y seguí.",
+    quickButton: "Usar ejemplo simple",
+    chooseSituation: "Si querés, elegí manualmente",
     intentRequestTitle: "Preparar un reclamo o pedido",
     intentRequestText: "Te ayudamos a redactar qué decir y qué pedir.",
     intentOrganizeTitle: "Ordenar archivos y documentación",
@@ -52,10 +52,10 @@ const translations = {
     intentBothTitle: "Las dos cosas",
     intentBothText: "Preparamos tus textos y ordenamos tus archivos.",
     showMoreCases: "Ver más opciones",
-    step2Title: "Contá qué pasó",
-    step2Lead: "Escribí con tus palabras. Puede ser corto. Después podés agregar detalles si querés.",
+    step2Title: "Ya lo ordenamos",
+    step2Lead: "Revisá lo que entendimos. Si está bien, seguí; si no, podés cambiarlo.",
     fieldStory: "¿Qué pasó?",
-    storyPlaceholder: "Ejemplo: compré un producto, pagué, no llegó y quiero pedir una respuesta.",
+    storyPlaceholder: "Ejemplo: Compré algo y nunca llegó. El vendedor no me responde.",
     fieldRequest: "¿Qué necesitás pedir?",
     fieldTitle: "Título del caso",
     useExample: "Usar ejemplo",
@@ -87,11 +87,11 @@ const translations = {
     sortManual: "Mantener mi orden",
     sortDate: "Ordenar por fecha",
     sortType: "Ordenar por tipo",
-    step5Title: "Listo, esto preparamos para vos",
-    step5Lead: "Ya tenés qué decir, qué enviar y qué guardar. Podés copiar textos gratis o desbloquear la descarga limpia.",
+    step5Title: "Así quedó tu caso",
+    step5Lead: "Ya tenés qué decir, qué enviar y qué guardar.",
     editPreparedTexts: "Editar textos preparados",
-    step6Title: "Listo para enviar",
-    step6Lead: "Copiá el mensaje que necesitás o seguí a descarga cuando quieras.",
+    step6Title: "Elegí qué querés hacer",
+    step6Lead: "Copiá gratis tus textos o descargá el documento completo cuando quieras.",
     step7Title: "Descarga y compra",
     step7Lead: "Elegí si ya tenés código o querés comprar una descarga o pack.",
     unlockCodeTitle: "Ya tengo código",
@@ -284,6 +284,22 @@ const translations = {
     partyPlaceholder: "Ejemplo: tienda, vendedor o empresa",
     referencePlaceholder: "Ejemplo: número de pedido",
     optionalPlaceholder: "Opcional",
+    storyExample1: "Compré algo y nunca llegó. El vendedor no me responde.",
+    storyExample2: "Me cobraron dos veces y necesito pedir una devolución.",
+    storyExample3: "Contraté un servicio, no lo hicieron y quiero dejarlo claro.",
+    storyExample4: "Solo necesito preparar un mensaje claro para enviar.",
+    detectedCaseTitle: "Tipo de situación detectado",
+    detectedConfidenceHigh: "Lo detectamos con buena claridad.",
+    detectedConfidenceMedium: "Parece que se trata de esto.",
+    detectedConfidenceLow: "Armamos una base simple para que puedas seguir.",
+    detectedAskPrefix: "Parece que se trata de",
+    detectedAskSuffix: "¿Es así?",
+    confirmYes: "Sí, está bien",
+    confirmChange: "Cambiar",
+    detectedWhatCanAsk: "Qué podés pedir",
+    detectedUsefulFiles: "Archivos que podrían servir",
+    detectedMissingData: "Dato que podría faltar",
+    noLongForms: "No hace falta completar todo. Podés seguir y ajustar después.",
     heroMess1: "Captura del chat",
     heroMess2: "Comprobante de pago",
     heroMess3: "Detalle del pedido",
@@ -336,12 +352,12 @@ const translations = {
     builderLead: "Prepare a clear message, an email, form text and a simple document. You can attach files if you want.",
     progressTitle: "Progress",
     progressHelp: "One step at a time. Your information stays while you move forward.",
-    step1Title: "What do you want to do today?",
-    step1Lead: "Choose one simple option. Then tell what happened and CasoClaro helps with the rest.",
+    step1Title: "Tell what happened",
+    step1Lead: "Write it however you can. CasoClaro detects the situation and prepares the text for you.",
     quickTitle: "Quick mode",
-    quickText: "Start with a suggested base and change it if you want.",
-    quickButton: "Start simple",
-    chooseSituation: "Choose situation type",
+    quickText: "Use an example, edit it and continue.",
+    quickButton: "Use simple example",
+    chooseSituation: "Choose manually if you want",
     intentRequestTitle: "Prepare a claim or request",
     intentRequestText: "We help you write what to say and what to ask for.",
     intentOrganizeTitle: "Organize files and documents",
@@ -349,10 +365,10 @@ const translations = {
     intentBothTitle: "Both",
     intentBothText: "We prepare your text and organize your files.",
     showMoreCases: "Show more options",
-    step2Title: "Tell what happened",
-    step2Lead: "Write it in your own words. It can be short. You can add more details later if you want.",
+    step2Title: "We organized it",
+    step2Lead: "Review what we understood. If it looks right, continue; if not, you can change it.",
     fieldStory: "What happened?",
-    storyPlaceholder: "Example: I bought a product, paid, it did not arrive and I want to ask for a response.",
+    storyPlaceholder: "Example: I bought something and it never arrived. The seller is not answering.",
     fieldRequest: "What do you need to ask for?",
     fieldTitle: "Case title",
     useExample: "Use example",
@@ -384,11 +400,11 @@ const translations = {
     sortManual: "Keep my order",
     sortDate: "Sort by date",
     sortType: "Sort by type",
-    step5Title: "Done, this is what we prepared for you",
-    step5Lead: "You now have what to say, what to send and what to keep. You can copy text for free or unlock the clean download.",
+    step5Title: "This is your clear case",
+    step5Lead: "You now have what to say, what to send and what to keep.",
     editPreparedTexts: "Edit prepared text",
-    step6Title: "Ready to send",
-    step6Lead: "Copy the message you need or continue to download when you are ready.",
+    step6Title: "Choose what to do",
+    step6Lead: "Copy your text for free or download the full document when you are ready.",
     step7Title: "Download and purchase",
     step7Lead: "Choose whether you already have a code or want to buy one download or a pack.",
     unlockCodeTitle: "I already have a code",
@@ -581,6 +597,22 @@ const translations = {
     partyPlaceholder: "Example: store, seller or company",
     referencePlaceholder: "Example: order number",
     optionalPlaceholder: "Optional",
+    storyExample1: "I bought something and it never arrived. The seller is not answering.",
+    storyExample2: "I was charged twice and need to ask for a refund.",
+    storyExample3: "I hired a service, it was not completed and I want to explain it clearly.",
+    storyExample4: "I only need to prepare a clear message to send.",
+    detectedCaseTitle: "Detected situation type",
+    detectedConfidenceHigh: "We detected it clearly.",
+    detectedConfidenceMedium: "It seems to be about this.",
+    detectedConfidenceLow: "We prepared a simple base so you can continue.",
+    detectedAskPrefix: "It seems this is about",
+    detectedAskSuffix: "Is that right?",
+    confirmYes: "Yes, looks right",
+    confirmChange: "Change",
+    detectedWhatCanAsk: "What you can ask for",
+    detectedUsefulFiles: "Files that could help",
+    detectedMissingData: "Information that may be missing",
+    noLongForms: "You do not need to fill everything out. You can continue and adjust later.",
     heroMess1: "Chat screenshot",
     heroMess2: "Payment receipt",
     heroMess3: "Order details",
@@ -811,6 +843,291 @@ const attachmentOptions = [
   { id: "later", titleKey: "attachmentLaterTitle", textKey: "attachmentLaterText" }
 ];
 
+const caseLibrary = [
+  {
+    id: "online_not_arrived",
+    caseTypeId: "online",
+    requestType: "response",
+    keywords: {
+      es: ["compre", "compré", "pedido", "nunca llego", "nunca llegó", "no llego", "no llegó", "envio", "envío", "vendedor", "no responde", "mercado", "tienda", "online"],
+      en: ["bought", "purchase", "order", "never arrived", "did not arrive", "has not arrived", "seller", "not answering", "shipping", "delivery", "online"]
+    },
+    title: {
+      es: "Compra online que no llegó",
+      en: "Online purchase that did not arrive"
+    },
+    summary: {
+      es: "Se trata de una compra online pendiente de entrega. La persona quiere dejar claro qué compró, que todavía no recibió el producto y que necesita una respuesta o solución.",
+      en: "This is about an online purchase that has not been delivered. The person wants to clearly explain what was bought, that the product has not arrived and that they need a response or solution."
+    },
+    canAsk: {
+      es: ["una respuesta clara", "estado real del envío", "entrega del producto", "devolución si corresponde"],
+      en: ["a clear response", "the real delivery status", "delivery of the product", "a refund if applicable"]
+    },
+    usefulFiles: {
+      es: ["comprobante de pago", "detalle del pedido", "chat con el vendedor", "estado del envío"],
+      en: ["payment receipt", "order details", "chat with the seller", "delivery status"]
+    },
+    missing: {
+      es: "número de pedido o fecha de compra",
+      en: "order number or purchase date"
+    }
+  },
+  {
+    id: "defective_product",
+    caseTypeId: "defect",
+    requestType: "exchange",
+    keywords: {
+      es: ["defectuoso", "defecto", "fallado", "fallo", "falla", "roto", "rota", "no funciona", "vino mal", "producto roto"],
+      en: ["defective", "broken", "does not work", "not working", "faulty", "damaged", "arrived broken", "issue with the product"]
+    },
+    title: { es: "Producto defectuoso", en: "Defective product" },
+    summary: {
+      es: "Se trata de un producto con una falla o inconveniente. La persona necesita explicar qué ocurre, cuándo lo recibió o compró y qué solución espera.",
+      en: "This is about a product with an issue. The person needs to explain what is wrong, when it was received or bought and what solution they expect."
+    },
+    canAsk: {
+      es: ["cambio del producto", "reparación", "revisión", "devolución si corresponde"],
+      en: ["product exchange", "repair", "review", "refund if applicable"]
+    },
+    usefulFiles: {
+      es: ["fotos del producto", "comprobante de compra", "mensaje enviado", "respuesta recibida"],
+      en: ["product photos", "purchase receipt", "message sent", "response received"]
+    },
+    missing: { es: "foto clara de la falla", en: "a clear photo of the issue" }
+  },
+  {
+    id: "seller_no_response",
+    caseTypeId: "seller",
+    requestType: "response",
+    keywords: {
+      es: ["no responde", "no contesta", "me clavo", "me clavó", "vendedor", "particular", "silencio", "sin respuesta"],
+      en: ["not answering", "not responding", "seller", "private seller", "no response", "silent", "stopped replying"]
+    },
+    title: { es: "Vendedor no responde", en: "Seller is not responding" },
+    summary: {
+      es: "Se trata de una comunicación sin respuesta. La persona quiere dejar ordenado qué se acordó, qué pagó o pidió y que necesita una contestación.",
+      en: "This is about a lack of response. The person wants to organize what was agreed, paid or requested and ask for an answer."
+    },
+    canAsk: {
+      es: ["respuesta por el mismo medio", "confirmación del estado", "entrega o devolución", "dejar constancia"],
+      en: ["a response through the same channel", "status confirmation", "delivery or refund", "to leave a record"]
+    },
+    usefulFiles: {
+      es: ["chat principal", "comprobante de pago", "datos del vendedor", "publicación o acuerdo"],
+      en: ["main chat", "payment receipt", "seller details", "listing or agreement"]
+    },
+    missing: { es: "último mensaje enviado", en: "last message sent" }
+  },
+  {
+    id: "refund_warranty",
+    caseTypeId: "warranty",
+    requestType: "refund",
+    keywords: {
+      es: ["garantia", "garantía", "devolucion", "devolución", "reintegro", "reembolso", "cambio", "soporte", "arrepentimiento"],
+      en: ["warranty", "refund", "return", "reimbursement", "exchange", "support", "money back"]
+    },
+    title: { es: "Devolución o garantía", en: "Refund or warranty" },
+    summary: {
+      es: "Se trata de una solicitud de devolución, cambio o garantía. La persona necesita explicar el motivo y dejar claro qué respuesta espera.",
+      en: "This is about a refund, exchange or warranty request. The person needs to explain the reason and what response they expect."
+    },
+    canAsk: {
+      es: ["devolución", "cambio", "activación de garantía", "respuesta de soporte"],
+      en: ["refund", "exchange", "warranty activation", "support response"]
+    },
+    usefulFiles: {
+      es: ["factura o ticket", "fotos", "condiciones de compra", "mensajes con soporte"],
+      en: ["invoice or receipt", "photos", "purchase terms", "support messages"]
+    },
+    missing: { es: "fecha de compra", en: "purchase date" }
+  },
+  {
+    id: "wrong_charge",
+    caseTypeId: "chargeback",
+    requestType: "review",
+    keywords: {
+      es: ["cobro incorrecto", "me cobraron mal", "cargo desconocido", "no reconozco", "tarjeta", "billetera", "pago no reconocido", "desconocido"],
+      en: ["wrong charge", "incorrect charge", "unknown charge", "card", "wallet", "unrecognized", "do not recognize", "charged incorrectly"]
+    },
+    title: { es: "Cobro incorrecto o cargo desconocido", en: "Incorrect or unknown charge" },
+    summary: {
+      es: "Se trata de un cobro que la persona necesita revisar o aclarar. El objetivo es ordenar el cargo, la fecha, el importe y el pedido de revisión.",
+      en: "This is about a charge that needs review or clarification. The goal is to organize the charge, date, amount and review request."
+    },
+    canAsk: {
+      es: ["revisión del cargo", "detalle del cobro", "corrección", "reintegro si corresponde"],
+      en: ["charge review", "charge details", "correction", "refund if applicable"]
+    },
+    usefulFiles: {
+      es: ["movimiento de cuenta", "comprobante", "captura del cargo", "mensaje al banco o comercio"],
+      en: ["account movement", "receipt", "charge screenshot", "message to bank or store"]
+    },
+    missing: { es: "importe y fecha del cargo", en: "charge amount and date" }
+  },
+  {
+    id: "service_not_done",
+    caseTypeId: "service",
+    requestType: "solution",
+    keywords: {
+      es: ["servicio", "contrate", "contraté", "no cumplieron", "no hicieron", "demora", "trabajo", "instalacion", "instalación", "turno"],
+      en: ["service", "hired", "not completed", "did not do", "delay", "work", "installation", "appointment"]
+    },
+    title: { es: "Servicio no cumplido", en: "Service not completed" },
+    summary: {
+      es: "Se trata de un servicio contratado que no se completó como se esperaba. La persona necesita ordenar el acuerdo, pagos, fechas y pedido principal.",
+      en: "This is about a hired service that was not completed as expected. The person needs to organize the agreement, payments, dates and main request."
+    },
+    canAsk: {
+      es: ["cumplimiento del servicio", "nueva fecha", "solución", "devolución si corresponde"],
+      en: ["service completion", "new date", "solution", "refund if applicable"]
+    },
+    usefulFiles: {
+      es: ["presupuesto", "comprobante de pago", "mensajes", "fecha pactada"],
+      en: ["quote", "payment receipt", "messages", "agreed date"]
+    },
+    missing: { es: "fecha pactada o acuerdo inicial", en: "agreed date or initial agreement" }
+  },
+  {
+    id: "shipping_delay",
+    caseTypeId: "online",
+    requestType: "response",
+    keywords: {
+      es: ["envio demorado", "envío demorado", "demora de envio", "demora de envío", "paquete", "correo", "seguimiento", "logistica", "logística", "no se mueve"],
+      en: ["shipping delay", "delayed delivery", "package", "tracking", "logistics", "carrier", "not moving", "shipment"]
+    },
+    title: { es: "Demora de envío", en: "Shipping delay" },
+    summary: {
+      es: "Se trata de una demora o falta de información sobre un envío. La persona necesita ordenar el seguimiento y pedir una respuesta clara.",
+      en: "This is about a delay or lack of information about a shipment. The person needs to organize the tracking details and ask for a clear response."
+    },
+    canAsk: {
+      es: ["estado actualizado", "fecha estimada", "entrega", "solución si el paquete no aparece"],
+      en: ["updated status", "estimated date", "delivery", "solution if the package is missing"]
+    },
+    usefulFiles: {
+      es: ["número de seguimiento", "estado del envío", "detalle del pedido", "mensajes"],
+      en: ["tracking number", "shipment status", "order details", "messages"]
+    },
+    missing: { es: "número de seguimiento", en: "tracking number" }
+  },
+  {
+    id: "duplicate_payment",
+    caseTypeId: "chargeback",
+    requestType: "refund",
+    keywords: {
+      es: ["pago duplicado", "me cobraron dos veces", "dos cobros", "duplicado", "doble cobro", "cobrado dos veces"],
+      en: ["duplicate payment", "charged twice", "two charges", "double charge", "paid twice"]
+    },
+    title: { es: "Pago duplicado", en: "Duplicate payment" },
+    summary: {
+      es: "Se trata de un posible pago o cobro duplicado. La persona necesita mostrar los movimientos y pedir revisión o reintegro.",
+      en: "This is about a possible duplicate payment or charge. The person needs to show the movements and ask for a review or refund."
+    },
+    canAsk: {
+      es: ["revisión del pago", "reintegro", "corrección del cobro", "confirmación"],
+      en: ["payment review", "refund", "charge correction", "confirmation"]
+    },
+    usefulFiles: {
+      es: ["dos movimientos", "comprobantes", "resumen de cuenta", "mensaje al comercio"],
+      en: ["two movements", "receipts", "account statement", "message to the store"]
+    },
+    missing: { es: "importe y fecha de ambos cobros", en: "amount and date of both charges" }
+  },
+  {
+    id: "unwanted_subscription",
+    caseTypeId: "service",
+    requestType: "refund",
+    keywords: {
+      es: ["suscripcion", "suscripción", "me siguen cobrando", "cancelar", "baja", "membresia", "membresía", "cobro mensual"],
+      en: ["subscription", "keeps charging", "cancel", "cancellation", "membership", "monthly charge"]
+    },
+    title: { es: "Suscripción no deseada", en: "Unwanted subscription" },
+    summary: {
+      es: "Se trata de una suscripción o cobro recurrente que la persona quiere revisar, cancelar o aclarar.",
+      en: "This is about a subscription or recurring charge that the person wants to review, cancel or clarify."
+    },
+    canAsk: {
+      es: ["baja de la suscripción", "confirmación de cancelación", "reintegro si corresponde", "detalle del cobro"],
+      en: ["subscription cancellation", "cancellation confirmation", "refund if applicable", "charge details"]
+    },
+    usefulFiles: {
+      es: ["captura del cobro", "email de alta o baja", "pantalla de cuenta", "mensaje enviado"],
+      en: ["charge screenshot", "signup or cancellation email", "account screen", "message sent"]
+    },
+    missing: { es: "fecha en que intentaste cancelar", en: "date when you tried to cancel" }
+  },
+  {
+    id: "procedure_delay",
+    caseTypeId: "personal",
+    requestType: "response",
+    keywords: {
+      es: ["tramite", "trámite", "demorado", "expediente", "organismo", "presentacion", "presentación", "documentacion", "documentación", "turno"],
+      en: ["procedure", "delayed", "file", "agency", "submission", "documentation", "paperwork", "appointment"]
+    },
+    title: { es: "Trámite demorado", en: "Delayed procedure" },
+    summary: {
+      es: "Se trata de un trámite o presentación que necesita seguimiento. La persona quiere ordenar datos, documentos y pedir una respuesta.",
+      en: "This is about a procedure or submission that needs follow-up. The person wants to organize data, documents and ask for a response."
+    },
+    canAsk: {
+      es: ["estado del trámite", "respuesta", "confirmación de recepción", "próximo paso"],
+      en: ["procedure status", "response", "receipt confirmation", "next step"]
+    },
+    usefulFiles: {
+      es: ["constancia", "formulario", "número de expediente", "documentación presentada"],
+      en: ["proof of submission", "form", "file number", "submitted documentation"]
+    },
+    missing: { es: "número de expediente o fecha de presentación", en: "file number or submission date" }
+  },
+  {
+    id: "rental_problem",
+    caseTypeId: "rent",
+    requestType: "solution",
+    keywords: {
+      es: ["alquiler", "inquilino", "propietario", "inmobiliaria", "deposito", "depósito", "expensas", "humedad", "arreglo", "reparacion", "reparación"],
+      en: ["rent", "rental", "tenant", "landlord", "real estate", "deposit", "expenses", "repair", "humidity", "apartment"]
+    },
+    title: { es: "Problema de alquiler", en: "Rental issue" },
+    summary: {
+      es: "Se trata de una situación vinculada a un alquiler. La persona necesita ordenar contrato, pagos, fotos, mensajes y pedido principal.",
+      en: "This is about a rental situation. The person needs to organize contract, payments, photos, messages and the main request."
+    },
+    canAsk: {
+      es: ["respuesta", "arreglo", "revisión de pago", "devolución o constancia si corresponde"],
+      en: ["response", "repair", "payment review", "refund or record if applicable"]
+    },
+    usefulFiles: {
+      es: ["contrato", "recibos", "fotos", "mensajes con propietario o inmobiliaria"],
+      en: ["contract", "receipts", "photos", "messages with landlord or agency"]
+    },
+    missing: { es: "fecha del problema o mensaje principal", en: "date of the issue or main message" }
+  },
+  {
+    id: "personal_message",
+    caseTypeId: "other",
+    requestType: "record",
+    keywords: {
+      es: ["mensaje", "redactar", "escribir", "preparar", "documentacion", "documentación", "ordenar", "resumen", "personal", "constancia"],
+      en: ["message", "write", "prepare", "documentation", "organize", "summary", "personal", "record"]
+    },
+    title: { es: "Mensaje o documentación personal", en: "Personal message or documentation" },
+    summary: {
+      es: "La persona quiere ordenar una situación y preparar un texto claro, aunque todavía no tenga archivos para adjuntar.",
+      en: "The person wants to organize a situation and prepare clear text, even if they do not have files to attach yet."
+    },
+    canAsk: {
+      es: ["dejar constancia", "pedir respuesta", "explicar la situación", "enviar un resumen claro"],
+      en: ["leave a record", "ask for a response", "explain the situation", "send a clear summary"]
+    },
+    usefulFiles: {
+      es: ["mensaje previo", "comprobante", "foto", "documento relacionado"],
+      en: ["previous message", "receipt", "photo", "related document"]
+    },
+    missing: { es: "nombre de la persona o entidad a quien se envía", en: "name of the person or entity receiving it" }
+  }
+];
+
 const statuses = {
   es: ["En preparación", "Enviado", "En conversación", "Esperando respuesta", "Resuelto"],
   en: ["Preparing", "Sent", "In conversation", "Waiting for response", "Resolved"]
@@ -833,6 +1150,9 @@ const state = {
   attachmentChoice: "later",
   requestType: "solution",
   tone: "cordial",
+  detectedCaseId: "online_not_arrived",
+  detectedConfidence: 0,
+  confirmedDetection: false,
   editedTexts: {
     summary: false,
     whatsapp: false,
@@ -855,6 +1175,16 @@ function text(key) {
 
 function localizedCase(caseType = state.caseType, key) {
   return state.lang === "en" && caseType.en?.[key] ? caseType.en[key] : caseType[key];
+}
+
+function libraryText(entry, key) {
+  const value = entry?.[key];
+  if (!value) return "";
+  return value[state.lang] || value.es || value.en || "";
+}
+
+function activeLibraryCase() {
+  return caseLibrary.find((entry) => entry.id === state.detectedCaseId) || caseLibrary[0];
 }
 
 function localizedChecklist(caseType = state.caseType) {
@@ -907,6 +1237,66 @@ function sentenceCase(value) {
   return `${clean.charAt(0).toUpperCase()}${clean.slice(1)}`;
 }
 
+function normalizeForMatch(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function analyzeStory(value) {
+  const story = normalizeForMatch(value);
+  if (!story.trim()) {
+    return { entry: activeLibraryCase(), score: 0, confidence: "low" };
+  }
+  const scored = caseLibrary.map((entry) => {
+    const keywords = [...(entry.keywords.es || []), ...(entry.keywords.en || [])];
+    const score = keywords.reduce((total, keyword) => {
+      const normalized = normalizeForMatch(keyword);
+      if (!normalized) return total;
+      if (story.includes(normalized)) return total + Math.max(2, normalized.split(/\s+/).length + 1);
+      return total;
+    }, 0);
+    return { entry, score };
+  });
+  scored.sort((a, b) => b.score - a.score);
+  const best = scored[0] || { entry: caseLibrary[0], score: 0 };
+  const confidence = best.score >= 8 ? "high" : best.score >= 3 ? "medium" : "low";
+  return { entry: best.entry, score: best.score, confidence };
+}
+
+function applyDetectedCase({ force = false } = {}) {
+  const story = $("#caseStory")?.value.trim() || "";
+  const analysis = analyzeStory(story);
+  const entry = analysis.entry;
+  const caseType = caseTypes.find((item) => item.id === entry.caseTypeId) || caseTypes[0];
+  const shouldApply = force || state.detectedCaseId !== entry.id || !state.confirmedDetection;
+  state.detectedCaseId = entry.id;
+  state.detectedConfidence = analysis.score;
+  state.caseType = caseType;
+  state.requestType = entry.requestType || state.requestType;
+  state.checklist = localizedChecklist(caseType).map((_, index) => ({ index, status: state.checklist[index]?.status || "later" }));
+  if (shouldApply) {
+    const titleInput = $("#caseTitle");
+    const currentTitle = titleInput?.value.trim();
+    const oldTitles = caseLibrary
+      .map((item) => item.title.es)
+      .concat(caseLibrary.map((item) => item.title.en))
+      .concat(caseTypes.map((item) => item.exampleTitle))
+      .concat(caseTypes.map((item) => item.en?.exampleTitle).filter(Boolean));
+    if (titleInput && (!currentTitle || oldTitles.includes(currentTitle) || force)) {
+      titleInput.value = libraryText(entry, "title");
+    }
+  }
+  renderDetectedCase();
+  renderCases();
+  renderRequestOptions();
+  renderSummaryOptions();
+  renderChecklist();
+  renderItems();
+  updateAssistedTexts({ force: shouldApply });
+}
+
 function storyText() {
   return $("#caseStory")?.value.trim() || localizedCase(state.caseType, "summary");
 }
@@ -954,6 +1344,8 @@ function buildAssistedTexts() {
   const story = storyText();
   const request = requestPhrase();
   const context = optionalContext();
+  const smartCase = activeLibraryCase();
+  const smartSummary = libraryText(smartCase, "summary");
   const evidenceNote =
     state.items.length > 0
       ? state.lang === "en"
@@ -971,7 +1363,7 @@ function buildAssistedTexts() {
       firm: "Hello, I am contacting you to clearly record"
     };
     const closing = state.tone === "firm" ? "I would appreciate a response through this channel." : "Thank you, I look forward to your response.";
-    const summary = `${story} ${context} I am requesting ${request}. ${evidenceNote} ${closing}`.replace(/\s+/g, " ").trim();
+    const summary = `${story} ${smartSummary ? `${smartSummary} ` : ""}${context} I am requesting ${request}. ${evidenceNote} ${closing}`.replace(/\s+/g, " ").trim();
     return {
       summary,
       whatsapp: `${openings[state.tone] || openings.cordial} "${title}". ${story} I am requesting ${request}. ${evidenceNote}`,
@@ -987,7 +1379,7 @@ function buildAssistedTexts() {
     firm: "Hola, me comunico para dejar clara la situación sobre"
   };
   const closing = state.tone === "firm" ? "Agradezco una respuesta por este medio." : "Quedo atento/a a una respuesta. Gracias.";
-  const summary = `${story} ${context} Solicito ${request}. ${evidenceNote} ${closing}`.replace(/\s+/g, " ").trim();
+  const summary = `${story} ${smartSummary ? `${smartSummary} ` : ""}${context} Solicito ${request}. ${evidenceNote} ${closing}`.replace(/\s+/g, " ").trim();
   return {
     summary,
     whatsapp: `${openings[state.tone] || openings.cordial} "${title}". ${story} Solicito ${request}. ${evidenceNote}`,
@@ -1158,18 +1550,21 @@ function initPrices() {
   });
 }
 
-function selectCase(caseType) {
+function selectCase(caseType, { fillStory = false } = {}) {
   state.caseType = caseType;
+  state.detectedCaseId = caseLibrary.find((entry) => entry.caseTypeId === caseType.id)?.id || state.detectedCaseId;
+  state.confirmedDetection = true;
   state.checklist = localizedChecklist(caseType).map((_, index) => ({ index, status: "later" }));
   state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
-  $("#caseTitle").value = localizedCase(caseType, "exampleTitle");
+  $("#caseTitle").value = libraryText(activeLibraryCase(), "title") || localizedCase(caseType, "exampleTitle");
   const story = $("#caseStory");
-  if (story) story.value = localizedCase(caseType, "summary");
+  if (story && fillStory) story.value = localizedCase(caseType, "summary");
   renderCases();
   renderRequestOptions();
   renderSummaryOptions();
   renderChecklist();
   renderItems();
+  renderDetectedCase();
   updateAssistedTexts({ force: true });
 }
 
@@ -1196,6 +1591,80 @@ function renderCases() {
   if (moreButton) {
     moreButton.hidden = state.showAllCases;
   }
+}
+
+function renderStoryExamples() {
+  const container = $("#storyExamples");
+  if (!container) return;
+  const examples = ["storyExample1", "storyExample2", "storyExample3", "storyExample4"];
+  container.innerHTML = examples
+    .map((key) => `<button type="button" data-story-example="${escapeAttribute(text(key))}">${escapeHtml(text(key))}</button>`)
+    .join("");
+  container.querySelectorAll("[data-story-example]").forEach((button) => {
+    button.addEventListener("click", () => {
+      $("#caseStory").value = button.dataset.storyExample || "";
+      state.confirmedDetection = false;
+      state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
+      applyDetectedCase({ force: true });
+      track("story_example_used", { detectedCase: state.detectedCaseId });
+    });
+  });
+}
+
+function renderDetectedCase() {
+  const panel = $("#smartDetected");
+  if (!panel) return;
+  const entry = activeLibraryCase();
+  const analysis = analyzeStory($("#caseStory")?.value || "");
+  const confidenceKey =
+    analysis.confidence === "high"
+      ? "detectedConfidenceHigh"
+      : analysis.confidence === "medium"
+        ? "detectedConfidenceMedium"
+        : "detectedConfidenceLow";
+  const caseLabel = libraryText(entry, "title") || localizedCase(state.caseType, "title");
+  const canAsk = libraryText(entry, "canAsk") || [];
+  const usefulFiles = libraryText(entry, "usefulFiles") || [];
+  const missing = libraryText(entry, "missing");
+  panel.innerHTML = `
+    <article class="detected-main">
+      <div>
+        <span class="pill">${text("detectedCaseTitle")}</span>
+        <h4>${escapeHtml(caseLabel)}</h4>
+        <p>${text(confidenceKey)}</p>
+        <p class="detected-question">${text("detectedAskPrefix")} <strong>${escapeHtml(caseLabel)}</strong>. ${text("detectedAskSuffix")}</p>
+      </div>
+      <div class="detected-actions">
+        <button type="button" data-confirm-detection>${text("confirmYes")}</button>
+        <button type="button" data-change-detection>${text("confirmChange")}</button>
+      </div>
+    </article>
+    <div class="detected-grid">
+      <article>
+        <strong>${text("detectedWhatCanAsk")}</strong>
+        <ul>${canAsk.slice(0, 4).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+      </article>
+      <article>
+        <strong>${text("detectedUsefulFiles")}</strong>
+        <ul>${usefulFiles.slice(0, 4).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+      </article>
+      <article>
+        <strong>${text("detectedMissingData")}</strong>
+        <p>${escapeHtml(missing || text("noMissingNeeded"))}</p>
+      </article>
+    </div>
+    <p class="detected-note">${text("noLongForms")}</p>
+  `;
+  panel.querySelector("[data-confirm-detection]")?.addEventListener("click", () => {
+    state.confirmedDetection = true;
+    showMessage(text("baseReady"), "success");
+    renderDetectedCase();
+  });
+  panel.querySelector("[data-change-detection]")?.addEventListener("click", () => {
+    document.querySelector("[data-step='0'] .advanced-box:last-of-type")?.setAttribute("open", "");
+    showStep(0);
+    document.getElementById("caseGrid")?.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
 }
 
 function renderSummaryOptions() {
@@ -1401,6 +1870,10 @@ function validateStep() {
 
 function nextStep() {
   if (!validateStep()) return;
+  if (state.step === 0) {
+    state.confirmedDetection = false;
+    applyDetectedCase({ force: false });
+  }
   showStep(state.step + 1);
   track("wizard_next", { step: state.step + 1 });
 }
@@ -2373,18 +2846,20 @@ function bindEvents() {
   $("#languageToggle").addEventListener("click", () => {
     const oldTitle = localizedCase(state.caseType, "exampleTitle");
     const oldStory = localizedCase(state.caseType, "summary");
+    const oldLibraryTitle = libraryText(activeLibraryCase(), "title");
     const titleInput = $("#caseTitle");
     const storyInput = $("#caseStory");
-    const shouldTranslateTitle = !titleInput.value.trim() || titleInput.value.trim() === oldTitle;
+    const shouldTranslateTitle = !titleInput.value.trim() || titleInput.value.trim() === oldTitle || titleInput.value.trim() === oldLibraryTitle;
     const shouldTranslateStory = !storyInput.value.trim() || storyInput.value.trim() === oldStory;
     state.lang = state.lang === "es" ? "en" : "es";
     state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
     applyTranslations();
-    if (shouldTranslateTitle) titleInput.value = localizedCase(state.caseType, "exampleTitle");
+    if (shouldTranslateTitle) titleInput.value = libraryText(activeLibraryCase(), "title") || localizedCase(state.caseType, "exampleTitle");
     if (shouldTranslateStory) storyInput.value = localizedCase(state.caseType, "summary");
     populateStatusOptions();
     state.checklist = localizedChecklist().map((_, index) => ({ index, status: state.checklist[index]?.status || "later" }));
     renderCases();
+    renderStoryExamples();
     renderIntentOptions();
     renderAttachmentChoices();
     renderRequestOptions();
@@ -2392,6 +2867,7 @@ function bindEvents() {
     renderTones();
     renderChecklist();
     renderItems();
+    renderDetectedCase();
     updateAssistedTexts({ force: true });
     updateCredits();
     showStep(state.step);
@@ -2402,7 +2878,9 @@ function bindEvents() {
   });
   $("#fastModeButton")?.addEventListener("click", () => {
     state.fastMode = true;
-    updateAssistedTexts();
+    $("#caseStory").value = text("storyExample1");
+    state.confirmedDetection = false;
+    applyDetectedCase({ force: true });
     showStep(1);
     showMessage(text("fastReady"), "success");
     track("fast_mode_started");
@@ -2415,6 +2893,11 @@ function bindEvents() {
   ["caseStory", "caseTitle", "caseDate", "caseParty", "caseReference", "caseName", "caseStatus", "caseAttempt"].forEach((id) => {
     const element = document.getElementById(id);
     element?.addEventListener("input", () => {
+      if (id === "caseStory") {
+        state.confirmedDetection = false;
+        applyDetectedCase({ force: false });
+        return;
+      }
       updateAssistedTexts();
     });
   });
@@ -2483,6 +2966,7 @@ function init() {
   applyTranslations();
   initPrices();
   initFormDefaults();
+  renderStoryExamples();
   renderIntentOptions();
   renderAttachmentChoices();
   renderRequestOptions();

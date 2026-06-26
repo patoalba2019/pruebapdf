@@ -5,8 +5,9 @@ Microproducto para contar qué pasó, preparar mensajes claros y ordenar archivo
 ## Qué incluye
 
 - Página principal con propuesta clara, usos, precios y preguntas frecuentes.
-- Flujo guiado en 5 pasos: qué hacer, qué pasó, qué lograr, adjuntos opcionales y resultado listo.
+- Flujo guiado en 5 pasos: contar qué pasó, revisar lo detectado, sumar archivos opcionales, revisar el caso claro y elegir qué enviar o descargar.
 - Camino completo sin archivos: WhatsApp, email, texto de formulario y documento simple.
+- Biblioteca inteligente local para detectar subcasos comunes desde el relato del usuario.
 - Subida opcional de JPG, PNG, WEBP, PDF y TXT.
 - Orden manual con botones subir/bajar.
 - Títulos limpios tipo “Archivo 1”, tipo de documento, fecha detectada y descripción editable.
@@ -29,6 +30,45 @@ La descarga limpia requiere Vercel, Lemon Squeezy y almacenamiento KV configurad
 - El documento completo y el resumen descargable consumen 1 descarga disponible.
 - No mostrar nombres técnicos de archivos, UUIDs o nombres internos en tarjetas, índice, PDF o muestra.
 - Mantener siempre los links de compra, precios, license keys, redeem, status, consume-credit, webhooks y variables de entorno como zona protegida.
+
+## Biblioteca inteligente de casos
+
+La biblioteca está dentro de `app.js` en `caseLibrary`. Funciona localmente en el navegador y no guarda relatos privados en una base central.
+
+Cada caso incluye:
+
+- `id`: identificador interno.
+- `caseTypeId`: tipo visual existente que reutiliza checklist y estructura.
+- `requestType`: pedido sugerido.
+- `keywords`: palabras simples en español e inglés para detectar el caso.
+- `title`: título sugerido en español e inglés.
+- `summary`: explicación breve de lo entendido.
+- `canAsk`: opciones de pedido que puede hacer el usuario.
+- `usefulFiles`: documentos o archivos que podrían servir.
+- `missing`: dato simple que podría faltar.
+
+Para agregar un caso nuevo:
+
+1. Agregar una entrada nueva en `caseLibrary`.
+2. Incluir keywords concretas, no genéricas.
+3. Escribir textos completos en `es` y `en`.
+4. Probar que no robe casos parecidos con frases reales.
+5. Mantener la pregunta extra corta y accionable.
+
+Casos implementados en serio:
+
+- Compra online que no llegó.
+- Producto defectuoso.
+- Vendedor no responde.
+- Devolución o garantía.
+- Cobro incorrecto o cargo desconocido.
+- Servicio no cumplido.
+- Demora de envío.
+- Pago duplicado.
+- Suscripción no deseada.
+- Trámite demorado.
+- Problema de alquiler.
+- Mensaje o documentación personal.
 
 ## Cómo cambiar precios y links
 

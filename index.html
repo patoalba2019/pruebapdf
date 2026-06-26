@@ -150,10 +150,10 @@
 
       <section class="builder" id="crear">
         <div class="section-title builder-title">
-          <p class="eyebrow" data-i18n="builderEyebrow">Constructor guiado</p>
-          <h2 data-i18n="builderTitle">Te guiamos paso a paso</h2>
+          <p class="eyebrow" data-i18n="builderEyebrow">Asistente simple</p>
+          <h2 data-i18n="builderTitle">Contá qué pasó. CasoClaro te ayuda con el resto.</h2>
           <p data-i18n="builderLead">
-            Elegí una opción, cargá tus archivos y revisá un documento claro. Podés cambiar todo después.
+            Prepará un mensaje claro, un email, un texto para formulario y un documento simple. Podés adjuntar archivos si querés.
           </p>
         </div>
 
@@ -177,7 +177,13 @@
                   <p data-i18n="step1Lead">Elegí una opción simple. Después contás qué pasó y CasoClaro te ayuda con el resto.</p>
                 </div>
               </div>
-              <div class="intent-grid" id="intentGrid"></div>
+              <div class="story-first">
+                <label class="wide main-story">
+                  <span data-i18n="fieldStory">¿Qué pasó?</span>
+                  <textarea id="caseStory" data-i18n-placeholder="storyPlaceholder"></textarea>
+                </label>
+                <div class="story-examples" id="storyExamples"></div>
+              </div>
               <div class="quick-start">
                 <div>
                   <strong data-i18n="quickTitle">Modo rápido</strong>
@@ -186,7 +192,37 @@
                 <button id="fastModeButton" type="button" data-i18n="quickButton">Empezar simple</button>
               </div>
               <details class="advanced-box">
+                <summary data-i18n="advancedBasic">Agregar más detalles</summary>
+                <div class="advanced-grid">
+                  <label>
+                    <span data-i18n="fieldDate">Fecha aproximada</span>
+                    <input id="caseDate" type="date" />
+                  </label>
+                  <label>
+                    <span data-i18n="fieldParty">Empresa o persona</span>
+                    <input id="caseParty" placeholder="Ejemplo: tienda, vendedor o empresa" data-i18n-placeholder="partyPlaceholder" />
+                  </label>
+                  <label>
+                    <span data-i18n="fieldReference">Pedido o referencia</span>
+                    <input id="caseReference" placeholder="Ejemplo: número de pedido" data-i18n-placeholder="referencePlaceholder" />
+                  </label>
+                  <label>
+                    <span data-i18n="fieldName">Tu nombre</span>
+                    <input id="caseName" placeholder="Opcional" data-i18n-placeholder="optionalPlaceholder" />
+                  </label>
+                  <label>
+                    <span data-i18n="fieldStatus">Estado actual</span>
+                    <select id="caseStatus"></select>
+                  </label>
+                  <label>
+                    <span data-i18n="fieldAttempt">¿Qué ya intentaste hacer?</span>
+                    <input id="caseAttempt" data-i18n-placeholder="attemptPlaceholder" />
+                  </label>
+                </div>
+              </details>
+              <details class="advanced-box">
                 <summary data-i18n="chooseSituation">Elegir tipo de situación</summary>
+                <div class="intent-grid" id="intentGrid"></div>
                 <div class="case-grid" id="caseGrid"></div>
                 <button class="show-more-cases" id="showMoreCases" type="button" data-i18n="showMoreCases">Ver más opciones</button>
               </details>
@@ -196,72 +232,40 @@
               <div class="step-heading">
                 <span>2</span>
                 <div>
-                  <h3 data-i18n="step2Title">Contame qué pasó</h3>
-                  <p data-i18n="step2Lead">Escribí poco o mucho. Con eso preparamos textos claros para enviar.</p>
+                  <h3 data-i18n="step2Title">Ya lo ordenamos</h3>
+                  <p data-i18n="step2Lead">Revisá lo que entendimos. Si está bien, seguí; si no, podés cambiarlo.</p>
                 </div>
               </div>
-              <div class="smart-form">
-                <label class="wide main-story">
-                  <span data-i18n="fieldStory">¿Qué pasó?</span>
-                  <textarea id="caseStory" data-i18n-placeholder="storyPlaceholder"></textarea>
-                </label>
-                <details class="advanced-box">
-                  <summary data-i18n="advancedBasic">Agregar más detalles</summary>
-                  <div class="advanced-grid">
-                    <label>
-                      <span data-i18n="fieldTitle">Título</span>
-                      <div class="input-action">
-                        <input id="caseTitle" />
-                        <button id="useTitleExample" type="button" data-i18n="useExample">Usar ejemplo</button>
-                      </div>
-                    </label>
-                    <label>
-                      <span data-i18n="fieldDate">Fecha aproximada</span>
-                      <input id="caseDate" type="date" />
-                    </label>
-                    <label>
-                      <span data-i18n="fieldParty">Empresa o persona</span>
-                      <input id="caseParty" placeholder="Ejemplo: tienda, vendedor o empresa" data-i18n-placeholder="partyPlaceholder" />
-                    </label>
-                    <label>
-                      <span data-i18n="fieldReference">Pedido o referencia</span>
-                      <input id="caseReference" placeholder="Ejemplo: número de pedido" data-i18n-placeholder="referencePlaceholder" />
-                    </label>
-                    <label>
-                      <span data-i18n="fieldName">Tu nombre</span>
-                      <input id="caseName" placeholder="Opcional" data-i18n-placeholder="optionalPlaceholder" />
-                    </label>
-                    <label>
-                      <span data-i18n="fieldStatus">Estado actual</span>
-                      <select id="caseStatus"></select>
-                    </label>
-                    <label class="wide">
-                      <span data-i18n="fieldAttempt">¿Qué ya intentaste hacer?</span>
-                      <input id="caseAttempt" data-i18n-placeholder="attemptPlaceholder" />
-                    </label>
-                    <label class="wide">
-                      <span data-i18n="toneTitle">Estilo del texto</span>
-                      <div class="tone-row" id="toneRow"></div>
-                    </label>
-                  </div>
-                </details>
+              <div class="smart-detected" id="smartDetected"></div>
+              <div class="request-box">
+                <h4 data-i18n="step3Title">¿Qué querés lograr?</h4>
+                <p data-i18n="step3Lead">Elegí el pedido principal. Si no estás seguro, dejá “Una solución”.</p>
+                <div class="request-options" id="requestOptions"></div>
               </div>
+              <details class="advanced-box">
+                <summary data-i18n="editPreparedTexts">Editar textos preparados</summary>
+                <label class="wide">
+                  <span data-i18n="fieldTitle">Título del caso</span>
+                  <div class="input-action">
+                    <input id="caseTitle" />
+                    <button id="useTitleExample" type="button" data-i18n="useExample">Usar ejemplo</button>
+                  </div>
+                </label>
+                <label class="wide">
+                  <span data-i18n="fieldSummary">Resumen y pedido principal</span>
+                  <textarea id="caseSummary"></textarea>
+                  <div class="summary-options" id="summaryOptions"></div>
+                </label>
+                <label class="wide">
+                  <span data-i18n="toneTitle">Estilo del texto</span>
+                  <div class="tone-row" id="toneRow"></div>
+                </label>
+              </details>
             </section>
 
             <section class="wizard-step" data-step="2">
               <div class="step-heading">
                 <span>3</span>
-                <div>
-                  <h3 data-i18n="step3Title">¿Qué querés lograr?</h3>
-                  <p data-i18n="step3Lead">Elegí el pedido principal. Si no estás seguro, dejá “Una solución”.</p>
-                </div>
-              </div>
-              <div class="request-options" id="requestOptions"></div>
-            </section>
-
-            <section class="wizard-step" data-step="3">
-              <div class="step-heading">
-                <span>4</span>
                 <div>
                   <h3 data-i18n="step4Title">¿Tenés algo para adjuntar?</h3>
                   <p data-i18n="step4Lead">No necesitás archivos para empezar. Podés preparar tu mensaje ahora y sumar documentos después si querés.</p>
@@ -286,12 +290,12 @@
               <div class="items" id="items"></div>
             </section>
 
-            <section class="wizard-step" data-step="4">
+            <section class="wizard-step" data-step="3">
               <div class="step-heading">
-                <span>5</span>
+                <span>4</span>
                 <div>
-                  <h3 data-i18n="step5Title">Listo, esto preparamos para vos</h3>
-                  <p data-i18n="step5Lead">Ya tenés qué decir, qué enviar y qué guardar. Podés copiar textos gratis o desbloquear la descarga limpia.</p>
+                  <h3 data-i18n="step5Title">Así quedó tu caso</h3>
+                  <p data-i18n="step5Lead">Ya tenés qué decir, qué enviar y qué guardar.</p>
                 </div>
               </div>
               <div class="result-subhead">
@@ -299,14 +303,21 @@
                 <p data-i18n="clearCaseHelp">Este resumen se arma con lo que contaste y lo que cargaste.</p>
               </div>
               <div class="clear-case" id="clearCase"></div>
+              <div class="case-map" id="caseMap"></div>
+              <div class="review-card" id="reviewCard"></div>
+            </section>
+
+            <section class="wizard-step" data-step="4">
+              <div class="step-heading">
+                <span>5</span>
+                <div>
+                  <h3 data-i18n="step6Title">Elegí qué querés hacer</h3>
+                  <p data-i18n="step6Lead">Copiá gratis tus textos o descargá el documento completo cuando quieras.</p>
+                </div>
+              </div>
               <div class="ready-send" id="readySend"></div>
               <details class="advanced-box">
                 <summary data-i18n="editPreparedTexts">Editar textos preparados</summary>
-                <label class="wide">
-                  <span data-i18n="fieldSummary">Resumen y pedido principal</span>
-                  <textarea id="caseSummary"></textarea>
-                  <div class="summary-options" id="summaryOptions"></div>
-                </label>
                 <div class="ready-texts wide" id="readyTexts">
                   <label>
                     <span data-i18n="whatsappReadyLabel">Mensaje para WhatsApp</span>
@@ -322,8 +333,6 @@
                   </label>
                 </div>
               </details>
-              <div class="case-map" id="caseMap"></div>
-              <div class="review-card" id="reviewCard"></div>
               <button class="primary full" id="previewButton" type="button" data-track="preview_generate">
                 <span data-i18n="previewButton">Ver así quedó</span>
               </button>
