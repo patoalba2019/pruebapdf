@@ -11,8 +11,8 @@
 
 Esta revision es orientativa y gratuita, no reemplaza una busqueda formal de marca.
 
-- Nombre "CasoClaro": no aparece como producto dominante en los primeros resultados revisados.
-- Dominio `casoclaro.com`: aparece mencionado en resultados publicos como dominio existente/registrado, por lo que no conviene asumir que esta libre.
+- Nombre "CasoClaro": aparece usado por al menos un sitio existente.
+- Dominio `casoclaro.com`: ya responde como una plataforma de investigacion legal con IA en Mexico. No comprar ni intentar registrar dominio por ahora.
 - Redes sociales: revisar manualmente antes de crear usuario, porque la disponibilidad puede cambiar minuto a minuto.
 
 ## Usuarios gratuitos a intentar primero
