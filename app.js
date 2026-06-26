@@ -847,6 +847,12 @@ function requestPhrase() {
   return text(currentRequestOption().phraseKey);
 }
 
+function sentenceCase(value) {
+  const clean = String(value || "").trim();
+  if (!clean) return "";
+  return `${clean.charAt(0).toUpperCase()}${clean.slice(1)}`;
+}
+
 function storyText() {
   return $("#caseStory")?.value.trim() || localizedCase(state.caseType, "summary");
 }
@@ -1581,7 +1587,7 @@ function renderClearCase() {
     </article>
     <article class="clear-card">
       <span>${text("requestTitle")}</span>
-      <p><strong>${escapeHtml(requestLabel())}</strong> ${escapeHtml(requestPhrase())}</p>
+      <p>${escapeHtml(sentenceCase(requestPhrase()))}.</p>
     </article>
     <article class="clear-card">
       <span>${text("alreadyHaveTitle")}</span>
@@ -1790,7 +1796,7 @@ function renderProtectedPreview() {
     <div class="preview-document">
       <div class="watermark">${text("previewWatermark")}</div>
       <section class="preview-cover">
-        <span>PruebaPDF</span>
+        <span>CasoClaro</span>
         <h4>${escapeHtml(title)}</h4>
         <p>${escapeHtml(summary)}</p>
         <p><strong>${text("mainRequestLabel")}</strong> ${escapeHtml(requestLabel())}</p>
@@ -1921,14 +1927,14 @@ async function imageDimensions(file) {
 }
 
 function pdfSafeName(title, suffix) {
-  const cleaned = String(title || "PruebaPDF")
+  const cleaned = String(title || "CasoClaro")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^\w-]+/g, "-")
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "")
     .slice(0, 60);
-  return `${cleaned || "PruebaPDF"}-${suffix}.pdf`;
+  return `${cleaned || "CasoClaro"}-${suffix}.pdf`;
 }
 
 async function buildPdf({ mode = "full", watermark = false } = {}) {
@@ -1973,14 +1979,14 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   };
 
   const drawPageHeader = (page, heading) => {
-    page.drawText("PruebaPDF", { x: 52, y: 792, size: 11, font: bold, color: rgb(0.15, 0.31, 0.72) });
+    page.drawText("CasoClaro", { x: 52, y: 792, size: 11, font: bold, color: rgb(0.15, 0.31, 0.72) });
     page.drawText(heading, { x: 52, y: 752, size: 22, font: bold, color: rgb(0.04, 0.08, 0.14) });
   };
 
   const cover = pdf.addPage(pageSize);
   cover.drawRectangle({ x: 0, y: 0, width: pageSize[0], height: pageSize[1], color: rgb(0.96, 0.98, 1) });
   cover.drawRectangle({ x: 0, y: 0, width: 14, height: pageSize[1], color: rgb(0.15, 0.39, 0.92) });
-  cover.drawText("PruebaPDF", { x: 52, y: 770, size: 18, font: bold, color: rgb(0.04, 0.08, 0.14) });
+  cover.drawText("CasoClaro", { x: 52, y: 770, size: 18, font: bold, color: rgb(0.04, 0.08, 0.14) });
   cover.drawText(text("organizedDocument"), { x: 52, y: 744, size: 11, font: regular, color: rgb(0.15, 0.31, 0.72) });
   wrapText(title, 26).slice(0, 3).forEach((line, index) => {
     cover.drawText(line, { x: 52, y: 655 - index * 40, size: 32, font: bold, color: rgb(0.04, 0.08, 0.14) });
@@ -2132,7 +2138,7 @@ async function downloadPaidPackage() {
     state.credits = Number(consumeData.credits || 0);
     saveCredits();
     updateCredits();
-    const title = $("#caseTitle").value.trim() || "PruebaPDF";
+    const title = $("#caseTitle").value.trim() || "CasoClaro";
     downloadBlob(fullBlob, pdfSafeName(title, state.lang === "en" ? "full-document" : "documento-completo"));
     setTimeout(() => downloadBlob(summaryBlob, pdfSafeName(title, state.lang === "en" ? "summary" : "resumen")), 500);
     showMessage(`${text("doneRemaining")} ${state.credits} ${text("downloadsUnit")}`, "success");
