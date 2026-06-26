@@ -935,10 +935,16 @@ summary:focus-visible {
 }
 
 .case-map,
-.final-summary {
+.final-summary,
+.clear-case,
+.ready-send-grid {
   display: grid;
   gap: 12px;
   margin-bottom: 16px;
+}
+
+.clear-case {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .case-map {
@@ -947,11 +953,55 @@ summary:focus-visible {
 
 .case-map article,
 .final-summary,
-.final-grid article {
+.final-grid article,
+.clear-card,
+.ready-send-card {
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 14px;
+}
+
+.clear-card {
+  display: grid;
+  gap: 9px;
+  min-width: 0;
+}
+
+.clear-card-main {
+  background: linear-gradient(135deg, #eff6ff, #f8fafc);
+  border-color: #c7d7fe;
+}
+
+.clear-card-wide {
+  grid-column: 1 / -1;
+}
+
+.clear-card span,
+.ready-send-card span,
+.ready-send-intro h4 {
+  color: var(--ink);
+  font-weight: 950;
+}
+
+.clear-card p,
+.clear-card li,
+.ready-send-card p,
+.ready-send-card li {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.clear-card p,
+.clear-card ul,
+.clear-card ol {
+  margin: 0;
+}
+
+.clear-card ul,
+.clear-card ol,
+.ready-send-card ul {
+  padding-left: 20px;
 }
 
 .case-map article {
@@ -990,6 +1040,68 @@ summary:focus-visible {
 .final-summary h4 {
   font-size: 23px;
   margin: 10px 0 6px;
+}
+
+.ready-send-intro {
+  background: linear-gradient(135deg, #fff7ed, #eff6ff);
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  padding: 16px;
+}
+
+.ready-send-intro h4 {
+  font-size: 24px;
+  margin: 0 0 6px;
+}
+
+.ready-send-intro p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.ready-send-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ready-send-card {
+  align-content: start;
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.ready-send-card p {
+  display: -webkit-box;
+  margin: 0;
+  max-height: 11.2em;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+}
+
+.ready-send-card div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ready-send-card button {
+  background: #eef4ff;
+  border: 1px solid #c7d7fe;
+  border-radius: 8px;
+  color: var(--blue);
+  font-weight: 900;
+  min-height: 42px;
+  padding: 0 12px;
+}
+
+.ready-send-card button:first-child,
+.document-ready-card button {
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  border-color: transparent;
+  color: white;
 }
 
 .final-grid {
@@ -1425,7 +1537,8 @@ footer a {
   .hero-grid,
   .builder-shell,
   .unlock-grid,
-  .review-card {
+  .review-card,
+  .ready-send-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1487,6 +1600,7 @@ footer a {
   .smart-form,
   .advanced-grid,
   .case-map,
+  .clear-case,
   .final-grid,
   .ready-texts,
   .request-options,

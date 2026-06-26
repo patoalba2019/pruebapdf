@@ -5,8 +5,8 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
 const stepLabels = {
-  es: ["Elegí tu caso", "Contá qué pasó", "Qué agregar", "Archivos", "Tu caso en claro", "Descarga"],
-  en: ["Choose case", "Tell what happened", "What to add", "Files", "Your clear case", "Download"]
+  es: ["Elegí tu caso", "Contá qué pasó", "Qué agregar", "Archivos", "Tu caso en claro", "Listo para enviar", "Descarga"],
+  en: ["Choose case", "Tell what happened", "What to add", "Files", "Your clear case", "Ready to send", "Download"]
 };
 
 const translations = {
@@ -74,8 +74,10 @@ const translations = {
     sortType: "Ordenar por tipo",
     step5Title: "Tu caso en claro",
     step5Lead: "Revisá el pedido, los textos listos y la documentación antes de generar la vista previa.",
-    step6Title: "Listo para descargar",
-    step6Lead: "Primero revisá qué preparaste. Después elegí si ya tenés código o querés comprar.",
+    step6Title: "Listo para enviar",
+    step6Lead: "Copiá el mensaje que necesitás o seguí a descarga cuando quieras.",
+    step7Title: "Descarga y compra",
+    step7Lead: "Elegí si ya tenés código o querés comprar una descarga o pack.",
     unlockCodeTitle: "Ya tengo código",
     buyTitle: "Comprar una descarga o pack",
     buyLead: "Se abre una página segura de pago. Después volvés y pegás tu código.",
@@ -154,6 +156,26 @@ const translations = {
     formReadyLabel: "Texto para formulario",
     clearCaseTitle: "Tu caso en claro",
     clearCaseHelp: "Este resumen se arma con lo que contaste y lo que cargaste.",
+    understoodTitle: "Esto entendimos de tu situación",
+    requestTitle: "Esto es lo que querés pedir",
+    alreadyHaveTitle: "Lo que ya tenés",
+    couldAddTitle: "Lo que podrías sumar si lo tenés",
+    nextStepsTitle: "Próximos pasos simples",
+    nextStepReview: "Revisá que el mensaje diga lo que querés.",
+    nextStepPreview: "Mirá la vista previa con marca de agua.",
+    nextStepSend: "Copiá el texto o descargá el respaldo cuando esté desbloqueado.",
+    readySendTitle: "Listo para enviar",
+    readySendLead: "Tres salidas simples: mensaje corto, texto formal y documento de respaldo.",
+    whatsappBlockTitle: "Mensaje para WhatsApp",
+    emailBlockTitle: "Email o texto formal",
+    documentBlockTitle: "Documento completo + resumen",
+    documentBlockText: "Incluye portada, pedido principal, índice, evidencias y un resumen corto.",
+    copyWhatsApp: "Copiar WhatsApp",
+    copyEmail: "Copiar email",
+    copyForm: "Usar en formulario",
+    goToUnlock: "Ir a descarga o compra",
+    openEmailAction: "Abrir email",
+    openWhatsAppAction: "Abrir WhatsApp",
     readyToSend: "Texto listo para enviar",
     mainRequestLabel: "Pedido principal",
     whatCouldHelp: "Podrías sumar",
@@ -330,8 +352,10 @@ const translations = {
     sortType: "Sort by type",
     step5Title: "Your clear case",
     step5Lead: "Review the request, ready-to-send text and documentation before creating the preview.",
-    step6Title: "Ready to download",
-    step6Lead: "First review what you prepared. Then choose whether you already have a code or want to buy.",
+    step6Title: "Ready to send",
+    step6Lead: "Copy the message you need or continue to download when you are ready.",
+    step7Title: "Download and purchase",
+    step7Lead: "Choose whether you already have a code or want to buy one download or a pack.",
     unlockCodeTitle: "I already have a code",
     buyTitle: "Buy a download or pack",
     buyLead: "A secure payment page opens. Then come back and paste your code.",
@@ -410,6 +434,26 @@ const translations = {
     formReadyLabel: "Text for a form",
     clearCaseTitle: "Your clear case",
     clearCaseHelp: "This summary is built from what you wrote and uploaded.",
+    understoodTitle: "This is what we understood",
+    requestTitle: "This is what you want to ask for",
+    alreadyHaveTitle: "What you already have",
+    couldAddTitle: "What you could add if you have it",
+    nextStepsTitle: "Simple next steps",
+    nextStepReview: "Check that the message says what you want.",
+    nextStepPreview: "Review the watermarked preview.",
+    nextStepSend: "Copy the text or download the backup when it is unlocked.",
+    readySendTitle: "Ready to send",
+    readySendLead: "Three simple outputs: short message, formal text and backup document.",
+    whatsappBlockTitle: "WhatsApp message",
+    emailBlockTitle: "Email or formal text",
+    documentBlockTitle: "Full document + summary",
+    documentBlockText: "Includes cover, main request, index, evidence and a short summary.",
+    copyWhatsApp: "Copy WhatsApp",
+    copyEmail: "Copy email",
+    copyForm: "Use in form",
+    goToUnlock: "Go to download or purchase",
+    openEmailAction: "Open email",
+    openWhatsAppAction: "Open WhatsApp",
     readyToSend: "Ready-to-send text",
     mainRequestLabel: "Main request",
     whatCouldHelp: "You could add",
@@ -909,8 +953,10 @@ function updateAssistedTexts({ force = false } = {}) {
   });
   state.previewReady = false;
   renderReview();
+  renderClearCase();
   renderCaseMap();
   renderFinalSummary();
+  renderReadyToSend();
   renderShareKit();
 }
 
@@ -1203,8 +1249,6 @@ function renderChecklist() {
       state.checklist[index].status = entry.status === "have" ? "later" : "have";
       renderChecklist();
       renderReview();
-      renderCaseMap();
-      renderFinalSummary();
     });
     list.appendChild(article);
   });
@@ -1233,6 +1277,8 @@ function showStep(index) {
   $("#nextStep").hidden = state.step === steps.length - 1;
   renderSteps();
   renderReview();
+  renderClearCase();
+  renderReadyToSend();
   renderShareKit();
   showMessage("");
 }
@@ -1346,8 +1392,6 @@ function renderItems() {
     fields.append(
       inputFor(item, "title", text("cleanTitle"), () => {
         renderReview();
-        renderCaseMap();
-        renderFinalSummary();
       }),
       inputFor(item, "description", text("shortDescription"), () => renderReview())
     );
@@ -1363,8 +1407,6 @@ function renderItems() {
       }),
       dateFor(item, () => {
         renderReview();
-        renderCaseMap();
-        renderFinalSummary();
       })
     );
     details.appendChild(advancedFields);
@@ -1453,8 +1495,10 @@ function moveItem(index, direction) {
   state.previewReady = false;
   renderItems();
   renderReview();
+  renderClearCase();
   renderCaseMap();
   renderFinalSummary();
+  renderReadyToSend();
 }
 
 function removeItem(index) {
@@ -1515,6 +1559,49 @@ function missingSuggestions() {
   return suggestions.slice(0, 3);
 }
 
+function thingsYouHave() {
+  const items = [];
+  if (state.items.length) items.push(`${state.items.length} ${text("filesAddedMetric")}`);
+  const haveCount = state.checklist.filter((entry) => entry.status === "have").length;
+  if (haveCount) items.push(`${haveCount} ${text("markedData")}`);
+  if ($("#caseReference")?.value.trim()) items.push(text("reference"));
+  if ($("#caseDate")?.value) items.push(text("dateLabel"));
+  return items.length ? items : [text("baseReady")];
+}
+
+function renderClearCase() {
+  const panel = $("#clearCase");
+  if (!panel) return;
+  const suggestions = missingSuggestions();
+  const nextSteps = [text("nextStepReview"), text("nextStepPreview"), text("nextStepSend")];
+  panel.innerHTML = `
+    <article class="clear-card clear-card-main">
+      <span>${text("understoodTitle")}</span>
+      <p>${escapeHtml(storyText())}</p>
+    </article>
+    <article class="clear-card">
+      <span>${text("requestTitle")}</span>
+      <p><strong>${escapeHtml(requestLabel())}</strong> ${escapeHtml(requestPhrase())}</p>
+    </article>
+    <article class="clear-card">
+      <span>${text("alreadyHaveTitle")}</span>
+      <ul>${thingsYouHave().map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+    </article>
+    <article class="clear-card">
+      <span>${text("couldAddTitle")}</span>
+      <ul>${(suggestions.length ? suggestions : [text("noMissingNeeded")]).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+    </article>
+    <article class="clear-card clear-card-wide">
+      <span>${text("readyToSend")}</span>
+      <p>${escapeHtml(readyText("whatsapp"))}</p>
+    </article>
+    <article class="clear-card clear-card-wide">
+      <span>${text("nextStepsTitle")}</span>
+      <ol>${nextSteps.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol>
+    </article>
+  `;
+}
+
 function renderFinalSummary() {
   const panel = $("#finalSummary");
   if (!panel) return;
@@ -1549,6 +1636,90 @@ function renderFinalSummary() {
   `;
 }
 
+function renderReadyToSend() {
+  const panel = $("#readySend");
+  if (!panel) return;
+  const title = titleText();
+  const party = $("#caseParty")?.value.trim();
+  const subject = `${title}${party ? ` - ${party}` : ""}`;
+  const whatsapp = readyText("whatsapp");
+  const email = readyText("email");
+  const form = readyText("form");
+  panel.innerHTML = `
+    <div class="ready-send-intro">
+      <h4>${text("readySendTitle")}</h4>
+      <p>${text("readySendLead")}</p>
+    </div>
+    <div class="ready-send-grid">
+      <article class="ready-send-card">
+        <span>${text("whatsappBlockTitle")}</span>
+        <p>${escapeHtml(whatsapp)}</p>
+        <div>
+          <button type="button" data-copy-ready="${escapeAttribute(whatsapp)}">${text("copyWhatsApp")}</button>
+          <button type="button" data-open-whatsapp="${escapeAttribute(whatsapp)}">${text("openWhatsAppAction")}</button>
+        </div>
+      </article>
+      <article class="ready-send-card">
+        <span>${text("emailBlockTitle")}</span>
+        <p>${escapeHtml(email)}</p>
+        <div>
+          <button type="button" data-copy-ready="${escapeAttribute(email)}">${text("copyEmail")}</button>
+          <button type="button" data-open-email="${escapeAttribute(email)}" data-subject="${escapeAttribute(subject)}">${text("openEmailAction")}</button>
+          <button type="button" data-copy-ready="${escapeAttribute(form)}">${text("copyForm")}</button>
+        </div>
+      </article>
+      <article class="ready-send-card document-ready-card">
+        <span>${text("documentBlockTitle")}</span>
+        <p>${text("documentBlockText")}</p>
+        <ul>
+          <li>${state.items.length} ${text("filesAddedMetric")}</li>
+          <li>${estimatePages()} ${text("estimatedPages")}</li>
+          <li>${text("summaryIncludes")}</li>
+        </ul>
+        <div>
+          <button type="button" data-go-unlock>${text("goToUnlock")}</button>
+        </div>
+      </article>
+    </div>
+  `;
+  bindReadyActions(panel);
+}
+
+async function copyReadyText(value) {
+  try {
+    await navigator.clipboard.writeText(value);
+  } catch {
+    const area = document.createElement("textarea");
+    area.value = value;
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand("copy");
+    area.remove();
+  }
+  showMessage(text("copied"), "success");
+}
+
+function bindReadyActions(panel) {
+  panel.querySelectorAll("[data-copy-ready]").forEach((button) => {
+    button.addEventListener("click", () => copyReadyText(button.dataset.copyReady || ""));
+  });
+  panel.querySelectorAll("[data-open-whatsapp]").forEach((button) => {
+    button.addEventListener("click", () => {
+      window.open(`https://wa.me/?text=${encodeURIComponent(button.dataset.openWhatsapp || "")}`, "_blank", "noreferrer");
+    });
+  });
+  panel.querySelectorAll("[data-open-email]").forEach((button) => {
+    button.addEventListener("click", () => {
+      window.location.href = `mailto:?subject=${encodeURIComponent(button.dataset.subject || titleText())}&body=${encodeURIComponent(button.dataset.openEmail || "")}`;
+    });
+  });
+  panel.querySelectorAll("[data-go-unlock]").forEach((button) => {
+    button.addEventListener("click", () => showStep(6));
+  });
+}
+
 function renderReview() {
   const review = $("#reviewCard");
   if (!review) return;
@@ -1568,8 +1739,10 @@ function renderReview() {
       <li>${text("previewReadyInside")}</li>
     </ul>
   `;
+  renderClearCase();
   renderCaseMap();
   renderFinalSummary();
+  renderReadyToSend();
 }
 
 function renderProtectedPreview() {
@@ -2059,12 +2232,16 @@ function escapeAttribute(value) {
 function bindEvents() {
   $("#languageToggle").addEventListener("click", () => {
     const oldTitle = localizedCase(state.caseType, "exampleTitle");
+    const oldStory = localizedCase(state.caseType, "summary");
     const titleInput = $("#caseTitle");
+    const storyInput = $("#caseStory");
     const shouldTranslateTitle = !titleInput.value.trim() || titleInput.value.trim() === oldTitle;
+    const shouldTranslateStory = !storyInput.value.trim() || storyInput.value.trim() === oldStory;
     state.lang = state.lang === "es" ? "en" : "es";
     state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
     applyTranslations();
     if (shouldTranslateTitle) titleInput.value = localizedCase(state.caseType, "exampleTitle");
+    if (shouldTranslateStory) storyInput.value = localizedCase(state.caseType, "summary");
     populateStatusOptions();
     state.checklist = localizedChecklist().map((_, index) => ({ index, status: state.checklist[index]?.status || "later" }));
     renderCases();
@@ -2110,8 +2287,6 @@ function bindEvents() {
       state.editedTexts[key] = true;
       state.previewReady = false;
       renderReview();
-      renderCaseMap();
-      renderFinalSummary();
       renderShareKit();
     });
   });
@@ -2124,8 +2299,6 @@ function bindEvents() {
       state.sortMode = id.replace("sort", "").toLowerCase();
       renderItems();
       renderReview();
-      renderCaseMap();
-      renderFinalSummary();
       state.previewReady = false;
     });
   });
