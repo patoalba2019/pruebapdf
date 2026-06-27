@@ -9,6 +9,7 @@ Microproducto para contar qué pasó, preparar mensajes claros y ordenar archivo
 - Camino completo sin archivos: WhatsApp, email, texto de formulario y documento simple.
 - Biblioteca inteligente local para detectar subcasos comunes desde el relato del usuario.
 - Motor local de hechos para detectar señales simples: fechas, importes, referencias, pagos, entregas, respuestas, demoras, trámites y alquileres.
+- Ruta opcional `/api/analyze-case` para análisis inteligente con Cloudflare Workers AI del lado servidor, apagada por defecto si no hay variables configuradas.
 - “Paquete armado” con cronología, hechos importantes, pruebas vinculadas, faltantes concretos y qué recibirá el usuario.
 - Subida opcional de JPG, PNG, WEBP, PDF y TXT.
 - Orden sugerido de archivos por rol probable, con opción manual mediante botones subir/bajar.
@@ -93,6 +94,36 @@ No promete:
 - Inventar hechos que el usuario no indicó.
 - Mensaje o documentación personal.
 
+## Análisis inteligente opcional
+
+La integración de IA está preparada con Cloudflare Workers AI, pero queda apagada por defecto. La app funciona con el motor local seguro aunque Cloudflare no esté configurado, no responda, supere la cuota o devuelva baja confianza.
+
+Reglas de privacidad:
+
+- La IA se ejecuta desde `/api/analyze-case`, del lado servidor.
+- El token de Cloudflare nunca se envía al navegador.
+- El usuario debe tocar “Analizar mi caso” antes de enviar información.
+- No se envían archivos completos, fotos completas, PDFs completos, códigos de compra, datos de Lemon, créditos, claves ni variables de entorno.
+- Se envía solo relato, idioma, nombres limpios de archivos, tipos, fechas/importes/referencias detectadas localmente y texto reducido de TXT o PDF seleccionable cuando exista.
+
+Variables nuevas para Vercel:
+
+```txt
+AI_ANALYSIS_ENABLED=false
+CLOUDFLARE_ACCOUNT_ID=
+CLOUDFLARE_AI_TOKEN=
+CLOUDFLARE_AI_MODEL=@cf/meta/llama-3.1-8b-instruct-fast
+```
+
+Para activar la capa inteligente:
+
+1. Confirmar en Cloudflare que la cuenta está en plan gratuito y sin tarjeta obligatoria.
+2. Crear un token de API con permisos mínimos para Workers AI.
+3. Cargar las variables en Vercel.
+4. Cambiar `AI_ANALYSIS_ENABLED` a `true`.
+
+Si falta cualquier variable o `AI_ANALYSIS_ENABLED` no es `true`, la ruta responde como desactivada y la app usa el motor local.
+
 ## Cómo cambiar precios y links
 
 Editá `config.js`.
@@ -156,6 +187,10 @@ LEMON_SQUEEZY_PACK20_PRODUCT_ID=1172401
 LEMON_SQUEEZY_PACK20_VARIANT_ID=
 KV_REST_API_URL=
 KV_REST_API_TOKEN=
+AI_ANALYSIS_ENABLED=false
+CLOUDFLARE_ACCOUNT_ID=
+CLOUDFLARE_AI_TOKEN=
+CLOUDFLARE_AI_MODEL=@cf/meta/llama-3.1-8b-instruct-fast
 ```
 
 `APP_SECRET` puede ser cualquier texto largo aleatorio. Se usa para firmar la sesión local del comprador sin exponer su license key.

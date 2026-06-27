@@ -703,6 +703,7 @@ summary:focus-visible {
 }
 
 .detected-main,
+.detected-ai,
 .detected-grid article {
   background: #ffffff;
   border: 1px solid var(--line);
@@ -755,6 +756,22 @@ summary:focus-visible {
   background: #ffffff;
   border: 1px solid #c7d7fe;
   color: var(--blue);
+}
+
+.detected-ai {
+  background: #f8fafc;
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.detected-ai strong {
+  font-size: 17px;
+}
+
+.detected-ai p {
+  color: var(--muted);
+  margin: 0;
 }
 
 .detected-grid {
@@ -1860,6 +1877,7 @@ footer a {
   .intent-grid,
   .attachment-choices,
   .detected-main,
+  .detected-ai,
   .detected-grid,
   .smart-form,
   .advanced-grid,

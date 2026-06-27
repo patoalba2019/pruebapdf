@@ -213,6 +213,9 @@ const translations = {
     missingContract: "Contrato, acuerdo o presupuesto.",
     missingDoubleCharge: "Captura o movimientos donde se vean ambos cobros.",
     missingProcedureProof: "Constancia, formulario o número de expediente.",
+    missingHighBill: "Importe, período, consumo y boleta anterior si la tenés.",
+    missingPreviousBill: "Factura anterior o detalle del plan contratado.",
+    missingRejectionReason: "Motivo informado del rechazo o respuesta recibida.",
     generatedFromYourInfo: "Texto generado con tu información. Podés editarlo antes de copiar o descargar.",
     finalTitle: "Esto es lo que preparaste",
     filesAddedMetric: "archivos agregados",
@@ -256,6 +259,9 @@ const translations = {
     factSubscription: "Suscripción o cobro recurrente",
     factProcedure: "Trámite pendiente",
     factRental: "Situación de alquiler",
+    factHighBill: "Factura o boleta con importe alto",
+    factServiceIncrease: "Aumento o cambio de precio informado",
+    factWarrantyRejected: "Garantía o devolución rechazada",
     factDocumentation: "Documentación preparada",
     linkedToFact: "Vinculado con",
     fileRolePayment: "Comprobante de pago",
@@ -338,7 +344,7 @@ const translations = {
     storyExample1: "Compré algo y nunca llegó. El vendedor no me responde.",
     storyExample2: "Me cobraron dos veces y necesito pedir una devolución.",
     storyExample3: "Contraté un servicio, no lo hicieron y quiero dejarlo claro.",
-    storyExample4: "Solo necesito preparar un mensaje claro para enviar.",
+    storyExample4: "Me vino mucho en la boleta de luz y quiero pedir revisión.",
     detectedCaseTitle: "Tipo de situación detectado",
     detectedConfidenceHigh: "Lo detectamos con buena claridad.",
     detectedConfidenceMedium: "Parece que se trata de esto.",
@@ -351,6 +357,20 @@ const translations = {
     detectedUsefulFiles: "Archivos que podrían servir",
     detectedMissingData: "Dato que podría faltar",
     noLongForms: "No hace falta completar todo. Podés seguir y ajustar después.",
+    unsureCaseTitle: "Todavía no estoy seguro del tipo de situación",
+    unsureCaseText: "Puedo preparar una versión inicial con lo que contaste. Si querés, también podés elegir el tipo manualmente.",
+    aiConsentTitle: "Análisis inteligente opcional",
+    aiConsentText: "Podemos analizar lo que escribiste para ayudarte a ordenar tu caso. Tus archivos no se envían completos. Podés continuar sin análisis inteligente.",
+    aiAnalyzeButton: "Analizar mi caso",
+    aiSkipButton: "Seguir sin análisis",
+    aiReading: "Estamos leyendo tu información y organizando tu caso.",
+    aiProgressStory: "Revisando lo que contaste.",
+    aiProgressSignals: "Detectando fechas, importes y referencias.",
+    aiProgressPackage: "Preparando un caso ordenado.",
+    aiProgressOutputs: "Generando tus opciones para enviar.",
+    aiFallback: "Pudimos preparar una versión inicial. Confirmá o ajustá el tipo de caso.",
+    aiUnavailable: "El análisis inteligente no está configurado todavía. Seguimos con una versión inicial segura.",
+    aiApplied: "Listo. Organizamos tu caso con análisis inteligente.",
     heroMess1: "Captura del chat",
     heroMess2: "Comprobante de pago",
     heroMess3: "Detalle del pedido",
@@ -577,6 +597,9 @@ const translations = {
     missingContract: "Contract, agreement or quote.",
     missingDoubleCharge: "Screenshot or movements showing both charges.",
     missingProcedureProof: "Proof, form or file number.",
+    missingHighBill: "Amount, period, usage and previous bill if you have it.",
+    missingPreviousBill: "Previous bill or contracted plan details.",
+    missingRejectionReason: "Reason given for the rejection or response received.",
     generatedFromYourInfo: "Text generated from your information. You can edit it before copying or downloading.",
     finalTitle: "This is what you prepared",
     filesAddedMetric: "files added",
@@ -620,6 +643,9 @@ const translations = {
     factSubscription: "Subscription or recurring charge",
     factProcedure: "Procedure pending",
     factRental: "Rental situation",
+    factHighBill: "High utility or service bill",
+    factServiceIncrease: "Price increase or plan change",
+    factWarrantyRejected: "Warranty or return rejected",
     factDocumentation: "Documentation prepared",
     linkedToFact: "Linked to",
     fileRolePayment: "Payment receipt",
@@ -702,7 +728,7 @@ const translations = {
     storyExample1: "I bought something and it never arrived. The seller is not answering.",
     storyExample2: "I was charged twice and need to ask for a refund.",
     storyExample3: "I hired a service, it was not completed and I want to explain it clearly.",
-    storyExample4: "I only need to prepare a clear message to send.",
+    storyExample4: "My electricity bill came much higher and I want to request a review.",
     detectedCaseTitle: "Detected situation type",
     detectedConfidenceHigh: "We detected it clearly.",
     detectedConfidenceMedium: "It seems to be about this.",
@@ -715,6 +741,20 @@ const translations = {
     detectedUsefulFiles: "Files that could help",
     detectedMissingData: "Information that may be missing",
     noLongForms: "You do not need to fill everything out. You can continue and adjust later.",
+    unsureCaseTitle: "I am not sure about the situation type yet",
+    unsureCaseText: "I can prepare an initial version from what you wrote. If you want, you can also choose the type manually.",
+    aiConsentTitle: "Optional smart analysis",
+    aiConsentText: "We can analyze what you wrote to help organize your case. Your full files are not sent. You can continue without smart analysis.",
+    aiAnalyzeButton: "Analyze my case",
+    aiSkipButton: "Continue without analysis",
+    aiReading: "We are reading your information and organizing your case.",
+    aiProgressStory: "Reviewing what you wrote.",
+    aiProgressSignals: "Detecting dates, amounts and references.",
+    aiProgressPackage: "Preparing an organized case.",
+    aiProgressOutputs: "Generating your sending options.",
+    aiFallback: "We prepared an initial version. Confirm or adjust the case type.",
+    aiUnavailable: "Smart analysis is not configured yet. We will continue with a safe initial version.",
+    aiApplied: "Done. We organized your case with smart analysis.",
     heroMess1: "Chat screenshot",
     heroMess2: "Payment receipt",
     heroMess3: "Order details",
@@ -1206,6 +1246,126 @@ const caseLibrary = [
     missing: { es: "fecha del problema o mensaje principal", en: "date of the issue or main message" }
   },
   {
+    id: "high_utility_bill",
+    caseTypeId: "service",
+    requestType: "review",
+    keywords: {
+      es: [
+        "boleta de luz",
+        "factura de luz",
+        "vino mucho",
+        "vino muy alto",
+        "importe alto",
+        "luz",
+        "electricidad",
+        "gas",
+        "agua",
+        "factura alta",
+        "boleta alta",
+        "consumo alto"
+      ],
+      en: [
+        "electricity bill",
+        "utility bill",
+        "bill is too high",
+        "high bill",
+        "charged too much",
+        "power bill",
+        "gas bill",
+        "water bill",
+        "high consumption"
+      ]
+    },
+    negativeKeywords: {
+      es: ["vendedor", "paquete", "envio", "envío", "producto", "nunca llego", "nunca llegó"],
+      en: ["seller", "package", "shipping", "product", "never arrived"]
+    },
+    title: { es: "Factura o boleta con importe alto", en: "High utility or service bill" },
+    summary: {
+      es: "Se trata de una factura o boleta con un importe que la persona quiere revisar. La idea es pedir una explicación clara del consumo, período e importe.",
+      en: "This is about a bill with an amount the person wants reviewed. The goal is to ask for a clear explanation of the usage, period and amount."
+    },
+    canAsk: {
+      es: ["revisión de facturación", "detalle del consumo", "explicación del importe", "corrección si corresponde"],
+      en: ["billing review", "usage details", "amount explanation", "correction if applicable"]
+    },
+    usefulFiles: {
+      es: ["boleta o factura actual", "boleta anterior", "captura del importe", "número de cliente o cuenta"],
+      en: ["current bill", "previous bill", "amount screenshot", "customer or account number"]
+    },
+    missing: { es: "importe, período, consumo o boleta anterior", en: "amount, period, usage or previous bill" }
+  },
+  {
+    id: "service_price_increase",
+    caseTypeId: "service",
+    requestType: "review",
+    keywords: {
+      es: [
+        "me aumentaron internet",
+        "aumento de internet",
+        "aumentaron sin avisar",
+        "me subieron el plan",
+        "cambio de plan",
+        "internet",
+        "telefonia",
+        "telefonía",
+        "cable",
+        "servicio mensual",
+        "abono"
+      ],
+      en: [
+        "internet increased",
+        "price increase",
+        "increased without notice",
+        "plan changed",
+        "monthly service",
+        "subscription price",
+        "internet plan"
+      ]
+    },
+    negativeKeywords: {
+      es: ["paquete", "envio", "envío", "producto roto"],
+      en: ["package", "shipping", "broken product"]
+    },
+    title: { es: "Aumento o cambio de servicio", en: "Service price increase or plan change" },
+    summary: {
+      es: "Se trata de un aumento, cambio de plan o cobro de servicio que la persona quiere revisar o aclarar.",
+      en: "This is about a price increase, plan change or service charge the person wants to review or clarify."
+    },
+    canAsk: {
+      es: ["detalle del aumento", "revisión del plan", "corrección del cobro", "confirmación por escrito"],
+      en: ["increase details", "plan review", "charge correction", "written confirmation"]
+    },
+    usefulFiles: {
+      es: ["factura actual", "factura anterior", "captura del plan", "mensaje o aviso recibido"],
+      en: ["current bill", "previous bill", "plan screenshot", "message or notice received"]
+    },
+    missing: { es: "factura anterior o detalle del plan contratado", en: "previous bill or contracted plan details" }
+  },
+  {
+    id: "warranty_rejected",
+    caseTypeId: "warranty",
+    requestType: "review",
+    keywords: {
+      es: ["rechazaron la garantia", "rechazaron la garantía", "garantia rechazada", "garantía rechazada", "no aceptan la devolucion", "no aceptan la devolución"],
+      en: ["warranty rejected", "rejected warranty", "return rejected", "refund rejected", "did not accept the return"]
+    },
+    title: { es: "Garantía o devolución rechazada", en: "Warranty or return rejected" },
+    summary: {
+      es: "Se trata de una garantía, devolución o revisión que fue rechazada y la persona quiere ordenar qué pasó y pedir una nueva revisión.",
+      en: "This is about a warranty, return or review that was rejected and the person wants to organize what happened and request a new review."
+    },
+    canAsk: {
+      es: ["nueva revisión", "explicación del rechazo", "respuesta de soporte", "solución alternativa"],
+      en: ["new review", "rejection explanation", "support response", "alternative solution"]
+    },
+    usefulFiles: {
+      es: ["respuesta de rechazo", "factura", "fotos del producto", "mensajes con soporte"],
+      en: ["rejection response", "invoice", "product photos", "support messages"]
+    },
+    missing: { es: "motivo informado del rechazo", en: "reason given for the rejection" }
+  },
+  {
     id: "personal_message",
     caseTypeId: "other",
     requestType: "record",
@@ -1235,6 +1395,29 @@ const statuses = {
   en: ["Preparing", "Sent", "In conversation", "Waiting for response", "Resolved"]
 };
 
+const unknownCase = {
+  id: "unknown",
+  caseTypeId: "other",
+  requestType: "record",
+  title: { es: "Situación por ordenar", en: "Situation to organize" },
+  summary: {
+    es: "Todavía no hay información suficiente para clasificar la situación sin arriesgar una suposición. CasoClaro prepara una base simple y editable.",
+    en: "There is not enough information yet to classify the situation without guessing. CasoClaro prepares a simple editable base."
+  },
+  canAsk: {
+    es: ["explicar la situación", "pedir una respuesta", "dejar constancia", "sumar detalles si hace falta"],
+    en: ["explain the situation", "ask for a response", "leave a record", "add details if needed"]
+  },
+  usefulFiles: {
+    es: ["mensaje relacionado", "comprobante", "foto", "documento"],
+    en: ["related message", "receipt", "photo", "document"]
+  },
+  missing: {
+    es: "un dato concreto como fecha, importe, referencia o persona relacionada",
+    en: "a concrete detail such as date, amount, reference or related person"
+  }
+};
+
 const state = {
   lang: navigator.language?.startsWith("en") ? "en" : "es",
   step: 0,
@@ -1252,9 +1435,11 @@ const state = {
   attachmentChoice: "later",
   requestType: "solution",
   tone: "cordial",
-  detectedCaseId: "online_not_arrived",
+  detectedCaseId: "",
   detectedConfidence: 0,
   confirmedDetection: false,
+  aiAnalysis: null,
+  aiSkipped: false,
   editedTexts: {
     summary: false,
     whatsapp: false,
@@ -1291,7 +1476,7 @@ function libraryText(entry, key) {
 }
 
 function activeLibraryCase() {
-  return caseLibrary.find((entry) => entry.id === state.detectedCaseId) || caseLibrary[0];
+  return caseLibrary.find((entry) => entry.id === state.detectedCaseId) || unknownCase;
 }
 
 function localizedChecklist(caseType = state.caseType) {
@@ -1354,29 +1539,45 @@ function normalizeForMatch(value) {
 function analyzeStory(value) {
   const story = normalizeForMatch(value);
   if (!story.trim()) {
-    return { entry: activeLibraryCase(), score: 0, confidence: "low" };
+    return { entry: unknownCase, score: 0, confidence: "low", uncertain: true };
   }
   const scored = caseLibrary.map((entry) => {
     const keywords = [...(entry.keywords.es || []), ...(entry.keywords.en || [])];
-    const score = keywords.reduce((total, keyword) => {
+    const negativeKeywords = [...(entry.negativeKeywords?.es || []), ...(entry.negativeKeywords?.en || [])];
+    const positiveScore = keywords.reduce((total, keyword) => {
       const normalized = normalizeForMatch(keyword);
       if (!normalized) return total;
-      if (story.includes(normalized)) return total + Math.max(2, normalized.split(/\s+/).length + 1);
+      if (story.includes(normalized)) {
+        const wordCount = normalized.split(/\s+/).filter(Boolean).length;
+        return total + (wordCount > 1 ? wordCount + 3 : 2);
+      }
       return total;
     }, 0);
-    return { entry, score };
+    const negativeScore = negativeKeywords.reduce((total, keyword) => {
+      const normalized = normalizeForMatch(keyword);
+      return normalized && story.includes(normalized) ? total + Math.max(3, normalized.split(/\s+/).length + 2) : total;
+    }, 0);
+    const score = positiveScore - negativeScore;
+    return { entry, score, positiveScore, negativeScore };
   });
   scored.sort((a, b) => b.score - a.score);
-  const best = scored[0] || { entry: caseLibrary[0], score: 0 };
-  const confidence = best.score >= 8 ? "high" : best.score >= 3 ? "medium" : "low";
-  return { entry: best.entry, score: best.score, confidence };
+  const best = scored[0] || { entry: unknownCase, score: 0, positiveScore: 0 };
+  const second = scored[1] || { score: 0 };
+  const hasEnoughSignal = best.score >= 5 && best.positiveScore >= 5;
+  const hasClearGap = best.score - Math.max(0, second.score) >= 2 || best.score >= 9;
+  if (!hasEnoughSignal || !hasClearGap) {
+    return { entry: unknownCase, score: Math.max(0, best.score), confidence: "low", uncertain: true, candidates: scored.slice(0, 3) };
+  }
+  const confidence = best.score >= 10 ? "high" : best.score >= 6 ? "medium" : "low";
+  return { entry: best.entry, score: best.score, confidence, uncertain: false, candidates: scored.slice(0, 3) };
 }
 
 function applyDetectedCase({ force = false } = {}) {
   const story = $("#caseStory")?.value.trim() || "";
   const analysis = analyzeStory(story);
   const entry = analysis.entry;
-  const caseType = caseTypes.find((item) => item.id === entry.caseTypeId) || caseTypes[0];
+  const isUncertain = entry.id === "unknown" || analysis.uncertain;
+  const caseType = caseTypes.find((item) => item.id === entry.caseTypeId) || caseTypes.find((item) => item.id === "other") || caseTypes[0];
   const shouldApply = force || state.detectedCaseId !== entry.id || !state.confirmedDetection;
   state.detectedCaseId = entry.id;
   state.detectedConfidence = analysis.score;
@@ -1389,10 +1590,14 @@ function applyDetectedCase({ force = false } = {}) {
     const oldTitles = caseLibrary
       .map((item) => item.title.es)
       .concat(caseLibrary.map((item) => item.title.en))
+      .concat([unknownCase.title.es, unknownCase.title.en])
       .concat(caseTypes.map((item) => item.exampleTitle))
       .concat(caseTypes.map((item) => item.en?.exampleTitle).filter(Boolean));
     if (titleInput && (!currentTitle || oldTitles.includes(currentTitle) || force)) {
       titleInput.value = libraryText(entry, "title");
+    }
+    if (titleInput && isUncertain && (!currentTitle || oldTitles.includes(currentTitle) || force)) {
+      titleInput.value = libraryText(unknownCase, "title");
     }
   }
   renderDetectedCase();
@@ -1468,7 +1673,7 @@ function sourceForItem(item) {
 
 function inferFileRole(file, textContent = "") {
   const source = normalizeForMatch(`${file?.name || ""} ${textContent || ""}`);
-  if (/factura|invoice|ticket|recibo|comprobante|transfer|payment|pago|movimiento|cargo|cobro/.test(source)) return "payment";
+  if (/factura|invoice|ticket|recibo|comprobante|transfer|payment|pago|movimiento|cargo|cobro|boleta|luz|electricidad|gas|agua|internet/.test(source)) return "payment";
   if (/chat|whatsapp|conversacion|mensaje|email|correo|respuesta|soporte/.test(source)) return "conversation";
   if (/seguimiento|tracking|envio|shipment|delivery|paquete|correo|logistica/.test(source)) return "shipping";
   if (/contrato|acuerdo|presupuesto|alquiler|rental|quote|agreement/.test(source)) return "contract";
@@ -1596,6 +1801,15 @@ function buildFacts(context) {
   if (entry.id === "rental_problem" || hasSignal(context, /alquiler|rental|inquilino|tenant|propietario|landlord|deposito|repair/)) {
     add(makeFact("rental", "factRental", "contract", [dateDetail]));
   }
+  if (entry.id === "high_utility_bill" || hasSignal(context, /boleta|factura.*(luz|gas|agua|internet)|importe alto|vino mucho|high bill|utility bill|electricity bill|gas bill|water bill/)) {
+    add(makeFact("high_bill", "factHighBill", "payment", [amountDetail, dateDetail]));
+  }
+  if (entry.id === "service_price_increase" || hasSignal(context, /aumento|aumentaron|subieron|cambio de plan|price increase|plan changed|increased without notice/)) {
+    add(makeFact("increase", "factServiceIncrease", "payment", [amountDetail, dateDetail]));
+  }
+  if (entry.id === "warranty_rejected" || hasSignal(context, /garantia rechazada|rechazaron la garantia|rechazaron la devolucion|warranty rejected|return rejected|refund rejected/)) {
+    add(makeFact("warranty_rejected", "factWarrantyRejected", "conversation", [dateDetail]));
+  }
 
   if (!facts.length) add(makeFact("documentation", "factDocumentation", "document", [refDetail, dateDetail]));
   return facts.slice(0, 6);
@@ -1646,6 +1860,9 @@ function buildConcreteMissing(linkedFacts, context) {
     if (fact.role === "shipping") add("missingTracking");
     if (fact.role === "contract" && !hasRole("contract")) add("missingContract");
     if (fact.role === "procedure") add("missingProcedureProof");
+    if (fact.id === "high_bill") add("missingHighBill");
+    if (fact.id === "increase") add("missingPreviousBill");
+    if (fact.id === "warranty_rejected") add("missingRejectionReason");
   });
   if (!$("#caseAttempt")?.value.trim()) add("missingAttempt");
   return missing.slice(0, 4);
@@ -1967,6 +2184,101 @@ function renderStoryExamples() {
   });
 }
 
+function analysisPayload() {
+  const context = contextSignals();
+  return {
+    language: state.lang,
+    story: $("#caseStory")?.value.trim() || "",
+    optional: {
+      date: $("#caseDate")?.value || "",
+      party: $("#caseParty")?.value.trim() || "",
+      reference: $("#caseReference")?.value.trim() || "",
+      attempt: $("#caseAttempt")?.value.trim() || ""
+    },
+    localSignals: {
+      dates: context.dates,
+      amounts: context.amounts,
+      references: context.references,
+      localCaseId: state.detectedCaseId || "",
+      localConfidence: state.detectedConfidence || 0
+    },
+    files: state.items.slice(0, 8).map((item) => ({
+      title: item.title,
+      type: item.file?.type || "",
+      role: item.role || "",
+      date: item.date || "",
+      nameHint: cleanFileStem(item.file?.name || "").slice(0, 80),
+      text: item.textContent ? item.textContent.replace(/\s+/g, " ").trim().slice(0, 1200) : ""
+    })),
+    allowedCaseIds: caseLibrary.map((entry) => entry.id)
+  };
+}
+
+function renderAnalysisProgress() {
+  showMessage(
+    `${text("aiReading")} ${text("aiProgressStory")} ${text("aiProgressSignals")} ${text("aiProgressPackage")} ${text("aiProgressOutputs")}`,
+    "note"
+  );
+}
+
+function applySmartAnalysis(analysis) {
+  const caseId = String(analysis?.caseId || "");
+  const entry = caseLibrary.find((item) => item.id === caseId);
+  if (!entry || Number(analysis?.confidence || 0) < 0.45) {
+    showMessage(text("aiFallback"), "note");
+    return false;
+  }
+  state.aiAnalysis = analysis;
+  state.detectedCaseId = entry.id;
+  state.detectedConfidence = Math.round(Number(analysis.confidence || 0) * 10);
+  state.caseType = caseTypes.find((item) => item.id === entry.caseTypeId) || state.caseType;
+  state.requestType = entry.requestType || state.requestType;
+  state.confirmedDetection = !analysis.needsConfirmation;
+  const title = String(analysis.title || "").trim();
+  const summary = String(analysis.summary || "").trim();
+  resetEditedTexts();
+  if (title) $("#caseTitle").value = title.slice(0, 90);
+  if (summary) {
+    $("#caseSummary").value = summary.slice(0, 900);
+    state.editedTexts.summary = true;
+  }
+  renderCases();
+  renderRequestOptions();
+  renderChecklist();
+  renderDetectedCase();
+  updateAssistedTexts({ force: false });
+  showMessage(text("aiApplied"), "success");
+  return true;
+}
+
+async function runSmartAnalysis() {
+  const story = $("#caseStory")?.value.trim() || "";
+  if (!story) {
+    showMessage(text("storyPlaceholder"), "warning");
+    return;
+  }
+  renderAnalysisProgress();
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 11000);
+    const response = await fetch("/api/analyze-case", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(analysisPayload()),
+      signal: controller.signal
+    });
+    clearTimeout(timer);
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok || !data.ok) {
+      showMessage(data.disabled ? text("aiUnavailable") : text("aiFallback"), "note");
+      return;
+    }
+    applySmartAnalysis(data.analysis);
+  } catch {
+    showMessage(text("aiFallback"), "note");
+  }
+}
+
 function renderDetectedCase() {
   const panel = $("#smartDetected");
   if (!panel) return;
@@ -1982,6 +2294,41 @@ function renderDetectedCase() {
   const canAsk = libraryText(entry, "canAsk") || [];
   const usefulFiles = libraryText(entry, "usefulFiles") || [];
   const missing = libraryText(entry, "missing");
+  const isUncertain = entry.id === "unknown" || analysis.uncertain;
+  if (isUncertain) {
+    panel.innerHTML = `
+      <article class="detected-main">
+        <div>
+          <span class="pill">${text("detectedCaseTitle")}</span>
+          <h4>${text("unsureCaseTitle")}</h4>
+          <p>${text("unsureCaseText")}</p>
+        </div>
+        <div class="detected-actions">
+          <button type="button" data-change-detection>${text("confirmChange")}</button>
+        </div>
+      </article>
+      <article class="detected-ai">
+        <strong>${text("aiConsentTitle")}</strong>
+        <p>${text("aiConsentText")}</p>
+        <div class="detected-actions">
+          <button type="button" data-ai-analyze>${text("aiAnalyzeButton")}</button>
+          <button type="button" data-ai-skip>${text("aiSkipButton")}</button>
+        </div>
+      </article>
+      <p class="detected-note">${text("noLongForms")}</p>
+    `;
+    panel.querySelector("[data-change-detection]")?.addEventListener("click", () => {
+      document.querySelector("[data-step='0'] .advanced-box:last-of-type")?.setAttribute("open", "");
+      showStep(0);
+      document.getElementById("caseGrid")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+    panel.querySelector("[data-ai-analyze]")?.addEventListener("click", runSmartAnalysis);
+    panel.querySelector("[data-ai-skip]")?.addEventListener("click", () => {
+      state.aiSkipped = true;
+      showMessage(text("aiFallback"), "note");
+    });
+    return;
+  }
   panel.innerHTML = `
     <article class="detected-main">
       <div>
@@ -1993,6 +2340,14 @@ function renderDetectedCase() {
       <div class="detected-actions">
         <button type="button" data-confirm-detection>${text("confirmYes")}</button>
         <button type="button" data-change-detection>${text("confirmChange")}</button>
+      </div>
+    </article>
+    <article class="detected-ai">
+      <strong>${text("aiConsentTitle")}</strong>
+      <p>${text("aiConsentText")}</p>
+      <div class="detected-actions">
+        <button type="button" data-ai-analyze>${text("aiAnalyzeButton")}</button>
+        <button type="button" data-ai-skip>${text("aiSkipButton")}</button>
       </div>
     </article>
     <div class="detected-grid">
@@ -2020,6 +2375,11 @@ function renderDetectedCase() {
     document.querySelector("[data-step='0'] .advanced-box:last-of-type")?.setAttribute("open", "");
     showStep(0);
     document.getElementById("caseGrid")?.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+  panel.querySelector("[data-ai-analyze]")?.addEventListener("click", runSmartAnalysis);
+  panel.querySelector("[data-ai-skip]")?.addEventListener("click", () => {
+    state.aiSkipped = true;
+    showMessage(text("aiFallback"), "note");
   });
 }
 
@@ -3358,7 +3718,13 @@ function bindEvents() {
 
 function initFormDefaults() {
   populateStatusOptions();
-  selectCase(caseTypes[0]);
+  const neutralCase = caseTypes.find((item) => item.id === "other") || caseTypes[0];
+  state.caseType = neutralCase;
+  state.detectedCaseId = "";
+  state.requestType = "record";
+  state.checklist = localizedChecklist(neutralCase).map((_, index) => ({ index, status: "later" }));
+  $("#caseTitle").value = libraryText(unknownCase, "title") || localizedCase(neutralCase, "exampleTitle");
+  updateAssistedTexts({ force: true });
 }
 
 function populateStatusOptions() {
