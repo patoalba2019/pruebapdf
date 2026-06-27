@@ -131,6 +131,77 @@ function validateAnalysis(value, allowedCaseIds) {
   };
 }
 
+function normalizedText(payload) {
+  return [
+    payload.story,
+    payload.optional?.party,
+    payload.optional?.reference,
+    payload.optional?.attempt,
+    ...(payload.files || []).map((file) => `${file.title || ""} ${file.nameHint || ""} ${file.text || ""}`)
+  ]
+    .join(" ")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function hasAny(text, words) {
+  return words.some((word) => text.includes(word));
+}
+
+function enforceSafeOverrides(analysis, payload) {
+  const text = normalizedText(payload);
+  const patch = (caseId, title, mainRequest, missingData = []) => ({
+    ...analysis,
+    caseId,
+    title: analysis.title || title,
+    mainRequest: analysis.mainRequest || mainRequest,
+    missingData: analysis.missingData?.length ? analysis.missingData : missingData,
+    needsConfirmation: analysis.confidence < 0.75,
+    confidence: Math.max(analysis.confidence, 0.72)
+  });
+
+  const mentionsServiceIncrease = hasAny(text, ["aumentaron internet", "aumento de internet", "me subieron el plan", "cambio de plan"]);
+  const mentionsServiceNoNotice = text.includes("sin avisar") && hasAny(text, ["internet", "plan", "abono", "cable", "servicio"]);
+  if (mentionsServiceIncrease || mentionsServiceNoNotice) {
+    return patch(
+      "service_price_increase",
+      payload.language === "en" ? "Service price increase or plan change" : "Aumento o cambio de servicio",
+      payload.language === "en" ? "Request a review of the charge or plan change." : "Pedir revisión del aumento o cambio de plan.",
+      payload.language === "en" ? ["Current bill", "Previous bill", "Plan details"] : ["Factura actual", "Factura anterior", "Detalle del plan"]
+    );
+  }
+
+  if (hasAny(text, ["boleta de luz", "factura de luz", "electricidad", "factura alta", "boleta alta", "vino mucho", "vino muy alto"])) {
+    return patch(
+      "high_utility_bill",
+      payload.language === "en" ? "High utility or service bill" : "Factura o boleta con importe alto",
+      payload.language === "en" ? "Request a billing review and explanation." : "Pedir revisión y explicación de la facturación.",
+      payload.language === "en" ? ["Amount", "Billing period", "Usage", "Previous bill"] : ["Importe", "Período", "Consumo", "Boleta anterior"]
+    );
+  }
+
+  if (hasAny(text, ["no reconozco", "cargo desconocido", "cobro desconocido", "me cobraron algo", "duplicado", "dos veces"])) {
+    return patch(
+      "duplicate_unknown_charge",
+      payload.language === "en" ? "Incorrect or unknown charge" : "Cobro incorrecto o cargo desconocido",
+      payload.language === "en" ? "Request a review of the charge." : "Pedir revisión del cobro.",
+      payload.language === "en" ? ["Charge screenshot", "Date", "Amount"] : ["Captura del cobro", "Fecha", "Importe"]
+    );
+  }
+
+  if (hasAny(text, ["rechazaron la garantia", "garantia rechazada", "rechazaron la devolucion", "devolucion rechazada"])) {
+    return patch(
+      "warranty_rejected",
+      payload.language === "en" ? "Warranty or return rejected" : "Garantía o devolución rechazada",
+      payload.language === "en" ? "Request a new review or explanation." : "Pedir nueva revisión o explicación.",
+      payload.language === "en" ? ["Rejection response", "Invoice", "Photos"] : ["Respuesta de rechazo", "Factura", "Fotos"]
+    );
+  }
+
+  return analysis;
+}
+
 async function callCloudflare(payload) {
   const accountId = env("CLOUDFLARE_ACCOUNT_ID");
   const token = env("CLOUDFLARE_AI_TOKEN");
@@ -161,7 +232,8 @@ async function callCloudflare(payload) {
     }
     const raw = data.result?.response || data.result?.text || data.result;
     const parsed = typeof raw === "string" ? JSON.parse(raw) : raw;
-    return { ok: true, analysis: validateAnalysis(parsed, payload.allowedCaseIds) };
+    const analysis = validateAnalysis(parsed, payload.allowedCaseIds);
+    return { ok: true, analysis: enforceSafeOverrides(analysis, payload) };
   } finally {
     clearTimeout(timer);
   }
