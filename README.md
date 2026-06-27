@@ -8,11 +8,13 @@ Microproducto para contar qué pasó, preparar mensajes claros y ordenar archivo
 - Flujo guiado en 5 pasos: contar qué pasó, revisar lo detectado, sumar archivos opcionales, revisar el caso claro y elegir qué enviar o descargar.
 - Camino completo sin archivos: WhatsApp, email, texto de formulario y documento simple.
 - Biblioteca inteligente local para detectar subcasos comunes desde el relato del usuario.
+- Motor local de hechos para detectar señales simples: fechas, importes, referencias, pagos, entregas, respuestas, demoras, trámites y alquileres.
+- “Paquete armado” con cronología, hechos importantes, pruebas vinculadas, faltantes concretos y qué recibirá el usuario.
 - Subida opcional de JPG, PNG, WEBP, PDF y TXT.
-- Orden manual con botones subir/bajar.
+- Orden sugerido de archivos por rol probable, con opción manual mediante botones subir/bajar.
 - Títulos limpios tipo “Archivo 1”, tipo de documento, fecha detectada y descripción editable.
-- Textos sugeridos para resumen, asunto de email, email, WhatsApp y formularios.
-- Índice, portada, línea temporal automática y numeración.
+- Textos sugeridos para resumen, asunto de email, email, WhatsApp, formulario y seguimiento.
+- Índice, portada, resumen ejecutivo, relación hecho → prueba, línea temporal automática y numeración.
 - Muestra protegida dentro de la web con marca de agua fuerte.
 - Descarga limpia usando código de compra de Lemon Squeezy.
 - Rutas de Vercel para validar licencia, consultar saldo y descontar créditos en servidor.
@@ -68,6 +70,27 @@ Casos implementados en serio:
 - Suscripción no deseada.
 - Trámite demorado.
 - Problema de alquiler.
+
+## Motor local de hechos y archivos
+
+El motor funciona en el navegador, sin IA externa ni APIs pagas. Usa reglas simples sobre el relato, nombres de archivo y contenido de TXT.
+
+Puede detectar con buena confiabilidad:
+
+- Fechas escritas como `2026-06-20`, `20/06/2026` o similares.
+- Importes escritos con `$`, `US$`, `USD`, `ARS`, pesos o dólares.
+- Referencias simples como pedido, orden, reclamo, expediente, tracking o `#ABC123`.
+- Señales de pago, entrega, respuesta, defecto, servicio pendiente, pago duplicado, suscripción, trámite y alquiler.
+- Rol probable de archivos: comprobante, conversación, foto/captura, documento, seguimiento, contrato o constancia.
+
+No promete:
+
+- Entender perfectamente una foto.
+- Leer PDFs escaneados.
+- Interpretar chats complejos.
+- Decidir quién tiene razón.
+- Dar análisis legal.
+- Inventar hechos que el usuario no indicó.
 - Mensaje o documentación personal.
 
 ## Cómo cambiar precios y links

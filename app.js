@@ -170,6 +170,7 @@ const translations = {
     whatsappReadyLabel: "Texto breve para WhatsApp",
     emailReadyLabel: "Texto formal para email",
     formReadyLabel: "Texto para formulario",
+    followUpReadyLabel: "Texto de seguimiento",
     clearCaseTitle: "Tu caso en claro",
     clearCaseHelp: "Este resumen se arma con lo que contaste y lo que cargaste.",
     understoodTitle: "Esto entendimos de tu situación",
@@ -181,9 +182,10 @@ const translations = {
     nextStepPreview: "Mirá cómo quedó con marca de agua.",
     nextStepSend: "Copiá el texto o descargá el respaldo cuando esté desbloqueado.",
     readySendTitle: "Listo para enviar",
-    readySendLead: "Tres salidas simples: mensaje corto, texto formal y documento de respaldo.",
+    readySendLead: "Mensaje corto, texto formal, seguimiento y documento de respaldo.",
     whatsappBlockTitle: "Mensaje para WhatsApp",
     emailBlockTitle: "Email o texto formal",
+    followUpBlockTitle: "Seguimiento si no responden",
     documentBlockTitle: "Documento simple + resumen",
     documentBlockText: "Incluye portada, pedido principal, texto listo, archivos si los agregaste y un resumen corto.",
     documentNoFilesText: "No necesitás archivos para empezar. Incluye portada, pedido principal, texto listo y resumen corto. Podés sumar documentos después si querés.",
@@ -191,6 +193,7 @@ const translations = {
     copyWhatsApp: "Copiar WhatsApp",
     copyEmail: "Copiar email",
     copyForm: "Usar en formulario",
+    copyFollowUp: "Copiar seguimiento",
     goToUnlock: "Ir a descarga o compra",
     openEmailAction: "Abrir email",
     openWhatsAppAction: "Abrir WhatsApp",
@@ -202,6 +205,14 @@ const translations = {
     missingReference: "Sumar un número de pedido, reclamo o referencia puede hacerlo más fácil de ubicar.",
     missingEvidence: "Si más adelante tenés archivos, podés sumarlos.",
     missingAttempt: "Contar qué ya intentaste ayuda a explicar el recorrido.",
+    missingOrderNumber: "Número de pedido, reclamo, expediente o seguimiento.",
+    missingPaymentReceipt: "Comprobante o movimiento de pago.",
+    missingConversation: "Chat, email o mensaje principal.",
+    missingProductPhoto: "Foto clara del producto o del inconveniente.",
+    missingTracking: "Estado o número de seguimiento del envío.",
+    missingContract: "Contrato, acuerdo o presupuesto.",
+    missingDoubleCharge: "Captura o movimientos donde se vean ambos cobros.",
+    missingProcedureProof: "Constancia, formulario o número de expediente.",
     generatedFromYourInfo: "Texto generado con tu información. Podés editarlo antes de copiar o descargar.",
     finalTitle: "Esto es lo que preparaste",
     filesAddedMetric: "archivos agregados",
@@ -220,6 +231,44 @@ const translations = {
     fullOnly: "Disponible en el documento completo",
     previewReadyMessage: "Así quedó listo. Para descargar limpio, usá un código de compra.",
     timeline: "Línea temporal",
+    packageTitle: "Paquete armado",
+    packageLead: "CasoClaro ordenó tu relato y tus archivos en una estructura simple para compartir.",
+    factsTitle: "Hechos importantes",
+    linkedEvidenceTitle: "Pruebas vinculadas",
+    whatYouReceiveTitle: "Qué vas a recibir",
+    noLinkedEvidence: "Sin archivo vinculado todavía",
+    possibleData: "Dato posible",
+    detectedAmount: "Importe detectado",
+    detectedOrder: "Pedido o referencia detectada",
+    detectedDate: "Fecha detectada",
+    eventStory: "Situación contada",
+    eventPayment: "Pago",
+    eventMessage: "Mensaje o conversación",
+    eventDelivery: "Entrega o envío",
+    eventResponse: "Respuesta",
+    eventFile: "Archivo agregado",
+    factPayment: "Pago realizado",
+    factNoDelivery: "Entrega pendiente",
+    factNoResponse: "Sin respuesta",
+    factDefect: "Producto con inconveniente",
+    factServicePending: "Servicio pendiente",
+    factDuplicatePayment: "Pago duplicado",
+    factSubscription: "Suscripción o cobro recurrente",
+    factProcedure: "Trámite pendiente",
+    factRental: "Situación de alquiler",
+    factDocumentation: "Documentación preparada",
+    linkedToFact: "Vinculado con",
+    fileRolePayment: "Comprobante de pago",
+    fileRoleConversation: "Conversación o mensaje",
+    fileRolePhoto: "Foto o captura",
+    fileRoleDocument: "Documento adjunto",
+    fileRoleShipping: "Seguimiento del envío",
+    fileRoleContract: "Acuerdo o contrato",
+    fileRoleProcedure: "Constancia o trámite",
+    professionalDocumentIncludes: "portada, resumen ejecutivo, pedido principal, cronología, hechos, pruebas vinculadas, archivos ordenados, anexos, índice y numeración.",
+    onePageSummary: "Resumen de una página",
+    factsEvidencePdf: "Hechos y pruebas vinculadas",
+    attachmentsSection: "Anexos",
     readyTextEyebrow: "Textos listos",
     shareTitle: "Copiá y enviá sin pensar de más",
     emailSubject: "Asunto de email",
@@ -235,6 +284,8 @@ const translations = {
     thanks: "Gracias.",
     whatsappIntro: "Hola, te comparto la documentación organizada sobre",
     whatsappIncludes: "Incluye resumen y archivos ordenados para revisar rápido.",
+    followUpIntro: "Hola, vuelvo a consultar por esta situación:",
+    followUpAsk: "Agradezco que me indiquen el estado o próximo paso por este medio.",
     formCase: "Caso",
     formSummary: "Resumen",
     formEvidenceCount: "Archivos incluidos",
@@ -483,6 +534,7 @@ const translations = {
     whatsappReadyLabel: "Short WhatsApp text",
     emailReadyLabel: "Formal email text",
     formReadyLabel: "Text for a form",
+    followUpReadyLabel: "Follow-up text",
     clearCaseTitle: "Your clear case",
     clearCaseHelp: "This summary is built from what you wrote and uploaded.",
     understoodTitle: "This is what we understood",
@@ -494,9 +546,10 @@ const translations = {
     nextStepPreview: "Review how it looks with a watermark.",
     nextStepSend: "Copy the text or download the backup when it is unlocked.",
     readySendTitle: "Ready to send",
-    readySendLead: "Three simple outputs: short message, formal text and backup document.",
+    readySendLead: "Short message, formal text, follow-up and backup document.",
     whatsappBlockTitle: "WhatsApp message",
     emailBlockTitle: "Email or formal text",
+    followUpBlockTitle: "Follow-up if they do not answer",
     documentBlockTitle: "Simple document + summary",
     documentBlockText: "Includes cover, main request, ready text, files if you added them and a short summary.",
     documentNoFilesText: "You do not need files to start. It includes cover, main request, ready text and a short summary. You can add documents later if you want.",
@@ -504,6 +557,7 @@ const translations = {
     copyWhatsApp: "Copy WhatsApp",
     copyEmail: "Copy email",
     copyForm: "Use in form",
+    copyFollowUp: "Copy follow-up",
     goToUnlock: "Go to download or purchase",
     openEmailAction: "Open email",
     openWhatsAppAction: "Open WhatsApp",
@@ -515,6 +569,14 @@ const translations = {
     missingReference: "Adding an order, request or reference number can make it easier to identify.",
     missingEvidence: "If you have files later, you can add them.",
     missingAttempt: "Explaining what you already tried helps show the steps taken.",
+    missingOrderNumber: "Order, request, file or tracking number.",
+    missingPaymentReceipt: "Payment receipt or transaction movement.",
+    missingConversation: "Main chat, email or message.",
+    missingProductPhoto: "Clear photo of the product or issue.",
+    missingTracking: "Shipment tracking number or status.",
+    missingContract: "Contract, agreement or quote.",
+    missingDoubleCharge: "Screenshot or movements showing both charges.",
+    missingProcedureProof: "Proof, form or file number.",
     generatedFromYourInfo: "Text generated from your information. You can edit it before copying or downloading.",
     finalTitle: "This is what you prepared",
     filesAddedMetric: "files added",
@@ -533,6 +595,44 @@ const translations = {
     fullOnly: "Available in the full document",
     previewReadyMessage: "This is ready. To download it clean, use a purchase code.",
     timeline: "Timeline",
+    packageTitle: "Prepared package",
+    packageLead: "CasoClaro organized your story and files into a simple structure to share.",
+    factsTitle: "Important facts",
+    linkedEvidenceTitle: "Linked proof",
+    whatYouReceiveTitle: "What you will receive",
+    noLinkedEvidence: "No linked file yet",
+    possibleData: "Possible data",
+    detectedAmount: "Detected amount",
+    detectedOrder: "Detected order or reference",
+    detectedDate: "Detected date",
+    eventStory: "Situation described",
+    eventPayment: "Payment",
+    eventMessage: "Message or conversation",
+    eventDelivery: "Delivery or shipment",
+    eventResponse: "Response",
+    eventFile: "File added",
+    factPayment: "Payment made",
+    factNoDelivery: "Delivery pending",
+    factNoResponse: "No response",
+    factDefect: "Product issue",
+    factServicePending: "Service pending",
+    factDuplicatePayment: "Duplicate payment",
+    factSubscription: "Subscription or recurring charge",
+    factProcedure: "Procedure pending",
+    factRental: "Rental situation",
+    factDocumentation: "Documentation prepared",
+    linkedToFact: "Linked to",
+    fileRolePayment: "Payment receipt",
+    fileRoleConversation: "Conversation or message",
+    fileRolePhoto: "Photo or screenshot",
+    fileRoleDocument: "Attached document",
+    fileRoleShipping: "Shipment tracking",
+    fileRoleContract: "Agreement or contract",
+    fileRoleProcedure: "Procedure proof",
+    professionalDocumentIncludes: "cover, executive summary, main request, chronology, facts, linked proof, organized files, annexes, index and page numbering.",
+    onePageSummary: "One-page summary",
+    factsEvidencePdf: "Facts and linked proof",
+    attachmentsSection: "Annexes",
     readyTextEyebrow: "Ready text",
     shareTitle: "Copy and send without overthinking",
     emailSubject: "Email subject",
@@ -548,6 +648,8 @@ const translations = {
     thanks: "Thanks.",
     whatsappIntro: "Hi, I am sharing the organized documentation about",
     whatsappIncludes: "It includes a summary and organized files for quick review.",
+    followUpIntro: "Hi, I am following up on this situation:",
+    followUpAsk: "I would appreciate the current status or next step through this channel.",
     formCase: "Case",
     formSummary: "Summary",
     formEvidenceCount: "Files included",
@@ -1157,9 +1259,14 @@ const state = {
     summary: false,
     whatsapp: false,
     email: false,
-    form: false
+    form: false,
+    followUp: false
   }
 };
+
+function resetEditedTexts() {
+  state.editedTexts = { summary: false, whatsapp: false, email: false, form: false, followUp: false };
+}
 
 function formatMoney(value) {
   return `US$${Number(value).toFixed(2)}`;
@@ -1313,10 +1420,251 @@ function readyText(kind) {
   const idByKind = {
     whatsapp: "whatsappText",
     email: "emailText",
-    form: "formReadyText"
+    form: "formReadyText",
+    followUp: "followUpText"
   };
   const generated = buildAssistedTexts();
   return document.getElementById(idByKind[kind])?.value.trim() || generated[kind] || "";
+}
+
+function uniqueValues(values, limit = 6) {
+  return [...new Set(values.filter(Boolean).map((value) => String(value).trim()).filter(Boolean))].slice(0, limit);
+}
+
+function detectDatesFromText(value) {
+  const source = String(value || "");
+  const dates = [];
+  const iso = source.match(/\b20\d{2}[-/.](?:0?[1-9]|1[0-2])[-/.](?:0?[1-9]|[12]\d|3[01])\b/g) || [];
+  iso.forEach((date) => {
+    const [year, month, day] = date.replace(/[/.]/g, "-").split("-");
+    dates.push(`${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`);
+  });
+  const local = source.match(/\b(?:0?[1-9]|[12]\d|3[01])[-/.](?:0?[1-9]|1[0-2])[-/.]20\d{2}\b/g) || [];
+  local.forEach((date) => {
+    const [day, month, year] = date.replace(/[/.]/g, "-").split("-");
+    dates.push(`${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`);
+  });
+  return uniqueValues(dates, 5);
+}
+
+function detectAmounts(value) {
+  const source = String(value || "");
+  const matches =
+    source.match(/(?:US\$|USD|ARS|\$)\s?\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{1,2})?|\b\d+(?:[.,]\d{1,2})?\s?(?:usd|ars|pesos|d[oó]lares)\b/gi) || [];
+  return uniqueValues(matches, 4);
+}
+
+function detectReferences(value) {
+  const source = String(value || "");
+  const matches =
+    source.match(/\b(?:pedido|orden|order|reclamo|claim|expediente|case|tracking|seguimiento|referencia|ref)\s*[:#-]?\s*[A-Z0-9][A-Z0-9._-]{3,}\b/gi) || [];
+  const hashes = source.match(/#[A-Z0-9][A-Z0-9._-]{3,}/gi) || [];
+  return uniqueValues([...matches, ...hashes], 4);
+}
+
+function sourceForItem(item) {
+  return `${item.file?.name || ""} ${item.title || ""} ${item.description || ""} ${item.textContent || ""}`;
+}
+
+function inferFileRole(file, textContent = "") {
+  const source = normalizeForMatch(`${file?.name || ""} ${textContent || ""}`);
+  if (/factura|invoice|ticket|recibo|comprobante|transfer|payment|pago|movimiento|cargo|cobro/.test(source)) return "payment";
+  if (/chat|whatsapp|conversacion|mensaje|email|correo|respuesta|soporte/.test(source)) return "conversation";
+  if (/seguimiento|tracking|envio|shipment|delivery|paquete|correo|logistica/.test(source)) return "shipping";
+  if (/contrato|acuerdo|presupuesto|alquiler|rental|quote|agreement/.test(source)) return "contract";
+  if (/tramite|expediente|formulario|constancia|presentacion|procedure|submission/.test(source)) return "procedure";
+  if (/foto|photo|captura|screenshot|imagen|image|roto|falla|defecto/.test(source) || file?.type?.startsWith("image/")) return "photo";
+  return "document";
+}
+
+function fileRoleLabel(role) {
+  const keys = {
+    payment: "fileRolePayment",
+    conversation: "fileRoleConversation",
+    photo: "fileRolePhoto",
+    document: "fileRoleDocument",
+    shipping: "fileRoleShipping",
+    contract: "fileRoleContract",
+    procedure: "fileRoleProcedure"
+  };
+  return text(keys[role] || "fileRoleDocument");
+}
+
+function roleType(role, file) {
+  const map = {
+    payment: "Pago",
+    conversation: "Conversación",
+    photo: "Foto",
+    shipping: "Estado",
+    contract: "Documento",
+    procedure: "Documento",
+    document: "Documento"
+  };
+  if (file?.type?.startsWith("image/") && role === "document") return "Foto";
+  return map[role] || "Documento";
+}
+
+function roleOrder(role) {
+  const weights = {
+    contract: 10,
+    procedure: 12,
+    payment: 20,
+    shipping: 28,
+    conversation: 35,
+    photo: 45,
+    document: 55
+  };
+  return weights[role] || 99;
+}
+
+function enhanceFileItem(file, textContent, index) {
+  const role = inferFileRole(file, textContent);
+  const fallbackTitle = suggestedEvidenceTitle(index, file);
+  const roleTitle = fileRoleLabel(role);
+  const date = dateFromFilename(file.name) || detectDatesFromText(`${file.name} ${textContent}`)[0] || "";
+  return {
+    role,
+    title: fallbackTitle === evidenceLabel(index) || fallbackTitle === text("document") ? roleTitle : fallbackTitle,
+    type: roleType(role, file),
+    date,
+    recommendedOrder: roleOrder(role) + index / 100
+  };
+}
+
+function contextSignals() {
+  const manualDate = $("#caseDate")?.value;
+  const manualReference = $("#caseReference")?.value.trim();
+  const story = storyText();
+  const itemText = state.items.map(sourceForItem).join(" ");
+  const source = `${story} ${optionalContext()} ${itemText}`;
+  return {
+    source,
+    normalized: normalizeForMatch(source),
+    dates: uniqueValues([manualDate, ...detectDatesFromText(source)], 5),
+    amounts: detectAmounts(source),
+    references: uniqueValues([manualReference, ...detectReferences(source)], 5)
+  };
+}
+
+function hasSignal(context, pattern) {
+  return pattern.test(context.normalized);
+}
+
+function makeFact(id, titleKey, role, detailParts = []) {
+  return {
+    id,
+    title: text(titleKey),
+    role,
+    detail: uniqueValues(detailParts, 3).join(" · ")
+  };
+}
+
+function buildFacts(context) {
+  const entry = activeLibraryCase();
+  const facts = [];
+  const add = (fact) => {
+    if (!facts.some((item) => item.id === fact.id)) facts.push(fact);
+  };
+  const amountDetail = context.amounts[0] ? `${text("detectedAmount")}: ${context.amounts[0]}` : "";
+  const refDetail = context.references[0] ? `${text("detectedOrder")}: ${context.references[0]}` : "";
+  const dateDetail = context.dates[0] ? `${text("detectedDate")}: ${context.dates[0]}` : "";
+
+  if (hasSignal(context, /pago|pay|paid|cobro|charge|transfer|tarjeta|receipt|comprobante|factura|invoice|ticket/)) {
+    add(makeFact("payment", "factPayment", "payment", [amountDetail, dateDetail]));
+  }
+  if (["online_not_arrived", "shipping_delay"].includes(entry.id) || hasSignal(context, /no llego|nunca llego|never arrived|delivery|entrega|envio|shipment|tracking/)) {
+    add(makeFact("delivery", "factNoDelivery", "shipping", [refDetail, dateDetail]));
+  }
+  if (entry.id === "seller_no_response" || hasSignal(context, /no\s+\w*\s*responde|no\s+\w*\s*contesta|not answering|no response|sin respuesta|stopped replying/)) {
+    add(makeFact("response", "factNoResponse", "conversation", [dateDetail]));
+  }
+  if (entry.id === "defective_product" || hasSignal(context, /defecto|fall[ao]|roto|broken|defective|damaged|not working/)) {
+    add(makeFact("defect", "factDefect", "photo", [dateDetail]));
+  }
+  if (entry.id === "service_not_done" || hasSignal(context, /servicio|service|no cumplieron|not completed|trabajo|installation|turno/)) {
+    add(makeFact("service", "factServicePending", "contract", [dateDetail]));
+  }
+  if (entry.id === "duplicate_payment" || hasSignal(context, /duplicado|doble cobro|dos cobros|charged twice|double charge|paid twice/)) {
+    add(makeFact("duplicate", "factDuplicatePayment", "payment", [amountDetail, dateDetail]));
+  }
+  if (entry.id === "unwanted_subscription" || hasSignal(context, /suscripcion|subscription|mensual|monthly|cancel|baja/)) {
+    add(makeFact("subscription", "factSubscription", "payment", [amountDetail, dateDetail]));
+  }
+  if (entry.id === "procedure_delay" || hasSignal(context, /tramite|expediente|procedure|paperwork|submission|organismo/)) {
+    add(makeFact("procedure", "factProcedure", "procedure", [refDetail, dateDetail]));
+  }
+  if (entry.id === "rental_problem" || hasSignal(context, /alquiler|rental|inquilino|tenant|propietario|landlord|deposito|repair/)) {
+    add(makeFact("rental", "factRental", "contract", [dateDetail]));
+  }
+
+  if (!facts.length) add(makeFact("documentation", "factDocumentation", "document", [refDetail, dateDetail]));
+  return facts.slice(0, 6);
+}
+
+function linkEvidenceToFacts(facts) {
+  return facts.map((fact) => {
+    const linked = state.items.find((item) => {
+      const source = normalizeForMatch(sourceForItem(item));
+      if (item.role === fact.role) return true;
+      if (fact.role === "payment") return /pago|payment|comprobante|receipt|factura|ticket|cobro/.test(source);
+      if (fact.role === "conversation") return /chat|whatsapp|mensaje|message|email|respuesta/.test(source);
+      if (fact.role === "shipping") return /seguimiento|tracking|envio|shipment|delivery|paquete/.test(source);
+      if (fact.role === "photo") return /foto|photo|captura|screenshot|imagen|image|roto|falla/.test(source) || item.file?.type?.startsWith("image/");
+      if (fact.role === "contract") return /contrato|acuerdo|presupuesto|contract|agreement|quote/.test(source);
+      if (fact.role === "procedure") return /tramite|expediente|formulario|constancia|procedure|submission/.test(source);
+      return false;
+    });
+    return { ...fact, evidence: linked || null };
+  });
+}
+
+function buildTimeline(context, facts) {
+  const events = [];
+  const add = (date, title, detail = "") => events.push({ date: date || "", title, detail });
+  context.dates.slice(0, 3).forEach((date) => add(date, text("eventStory"), titleText()));
+  facts.forEach((fact) => add(fact.evidence?.date || "", fact.title, fact.evidence?.title || fact.detail));
+  state.items.forEach((item) => add(item.date || "", text("eventFile"), item.title));
+  return events
+    .filter((event, index, list) => list.findIndex((candidate) => `${candidate.date}|${candidate.title}|${candidate.detail}` === `${event.date}|${event.title}|${event.detail}`) === index)
+    .sort((a, b) => (a.date || "9999-99-99").localeCompare(b.date || "9999-99-99"))
+    .slice(0, 8);
+}
+
+function buildConcreteMissing(linkedFacts, context) {
+  const missing = [];
+  const add = (key) => {
+    const value = text(key);
+    if (!missing.includes(value)) missing.push(value);
+  };
+  const hasRole = (role) => state.items.some((item) => item.role === role);
+  if (!context.references.length) add("missingOrderNumber");
+  linkedFacts.forEach((fact) => {
+    if (fact.evidence) return;
+    if (fact.role === "payment") add(fact.id === "duplicate" ? "missingDoubleCharge" : "missingPaymentReceipt");
+    if (fact.role === "conversation") add("missingConversation");
+    if (fact.role === "photo") add("missingProductPhoto");
+    if (fact.role === "shipping") add("missingTracking");
+    if (fact.role === "contract" && !hasRole("contract")) add("missingContract");
+    if (fact.role === "procedure") add("missingProcedureProof");
+  });
+  if (!$("#caseAttempt")?.value.trim()) add("missingAttempt");
+  return missing.slice(0, 4);
+}
+
+function buildCasePackage() {
+  const context = contextSignals();
+  const facts = linkEvidenceToFacts(buildFacts(context));
+  return {
+    context,
+    facts,
+    timeline: buildTimeline(context, facts),
+    missing: buildConcreteMissing(facts, context),
+    receives: [
+      text("professionalDocumentIncludes"),
+      text("onePageSummary"),
+      `${text("whatsappBlockTitle")}, ${text("emailBlockTitle").toLowerCase()} ${state.lang === "en" ? "and" : "y"} ${text("followUpBlockTitle").toLowerCase()}`
+    ]
+  };
 }
 
 function optionalContext() {
@@ -1346,6 +1694,11 @@ function buildAssistedTexts() {
   const context = optionalContext();
   const smartCase = activeLibraryCase();
   const smartSummary = libraryText(smartCase, "summary");
+  const casePackage = buildCasePackage();
+  const factsLine = casePackage.facts.length
+    ? casePackage.facts.map((fact) => `${fact.title}${fact.detail ? ` (${fact.detail})` : ""}`).join("; ")
+    : "";
+  const missingLine = casePackage.missing.length ? casePackage.missing.join("; ") : text("noMissingNeeded");
   const evidenceNote =
     state.items.length > 0
       ? state.lang === "en"
@@ -1363,12 +1716,13 @@ function buildAssistedTexts() {
       firm: "Hello, I am contacting you to clearly record"
     };
     const closing = state.tone === "firm" ? "I would appreciate a response through this channel." : "Thank you, I look forward to your response.";
-    const summary = `${story} ${smartSummary ? `${smartSummary} ` : ""}${context} I am requesting ${request}. ${evidenceNote} ${closing}`.replace(/\s+/g, " ").trim();
+    const summary = `${story} ${smartSummary ? `${smartSummary} ` : ""}${context} Key facts: ${factsLine}. I am requesting ${request}. ${evidenceNote} ${closing}`.replace(/\s+/g, " ").trim();
     return {
       summary,
-      whatsapp: `${openings[state.tone] || openings.cordial} "${title}". ${story} I am requesting ${request}. ${evidenceNote}`,
-      email: `${openings[state.tone] || openings.cordial} "${title}".\n\n${story}\n\n${context ? `${context}\n\n` : ""}${evidenceNote} I am requesting ${request} and would appreciate a response through this channel.\n\nThank you.`,
-      form: `Case: ${title}\n\nWhat happened:\n${story}\n\nMain request:\nI am requesting ${request}.\n\n${context ? `Details:\n${context}\n\n` : ""}Attached files: ${state.items.length ? `${state.items.length} file(s).` : "none for now."}`
+      whatsapp: `${openings[state.tone] || openings.cordial} "${title}". ${story} I am requesting ${request}. ${factsLine ? `Main points: ${factsLine}. ` : ""}${evidenceNote}`,
+      email: `${openings[state.tone] || openings.cordial} "${title}".\n\n${story}\n\n${context ? `${context}\n\n` : ""}${factsLine ? `Important facts:\n${factsLine}\n\n` : ""}${evidenceNote} I am requesting ${request} and would appreciate a response through this channel.\n\nThank you.`,
+      form: `Case: ${title}\n\nWhat happened:\n${story}\n\nMain request:\nI am requesting ${request}.\n\nImportant facts:\n${factsLine || story}\n\n${context ? `Details:\n${context}\n\n` : ""}Attached files: ${state.items.length ? `${state.items.length} file(s).` : "none for now."}\n\nCould help to add later: ${missingLine}`,
+      followUp: `${text("followUpIntro")} ${title}. ${story} ${text("followUpAsk")}`
     };
   }
 
@@ -1379,12 +1733,13 @@ function buildAssistedTexts() {
     firm: "Hola, me comunico para dejar clara la situación sobre"
   };
   const closing = state.tone === "firm" ? "Agradezco una respuesta por este medio." : "Quedo atento/a a una respuesta. Gracias.";
-  const summary = `${story} ${smartSummary ? `${smartSummary} ` : ""}${context} Solicito ${request}. ${evidenceNote} ${closing}`.replace(/\s+/g, " ").trim();
+  const summary = `${story} ${smartSummary ? `${smartSummary} ` : ""}${context} Hechos principales: ${factsLine}. Solicito ${request}. ${evidenceNote} ${closing}`.replace(/\s+/g, " ").trim();
   return {
     summary,
-    whatsapp: `${openings[state.tone] || openings.cordial} "${title}". ${story} Solicito ${request}. ${evidenceNote}`,
-    email: `${openings[state.tone] || openings.cordial} "${title}".\n\n${story}\n\n${context ? `${context}\n\n` : ""}${evidenceNote} Solicito ${request} y agradezco una respuesta por este medio.\n\nGracias.`,
-    form: `Caso: ${title}\n\nQué pasó:\n${story}\n\nPedido principal:\nSolicito ${request}.\n\n${context ? `Datos adicionales:\n${context}\n\n` : ""}Archivos adjuntos: ${state.items.length ? `${state.items.length} archivo(s).` : "ninguno por ahora."}`
+    whatsapp: `${openings[state.tone] || openings.cordial} "${title}". ${story} Solicito ${request}. ${factsLine ? `Puntos principales: ${factsLine}. ` : ""}${evidenceNote}`,
+    email: `${openings[state.tone] || openings.cordial} "${title}".\n\n${story}\n\n${context ? `${context}\n\n` : ""}${factsLine ? `Hechos importantes:\n${factsLine}\n\n` : ""}${evidenceNote} Solicito ${request} y agradezco una respuesta por este medio.\n\nGracias.`,
+    form: `Caso: ${title}\n\nQué pasó:\n${story}\n\nPedido principal:\nSolicito ${request}.\n\nHechos importantes:\n${factsLine || story}\n\n${context ? `Datos adicionales:\n${context}\n\n` : ""}Archivos adjuntos: ${state.items.length ? `${state.items.length} archivo(s).` : "ninguno por ahora."}\n\nPodría ayudar sumar después: ${missingLine}`,
+    followUp: `${text("followUpIntro")} ${title}. ${story} ${text("followUpAsk")}`
   };
 }
 
@@ -1394,7 +1749,8 @@ function updateAssistedTexts({ force = false } = {}) {
     ["caseSummary", "summary"],
     ["whatsappText", "whatsapp"],
     ["emailText", "email"],
-    ["formReadyText", "form"]
+    ["formReadyText", "form"],
+    ["followUpText", "followUp"]
   ];
   mapping.forEach(([id, key]) => {
     const field = document.getElementById(id);
@@ -1555,7 +1911,7 @@ function selectCase(caseType, { fillStory = false } = {}) {
   state.detectedCaseId = caseLibrary.find((entry) => entry.caseTypeId === caseType.id)?.id || state.detectedCaseId;
   state.confirmedDetection = true;
   state.checklist = localizedChecklist(caseType).map((_, index) => ({ index, status: "later" }));
-  state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
+  resetEditedTexts();
   $("#caseTitle").value = libraryText(activeLibraryCase(), "title") || localizedCase(caseType, "exampleTitle");
   const story = $("#caseStory");
   if (story && fillStory) story.value = localizedCase(caseType, "summary");
@@ -1604,7 +1960,7 @@ function renderStoryExamples() {
     button.addEventListener("click", () => {
       $("#caseStory").value = button.dataset.storyExample || "";
       state.confirmedDetection = false;
-      state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
+      resetEditedTexts();
       applyDetectedCase({ force: true });
       track("story_example_used", { detectedCase: state.detectedCaseId });
     });
@@ -1678,7 +2034,7 @@ function renderSummaryOptions() {
     button.textContent = option.label;
     button.addEventListener("click", () => {
       $("#caseStory").value = option.text;
-      state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
+      resetEditedTexts();
       updateAssistedTexts({ force: true });
     });
     row.appendChild(button);
@@ -1696,7 +2052,7 @@ function renderRequestOptions() {
     button.innerHTML = `<strong>${text(option.labelKey)}</strong><span>${text(option.phraseKey)}</span>`;
     button.addEventListener("click", () => {
       state.requestType = option.id;
-      state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
+      resetEditedTexts();
       renderRequestOptions();
       updateAssistedTexts({ force: true });
       track("request_selected", { requestType: option.id });
@@ -1804,7 +2160,7 @@ function renderTones() {
     button.textContent = tone[state.lang] || tone.es;
     button.addEventListener("click", () => {
       state.tone = tone.id;
-      state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
+      resetEditedTexts();
       renderTones();
       updateAssistedTexts({ force: true });
     });
@@ -1893,17 +2249,21 @@ async function addFiles(files) {
     const index = state.items.length;
     const isText = file.type === "text/plain" || /\.txt$/i.test(file.name);
     const textContent = isText ? await file.text().catch(() => "") : "";
+    const insight = enhanceFileItem(file, textContent, index);
     state.items.push({
       id: crypto.randomUUID(),
       file,
-      title: suggestedEvidenceTitle(index, file),
-      type: guessType(file, index),
-      date: dateFromFilename(file.name),
+      title: insight.title,
+      type: insight.type,
+      role: insight.role,
+      date: insight.date,
+      recommendedOrder: insight.recommendedOrder,
       description: textContent ? textContent.replace(/\s+/g, " ").trim().slice(0, 180) : suggestDescription(index),
       textContent,
       previewUrl: file.type.startsWith("image/") ? URL.createObjectURL(file) : ""
     });
   }
+  state.items.sort((a, b) => (a.recommendedOrder || 99) - (b.recommendedOrder || 99));
   state.previewReady = false;
   if (supported.length) state.attachmentChoice = "upload";
   renderAttachmentChoices();
@@ -1982,8 +2342,14 @@ function renderItems() {
     fields.append(
       inputFor(item, "title", text("cleanTitle"), () => {
         renderReview();
+        renderCaseMap();
+        renderReadyToSend();
       }),
-      inputFor(item, "description", text("shortDescription"), () => renderReview())
+      inputFor(item, "description", text("shortDescription"), () => {
+        renderReview();
+        renderCaseMap();
+        renderReadyToSend();
+      })
     );
     const details = document.createElement("details");
     details.className = "item-advanced";
@@ -1994,9 +2360,11 @@ function renderItems() {
       selectFor(item, "type", ["Archivo", "Comprobante", "Pago", "Conversación", "Documento", "Foto", "Estado", "Nota"], () => {
         renderItems();
         renderReview();
+        renderCaseMap();
       }),
       dateFor(item, () => {
         renderReview();
+        renderCaseMap();
       })
     );
     details.appendChild(advancedFields);
@@ -2112,43 +2480,51 @@ function estimatePages() {
 function renderCaseMap() {
   const map = $("#caseMap");
   if (!map) return;
-  const have = state.checklist.filter((entry) => entry.status === "have");
-  const suggestions = missingSuggestions();
+  const pkg = buildCasePackage();
+  const facts = pkg.facts.length ? pkg.facts : [{ title: text("factDocumentation"), detail: text("baseReady"), evidence: null }];
+  const timeline = pkg.timeline.length ? pkg.timeline : [{ date: "", title: text("eventStory"), detail: titleText() }];
   map.innerHTML = `
-    <article>
-      <span>1</span>
-      <strong>${text("caseMap1")}</strong>
-      <small>${escapeHtml(localizedCase(state.caseType, "title"))}</small>
-      <p>${escapeHtml(storyText()).slice(0, 190)}</p>
-    </article>
-    <article>
-      <span>2</span>
-      <strong>${text("caseMap2")}</strong>
-      <small>${escapeHtml(requestLabel())}</small>
-      <p>${escapeHtml(requestPhrase())}</p>
-    </article>
-    <article>
-      <span>3</span>
-      <strong>${text("caseMap3")}</strong>
-      <small>${state.items.length} ${text("filesAdded")}</small>
-      <p>${have.length} ${text("readyMarked")}</p>
-    </article>
-    <article>
-      <span>4</span>
-      <strong>${text("caseMap4")}</strong>
-      <small>${suggestions.length ? text("optional") : text("complete")}</small>
-      <p>${suggestions.length ? suggestions.map(escapeHtml).join(", ") : text("noMissingNeeded")}</p>
-    </article>
+    <div class="package-intro">
+      <div>
+        <span class="pill">${text("packageTitle")}</span>
+        <h4>${escapeHtml(titleText())}</h4>
+        <p>${text("packageLead")}</p>
+      </div>
+      <strong>${estimatePages()} ${text("pagesApprox")}</strong>
+    </div>
+    <div class="package-grid">
+      <article class="package-card">
+        <span>${text("factsTitle")}</span>
+        <ul class="fact-list">
+          ${facts.map((fact) => `<li><strong>${escapeHtml(fact.title)}</strong>${fact.detail ? `<small>${escapeHtml(fact.detail)}</small>` : ""}</li>`).join("")}
+        </ul>
+      </article>
+      <article class="package-card">
+        <span>${text("timeline")}</span>
+        <ul class="timeline-list">
+          ${timeline.map((event) => `<li><em>${escapeHtml(event.date || text("possibleData"))}</em><strong>${escapeHtml(event.title)}</strong><small>${escapeHtml(event.detail || "")}</small></li>`).join("")}
+        </ul>
+      </article>
+      <article class="package-card">
+        <span>${text("linkedEvidenceTitle")}</span>
+        <ul class="link-list">
+          ${facts.map((fact) => `<li><strong>${escapeHtml(fact.title)}</strong><small>${fact.evidence ? `${escapeHtml(fact.evidence.title)} · ${escapeHtml(localizedType(fact.evidence.type))}` : text("noLinkedEvidence")}</small></li>`).join("")}
+        </ul>
+      </article>
+      <article class="package-card">
+        <span>${text("couldAddTitle")}</span>
+        <ul>${(pkg.missing.length ? pkg.missing : [text("noMissingNeeded")]).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+      </article>
+      <article class="package-card package-card-wide">
+        <span>${text("whatYouReceiveTitle")}</span>
+        <ul>${pkg.receives.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+      </article>
+    </div>
   `;
 }
 
 function missingSuggestions() {
-  const suggestions = [];
-  if (!$("#caseDate")?.value) suggestions.push(text("missingDate"));
-  if (!$("#caseReference")?.value.trim()) suggestions.push(text("missingReference"));
-  if (!state.items.length) suggestions.push(text("missingEvidence"));
-  if (!$("#caseAttempt")?.value.trim()) suggestions.push(text("missingAttempt"));
-  return suggestions.slice(0, 3);
+  return buildCasePackage().missing.slice(0, 3);
 }
 
 function thingsYouHave() {
@@ -2237,6 +2613,7 @@ function renderReadyToSend() {
   const whatsapp = readyText("whatsapp");
   const email = readyText("email");
   const form = readyText("form");
+  const followUp = readyText("followUp");
   const documentText = state.items.length ? text("documentBlockText") : text("documentNoFilesText");
   panel.innerHTML = `
     <div class="ready-send-intro">
@@ -2259,7 +2636,9 @@ function renderReadyToSend() {
           <button type="button" data-copy-ready="${escapeAttribute(email)}">${text("copyEmail")}</button>
           <button type="button" data-open-email="${escapeAttribute(email)}" data-subject="${escapeAttribute(subject)}">${text("openEmailAction")}</button>
           <button type="button" data-copy-ready="${escapeAttribute(form)}">${text("copyForm")}</button>
+          <button type="button" data-copy-ready="${escapeAttribute(followUp)}">${text("copyFollowUp")}</button>
         </div>
+        <small>${text("followUpBlockTitle")}</small>
       </article>
       <article class="ready-send-card document-ready-card">
         <span>${text("documentBlockTitle")}</span>
@@ -2543,6 +2922,8 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   const summary = summaryText();
   const emailReady = readyText("email");
   const formReady = readyText("form");
+  const followUpReady = readyText("followUp");
+  const casePackage = buildCasePackage();
   const party = $("#caseParty").value.trim();
   const reference = $("#caseReference").value.trim();
   const name = $("#caseName").value.trim();
@@ -2616,6 +2997,12 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   summaryPage.drawText(text("readyToSend"), { x: 52, y, size: 14, font: bold, color: rgb(0.04, 0.08, 0.14) });
   y -= 22;
   y = drawParagraph(summaryPage, mode === "summary" ? formReady : emailReady, 64, y, 10, 90);
+  if (mode !== "summary") {
+    y -= 10;
+    summaryPage.drawText(text("followUpBlockTitle"), { x: 52, y, size: 14, font: bold, color: rgb(0.04, 0.08, 0.14) });
+    y -= 22;
+    y = drawParagraph(summaryPage, followUpReady, 64, y, 10, 90);
+  }
   y -= 14;
   summaryPage.drawText(text("checklist"), { x: 52, y, size: 14, font: bold, color: rgb(0.04, 0.08, 0.14) });
   y -= 24;
@@ -2627,6 +3014,36 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
     y -= 18;
   });
   drawFooter(summaryPage);
+
+  if (mode === "summary") {
+    return new Blob([await pdf.save()], { type: "application/pdf" });
+  }
+
+  const factsPage = pdf.addPage(pageSize);
+  drawPageHeader(factsPage, text("factsEvidencePdf"));
+  let factsY = 710;
+  factsPage.drawText(text("factsTitle"), { x: 52, y: factsY, size: 14, font: bold, color: rgb(0.04, 0.08, 0.14) });
+  factsY -= 24;
+  casePackage.facts.forEach((fact) => {
+    if (factsY < 120) return;
+    factsPage.drawText(`• ${fact.title}`.slice(0, 90), { x: 64, y: factsY, size: 11, font: bold, color: rgb(0.13, 0.16, 0.22) });
+    factsY -= 17;
+    if (fact.detail) {
+      factsY = drawParagraph(factsPage, fact.detail, 82, factsY, 9, 82);
+    }
+    const evidenceText = fact.evidence ? `${text("linkedEvidenceTitle")}: ${fact.evidence.title}` : text("noLinkedEvidence");
+    factsPage.drawText(evidenceText.slice(0, 92), { x: 82, y: factsY, size: 9, font: regular, color: rgb(0.39, 0.43, 0.5) });
+    factsY -= 24;
+  });
+  factsY -= 8;
+  factsPage.drawText(text("couldAddTitle"), { x: 52, y: factsY, size: 14, font: bold, color: rgb(0.04, 0.08, 0.14) });
+  factsY -= 24;
+  (casePackage.missing.length ? casePackage.missing : [text("noMissingNeeded")]).forEach((item) => {
+    if (factsY < 80) return;
+    factsPage.drawText(`• ${item}`.slice(0, 96), { x: 64, y: factsY, size: 10, font: regular, color: rgb(0.13, 0.16, 0.22) });
+    factsY -= 18;
+  });
+  drawFooter(factsPage);
 
   const indexPage = pdf.addPage(pageSize);
   drawPageHeader(indexPage, text("evidenceIndexPdf"));
@@ -2643,7 +3060,7 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
   }
   drawFooter(indexPage);
 
-  const dated = items.filter((item) => item.date).sort((a, b) => a.date.localeCompare(b.date));
+  const dated = casePackage.timeline.filter((item) => item.date || item.detail);
   if (dated.length >= 2) {
     const timeline = pdf.addPage(pageSize);
     drawPageHeader(timeline, text("timeline"));
@@ -2652,13 +3069,10 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
       timeline.drawCircle({ x: 61, y: timelineY + 3, size: 4, color: rgb(0.15, 0.39, 0.92) });
       timeline.drawText(item.date, { x: 82, y: timelineY, size: 10, font: bold, color: rgb(0.13, 0.16, 0.22) });
       timeline.drawText(item.title.slice(0, 62), { x: 166, y: timelineY, size: 10, font: regular, color: rgb(0.13, 0.16, 0.22) });
+      if (item.detail) timeline.drawText(item.detail.slice(0, 76), { x: 166, y: timelineY - 14, size: 8, font: regular, color: rgb(0.39, 0.43, 0.5) });
       timelineY -= 28;
     });
     drawFooter(timeline);
-  }
-
-  if (mode === "summary") {
-    return new Blob([await pdf.save()], { type: "application/pdf" });
   }
 
   for (let index = 0; index < items.length; index += 1) {
@@ -2852,7 +3266,7 @@ function bindEvents() {
     const shouldTranslateTitle = !titleInput.value.trim() || titleInput.value.trim() === oldTitle || titleInput.value.trim() === oldLibraryTitle;
     const shouldTranslateStory = !storyInput.value.trim() || storyInput.value.trim() === oldStory;
     state.lang = state.lang === "es" ? "en" : "es";
-    state.editedTexts = { summary: false, whatsapp: false, email: false, form: false };
+    resetEditedTexts();
     applyTranslations();
     if (shouldTranslateTitle) titleInput.value = libraryText(activeLibraryCase(), "title") || localizedCase(state.caseType, "exampleTitle");
     if (shouldTranslateStory) storyInput.value = localizedCase(state.caseType, "summary");
@@ -2905,7 +3319,8 @@ function bindEvents() {
     ["caseSummary", "summary"],
     ["whatsappText", "whatsapp"],
     ["emailText", "email"],
-    ["formReadyText", "form"]
+    ["formReadyText", "form"],
+    ["followUpText", "followUp"]
   ].forEach(([id, key]) => {
     const element = document.getElementById(id);
     element?.addEventListener("input", () => {
