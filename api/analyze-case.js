@@ -199,8 +199,8 @@ function enforceSafeOverrides(analysis, payload) {
   const patch = (caseId, title, mainRequest, missingData = []) => ({
     ...analysis,
     caseId,
-    title: analysis.title || title,
-    mainRequest: analysis.mainRequest || mainRequest,
+    title,
+    mainRequest,
     missingData: analysis.missingData?.length ? analysis.missingData : missingData,
     needsConfirmation: analysis.confidence < 0.75,
     confidence: Math.max(analysis.confidence, 0.72)
