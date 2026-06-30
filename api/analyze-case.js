@@ -149,6 +149,51 @@ function hasAny(text, words) {
   return words.some((word) => text.includes(word));
 }
 
+function isAmbiguousShippingStory(payload) {
+  const text = normalizedText(payload);
+  const mentionsShipping = hasAny(text, [
+    "envio",
+    "paquete",
+    "entrega",
+    "mercado libre",
+    "mercadolibre",
+    "meli",
+    "shipping",
+    "shipment",
+    "delivery",
+    "package"
+  ]);
+  if (!mentionsShipping) return false;
+  const explicitProblem = [
+    /no (me )?(llego|llega|entregaron|recibi|recibio)/,
+    /nunca (llego|llega|recibi)/,
+    /figura entregado/,
+    /aparece entregado/,
+    /entregado pero/,
+    /demorad[oa]/,
+    /demora/,
+    /no se mueve/,
+    /seguimiento/,
+    /tracking/,
+    /me cobraron/,
+    /cobro/,
+    /cobraron de mas/,
+    /de mas/,
+    /cargo/,
+    /roto|rota/,
+    /llego mal/,
+    /vino mal/,
+    /defectuoso/,
+    /did not arrive/,
+    /never arrived/,
+    /not received/,
+    /overcharged/,
+    /charged/,
+    /damaged|broken/
+  ].some((pattern) => pattern.test(text));
+  return !explicitProblem;
+}
+
 function enforceSafeOverrides(analysis, payload) {
   const text = normalizedText(payload);
   const patch = (caseId, title, mainRequest, missingData = []) => ({
@@ -259,6 +304,10 @@ export default async function handler(request, response) {
     const payload = safePayload(request.body || {});
     if (!payload.story) {
       response.status(400).json({ ok: false, fallback: true });
+      return;
+    }
+    if (isAmbiguousShippingStory(payload)) {
+      response.status(200).json({ ok: false, fallback: true, needsConfirmation: true, reason: "ambiguous_shipping" });
       return;
     }
     const result = await callCloudflare(payload);

@@ -371,6 +371,14 @@ const translations = {
     aiFallback: "Pudimos preparar una versión inicial. Confirmá o ajustá el tipo de caso.",
     aiUnavailable: "El análisis inteligente no está configurado todavía. Seguimos con una versión inicial segura.",
     aiApplied: "Listo. Organizamos tu caso con análisis inteligente.",
+    staleAnalysisIgnored: "Ignoramos un análisis anterior porque ya cambiaste el relato.",
+    ambiguousShippingTitle: "Necesito confirmar el problema del envío",
+    ambiguousShippingText: "Entendí que hay un inconveniente con un envío, pero todavía no queda claro cuál fue el problema principal.",
+    shippingOvercharged: "Me cobraron de más",
+    shippingNotArrived: "No llegó",
+    shippingArrivedWrong: "Llegó mal",
+    shippingOther: "Otro problema",
+    confirmCaseBeforeOutput: "Antes de preparar el mensaje y el documento, confirmá qué pasó con el envío.",
     heroMess1: "Captura del chat",
     heroMess2: "Comprobante de pago",
     heroMess3: "Detalle del pedido",
@@ -755,6 +763,14 @@ const translations = {
     aiFallback: "We prepared an initial version. Confirm or adjust the case type.",
     aiUnavailable: "Smart analysis is not configured yet. We will continue with a safe initial version.",
     aiApplied: "Done. We organized your case with smart analysis.",
+    staleAnalysisIgnored: "We ignored an older analysis because you already changed the story.",
+    ambiguousShippingTitle: "I need to confirm the shipping problem",
+    ambiguousShippingText: "I understood there is an issue with a shipment, but the main problem is not clear yet.",
+    shippingOvercharged: "I was overcharged",
+    shippingNotArrived: "It did not arrive",
+    shippingArrivedWrong: "It arrived wrong",
+    shippingOther: "Another problem",
+    confirmCaseBeforeOutput: "Before preparing the message and document, confirm what happened with the shipment.",
     heroMess1: "Chat screenshot",
     heroMess2: "Payment receipt",
     heroMess3: "Order details",
@@ -1440,6 +1456,9 @@ const state = {
   confirmedDetection: false,
   aiAnalysis: null,
   aiSkipped: false,
+  caseRevision: 0,
+  activeAnalysisId: "",
+  pendingConfirmation: "",
   editedTexts: {
     summary: false,
     whatsapp: false,
@@ -1451,6 +1470,25 @@ const state = {
 
 function resetEditedTexts() {
   state.editedTexts = { summary: false, whatsapp: false, email: false, form: false, followUp: false };
+}
+
+function clearPreparedOutputs() {
+  ["caseSummary", "whatsappText", "emailText", "formReadyText", "followUpText"].forEach((id) => {
+    const field = document.getElementById(id);
+    if (field) field.value = "";
+  });
+}
+
+function resetDerivedCaseState() {
+  state.caseRevision += 1;
+  state.activeAnalysisId = "";
+  state.aiAnalysis = null;
+  state.aiSkipped = false;
+  state.confirmedDetection = false;
+  state.pendingConfirmation = "";
+  state.previewReady = false;
+  resetEditedTexts();
+  clearPreparedOutputs();
 }
 
 function formatMoney(value) {
@@ -1536,10 +1574,65 @@ function normalizeForMatch(value) {
     .toLowerCase();
 }
 
+function hasMatch(textValue, patterns) {
+  return patterns.some((pattern) => {
+    if (pattern instanceof RegExp) return pattern.test(textValue);
+    return textValue.includes(pattern);
+  });
+}
+
+function isAmbiguousShippingStory(story) {
+  const mentionsShipping = hasMatch(story, [
+    "envio",
+    "paquete",
+    "entrega",
+    "mercado libre",
+    "mercadolibre",
+    "meli",
+    "shipping",
+    "shipment",
+    "delivery",
+    "package"
+  ]);
+  if (!mentionsShipping) return false;
+  const explicitProblem = hasMatch(story, [
+    /no (me )?(llego|llega|entregaron|recibi|recibio)/,
+    /nunca (llego|llega|recibi)/,
+    "figura entregado",
+    "aparece entregado",
+    "entregado pero",
+    "demorado",
+    "demora",
+    "no se mueve",
+    "seguimiento",
+    "tracking",
+    "me cobraron",
+    "cobro",
+    "cobraron de mas",
+    "de mas",
+    "cargo",
+    "roto",
+    "rota",
+    "llego mal",
+    "vino mal",
+    "defectuoso",
+    "damaged",
+    "broken",
+    "did not arrive",
+    "never arrived",
+    "overcharged",
+    "charged"
+  ]);
+  return !explicitProblem;
+}
+
 function analyzeStory(value) {
   const story = normalizeForMatch(value);
   if (!story.trim()) {
     return { entry: unknownCase, score: 0, confidence: "low", uncertain: true };
+  }
+  if (isAmbiguousShippingStory(story)) {
+    return { entry: unknownCase, score: 0, confidence: "low", uncertain: true, ambiguous: "shipping" };
   }
   const scored = caseLibrary.map((entry) => {
     const keywords = [...(entry.keywords.es || []), ...(entry.keywords.en || [])];
@@ -1581,6 +1674,7 @@ function applyDetectedCase({ force = false } = {}) {
   const shouldApply = force || state.detectedCaseId !== entry.id || !state.confirmedDetection;
   state.detectedCaseId = entry.id;
   state.detectedConfidence = analysis.score;
+  state.pendingConfirmation = analysis.ambiguous || "";
   state.caseType = caseType;
   state.requestType = entry.requestType || state.requestType;
   state.checklist = localizedChecklist(caseType).map((_, index) => ({ index, status: state.checklist[index]?.status || "later" }));
@@ -1777,7 +1871,10 @@ function buildFacts(context) {
   if (hasSignal(context, /pago|pay|paid|cobro|charge|transfer|tarjeta|receipt|comprobante|factura|invoice|ticket/)) {
     add(makeFact("payment", "factPayment", "payment", [amountDetail, dateDetail]));
   }
-  if (["online_not_arrived", "shipping_delay"].includes(entry.id) || hasSignal(context, /no llego|nunca llego|never arrived|delivery|entrega|envio|shipment|tracking/)) {
+  if (
+    ["online_not_arrived", "shipping_delay"].includes(entry.id) ||
+    hasSignal(context, /no llego|nunca llego|no recibi|figura entregado|aparece entregado|demora|demorado|no se mueve|never arrived|did not arrive|not received|tracking|seguimiento/)
+  ) {
     add(makeFact("delivery", "factNoDelivery", "shipping", [refDetail, dateDetail]));
   }
   if (entry.id === "seller_no_response" || hasSignal(context, /no\s+\w*\s*responde|no\s+\w*\s*contesta|not answering|no response|sin respuesta|stopped replying/)) {
@@ -1905,6 +2002,16 @@ function optionalContext() {
 }
 
 function buildAssistedTexts() {
+  if (state.pendingConfirmation) {
+    const message = text("confirmCaseBeforeOutput");
+    return {
+      summary: message,
+      whatsapp: message,
+      email: message,
+      form: message,
+      followUp: message
+    };
+  }
   const title = titleText();
   const story = storyText();
   const request = requestPhrase();
@@ -2176,8 +2283,7 @@ function renderStoryExamples() {
   container.querySelectorAll("[data-story-example]").forEach((button) => {
     button.addEventListener("click", () => {
       $("#caseStory").value = button.dataset.storyExample || "";
-      state.confirmedDetection = false;
-      resetEditedTexts();
+      resetDerivedCaseState();
       applyDetectedCase({ force: true });
       track("story_example_used", { detectedCase: state.detectedCaseId });
     });
@@ -2221,7 +2327,17 @@ function renderAnalysisProgress() {
   );
 }
 
-function applySmartAnalysis(analysis) {
+function applySmartAnalysis(analysis, context = {}) {
+  const currentStory = $("#caseStory")?.value.trim() || "";
+  if (
+    context.analysisId &&
+    (state.activeAnalysisId !== context.analysisId ||
+      state.caseRevision !== context.caseRevision ||
+      currentStory !== context.story)
+  ) {
+    showMessage(text("staleAnalysisIgnored"), "note");
+    return false;
+  }
   const caseId = String(analysis?.caseId || "");
   const entry = caseLibrary.find((item) => item.id === caseId);
   if (!entry || Number(analysis?.confidence || 0) < 0.45) {
@@ -2234,14 +2350,12 @@ function applySmartAnalysis(analysis) {
   state.caseType = caseTypes.find((item) => item.id === entry.caseTypeId) || state.caseType;
   state.requestType = entry.requestType || state.requestType;
   state.confirmedDetection = !analysis.needsConfirmation;
+  state.pendingConfirmation = analysis.needsConfirmation ? state.pendingConfirmation : "";
   const title = String(analysis.title || "").trim();
   const summary = String(analysis.summary || "").trim();
   resetEditedTexts();
   if (title) $("#caseTitle").value = title.slice(0, 90);
-  if (summary) {
-    $("#caseSummary").value = summary.slice(0, 900);
-    state.editedTexts.summary = true;
-  }
+  if (summary) $("#caseSummary").value = summary.slice(0, 900);
   renderCases();
   renderRequestOptions();
   renderChecklist();
@@ -2257,6 +2371,10 @@ async function runSmartAnalysis() {
     showMessage(text("storyPlaceholder"), "warning");
     return;
   }
+  const analysisId = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  const caseRevision = state.caseRevision;
+  state.activeAnalysisId = analysisId;
+  const payload = analysisPayload();
   renderAnalysisProgress();
   try {
     const controller = new AbortController();
@@ -2264,7 +2382,7 @@ async function runSmartAnalysis() {
     const response = await fetch("/api/analyze-case", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(analysisPayload()),
+      body: JSON.stringify(payload),
       signal: controller.signal
     });
     clearTimeout(timer);
@@ -2273,17 +2391,41 @@ async function runSmartAnalysis() {
       showMessage(data.disabled ? text("aiUnavailable") : text("aiFallback"), "note");
       return;
     }
-    applySmartAnalysis(data.analysis);
+    applySmartAnalysis(data.analysis, { analysisId, caseRevision, story });
   } catch {
-    showMessage(text("aiFallback"), "note");
+    if (state.activeAnalysisId === analysisId && state.caseRevision === caseRevision) {
+      showMessage(text("aiFallback"), "note");
+    }
   }
+}
+
+function applyConfirmedCase(caseId) {
+  const entry = caseLibrary.find((item) => item.id === caseId) || unknownCase;
+  state.detectedCaseId = entry.id;
+  state.detectedConfidence = entry.id === "unknown" ? 0 : 8;
+  state.caseType = caseTypes.find((item) => item.id === entry.caseTypeId) || caseTypes.find((item) => item.id === "other") || state.caseType;
+  state.requestType = entry.requestType || state.requestType;
+  state.confirmedDetection = entry.id !== "unknown";
+  state.pendingConfirmation = "";
+  resetEditedTexts();
+  const titleInput = $("#caseTitle");
+  if (titleInput) titleInput.value = libraryText(entry, "title") || libraryText(unknownCase, "title");
+  updateAssistedTexts({ force: true });
+  renderDetectedCase();
+  renderCases();
+  renderRequestOptions();
+  renderChecklist();
+  showMessage(entry.id === "unknown" ? text("aiFallback") : text("baseReady"), "success");
 }
 
 function renderDetectedCase() {
   const panel = $("#smartDetected");
   if (!panel) return;
   const entry = activeLibraryCase();
-  const analysis = analyzeStory($("#caseStory")?.value || "");
+  const analysis =
+    state.confirmedDetection && state.detectedCaseId !== "unknown"
+      ? { entry, score: state.detectedConfidence, confidence: state.detectedConfidence >= 8 ? "high" : "medium", uncertain: false }
+      : analyzeStory($("#caseStory")?.value || "");
   const confidenceKey =
     analysis.confidence === "high"
       ? "detectedConfidenceHigh"
@@ -2295,6 +2437,41 @@ function renderDetectedCase() {
   const usefulFiles = libraryText(entry, "usefulFiles") || [];
   const missing = libraryText(entry, "missing");
   const isUncertain = entry.id === "unknown" || analysis.uncertain;
+  if (analysis.ambiguous === "shipping") {
+    panel.innerHTML = `
+      <article class="detected-main">
+        <div>
+          <span class="pill">${text("detectedCaseTitle")}</span>
+          <h4>${text("ambiguousShippingTitle")}</h4>
+          <p>${text("ambiguousShippingText")}</p>
+        </div>
+      </article>
+      <div class="detected-actions detected-actions-grid">
+        <button type="button" data-confirm-case="wrong_charge">${text("shippingOvercharged")}</button>
+        <button type="button" data-confirm-case="online_not_arrived">${text("shippingNotArrived")}</button>
+        <button type="button" data-confirm-case="defective_product">${text("shippingArrivedWrong")}</button>
+        <button type="button" data-confirm-case="unknown">${text("shippingOther")}</button>
+      </div>
+      <article class="detected-ai">
+        <strong>${text("aiConsentTitle")}</strong>
+        <p>${text("aiConsentText")}</p>
+        <div class="detected-actions">
+          <button type="button" data-ai-analyze>${text("aiAnalyzeButton")}</button>
+          <button type="button" data-ai-skip>${text("aiSkipButton")}</button>
+        </div>
+      </article>
+      <p class="detected-note">${text("noLongForms")}</p>
+    `;
+    panel.querySelectorAll("[data-confirm-case]").forEach((button) => {
+      button.addEventListener("click", () => applyConfirmedCase(button.dataset.confirmCase));
+    });
+    panel.querySelector("[data-ai-analyze]")?.addEventListener("click", runSmartAnalysis);
+    panel.querySelector("[data-ai-skip]")?.addEventListener("click", () => {
+      state.aiSkipped = true;
+      showMessage(text("aiFallback"), "note");
+    });
+    return;
+  }
   if (isUncertain) {
     panel.innerHTML = `
       <article class="detected-main">
@@ -3081,6 +3258,10 @@ function renderReview() {
 }
 
 function renderProtectedPreview() {
+  if (state.pendingConfirmation) {
+    showMessage(text("confirmCaseBeforeOutput"), "warning");
+    return;
+  }
   const panel = $("#previewPanel");
   const items = sortedItems();
   const visibleItems = items.slice(0, 2);
@@ -3491,6 +3672,10 @@ async function buildPdf({ mode = "full", watermark = false } = {}) {
 }
 
 async function downloadPaidPackage() {
+  if (state.pendingConfirmation) {
+    showMessage(text("confirmCaseBeforeOutput"), "warning");
+    return;
+  }
   if (state.credits <= 0 || !state.token) {
     showMessage(text("enableDownloads"), "warning");
     return;
@@ -3653,7 +3838,7 @@ function bindEvents() {
   $("#fastModeButton")?.addEventListener("click", () => {
     state.fastMode = true;
     $("#caseStory").value = text("storyExample1");
-    state.confirmedDetection = false;
+    resetDerivedCaseState();
     applyDetectedCase({ force: true });
     showStep(1);
     showMessage(text("fastReady"), "success");
@@ -3668,8 +3853,8 @@ function bindEvents() {
     const element = document.getElementById(id);
     element?.addEventListener("input", () => {
       if (id === "caseStory") {
-        state.confirmedDetection = false;
-        applyDetectedCase({ force: false });
+        resetDerivedCaseState();
+        applyDetectedCase({ force: true });
         return;
       }
       updateAssistedTexts();
